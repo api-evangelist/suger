@@ -1,6 +1,7 @@
 aid: suger
 name: Suger
-description: 'Fastest and easiest way to list, transact and co-sell on cloud marketplaces. '
+description: >-
+  Fastest and easiest way to list, transact and co-sell on cloud marketplaces.
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -16,8 +17,7 @@ apis:
   - aid: suger:suger
     name: Suger
     description: >-
-      Fastest and easiest way to list, transact and co-sell on cloud
-      marketplaces. 
+      Fastest and easiest way to list, transact and co-sell on cloud marketplaces.
     humanURL: https://www.suger.io/
     tags:
       - Cloud Marketplace
