@@ -6,8 +6,7 @@ type: Index
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-tags:
-  - API
+tags: []
 created: '2025-02-21'
 modified: '2026-03-16'
 url: >-
@@ -21,8 +20,8 @@ apis:
     humanURL: https://www.suger.io/
     tags:
       - Cloud Marketplace
-      - SaaS
       - GTM
+      - SaaS
     properties:
       - type: Documentation
         url: https://doc.suger.io/
