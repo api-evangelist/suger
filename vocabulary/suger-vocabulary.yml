@@ -1,0 +1,149 @@
+vocabulary:
+  name: Suger Vocabulary
+  description: >-
+    Domain vocabulary for Suger, the cloud marketplace automation platform for ISVs
+    to list, transact, and co-sell on AWS, Azure, GCP, and Snowflake marketplaces.
+  version: '1.0'
+  created: '2026-05-02'
+  modified: '2026-05-02'
+  tags:
+    - Cloud Marketplace
+    - GTM
+    - SaaS
+    - Billing
+
+  terms:
+    - term: Organization
+      definition: >-
+        The ISV (Independent Software Vendor) entity in Suger that owns products,
+        offers, and manages marketplace transactions. Identified by orgId.
+      tags:
+        - Core Concept
+
+    - term: Product
+      definition: >-
+        A software product or service listed on one or more cloud marketplaces
+        through Suger. A single product can be listed on multiple partners (AWS,
+        Azure, GCP, Snowflake).
+      tags:
+        - Marketplace
+        - Core Concept
+
+    - term: Offer
+      definition: >-
+        A specific pricing configuration for a product, including pricing model,
+        terms, and conditions presented to buyers in the marketplace.
+      tags:
+        - Marketplace
+        - Billing
+
+    - term: Entitlement
+      definition: >-
+        A customer's right to access a product, created when a buyer accepts an
+        offer. Tracks the subscription lifecycle including status, term dates,
+        and pricing.
+      tags:
+        - Billing
+        - Subscription
+        - Core Concept
+
+    - term: Buyer
+      definition: >-
+        A customer or organization that purchases ISV products through cloud
+        marketplace listings managed by Suger.
+      tags:
+        - Core Concept
+
+    - term: Partner
+      definition: >-
+        A cloud marketplace platform supported by Suger: AWS Marketplace, Azure
+        Marketplace, GCP Marketplace, or Snowflake Marketplace.
+      tags:
+        - Integration
+
+    - term: Usage Record Group
+      definition: >-
+        A batch of usage metering data submitted by an ISV to track consumption
+        for usage-based billing on cloud marketplaces.
+      tags:
+        - Billing
+        - Metering
+
+    - term: Billable Metric
+      definition: >-
+        A named measurement unit used for usage-based billing, such as API calls,
+        data processed, or active users.
+      tags:
+        - Billing
+        - Metering
+
+    - term: Invoice
+      definition: >-
+        A billing document generated for a buyer's entitlement, representing
+        amounts owed for subscription or usage charges.
+      tags:
+        - Billing
+        - Finance
+
+    - term: Revenue Record
+      definition: >-
+        A financial record of revenue earned through marketplace transactions,
+        tracked per partner for reporting and reconciliation.
+      tags:
+        - Finance
+        - Reporting
+
+    - term: Co-sell
+      definition: >-
+        A go-to-market motion where ISVs partner with cloud providers (AWS, Azure,
+        GCP) to jointly sell products to enterprise customers.
+      tags:
+        - GTM
+        - Sales
+
+    - term: Draft Offer
+      definition: >-
+        A marketplace offer in draft state, not yet published to the marketplace.
+        Private offers can be created as drafts and shared with specific buyers.
+      tags:
+        - Marketplace
+        - Workflow
+
+    - term: Fulfillment URL
+      definition: >-
+        The URL where buyers are redirected after completing a marketplace purchase,
+        typically to provision access to the ISV's product.
+      tags:
+        - Marketplace
+        - Integration
+
+    - term: Addon
+      definition: >-
+        An optional add-on product or feature that can be applied to an existing
+        entitlement to extend capabilities or add capacity.
+      tags:
+        - Billing
+        - Product
+
+    - term: Contact
+      definition: >-
+        A person associated with a buyer or offer in Suger, used for notifications
+        and communication about marketplace transactions.
+      tags:
+        - CRM
+        - Communication
+
+    - term: EULA
+      definition: >-
+        End User License Agreement — the legal terms attached to a marketplace
+        offer that buyers must accept before purchasing.
+      tags:
+        - Legal
+        - Compliance
+
+    - term: ISV
+      definition: >-
+        Independent Software Vendor — a company that builds and sells software
+        products through cloud marketplaces. Suger's primary customer.
+      tags:
+        - Market Segment

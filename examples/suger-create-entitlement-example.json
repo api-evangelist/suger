@@ -1,0 +1,39 @@
+{
+  "operation": "Create Entitlement",
+  "description": "Example request/response for POST /org/{orgId}/entitlement",
+  "request": {
+    "method": "POST",
+    "url": "https://api.suger.cloud/org/org-12345/entitlement",
+    "headers": {
+      "Authorization": "API_KEY your-api-key-here",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "buyerId": "buyer-xyz789",
+      "offerId": "offer-mno321",
+      "name": "Analytics Pro - Enterprise License"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "ent-new001",
+      "orgId": "org-12345",
+      "buyerId": "buyer-xyz789",
+      "productId": "prod-abc123",
+      "offerId": "offer-mno321",
+      "name": "Analytics Pro - Enterprise License",
+      "status": "PENDING_ACTIVE",
+      "partner": "AWS",
+      "startTime": "2026-05-02T00:00:00Z",
+      "endTime": "2027-05-02T00:00:00Z",
+      "priceModel": {
+        "type": "FLAT_RATE",
+        "price": 2500.00,
+        "currency": "USD"
+      },
+      "createdAt": "2026-05-02T15:30:00Z",
+      "updatedAt": "2026-05-02T15:30:00Z"
+    }
+  }
+}

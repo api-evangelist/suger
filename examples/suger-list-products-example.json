@@ -1,0 +1,39 @@
+{
+  "operation": "List Products",
+  "description": "Example response from GET /org/{orgId}/product",
+  "request": {
+    "method": "GET",
+    "url": "https://api.suger.cloud/org/org-12345/product",
+    "headers": {
+      "Authorization": "API_KEY your-api-key-here",
+      "Content-Type": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "id": "prod-abc123",
+        "orgId": "org-12345",
+        "name": "Analytics Pro",
+        "description": "Advanced analytics platform for enterprise teams",
+        "partner": "AWS",
+        "status": "PUBLISHED",
+        "fulfillmentUrl": "https://app.example.com/signup",
+        "createdAt": "2026-01-15T10:30:00Z",
+        "updatedAt": "2026-04-01T14:22:00Z"
+      },
+      {
+        "id": "prod-def456",
+        "orgId": "org-12345",
+        "name": "Analytics Pro",
+        "description": "Advanced analytics platform for enterprise teams",
+        "partner": "GCP",
+        "status": "PUBLISHED",
+        "fulfillmentUrl": "https://app.example.com/signup",
+        "createdAt": "2026-02-01T09:00:00Z",
+        "updatedAt": "2026-04-01T14:22:00Z"
+      }
+    ]
+  }
+}

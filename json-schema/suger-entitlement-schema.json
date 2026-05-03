@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.suger.cloud/schemas/entitlement",
+  "title": "Suger Entitlement",
+  "description": "A customer entitlement to a cloud marketplace product, representing a subscription or purchase.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the entitlement"
+    },
+    "orgId": {
+      "type": "string",
+      "description": "Organization ID (ISV) that owns this entitlement"
+    },
+    "buyerId": {
+      "type": "string",
+      "description": "ID of the buyer/customer who owns this entitlement"
+    },
+    "productId": {
+      "type": "string",
+      "description": "ID of the product this entitlement grants access to"
+    },
+    "offerId": {
+      "type": "string",
+      "description": "ID of the offer this entitlement was created from"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the entitlement"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ACTIVE", "PENDING_ACTIVE", "CANCELED", "EXPIRED", "SUSPENDED"],
+      "description": "Current status of the entitlement"
+    },
+    "partner": {
+      "type": "string",
+      "enum": ["AWS", "AZURE", "GCP", "SNOWFLAKE"],
+      "description": "Cloud marketplace where the entitlement was purchased"
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the entitlement becomes active"
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the entitlement expires"
+    },
+    "priceModel": {
+      "type": "object",
+      "description": "Pricing model details for the entitlement",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["FLAT_RATE", "USAGE_BASED", "TIERED", "SEAT_BASED"]
+        },
+        "price": { "type": "number" },
+        "currency": { "type": "string" }
+      }
+    },
+    "metaInfo": {
+      "type": "object",
+      "description": "Additional metadata",
+      "additionalProperties": true
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["id", "orgId", "buyerId", "productId", "status"],
+  "additionalProperties": false
+}

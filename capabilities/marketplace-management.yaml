@@ -1,0 +1,410 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Suger Cloud Marketplace Management"
+  description: >-
+    Unified workflow capability for ISVs managing cloud marketplace listings,
+    customer entitlements, and revenue reporting across AWS, Azure, GCP,
+    and Snowflake marketplaces via the Suger platform.
+  tags:
+    - Cloud Marketplace
+    - GTM
+    - SaaS
+    - Billing
+    - Entitlement
+    - Revenue
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SUGER_API_KEY: SUGER_API_KEY
+
+capability:
+  consumes:
+    - import: suger
+      location: ./shared/suger.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: suger-marketplace-api
+      description: "Unified REST API for cloud marketplace management."
+      resources:
+        - path: /v1/products
+          name: products
+          description: "Cloud marketplace product listings"
+          operations:
+            - method: GET
+              name: list-products
+              description: "List all marketplace products"
+              call: "suger.list-products"
+              with:
+                orgId: "rest.orgId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-product
+              description: "Create a new marketplace product"
+              call: "suger.create-product"
+              with:
+                orgId: "rest.orgId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/products/{productId}
+          name: product
+          description: "Individual product operations"
+          operations:
+            - method: GET
+              name: get-product
+              description: "Get a specific marketplace product"
+              call: "suger.get-product"
+              with:
+                orgId: "rest.orgId"
+                productId: "rest.productId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PATCH
+              name: update-product
+              description: "Update a marketplace product"
+              call: "suger.update-product"
+              with:
+                orgId: "rest.orgId"
+                productId: "rest.productId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-product
+              description: "Delete a marketplace product"
+              call: "suger.delete-product"
+              with:
+                orgId: "rest.orgId"
+                productId: "rest.productId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/offers
+          name: offers
+          description: "Marketplace offers"
+          operations:
+            - method: GET
+              name: list-offers
+              description: "List all marketplace offers"
+              call: "suger.list-offers"
+              with:
+                orgId: "rest.orgId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-offer
+              description: "Create a new marketplace offer"
+              call: "suger.create-offer"
+              with:
+                orgId: "rest.orgId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/offers/{offerId}
+          name: offer
+          description: "Individual offer operations"
+          operations:
+            - method: GET
+              name: get-offer
+              description: "Get a specific marketplace offer"
+              call: "suger.get-offer"
+              with:
+                orgId: "rest.orgId"
+                offerId: "rest.offerId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-offer
+              description: "Delete a marketplace offer"
+              call: "suger.delete-offer"
+              with:
+                orgId: "rest.orgId"
+                offerId: "rest.offerId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/entitlements
+          name: entitlements
+          description: "Customer entitlements"
+          operations:
+            - method: GET
+              name: list-entitlements
+              description: "List all customer entitlements"
+              call: "suger.list-entitlements"
+              with:
+                orgId: "rest.orgId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-entitlement
+              description: "Create a new entitlement"
+              call: "suger.create-entitlement"
+              with:
+                orgId: "rest.orgId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/entitlements/{entitlementId}
+          name: entitlement
+          description: "Individual entitlement operations"
+          operations:
+            - method: GET
+              name: get-entitlement
+              description: "Get a specific entitlement"
+              call: "suger.get-entitlement"
+              with:
+                orgId: "rest.orgId"
+                entitlementId: "rest.entitlementId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/buyers
+          name: buyers
+          description: "Buyer management"
+          operations:
+            - method: GET
+              name: list-buyers
+              description: "List all buyers"
+              call: "suger.list-buyers"
+              with:
+                orgId: "rest.orgId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-buyer
+              description: "Create a new buyer"
+              call: "suger.create-buyer"
+              with:
+                orgId: "rest.orgId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/invoices
+          name: invoices
+          description: "Invoice management"
+          operations:
+            - method: GET
+              name: list-invoices
+              description: "List all invoices"
+              call: "suger.list-invoices"
+              with:
+                orgId: "rest.orgId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/revenue-records
+          name: revenue-records
+          description: "Revenue records"
+          operations:
+            - method: GET
+              name: list-revenue-records
+              description: "List revenue records for a cloud partner"
+              call: "suger.list-revenue-records"
+              with:
+                orgId: "rest.orgId"
+                partner: "rest.partner"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: suger-marketplace-mcp
+      transport: http
+      description: "MCP server for AI-assisted cloud marketplace management."
+      tools:
+        - name: list-products
+          description: "List all cloud marketplace products for an organization"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "suger.list-products"
+          with:
+            orgId: "tools.orgId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-product
+          description: "Get a specific cloud marketplace product by ID"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "suger.get-product"
+          with:
+            orgId: "tools.orgId"
+            productId: "tools.productId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-product
+          description: "Create a new cloud marketplace product listing"
+          hints:
+            readOnly: false
+          call: "suger.create-product"
+          with:
+            orgId: "tools.orgId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-product
+          description: "Update an existing cloud marketplace product"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "suger.update-product"
+          with:
+            orgId: "tools.orgId"
+            productId: "tools.productId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-offers
+          description: "List all marketplace offers for an organization"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "suger.list-offers"
+          with:
+            orgId: "tools.orgId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-offer
+          description: "Get a specific marketplace offer by ID"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "suger.get-offer"
+          with:
+            orgId: "tools.orgId"
+            offerId: "tools.offerId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-offer
+          description: "Create a new marketplace offer for a product"
+          hints:
+            readOnly: false
+          call: "suger.create-offer"
+          with:
+            orgId: "tools.orgId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-entitlements
+          description: "List all customer entitlements, optionally filtered by buyer or product"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "suger.list-entitlements"
+          with:
+            orgId: "tools.orgId"
+            buyerId: "tools.buyerId"
+            productId: "tools.productId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-entitlement
+          description: "Get a specific customer entitlement by ID"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "suger.get-entitlement"
+          with:
+            orgId: "tools.orgId"
+            entitlementId: "tools.entitlementId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: approve-entitlement
+          description: "Approve a pending customer entitlement"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "suger.approve-entitlement"
+          with:
+            orgId: "tools.orgId"
+            entitlementId: "tools.entitlementId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: cancel-entitlement
+          description: "Cancel a customer entitlement"
+          hints:
+            readOnly: false
+            destructive: true
+          call: "suger.cancel-entitlement"
+          with:
+            orgId: "tools.orgId"
+            entitlementId: "tools.entitlementId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-buyers
+          description: "List all buyers/customers for an organization"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "suger.list-buyers"
+          with:
+            orgId: "tools.orgId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-buyer
+          description: "Create a new buyer/customer record"
+          hints:
+            readOnly: false
+          call: "suger.create-buyer"
+          with:
+            orgId: "tools.orgId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-invoices
+          description: "List all invoices for an organization"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "suger.list-invoices"
+          with:
+            orgId: "tools.orgId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-revenue-records
+          description: "List revenue records for a cloud marketplace partner (aws, azure, gcp)"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "suger.list-revenue-records"
+          with:
+            orgId: "tools.orgId"
+            partner: "tools.partner"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-usage-record-groups
+          description: "List usage metering record groups for billing"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "suger.list-usage-record-groups"
+          with:
+            orgId: "tools.orgId"
+          outputParameters:
+            - type: object
+              mapping: "$."

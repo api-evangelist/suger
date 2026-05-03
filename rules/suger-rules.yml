@@ -1,0 +1,95 @@
+extends: [[spectral:oas, recommended]]
+
+rules:
+  # Suger API Convention: All paths must be under /org/{orgId}/
+  suger-org-scoped-paths:
+    description: All Suger API paths must be scoped to an organization via /org/{orgId}
+    message: "{{description}} - path '{{property}}' must start with /org/{orgId}"
+    severity: error
+    given: "$.paths"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/org/\\{orgId\\}"
+
+  # Suger uses camelCase for path parameters and operationIds
+  suger-operation-id-pascal-case:
+    description: Suger operationIds must use PascalCase
+    message: "{{description}} - '{{value}}' should be PascalCase"
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9]+$"
+
+  # All operations must have summaries
+  suger-operation-summary-required:
+    description: All Suger API operations must have a summary
+    message: "{{description}} - operation is missing a summary"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy
+
+  # All operations must have at least one tag
+  suger-operation-tags-required:
+    description: All Suger API operations must have at least one tag
+    message: "{{description}} - operation is missing tags"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  # All operations must have an operationId
+  suger-operation-id-required:
+    description: All Suger API operations must have an operationId
+    message: "{{description}} - operation is missing an operationId"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  # Suger uses API key auth - must be declared
+  suger-security-api-key:
+    description: Suger API uses APIKeyAuth - all operations must declare security
+    message: "{{description}} - operation should declare security requirements"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: security
+      function: truthy
+
+  # Path parameters must use camelCase
+  suger-path-param-camel-case:
+    description: Suger path parameters should use camelCase naming
+    message: "{{description}} - path parameter '{{value}}' should use camelCase"
+    severity: warn
+    given: "$.paths[*][*].parameters[?(@.in == 'path')].name"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  # Request bodies should have application/json content type
+  suger-request-body-json:
+    description: Suger request bodies should use application/json content type
+    message: "{{description}} - request body should use application/json"
+    severity: warn
+    given: "$.paths[*][post,put,patch].requestBody.content"
+    then:
+      function: pattern
+      functionOptions:
+        match: "application/json"
+
+  # Response schemas should be defined
+  suger-response-schema-defined:
+    description: Suger API 200 responses should have a schema defined
+    message: "{{description}} - 200 response should have a schema"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch].responses['200'].content"
+    then:
+      function: truthy

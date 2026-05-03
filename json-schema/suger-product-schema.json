@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.suger.cloud/schemas/product",
+  "title": "Suger Product",
+  "description": "A cloud marketplace product listing managed through the Suger platform.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the product"
+    },
+    "orgId": {
+      "type": "string",
+      "description": "Organization ID that owns this product"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the product"
+    },
+    "description": {
+      "type": "string",
+      "description": "Product description shown in marketplace listings"
+    },
+    "partner": {
+      "type": "string",
+      "enum": ["AWS", "AZURE", "GCP", "SNOWFLAKE"],
+      "description": "Cloud marketplace partner where the product is listed"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["DRAFT", "PENDING", "PUBLISHED", "UNPUBLISHED"],
+      "description": "Current publication status of the product"
+    },
+    "fulfillmentUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to redirect buyers after purchasing the product"
+    },
+    "metaInfo": {
+      "type": "object",
+      "description": "Additional metadata for the product",
+      "additionalProperties": true
+    },
+    "dimensions": {
+      "type": "array",
+      "description": "Metering dimensions available for usage-based billing",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "unit": { "type": "string" }
+        }
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the product was created"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the product was last updated"
+    }
+  },
+  "required": ["id", "orgId", "name", "partner"],
+  "additionalProperties": false
+}

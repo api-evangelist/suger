@@ -1,0 +1,57 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "suger": "https://api.suger.cloud/vocab#",
+
+    "Product": {
+      "@id": "suger:Product",
+      "@type": "@id",
+      "schema:sameAs": "schema:Product"
+    },
+    "Offer": {
+      "@id": "suger:Offer",
+      "@type": "@id",
+      "schema:sameAs": "schema:Offer"
+    },
+    "Entitlement": {
+      "@id": "suger:Entitlement",
+      "@type": "@id"
+    },
+    "Buyer": {
+      "@id": "suger:Buyer",
+      "@type": "@id",
+      "schema:sameAs": "schema:Organization"
+    },
+    "Invoice": {
+      "@id": "suger:Invoice",
+      "@type": "@id",
+      "schema:sameAs": "schema:Invoice"
+    },
+    "UsageRecordGroup": {
+      "@id": "suger:UsageRecordGroup",
+      "@type": "@id"
+    },
+    "BillableMetric": {
+      "@id": "suger:BillableMetric",
+      "@type": "@id"
+    },
+
+    "id": "@id",
+    "orgId": "suger:orgId",
+    "name": "schema:name",
+    "description": "schema:description",
+    "status": "suger:status",
+    "partner": "suger:partner",
+    "fulfillmentUrl": "schema:url",
+    "buyerId": "suger:buyerId",
+    "productId": "suger:productId",
+    "offerId": "suger:offerId",
+    "price": "schema:price",
+    "currency": "schema:priceCurrency",
+    "startTime": "schema:startDate",
+    "endTime": "schema:endDate",
+    "createdAt": "schema:dateCreated",
+    "updatedAt": "schema:dateModified"
+  }
+}
