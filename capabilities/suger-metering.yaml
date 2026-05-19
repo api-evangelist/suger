@@ -1,0 +1,762 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Suger API — Metering
+  description: 'Suger API — Metering. 13 operations. Lead operation: Batch Report UsageRecordGroups. Self-contained Naftiko
+    capability covering one Suger business surface.'
+  tags:
+  - Suger
+  - Metering
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SUGER_API_KEY: SUGER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: suger-metering
+    baseUri: https://api.suger.cloud
+    description: Suger API — Metering business capability. Self-contained, no shared references.
+    resources:
+    - name: org-orgId-batchCreateUsageRecordGroups
+      path: /org/{orgId}/batchCreateUsageRecordGroups
+      operations:
+      - name: batchreportusagerecordgroups
+        method: POST
+        description: Batch Report UsageRecordGroups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: org-orgId-batchValidateUsageRecordGroups
+      path: /org/{orgId}/batchValidateUsageRecordGroups
+      operations:
+      - name: batchvalidateusagerecordgroups
+        method: POST
+        description: Batch Validate UsageRecordGroups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: org-orgId-billableMetric
+      path: /org/{orgId}/billableMetric
+      operations:
+      - name: listbillablemetrics
+        method: GET
+        description: List Billable Metrics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: status
+          in: query
+          type: string
+          description: Status of the billable metric
+      - name: createbillablemetric
+        method: POST
+        description: Create Billable Metric
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: org-orgId-billableMetric-billableMetricId
+      path: /org/{orgId}/billableMetric/{billableMetricId}
+      operations:
+      - name: getbillablemetric
+        method: GET
+        description: Get Billable Metric
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: billableMetricId
+          in: path
+          type: string
+          description: Billable Metric ID
+          required: true
+      - name: updatebillablemetric
+        method: PATCH
+        description: Update Billable Metric
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: billableMetricId
+          in: path
+          type: string
+          description: Billable Metric ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: org-orgId-entitlement-entitlementId-usageRecordGroup
+      path: /org/{orgId}/entitlement/{entitlementId}/usageRecordGroup
+      operations:
+      - name: reportusagerecordgroup
+        method: POST
+        description: Report UsageRecordGroup
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: entitlementId
+          in: path
+          type: string
+          description: Entitlement ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: org-orgId-usageMeteringConfigInfo
+      path: /org/{orgId}/usageMeteringConfigInfo
+      operations:
+      - name: getusagemeteringconfiginfo
+        method: GET
+        description: Get Usage Metering Config Info
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+      - name: updateusagemeteringconfiginfo
+        method: PATCH
+        description: Update Usage Metering Config Info
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: org-orgId-usageRecordGroup
+      path: /org/{orgId}/usageRecordGroup
+      operations:
+      - name: listusagerecordgroups
+        method: GET
+        description: List UsageRecordGroups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: partner
+          in: query
+          type: string
+          description: Cloud Partner
+        - name: buyerId
+          in: query
+          type: string
+          description: filter by buyer ID, default no filter by buyerId if not provided
+        - name: entitlementId
+          in: query
+          type: string
+          description: filter by entitlement ID, default no filter by entitlementId if not provided
+        - name: status
+          in: query
+          type: string
+          description: The status of the usage record group, default no filter by status if not provided
+        - name: source
+          in: query
+          type: string
+          description: The source of the usage record group, default no filter by source if not provided
+        - name: metaInfo
+          in: query
+          type: string
+          description: metaInfo filter
+        - name: startDate
+          in: query
+          type: string
+          description: start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
+        - name: endDate
+          in: query
+          type: string
+          description: end date (UTC) in YYYY-MM-DD format, default is today
+        - name: limit
+          in: query
+          type: integer
+          description: List pagination size, default 1000, max value is 1000
+        - name: offset
+          in: query
+          type: integer
+          description: List pagination offset, default 0
+    - name: org-orgId-usageRecordGroup-usageRecordGroupId
+      path: /org/{orgId}/usageRecordGroup/{usageRecordGroupId}
+      operations:
+      - name: deleteusagerecordgroup
+        method: DELETE
+        description: Delete UsageRecordGroup
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: usageRecordGroupId
+          in: path
+          type: string
+          description: UsageRecordGroup ID
+          required: true
+        - name: creationDate
+          in: query
+          type: string
+          description: UsageRecordGroup's creation date (UTC) in YYYY-MM-DD format
+    - name: org-orgId-usageRecordGroup-usageRecordGroupId-retry
+      path: /org/{orgId}/usageRecordGroup/{usageRecordGroupId}/retry
+      operations:
+      - name: retryusagerecordgroup
+        method: POST
+        description: Retry UsageRecordGroup
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: usageRecordGroupId
+          in: path
+          type: string
+          description: UsageRecordGroup ID
+          required: true
+        - name: creationDate
+          in: query
+          type: string
+          description: UsageRecordGroup's creation date (UTC) in YYYY-MM-DD format
+    - name: org-orgId-usageRecordReport
+      path: /org/{orgId}/usageRecordReport
+      operations:
+      - name: listusagerecordreports
+        method: GET
+        description: List UsageRecordReports
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: partner
+          in: query
+          type: string
+          description: Cloud Partner
+        - name: buyerId
+          in: query
+          type: string
+          description: buyer ID
+        - name: entitlementId
+          in: query
+          type: string
+          description: entitlement ID
+        - name: startDate
+          in: query
+          type: string
+          description: start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
+        - name: endDate
+          in: query
+          type: string
+          description: end date (UTC) in YYYY-MM-DD format, default is today
+        - name: limit
+          in: query
+          type: integer
+          description: List pagination size, default 1000, max value is 1000
+        - name: offset
+          in: query
+          type: integer
+          description: List pagination offset, default 0
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.SUGER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: suger-metering-rest
+    port: 8080
+    description: REST adapter for Suger API — Metering. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/org/{orgid}/batchcreateusagerecordgroups
+      name: org-orgid-batchcreateusagerecordgroups
+      description: REST surface for org-orgId-batchCreateUsageRecordGroups.
+      operations:
+      - method: POST
+        name: batchreportusagerecordgroups
+        description: Batch Report UsageRecordGroups
+        call: suger-metering.batchreportusagerecordgroups
+        with:
+          orgId: rest.orgId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/batchvalidateusagerecordgroups
+      name: org-orgid-batchvalidateusagerecordgroups
+      description: REST surface for org-orgId-batchValidateUsageRecordGroups.
+      operations:
+      - method: POST
+        name: batchvalidateusagerecordgroups
+        description: Batch Validate UsageRecordGroups
+        call: suger-metering.batchvalidateusagerecordgroups
+        with:
+          orgId: rest.orgId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/billablemetric
+      name: org-orgid-billablemetric
+      description: REST surface for org-orgId-billableMetric.
+      operations:
+      - method: GET
+        name: listbillablemetrics
+        description: List Billable Metrics
+        call: suger-metering.listbillablemetrics
+        with:
+          orgId: rest.orgId
+          status: rest.status
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createbillablemetric
+        description: Create Billable Metric
+        call: suger-metering.createbillablemetric
+        with:
+          orgId: rest.orgId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/billablemetric/{billablemetricid}
+      name: org-orgid-billablemetric-billablemetricid
+      description: REST surface for org-orgId-billableMetric-billableMetricId.
+      operations:
+      - method: GET
+        name: getbillablemetric
+        description: Get Billable Metric
+        call: suger-metering.getbillablemetric
+        with:
+          orgId: rest.orgId
+          billableMetricId: rest.billableMetricId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatebillablemetric
+        description: Update Billable Metric
+        call: suger-metering.updatebillablemetric
+        with:
+          orgId: rest.orgId
+          billableMetricId: rest.billableMetricId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/entitlement/{entitlementid}/usagerecordgroup
+      name: org-orgid-entitlement-entitlementid-usagerecordgroup
+      description: REST surface for org-orgId-entitlement-entitlementId-usageRecordGroup.
+      operations:
+      - method: POST
+        name: reportusagerecordgroup
+        description: Report UsageRecordGroup
+        call: suger-metering.reportusagerecordgroup
+        with:
+          orgId: rest.orgId
+          entitlementId: rest.entitlementId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/usagemeteringconfiginfo
+      name: org-orgid-usagemeteringconfiginfo
+      description: REST surface for org-orgId-usageMeteringConfigInfo.
+      operations:
+      - method: GET
+        name: getusagemeteringconfiginfo
+        description: Get Usage Metering Config Info
+        call: suger-metering.getusagemeteringconfiginfo
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateusagemeteringconfiginfo
+        description: Update Usage Metering Config Info
+        call: suger-metering.updateusagemeteringconfiginfo
+        with:
+          orgId: rest.orgId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/usagerecordgroup
+      name: org-orgid-usagerecordgroup
+      description: REST surface for org-orgId-usageRecordGroup.
+      operations:
+      - method: GET
+        name: listusagerecordgroups
+        description: List UsageRecordGroups
+        call: suger-metering.listusagerecordgroups
+        with:
+          orgId: rest.orgId
+          partner: rest.partner
+          buyerId: rest.buyerId
+          entitlementId: rest.entitlementId
+          status: rest.status
+          source: rest.source
+          metaInfo: rest.metaInfo
+          startDate: rest.startDate
+          endDate: rest.endDate
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/usagerecordgroup/{usagerecordgroupid}
+      name: org-orgid-usagerecordgroup-usagerecordgroupid
+      description: REST surface for org-orgId-usageRecordGroup-usageRecordGroupId.
+      operations:
+      - method: DELETE
+        name: deleteusagerecordgroup
+        description: Delete UsageRecordGroup
+        call: suger-metering.deleteusagerecordgroup
+        with:
+          orgId: rest.orgId
+          usageRecordGroupId: rest.usageRecordGroupId
+          creationDate: rest.creationDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/usagerecordgroup/{usagerecordgroupid}/retry
+      name: org-orgid-usagerecordgroup-usagerecordgroupid-retry
+      description: REST surface for org-orgId-usageRecordGroup-usageRecordGroupId-retry.
+      operations:
+      - method: POST
+        name: retryusagerecordgroup
+        description: Retry UsageRecordGroup
+        call: suger-metering.retryusagerecordgroup
+        with:
+          orgId: rest.orgId
+          usageRecordGroupId: rest.usageRecordGroupId
+          creationDate: rest.creationDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/usagerecordreport
+      name: org-orgid-usagerecordreport
+      description: REST surface for org-orgId-usageRecordReport.
+      operations:
+      - method: GET
+        name: listusagerecordreports
+        description: List UsageRecordReports
+        call: suger-metering.listusagerecordreports
+        with:
+          orgId: rest.orgId
+          partner: rest.partner
+          buyerId: rest.buyerId
+          entitlementId: rest.entitlementId
+          startDate: rest.startDate
+          endDate: rest.endDate
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: suger-metering-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Suger API — Metering. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: batch-report-usagerecordgroups
+      description: Batch Report UsageRecordGroups
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: suger-metering.batchreportusagerecordgroups
+      with:
+        orgId: tools.orgId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: batch-validate-usagerecordgroups
+      description: Batch Validate UsageRecordGroups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: suger-metering.batchvalidateusagerecordgroups
+      with:
+        orgId: tools.orgId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-billable-metrics
+      description: List Billable Metrics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: suger-metering.listbillablemetrics
+      with:
+        orgId: tools.orgId
+        status: tools.status
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-billable-metric
+      description: Create Billable Metric
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: suger-metering.createbillablemetric
+      with:
+        orgId: tools.orgId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-billable-metric
+      description: Get Billable Metric
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: suger-metering.getbillablemetric
+      with:
+        orgId: tools.orgId
+        billableMetricId: tools.billableMetricId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-billable-metric
+      description: Update Billable Metric
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: suger-metering.updatebillablemetric
+      with:
+        orgId: tools.orgId
+        billableMetricId: tools.billableMetricId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: report-usagerecordgroup
+      description: Report UsageRecordGroup
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: suger-metering.reportusagerecordgroup
+      with:
+        orgId: tools.orgId
+        entitlementId: tools.entitlementId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-usage-metering-config-info
+      description: Get Usage Metering Config Info
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: suger-metering.getusagemeteringconfiginfo
+      with:
+        orgId: tools.orgId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-usage-metering-config-info
+      description: Update Usage Metering Config Info
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: suger-metering.updateusagemeteringconfiginfo
+      with:
+        orgId: tools.orgId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-usagerecordgroups
+      description: List UsageRecordGroups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: suger-metering.listusagerecordgroups
+      with:
+        orgId: tools.orgId
+        partner: tools.partner
+        buyerId: tools.buyerId
+        entitlementId: tools.entitlementId
+        status: tools.status
+        source: tools.source
+        metaInfo: tools.metaInfo
+        startDate: tools.startDate
+        endDate: tools.endDate
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-usagerecordgroup
+      description: Delete UsageRecordGroup
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: suger-metering.deleteusagerecordgroup
+      with:
+        orgId: tools.orgId
+        usageRecordGroupId: tools.usageRecordGroupId
+        creationDate: tools.creationDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retry-usagerecordgroup
+      description: Retry UsageRecordGroup
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: suger-metering.retryusagerecordgroup
+      with:
+        orgId: tools.orgId
+        usageRecordGroupId: tools.usageRecordGroupId
+        creationDate: tools.creationDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-usagerecordreports
+      description: List UsageRecordReports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: suger-metering.listusagerecordreports
+      with:
+        orgId: tools.orgId
+        partner: tools.partner
+        buyerId: tools.buyerId
+        entitlementId: tools.entitlementId
+        startDate: tools.startDate
+        endDate: tools.endDate
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.

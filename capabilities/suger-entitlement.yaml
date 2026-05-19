@@ -1,0 +1,970 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Suger API — Entitlement
+  description: 'Suger API — Entitlement. 17 operations. Lead operation: List Entitlements. Self-contained Naftiko capability
+    covering one Suger business surface.'
+  tags:
+  - Suger
+  - Entitlement
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SUGER_API_KEY: SUGER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: suger-entitlement
+    baseUri: https://api.suger.cloud
+    description: Suger API — Entitlement business capability. Self-contained, no shared references.
+    resources:
+    - name: org-orgId-entitlement
+      path: /org/{orgId}/entitlement
+      operations:
+      - name: listentitlements
+        method: GET
+        description: List Entitlements
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: partner
+          in: query
+          type: string
+          description: filter by partner
+        - name: productId
+          in: query
+          type: string
+          description: filter by productId
+        - name: offerId
+          in: query
+          type: string
+          description: filter by offerId
+        - name: buyerId
+          in: query
+          type: string
+          description: filter by buyerId
+        - name: externalId
+          in: query
+          type: string
+          description: filter by externalId
+        - name: buyerAccountId
+          in: query
+          type: string
+          description: filter by buyerAccountId is currently supported only for AWS
+        - name: limit
+          in: query
+          type: integer
+          description: List pagination size, default 1000, max value is 1000
+        - name: offset
+          in: query
+          type: integer
+          description: List pagination offset, default 0
+      - name: createentitlement
+        method: POST
+        description: Create Entitlement
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: org-orgId-entitlement-entitlementId
+      path: /org/{orgId}/entitlement/{entitlementId}
+      operations:
+      - name: getentitlement
+        method: GET
+        description: Get Entitlement
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: entitlementId
+          in: path
+          type: string
+          description: Entitlement ID
+          required: true
+    - name: org-orgId-entitlement-entitlementId-addCredit
+      path: /org/{orgId}/entitlement/{entitlementId}/addCredit
+      operations:
+      - name: addentitlementcredit
+        method: POST
+        description: Add Entitlement Credit
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: entitlementId
+          in: path
+          type: string
+          description: Entitlement ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: org-orgId-entitlement-entitlementId-addon
+      path: /org/{orgId}/entitlement/{entitlementId}/addon
+      operations:
+      - name: applyaddontoentitlement
+        method: POST
+        description: Apply Addon To Entitlement
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: entitlementId
+          in: path
+          type: string
+          description: Entitlement ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: org-orgId-entitlement-entitlementId-approve
+      path: /org/{orgId}/entitlement/{entitlementId}/approve
+      operations:
+      - name: approveentitlement
+        method: POST
+        description: Approve Entitlement
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: entitlementId
+          in: path
+          type: string
+          description: Entitlement ID
+          required: true
+    - name: org-orgId-entitlement-entitlementId-cancel
+      path: /org/{orgId}/entitlement/{entitlementId}/cancel
+      operations:
+      - name: cancelentitlement
+        method: POST
+        description: Cancel Entitlement
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: entitlementId
+          in: path
+          type: string
+          description: Entitlement ID
+          required: true
+    - name: org-orgId-entitlement-entitlementId-divideCommit
+      path: /org/{orgId}/entitlement/{entitlementId}/divideCommit
+      operations:
+      - name: divideentitlementcommit
+        method: POST
+        description: Divide Entitlement Commit
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: entitlementId
+          in: path
+          type: string
+          description: Entitlement ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: org-orgId-entitlement-entitlementId-entitlementName
+      path: /org/{orgId}/entitlement/{entitlementId}/entitlementName
+      operations:
+      - name: updateentitlementname
+        method: PATCH
+        description: Update Entitlement Name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: entitlementId
+          in: path
+          type: string
+          description: Entitlement ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: org-orgId-entitlement-entitlementId-entitlementTerm
+      path: /org/{orgId}/entitlement/{entitlementId}/entitlementTerm
+      operations:
+      - name: listentitlementterms
+        method: GET
+        description: List Entitlement Terms
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: entitlementId
+          in: path
+          type: string
+          description: Entitlement ID
+          required: true
+    - name: org-orgId-entitlement-entitlementId-entitlementTerm-entitlementTermId
+      path: /org/{orgId}/entitlement/{entitlementId}/entitlementTerm/{entitlementTermId}
+      operations:
+      - name: deleteentitlementterm
+        method: DELETE
+        description: Delete Entitlement Term
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: entitlementId
+          in: path
+          type: string
+          description: Entitlement ID
+          required: true
+        - name: entitlementTermId
+          in: path
+          type: string
+          description: Entitlement Term ID
+          required: true
+      - name: getentitlementterm
+        method: GET
+        description: Get Entitlement Term
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: entitlementId
+          in: path
+          type: string
+          description: Entitlement ID
+          required: true
+        - name: entitlementTermId
+          in: path
+          type: string
+          description: Entitlement Term ID
+          required: true
+    - name: org-orgId-entitlement-entitlementId-metaInfo
+      path: /org/{orgId}/entitlement/{entitlementId}/metaInfo
+      operations:
+      - name: updateentitlementmetainfo
+        method: PATCH
+        description: Update Entitlement Meta Info
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: entitlementId
+          in: path
+          type: string
+          description: Entitlement ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: org-orgId-entitlement-entitlementId-priceModel
+      path: /org/{orgId}/entitlement/{entitlementId}/priceModel
+      operations:
+      - name: updateentitlementpricemodel
+        method: PATCH
+        description: Update Entitlement Price Model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: entitlementId
+          in: path
+          type: string
+          description: Entitlement ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: org-orgId-entitlement-entitlementId-scheduleCancellation
+      path: /org/{orgId}/entitlement/{entitlementId}/scheduleCancellation
+      operations:
+      - name: scheduleentitlementcancellation
+        method: POST
+        description: Schedule Entitlement Cancellation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: entitlementId
+          in: path
+          type: string
+          description: Entitlement ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: org-orgId-entitlement-entitlementId-seat
+      path: /org/{orgId}/entitlement/{entitlementId}/seat
+      operations:
+      - name: updateentitlementseat
+        method: PATCH
+        description: Update Seat For The Active AZURE Subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: entitlementId
+          in: path
+          type: string
+          description: Entitlement ID
+          required: true
+        - name: newSeat
+          in: query
+          type: integer
+          description: New seat number
+          required: true
+    - name: org-orgId-entitlement-entitlementId-unscheduleCancellation
+      path: /org/{orgId}/entitlement/{entitlementId}/unscheduleCancellation
+      operations:
+      - name: unscheduleentitlementcancellation
+        method: POST
+        description: Unschedule Entitlement Cancellation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: entitlementId
+          in: path
+          type: string
+          description: Entitlement ID
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.SUGER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: suger-entitlement-rest
+    port: 8080
+    description: REST adapter for Suger API — Entitlement. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/org/{orgid}/entitlement
+      name: org-orgid-entitlement
+      description: REST surface for org-orgId-entitlement.
+      operations:
+      - method: GET
+        name: listentitlements
+        description: List Entitlements
+        call: suger-entitlement.listentitlements
+        with:
+          orgId: rest.orgId
+          partner: rest.partner
+          productId: rest.productId
+          offerId: rest.offerId
+          buyerId: rest.buyerId
+          externalId: rest.externalId
+          buyerAccountId: rest.buyerAccountId
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createentitlement
+        description: Create Entitlement
+        call: suger-entitlement.createentitlement
+        with:
+          orgId: rest.orgId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/entitlement/{entitlementid}
+      name: org-orgid-entitlement-entitlementid
+      description: REST surface for org-orgId-entitlement-entitlementId.
+      operations:
+      - method: GET
+        name: getentitlement
+        description: Get Entitlement
+        call: suger-entitlement.getentitlement
+        with:
+          orgId: rest.orgId
+          entitlementId: rest.entitlementId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/entitlement/{entitlementid}/addcredit
+      name: org-orgid-entitlement-entitlementid-addcredit
+      description: REST surface for org-orgId-entitlement-entitlementId-addCredit.
+      operations:
+      - method: POST
+        name: addentitlementcredit
+        description: Add Entitlement Credit
+        call: suger-entitlement.addentitlementcredit
+        with:
+          orgId: rest.orgId
+          entitlementId: rest.entitlementId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/entitlement/{entitlementid}/addon
+      name: org-orgid-entitlement-entitlementid-addon
+      description: REST surface for org-orgId-entitlement-entitlementId-addon.
+      operations:
+      - method: POST
+        name: applyaddontoentitlement
+        description: Apply Addon To Entitlement
+        call: suger-entitlement.applyaddontoentitlement
+        with:
+          orgId: rest.orgId
+          entitlementId: rest.entitlementId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/entitlement/{entitlementid}/approve
+      name: org-orgid-entitlement-entitlementid-approve
+      description: REST surface for org-orgId-entitlement-entitlementId-approve.
+      operations:
+      - method: POST
+        name: approveentitlement
+        description: Approve Entitlement
+        call: suger-entitlement.approveentitlement
+        with:
+          orgId: rest.orgId
+          entitlementId: rest.entitlementId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/entitlement/{entitlementid}/cancel
+      name: org-orgid-entitlement-entitlementid-cancel
+      description: REST surface for org-orgId-entitlement-entitlementId-cancel.
+      operations:
+      - method: POST
+        name: cancelentitlement
+        description: Cancel Entitlement
+        call: suger-entitlement.cancelentitlement
+        with:
+          orgId: rest.orgId
+          entitlementId: rest.entitlementId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/entitlement/{entitlementid}/dividecommit
+      name: org-orgid-entitlement-entitlementid-dividecommit
+      description: REST surface for org-orgId-entitlement-entitlementId-divideCommit.
+      operations:
+      - method: POST
+        name: divideentitlementcommit
+        description: Divide Entitlement Commit
+        call: suger-entitlement.divideentitlementcommit
+        with:
+          orgId: rest.orgId
+          entitlementId: rest.entitlementId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/entitlement/{entitlementid}/entitlementname
+      name: org-orgid-entitlement-entitlementid-entitlementname
+      description: REST surface for org-orgId-entitlement-entitlementId-entitlementName.
+      operations:
+      - method: PATCH
+        name: updateentitlementname
+        description: Update Entitlement Name
+        call: suger-entitlement.updateentitlementname
+        with:
+          orgId: rest.orgId
+          entitlementId: rest.entitlementId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/entitlement/{entitlementid}/entitlementterm
+      name: org-orgid-entitlement-entitlementid-entitlementterm
+      description: REST surface for org-orgId-entitlement-entitlementId-entitlementTerm.
+      operations:
+      - method: GET
+        name: listentitlementterms
+        description: List Entitlement Terms
+        call: suger-entitlement.listentitlementterms
+        with:
+          orgId: rest.orgId
+          entitlementId: rest.entitlementId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/entitlement/{entitlementid}/entitlementterm/{entitlementtermid}
+      name: org-orgid-entitlement-entitlementid-entitlementterm-entitlementtermid
+      description: REST surface for org-orgId-entitlement-entitlementId-entitlementTerm-entitlementTermId.
+      operations:
+      - method: DELETE
+        name: deleteentitlementterm
+        description: Delete Entitlement Term
+        call: suger-entitlement.deleteentitlementterm
+        with:
+          orgId: rest.orgId
+          entitlementId: rest.entitlementId
+          entitlementTermId: rest.entitlementTermId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getentitlementterm
+        description: Get Entitlement Term
+        call: suger-entitlement.getentitlementterm
+        with:
+          orgId: rest.orgId
+          entitlementId: rest.entitlementId
+          entitlementTermId: rest.entitlementTermId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/entitlement/{entitlementid}/metainfo
+      name: org-orgid-entitlement-entitlementid-metainfo
+      description: REST surface for org-orgId-entitlement-entitlementId-metaInfo.
+      operations:
+      - method: PATCH
+        name: updateentitlementmetainfo
+        description: Update Entitlement Meta Info
+        call: suger-entitlement.updateentitlementmetainfo
+        with:
+          orgId: rest.orgId
+          entitlementId: rest.entitlementId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/entitlement/{entitlementid}/pricemodel
+      name: org-orgid-entitlement-entitlementid-pricemodel
+      description: REST surface for org-orgId-entitlement-entitlementId-priceModel.
+      operations:
+      - method: PATCH
+        name: updateentitlementpricemodel
+        description: Update Entitlement Price Model
+        call: suger-entitlement.updateentitlementpricemodel
+        with:
+          orgId: rest.orgId
+          entitlementId: rest.entitlementId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/entitlement/{entitlementid}/schedulecancellation
+      name: org-orgid-entitlement-entitlementid-schedulecancellation
+      description: REST surface for org-orgId-entitlement-entitlementId-scheduleCancellation.
+      operations:
+      - method: POST
+        name: scheduleentitlementcancellation
+        description: Schedule Entitlement Cancellation
+        call: suger-entitlement.scheduleentitlementcancellation
+        with:
+          orgId: rest.orgId
+          entitlementId: rest.entitlementId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/entitlement/{entitlementid}/seat
+      name: org-orgid-entitlement-entitlementid-seat
+      description: REST surface for org-orgId-entitlement-entitlementId-seat.
+      operations:
+      - method: PATCH
+        name: updateentitlementseat
+        description: Update Seat For The Active AZURE Subscription
+        call: suger-entitlement.updateentitlementseat
+        with:
+          orgId: rest.orgId
+          entitlementId: rest.entitlementId
+          newSeat: rest.newSeat
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/entitlement/{entitlementid}/unschedulecancellation
+      name: org-orgid-entitlement-entitlementid-unschedulecancellation
+      description: REST surface for org-orgId-entitlement-entitlementId-unscheduleCancellation.
+      operations:
+      - method: POST
+        name: unscheduleentitlementcancellation
+        description: Unschedule Entitlement Cancellation
+        call: suger-entitlement.unscheduleentitlementcancellation
+        with:
+          orgId: rest.orgId
+          entitlementId: rest.entitlementId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: suger-entitlement-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Suger API — Entitlement. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-entitlements
+      description: List Entitlements
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: suger-entitlement.listentitlements
+      with:
+        orgId: tools.orgId
+        partner: tools.partner
+        productId: tools.productId
+        offerId: tools.offerId
+        buyerId: tools.buyerId
+        externalId: tools.externalId
+        buyerAccountId: tools.buyerAccountId
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-entitlement
+      description: Create Entitlement
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: suger-entitlement.createentitlement
+      with:
+        orgId: tools.orgId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-entitlement
+      description: Get Entitlement
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: suger-entitlement.getentitlement
+      with:
+        orgId: tools.orgId
+        entitlementId: tools.entitlementId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-entitlement-credit
+      description: Add Entitlement Credit
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: suger-entitlement.addentitlementcredit
+      with:
+        orgId: tools.orgId
+        entitlementId: tools.entitlementId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apply-addon-entitlement
+      description: Apply Addon To Entitlement
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: suger-entitlement.applyaddontoentitlement
+      with:
+        orgId: tools.orgId
+        entitlementId: tools.entitlementId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: approve-entitlement
+      description: Approve Entitlement
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: suger-entitlement.approveentitlement
+      with:
+        orgId: tools.orgId
+        entitlementId: tools.entitlementId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cancel-entitlement
+      description: Cancel Entitlement
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: suger-entitlement.cancelentitlement
+      with:
+        orgId: tools.orgId
+        entitlementId: tools.entitlementId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: divide-entitlement-commit
+      description: Divide Entitlement Commit
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: suger-entitlement.divideentitlementcommit
+      with:
+        orgId: tools.orgId
+        entitlementId: tools.entitlementId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-entitlement-name
+      description: Update Entitlement Name
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: suger-entitlement.updateentitlementname
+      with:
+        orgId: tools.orgId
+        entitlementId: tools.entitlementId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-entitlement-terms
+      description: List Entitlement Terms
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: suger-entitlement.listentitlementterms
+      with:
+        orgId: tools.orgId
+        entitlementId: tools.entitlementId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-entitlement-term
+      description: Delete Entitlement Term
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: suger-entitlement.deleteentitlementterm
+      with:
+        orgId: tools.orgId
+        entitlementId: tools.entitlementId
+        entitlementTermId: tools.entitlementTermId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-entitlement-term
+      description: Get Entitlement Term
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: suger-entitlement.getentitlementterm
+      with:
+        orgId: tools.orgId
+        entitlementId: tools.entitlementId
+        entitlementTermId: tools.entitlementTermId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-entitlement-meta-info
+      description: Update Entitlement Meta Info
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: suger-entitlement.updateentitlementmetainfo
+      with:
+        orgId: tools.orgId
+        entitlementId: tools.entitlementId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-entitlement-price-model
+      description: Update Entitlement Price Model
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: suger-entitlement.updateentitlementpricemodel
+      with:
+        orgId: tools.orgId
+        entitlementId: tools.entitlementId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: schedule-entitlement-cancellation
+      description: Schedule Entitlement Cancellation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: suger-entitlement.scheduleentitlementcancellation
+      with:
+        orgId: tools.orgId
+        entitlementId: tools.entitlementId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-seat-active-azure-subscription
+      description: Update Seat For The Active AZURE Subscription
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: suger-entitlement.updateentitlementseat
+      with:
+        orgId: tools.orgId
+        entitlementId: tools.entitlementId
+        newSeat: tools.newSeat
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unschedule-entitlement-cancellation
+      description: Unschedule Entitlement Cancellation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: suger-entitlement.unscheduleentitlementcancellation
+      with:
+        orgId: tools.orgId
+        entitlementId: tools.entitlementId
+      outputParameters:
+      - type: object
+        mapping: $.

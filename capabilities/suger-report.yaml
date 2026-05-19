@@ -1,0 +1,434 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Suger API — Report
+  description: 'Suger API — Report. 5 operations. Lead operation: List Daily Revenue Records. Self-contained Naftiko capability
+    covering one Suger business surface.'
+  tags:
+  - Suger
+  - Report
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SUGER_API_KEY: SUGER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: suger-report
+    baseUri: https://api.suger.cloud
+    description: Suger API — Report business capability. Self-contained, no shared references.
+    resources:
+    - name: org-orgId-dailyRevenueRecord
+      path: /org/{orgId}/dailyRevenueRecord
+      operations:
+      - name: listdailyrevenuerecords
+        method: GET
+        description: List Daily Revenue Records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: partner
+          in: query
+          type: string
+          description: Cloud Partner
+        - name: productId
+          in: query
+          type: string
+          description: Filter daily revenue records by the given product ID
+        - name: buyerId
+          in: query
+          type: string
+          description: Filter daily revenue records by the given buyer ID
+        - name: entitlementId
+          in: query
+          type: string
+          description: Filter daily revenue records by the given entitlement ID
+        - name: startDate
+          in: query
+          type: string
+          description: start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
+        - name: endDate
+          in: query
+          type: string
+          description: end date (UTC) in YYYY-MM-DD format, default is today
+    - name: org-orgId-partner-partner-revenueRecord
+      path: /org/{orgId}/partner/{partner}/revenueRecord
+      operations:
+      - name: listrevenuerecords
+        method: GET
+        description: List Revenue Records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: partner
+          in: path
+          type: string
+          description: Cloud Partner
+          required: true
+        - name: productId
+          in: query
+          type: string
+          description: Filter revenue records by the given product ID
+        - name: entitlementId
+          in: query
+          type: string
+          description: Filter revenue records by the given entitlement ID
+        - name: buyerId
+          in: query
+          type: string
+          description: Filter revenue records by the given buyer ID
+        - name: startDate
+          in: query
+          type: string
+          description: start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
+        - name: endDate
+          in: query
+          type: string
+          description: end date (UTC) in YYYY-MM-DD format, default is today
+        - name: limit
+          in: query
+          type: integer
+          description: List pagination size, default 1000, max value is 1000
+        - name: offset
+          in: query
+          type: integer
+          description: List pagination offset, default 0
+    - name: org-orgId-partner-partner-revenueRecordDetail
+      path: /org/{orgId}/partner/{partner}/revenueRecordDetail
+      operations:
+      - name: listrevenuerecorddetails
+        method: GET
+        description: List Revenue Record Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: partner
+          in: path
+          type: string
+          description: Cloud Partner
+          required: true
+        - name: productId
+          in: query
+          type: string
+          description: Filter revenue record details by the given product ID
+        - name: buyerId
+          in: query
+          type: string
+          description: Filter revenue record details by the given buyer ID
+        - name: entitlementId
+          in: query
+          type: string
+          description: Filter revenue record details by the given entitlement ID
+        - name: startDate
+          in: query
+          type: string
+          description: start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
+        - name: endDate
+          in: query
+          type: string
+          description: end date (UTC) in YYYY-MM-DD format, default is today
+        - name: limit
+          in: query
+          type: integer
+          description: List pagination size, default 1000, max value is 1000
+        - name: offset
+          in: query
+          type: integer
+          description: List pagination offset, default 0
+    - name: org-orgId-partner-partner-usageMeteringDailyRecord
+      path: /org/{orgId}/partner/{partner}/usageMeteringDailyRecord
+      operations:
+      - name: listusagemeteringdailyrecords
+        method: GET
+        description: List Usage Metering Daily Records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: partner
+          in: path
+          type: string
+          description: Filter by the Cloud Partner
+          required: true
+        - name: buyerId
+          in: query
+          type: string
+          description: Filter usage metering daily records by the given buyer ID
+        - name: entitlementId
+          in: query
+          type: string
+          description: Filter usage metering daily records by the given entitlement ID
+        - name: startDate
+          in: query
+          type: string
+          description: start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
+        - name: endDate
+          in: query
+          type: string
+          description: end date (UTC) in YYYY-MM-DD format, default is today
+        - name: limit
+          in: query
+          type: integer
+          description: List pagination size, default 1000, max value is 1000
+        - name: offset
+          in: query
+          type: integer
+          description: List pagination offset, default 0
+    - name: org-orgId-revenueReport
+      path: /org/{orgId}/revenueReport
+      operations:
+      - name: getrevenuereport
+        method: POST
+        description: Get Revenue Report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.SUGER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: suger-report-rest
+    port: 8080
+    description: REST adapter for Suger API — Report. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/org/{orgid}/dailyrevenuerecord
+      name: org-orgid-dailyrevenuerecord
+      description: REST surface for org-orgId-dailyRevenueRecord.
+      operations:
+      - method: GET
+        name: listdailyrevenuerecords
+        description: List Daily Revenue Records
+        call: suger-report.listdailyrevenuerecords
+        with:
+          orgId: rest.orgId
+          partner: rest.partner
+          productId: rest.productId
+          buyerId: rest.buyerId
+          entitlementId: rest.entitlementId
+          startDate: rest.startDate
+          endDate: rest.endDate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/partner/{partner}/revenuerecord
+      name: org-orgid-partner-partner-revenuerecord
+      description: REST surface for org-orgId-partner-partner-revenueRecord.
+      operations:
+      - method: GET
+        name: listrevenuerecords
+        description: List Revenue Records
+        call: suger-report.listrevenuerecords
+        with:
+          orgId: rest.orgId
+          partner: rest.partner
+          productId: rest.productId
+          entitlementId: rest.entitlementId
+          buyerId: rest.buyerId
+          startDate: rest.startDate
+          endDate: rest.endDate
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/partner/{partner}/revenuerecorddetail
+      name: org-orgid-partner-partner-revenuerecorddetail
+      description: REST surface for org-orgId-partner-partner-revenueRecordDetail.
+      operations:
+      - method: GET
+        name: listrevenuerecorddetails
+        description: List Revenue Record Details
+        call: suger-report.listrevenuerecorddetails
+        with:
+          orgId: rest.orgId
+          partner: rest.partner
+          productId: rest.productId
+          buyerId: rest.buyerId
+          entitlementId: rest.entitlementId
+          startDate: rest.startDate
+          endDate: rest.endDate
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/partner/{partner}/usagemeteringdailyrecord
+      name: org-orgid-partner-partner-usagemeteringdailyrecord
+      description: REST surface for org-orgId-partner-partner-usageMeteringDailyRecord.
+      operations:
+      - method: GET
+        name: listusagemeteringdailyrecords
+        description: List Usage Metering Daily Records
+        call: suger-report.listusagemeteringdailyrecords
+        with:
+          orgId: rest.orgId
+          partner: rest.partner
+          buyerId: rest.buyerId
+          entitlementId: rest.entitlementId
+          startDate: rest.startDate
+          endDate: rest.endDate
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/org/{orgid}/revenuereport
+      name: org-orgid-revenuereport
+      description: REST surface for org-orgId-revenueReport.
+      operations:
+      - method: POST
+        name: getrevenuereport
+        description: Get Revenue Report
+        call: suger-report.getrevenuereport
+        with:
+          orgId: rest.orgId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: suger-report-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Suger API — Report. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-daily-revenue-records
+      description: List Daily Revenue Records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: suger-report.listdailyrevenuerecords
+      with:
+        orgId: tools.orgId
+        partner: tools.partner
+        productId: tools.productId
+        buyerId: tools.buyerId
+        entitlementId: tools.entitlementId
+        startDate: tools.startDate
+        endDate: tools.endDate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-revenue-records
+      description: List Revenue Records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: suger-report.listrevenuerecords
+      with:
+        orgId: tools.orgId
+        partner: tools.partner
+        productId: tools.productId
+        entitlementId: tools.entitlementId
+        buyerId: tools.buyerId
+        startDate: tools.startDate
+        endDate: tools.endDate
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-revenue-record-details
+      description: List Revenue Record Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: suger-report.listrevenuerecorddetails
+      with:
+        orgId: tools.orgId
+        partner: tools.partner
+        productId: tools.productId
+        buyerId: tools.buyerId
+        entitlementId: tools.entitlementId
+        startDate: tools.startDate
+        endDate: tools.endDate
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-usage-metering-daily-records
+      description: List Usage Metering Daily Records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: suger-report.listusagemeteringdailyrecords
+      with:
+        orgId: tools.orgId
+        partner: tools.partner
+        buyerId: tools.buyerId
+        entitlementId: tools.entitlementId
+        startDate: tools.startDate
+        endDate: tools.endDate
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-revenue-report
+      description: Get Revenue Report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: suger-report.getrevenuereport
+      with:
+        orgId: tools.orgId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
