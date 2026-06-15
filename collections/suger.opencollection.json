@@ -1,0 +1,4034 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Suger API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Billing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Addons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/addon",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all addon templates"
+        },
+        {
+          "info": {
+            "name": "Create Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/addon",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create an addon template"
+        },
+        {
+          "info": {
+            "name": "Get Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/addon/:addonId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "addonId",
+                "value": "",
+                "type": "path",
+                "description": "Addon ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get an addon template"
+        },
+        {
+          "info": {
+            "name": "Update Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/addon/:addonId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "addonId",
+                "value": "",
+                "type": "path",
+                "description": "Addon ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update an addon template"
+        },
+        {
+          "info": {
+            "name": "Delete Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.suger.cloud/org/:orgId/addon/:addonId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "addonId",
+                "value": "",
+                "type": "path",
+                "description": "Addon ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Soft delete an addon template"
+        },
+        {
+          "info": {
+            "name": "List Refunds.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/buyer/:buyerId/paymentTransaction/:paymentTransactionId/refund",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "path",
+                "description": "Buyer ID"
+              },
+              {
+                "name": "paymentTransactionId",
+                "value": "",
+                "type": "path",
+                "description": "Payment transaction ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "list refunds of the payment transactions."
+        },
+        {
+          "info": {
+            "name": "Create Refund.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/buyer/:buyerId/paymentTransaction/:paymentTransactionId/refund",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "path",
+                "description": "Buyer ID"
+              },
+              {
+                "name": "paymentTransactionId",
+                "value": "",
+                "type": "path",
+                "description": "Payment transaction ID"
+              },
+              {
+                "name": "amount",
+                "value": "",
+                "type": "query",
+                "description": "Refund amount"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "create refund on the payment transaction, support partial refunds multiple times."
+        },
+        {
+          "info": {
+            "name": "List Invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/invoice",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "query",
+                "description": "Optional, filter by the entitlement ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "Optional, filter by the given buyer ID"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Optional, filter by invoice status as filter, if not provided, all status invoices are returned"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List invoices with pagination and filter by status (optional)"
+        },
+        {
+          "info": {
+            "name": "Get Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/invoice/:invoiceId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "Invoice ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the invoice by ID"
+        },
+        {
+          "info": {
+            "name": "Update Invoice Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/invoice/:invoiceId/info",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "Invoice ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a draft invoice. Only DueDate, OverallDiscount, and Memo can be updated."
+        },
+        {
+          "info": {
+            "name": "Issue Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/invoice/:invoiceId/issue",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "Invoice ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Issue the invoice immediately. It can be used for manual issue or reissue invoice."
+        },
+        {
+          "info": {
+            "name": "Pay Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/invoice/:invoiceId/pay",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "Invoice ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Initiate the payment for the invoice immediately. It can be used for manual payment or retry payment."
+        },
+        {
+          "info": {
+            "name": "Preview Invoice Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/invoice/:invoiceId/preview",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "Invoice ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the preview HTML content of the invoice issued email."
+        },
+        {
+          "info": {
+            "name": "Void Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/invoice/:invoiceId/void",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "Invoice ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Void the invoice. It can be used for manual void or cancel the invoice."
+        },
+        {
+          "info": {
+            "name": "List Payment Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/paymentTransaction",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "Optional, filter by the given buyer ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "query",
+                "description": "Optional, filter by the given entitlement ID"
+              },
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "query",
+                "description": "Optional, filter by the given invoice ID"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Optional, filter by status"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Optional, filter by transaction type"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List payment transactions with pagination and filters"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Api Clients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/apiClient",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all API clients in the given organization."
+        },
+        {
+          "info": {
+            "name": "Get Api Client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/apiClient/:apiClientId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "apiClientId",
+                "value": "",
+                "type": "path",
+                "description": "API client ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the API client by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Metering",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Batch Report UsageRecordGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/batchCreateUsageRecordGroups",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Batch report new usage record groups."
+        },
+        {
+          "info": {
+            "name": "Batch Validate UsageRecordGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/batchValidateUsageRecordGroups",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Provide a batch of usage record groups and validate each individual usage record group one by one."
+        },
+        {
+          "info": {
+            "name": "List Billable Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/billableMetric",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Status of the billable metric"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "list billable metrics for the given organization."
+        },
+        {
+          "info": {
+            "name": "Create Billable Metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/billableMetric",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new billable metric for the given organization."
+        },
+        {
+          "info": {
+            "name": "Get Billable Metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/billableMetric/:billableMetricId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "billableMetricId",
+                "value": "",
+                "type": "path",
+                "description": "Billable Metric ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the billable metric for the given organization and billable metric ID."
+        },
+        {
+          "info": {
+            "name": "Update Billable Metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/billableMetric/:billableMetricId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "billableMetricId",
+                "value": "",
+                "type": "path",
+                "description": "Billable Metric ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the name, description and status of the billable metric for the given organization."
+        },
+        {
+          "info": {
+            "name": "Report UsageRecordGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/usageRecordGroup",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "It is recommended to provide the ID in the request body CreateUsageRecordGroupParams, so the report can be deduplicated. All duplicate report will return error code 409."
+        },
+        {
+          "info": {
+            "name": "Get Usage Metering Config Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/usageMeteringConfigInfo",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the usage metering config info of the given organization."
+        },
+        {
+          "info": {
+            "name": "Update Usage Metering Config Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/usageMeteringConfigInfo",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the usage metering config info of the given organization."
+        },
+        {
+          "info": {
+            "name": "List UsageRecordGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/usageRecordGroup",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "partner",
+                "value": "",
+                "type": "query",
+                "description": "Cloud Partner"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "filter by buyer ID, default no filter by buyerId if not provided"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "query",
+                "description": "filter by entitlement ID, default no filter by entitlementId if not provided"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "The status of the usage record group, default no filter by status if not provided"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "The source of the usage record group, default no filter by source if not provided"
+              },
+              {
+                "name": "metaInfo",
+                "value": "",
+                "type": "query",
+                "description": "metaInfo filter"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "end date (UTC) in YYYY-MM-DD format, default is today"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List UsageRecordGroups by the given organization, partner, product, entitlement or buyer. Only provide one or none of the optional query parameters: partner, productId, entitlementId & buyerId ."
+        },
+        {
+          "info": {
+            "name": "Delete UsageRecordGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.suger.cloud/org/:orgId/usageRecordGroup/:usageRecordGroupId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "usageRecordGroupId",
+                "value": "",
+                "type": "path",
+                "description": "UsageRecordGroup ID"
+              },
+              {
+                "name": "creationDate",
+                "value": "",
+                "type": "query",
+                "description": "UsageRecordGroup's creation date (UTC) in YYYY-MM-DD format"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "delete the UsageRecordGroup for the given organization and usageRecordGroup ID. Only usageRecordGroup with status \"CREATED\" or \"INVALID\" can be deleted."
+        },
+        {
+          "info": {
+            "name": "Retry UsageRecordGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/usageRecordGroup/:usageRecordGroupId/retry",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "usageRecordGroupId",
+                "value": "",
+                "type": "path",
+                "description": "UsageRecordGroup ID"
+              },
+              {
+                "name": "creationDate",
+                "value": "",
+                "type": "query",
+                "description": "UsageRecordGroup's creation date (UTC) in YYYY-MM-DD format"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retry the given UsageRecordGroup by setting from status \"REPORT_FAILED\" to \"CREATED\", and it will be ready for the next hourly report. Only usageRecordGroup with status \"REPORT_FAILED\" can be retried."
+        },
+        {
+          "info": {
+            "name": "List UsageRecordReports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/usageRecordReport",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "partner",
+                "value": "",
+                "type": "query",
+                "description": "Cloud Partner"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "buyer ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "query",
+                "description": "entitlement ID"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "end date (UTC) in YYYY-MM-DD format, default is today"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List usageRecordReports under the given organization, partner, entitlement or buyer, within the given time range and pagination."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Buyer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Buyers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/buyer",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "partner",
+                "value": "",
+                "type": "query",
+                "description": "filter by partner"
+              },
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query",
+                "description": "filter by contactId"
+              },
+              {
+                "name": "awsAccountId",
+                "value": "",
+                "type": "query",
+                "description": "filter by awsAccountId"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "list buyers by the given organization with pagination and optional filters."
+        },
+        {
+          "info": {
+            "name": "Create Buyer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/buyer",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "create a new buyer for Stripe or Adyen under the given organization."
+        },
+        {
+          "info": {
+            "name": "Get Buyer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/buyer/:buyerId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "path",
+                "description": "Buyer ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "get buyer by the given organization and buyer id."
+        },
+        {
+          "info": {
+            "name": "Update Buyer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/buyer/:buyerId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "path",
+                "description": "Buyer ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "update buyer by the given organization and buyer id."
+        },
+        {
+          "info": {
+            "name": "List Buyer's Wallets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/buyer/:buyerId/wallet",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "path",
+                "description": "Buyer ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "list all wallets of a buyer."
+        },
+        {
+          "info": {
+            "name": "Create Credit Wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/buyer/:buyerId/wallet",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "path",
+                "description": "Buyer ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "create a new credit wallet for the buyer."
+        },
+        {
+          "info": {
+            "name": "Update Credit Wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/buyer/:buyerId/wallet/:walletId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "path",
+                "description": "Buyer ID"
+              },
+              {
+                "name": "walletId",
+                "value": "",
+                "type": "path",
+                "description": "Wallet ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "update startTime or expireTime of the wallet."
+        },
+        {
+          "info": {
+            "name": "Delete Buyer Wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.suger.cloud/org/:orgId/buyer/:buyerId/wallet/:walletId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "path",
+                "description": "Buyer ID"
+              },
+              {
+                "name": "walletId",
+                "value": "",
+                "type": "path",
+                "description": "Wallet ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "delete a wallet of the buyer, if it's a payment method, sync to payment provider too."
+        },
+        {
+          "info": {
+            "name": "Close Credit Wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/buyer/:buyerId/wallet/:walletId/close",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "path",
+                "description": "Buyer ID"
+              },
+              {
+                "name": "walletId",
+                "value": "",
+                "type": "path",
+                "description": "Wallet ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Close the given credit wallet, if it's a payment method, sync to payment provider too. Once closed, it can't be used for payment."
+        },
+        {
+          "info": {
+            "name": "Set Buyer Default Wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/buyer/:buyerId/wallet/:walletId/default",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "path",
+                "description": "Buyer ID"
+              },
+              {
+                "name": "walletId",
+                "value": "",
+                "type": "path",
+                "description": "Wallet ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "set a payment method wallet as buyer's default wallet."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Contact",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Contacts By Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/contact",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all contacts under the given organization."
+        },
+        {
+          "info": {
+            "name": "Create Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/contact",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a contact under the given organization. If the email address already exists, return the existing contact."
+        },
+        {
+          "info": {
+            "name": "Get Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/contact/:contactId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "Contact ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the Contact by the given contact ID."
+        },
+        {
+          "info": {
+            "name": "Update Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/contact/:contactId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "Contact ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "update contact by the given organization and buyer id. The given name and information should be complete. Please note that this function does not support partial updates."
+        },
+        {
+          "info": {
+            "name": "Add Contact To Buyer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/contact/:contactId/buyer/:buyerId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "path",
+                "description": "Buyer ID"
+              },
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "Contact ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "add contact to buyer by the given organization, buyer id and contact id."
+        },
+        {
+          "info": {
+            "name": "Remove Contact From Buyer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.suger.cloud/org/:orgId/contact/:contactId/buyer/:buyerId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "path",
+                "description": "Buyer ID"
+              },
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "Contact ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "remove contact from buyer by the given organization, buyer id and contact id."
+        },
+        {
+          "info": {
+            "name": "Add Contact To Offer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/contact/:contactId/offer/:offerId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "Contact ID"
+              },
+              {
+                "name": "offerId",
+                "value": "",
+                "type": "path",
+                "description": "Offer ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "add contact to offer by the given organization, offer id and contact id."
+        },
+        {
+          "info": {
+            "name": "Remove Contact From Offer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.suger.cloud/org/:orgId/contact/:contactId/offer/:offerId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "Contact ID"
+              },
+              {
+                "name": "offerId",
+                "value": "",
+                "type": "path",
+                "description": "Offer ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "remove contact from offer by given organization, offer id and contact id."
+        },
+        {
+          "info": {
+            "name": "Batch Create Contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/contact/batch",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create multiple contacts under the given organization. If an email address already exists, return the existing contact."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Report",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Daily Revenue Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/dailyRevenueRecord",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "partner",
+                "value": "",
+                "type": "query",
+                "description": "Cloud Partner"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "query",
+                "description": "Filter daily revenue records by the given product ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "Filter daily revenue records by the given buyer ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "query",
+                "description": "Filter daily revenue records by the given entitlement ID"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "end date (UTC) in YYYY-MM-DD format, default is today"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "list daily revenue records for the given organization, partner, entitlement, or buyer, within the given date range."
+        },
+        {
+          "info": {
+            "name": "List Revenue Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/partner/:partner/revenueRecord",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "partner",
+                "value": "",
+                "type": "path",
+                "description": "Cloud Partner"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "query",
+                "description": "Filter revenue records by the given product ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "query",
+                "description": "Filter revenue records by the given entitlement ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "Filter revenue records by the given buyer ID"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "end date (UTC) in YYYY-MM-DD format, default is today"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "list the revenue records for the given organization, product, entitlement, or buyer."
+        },
+        {
+          "info": {
+            "name": "List Revenue Record Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/partner/:partner/revenueRecordDetail",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "partner",
+                "value": "",
+                "type": "path",
+                "description": "Cloud Partner"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "query",
+                "description": "Filter revenue record details by the given product ID"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "Filter revenue record details by the given buyer ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "query",
+                "description": "Filter revenue record details by the given entitlement ID"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "end date (UTC) in YYYY-MM-DD format, default is today"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "list the raw revenue record details for the given organization, partner, product, entitlement, or buyer."
+        },
+        {
+          "info": {
+            "name": "List Usage Metering Daily Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/partner/:partner/usageMeteringDailyRecord",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "partner",
+                "value": "",
+                "type": "path",
+                "description": "Filter by the Cloud Partner"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "Filter usage metering daily records by the given buyer ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "query",
+                "description": "Filter usage metering daily records by the given entitlement ID"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "end date (UTC) in YYYY-MM-DD format, default is today"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "list the daily records of the usage metering from the cloud marketplace for the given organization, entitlement, or buyer."
+        },
+        {
+          "info": {
+            "name": "Get Revenue Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/revenueReport",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the revenue report of the given organization, product, entitlement, or buyer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Offer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Or Update Draft Offer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/draftOffer",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new draft offer or update the existing draft offer. When updating draft offer, the offer.ID is required."
+        },
+        {
+          "info": {
+            "name": "List Offers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/offer",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "filter by offer status"
+              },
+              {
+                "name": "partner",
+                "value": "",
+                "type": "query",
+                "description": "filter by partner"
+              },
+              {
+                "name": "offerType",
+                "value": "",
+                "type": "query",
+                "description": "filter by offerType"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "query",
+                "description": "filter by productId"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "filter by buyerId"
+              },
+              {
+                "name": "hubspotDealId",
+                "value": "",
+                "type": "query",
+                "description": "filter by hubspotDealId"
+              },
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query",
+                "description": "filter by contactId"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List offers under the given organization with pagination and optional filter."
+        },
+        {
+          "info": {
+            "name": "Create Offer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/offer",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a private offer under the given organization."
+        },
+        {
+          "info": {
+            "name": "Get Offer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/offer/:offerId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "offerId",
+                "value": "",
+                "type": "path",
+                "description": "Offer ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the offer by the given offer ID."
+        },
+        {
+          "info": {
+            "name": "Delete Offer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.suger.cloud/org/:orgId/offer/:offerId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "offerId",
+                "value": "",
+                "type": "path",
+                "description": "Offer ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "The offer is soft deleted (marked as DELETED status) in Suger service. Only the offer with status = \"DRAFT\", \"CREATE_FAILED\", \"EXPIRED\" or \"CANCELLED\" is allowed to be deleted."
+        },
+        {
+          "info": {
+            "name": "Cancel Offer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/offer/:offerId/cancel",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "offerId",
+                "value": "",
+                "type": "path",
+                "description": "Offer ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Only the offer with status = \"PENDING_ACCEPTANCE\", \"PENDING_CANCEL\", \"ACTIVE\" or \"USED\" is allowed to cancel."
+        },
+        {
+          "info": {
+            "name": "Get Offer EULA",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/offer/:offerId/eula",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "offerId",
+                "value": "",
+                "type": "path",
+                "description": "Offer ID"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "response format in JSON or string"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the EULA file of the given offer ID."
+        },
+        {
+          "info": {
+            "name": "Extend Offer Expiry Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/offer/:offerId/extendExpiryDate",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "offerId",
+                "value": "",
+                "type": "path",
+                "description": "Offer ID"
+              },
+              {
+                "name": "newExpiryDate",
+                "value": "",
+                "type": "query",
+                "description": "new expiry date in YYYY-MM-DD format"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Only the offer with status = \"PENDING_ACCEPTANCE\", \"EXPIRED\" or \"ACCEPTED\" is allowed to extend expiry date."
+        },
+        {
+          "info": {
+            "name": "Update Offer Meta Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/offer/:offerId/metaInfo",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "offerId",
+                "value": "",
+                "type": "path",
+                "description": "Offer ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the meta info of the given offer."
+        },
+        {
+          "info": {
+            "name": "Notify Offer Contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/offer/:offerId/notifyContacts",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "offerId",
+                "value": "",
+                "type": "path",
+                "description": "Offer ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Send offer notifications to the given contact ids. If contactIDs is empty, send notifications to all contacts of the offer."
+        },
+        {
+          "info": {
+            "name": "Get Offer Reseller EULA",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/offer/:offerId/resellerEula",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "offerId",
+                "value": "",
+                "type": "path",
+                "description": "Offer ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the Reseller EULA file of the given offer ID."
+        },
+        {
+          "info": {
+            "name": "Get Offer By External ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/offerExternalId/:offerExternalId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "offerExternalId",
+                "value": "",
+                "type": "path",
+                "description": "Offer External ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the offer by the given offer external ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Product",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Or Update Draft Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/draftProduct",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new draft product or update the existing draft product. When updating draft product, the product.ID is required."
+        },
+        {
+          "info": {
+            "name": "List Products By Partner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/partner/:partner/product",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "partner",
+                "value": "",
+                "type": "path",
+                "description": "Cloud Partner"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "list all products under the given organization and cloud partner"
+        },
+        {
+          "info": {
+            "name": "List Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/product",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "partner",
+                "value": "",
+                "type": "query",
+                "description": "filter by partner"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 100, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "list all products under the given organization"
+        },
+        {
+          "info": {
+            "name": "Create Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/product",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "create a new product in the marketplace"
+        },
+        {
+          "info": {
+            "name": "Get Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/product/:productId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path",
+                "description": "Product ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "get product by product id"
+        },
+        {
+          "info": {
+            "name": "Update Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/product/:productId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path",
+                "description": "Product ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "update product info, no price update is allowed via this API."
+        },
+        {
+          "info": {
+            "name": "Delete Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.suger.cloud/org/:orgId/product/:productId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path",
+                "description": "Product ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "The product is soft deleted (marked as DELETED status) in Suger service. only the products with non PUBLIC status are allowed to be deleted."
+        },
+        {
+          "info": {
+            "name": "List Metering Dimensions Of Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/product/:productId/dimension",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path",
+                "description": "Product ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "list all metering dimensions of the given product"
+        },
+        {
+          "info": {
+            "name": "Update Product Fulfillment Url",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/product/:productId/fulfillmentUrl",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path",
+                "description": "Product ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "update the fulfillment url of the given product"
+        },
+        {
+          "info": {
+            "name": "Update Product Meta Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/product/:productId/metaInfo",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path",
+                "description": "Product ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the meta info of the given product."
+        },
+        {
+          "info": {
+            "name": "Publish Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/product/:productId/publish",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path",
+                "description": "Product ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "publish the given product to the public status in the marketplace"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Entitlement",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Entitlements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "partner",
+                "value": "",
+                "type": "query",
+                "description": "filter by partner"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "query",
+                "description": "filter by productId"
+              },
+              {
+                "name": "offerId",
+                "value": "",
+                "type": "query",
+                "description": "filter by offerId"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "filter by buyerId"
+              },
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "query",
+                "description": "filter by externalId"
+              },
+              {
+                "name": "buyerAccountId",
+                "value": "",
+                "type": "query",
+                "description": "filter by buyerAccountId is currently supported only for AWS"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List entitlements under the given organization with pagination and optional filters."
+        },
+        {
+          "info": {
+            "name": "Create Entitlement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create an new entitlement for the given buyer & offer. Only applicable to non cloud billing partners."
+        },
+        {
+          "info": {
+            "name": "Get Entitlement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the entitlement by ID."
+        },
+        {
+          "info": {
+            "name": "Add Entitlement Credit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/addCredit",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add the credit amount to the given Entitlement. The credit amount is accumulated & saved in the current Entitlement Term of the gvien Entitlement."
+        },
+        {
+          "info": {
+            "name": "Apply Addon To Entitlement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/addon",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Apply one billing addon to the given Entitlement. The entitlement status must be ACTIVE."
+        },
+        {
+          "info": {
+            "name": "Approve Entitlement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/approve",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Approve the given Entitlement. Only applicable to the Azure or GCP Entitlements with the status of \"PENDING_START\". Return 200 if the entitlement is already active."
+        },
+        {
+          "info": {
+            "name": "Cancel Entitlement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/cancel",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Cancel the active subscription in Azure Marketplace."
+        },
+        {
+          "info": {
+            "name": "Divide Entitlement Commit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/divideCommit",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Divide the commit equally from the given entitlement into sub entitlement terms based on the given time periods."
+        },
+        {
+          "info": {
+            "name": "Update Entitlement Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/entitlementName",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the name of the given Entitlement."
+        },
+        {
+          "info": {
+            "name": "List Entitlement Terms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/entitlementTerm",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all Entitlement Terms of the given Entitlement."
+        },
+        {
+          "info": {
+            "name": "Get Entitlement Term",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/entitlementTerm/:entitlementTermId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              },
+              {
+                "name": "entitlementTermId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement Term ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the entitlement term by ID."
+        },
+        {
+          "info": {
+            "name": "Delete Entitlement Term",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/entitlementTerm/:entitlementTermId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              },
+              {
+                "name": "entitlementTermId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement Term ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete the entitlement term by the given entitlement ID and entitlement term ID. Only allow to delete the divided entitlement term."
+        },
+        {
+          "info": {
+            "name": "Update Entitlement Meta Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/metaInfo",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the meta info of the given entitlement."
+        },
+        {
+          "info": {
+            "name": "Update Entitlement Price Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/priceModel",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the price model of the given entitlement, such as recurring commits, billable dimensions. Only applicable to non cloud billing partners."
+        },
+        {
+          "info": {
+            "name": "Schedule Entitlement Cancellation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/scheduleCancellation",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Schedule the cancellation of the given Entitlement."
+        },
+        {
+          "info": {
+            "name": "Update Seat For The Active AZURE Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/seat",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              },
+              {
+                "name": "newSeat",
+                "value": "",
+                "type": "query",
+                "description": "New seat number"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the seat number for the active AZURE subscription."
+        },
+        {
+          "info": {
+            "name": "Unschedule Entitlement Cancellation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/unscheduleCancellation",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Unschedule the cancellation of the given Entitlement."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Notification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Notification Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/notificationEvent",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "end date (UTC) in YYYY-MM-DD format, default is today"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              },
+              {
+                "name": "priorities",
+                "value": "",
+                "type": "query",
+                "description": "Filter by priorities, empty means HIGH and CRITICAL only. Valid values are: LOW, MEDIUM, HIGH, CRITICAL. Multiple values are supported, separated by comma."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List the notification events of the given organization with pagination and optional filters."
+        },
+        {
+          "info": {
+            "name": "List Notification Events By Entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/notificationEvent/:entityType/:entityId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entityType",
+                "value": "",
+                "type": "path",
+                "description": "Entity type, valid values are: PRODUCT, OFFER, ENTITLEMENT, INTEGRATION etc."
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path",
+                "description": "Entity ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List the notification events of the given organization and entity with pagination."
+        },
+        {
+          "info": {
+            "name": "List Notification Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/notificationMessage",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List the notification messages of the given organization with pagination."
+        },
+        {
+          "info": {
+            "name": "Get Notification Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/notificationMessage/:notificationMessageId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "notificationMessageId",
+                "value": "",
+                "type": "path",
+                "description": "Notification Message ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the notification message of the organization & notification message ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Support",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Support Tickets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/support/ticket",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "list support tickets"
+        },
+        {
+          "info": {
+            "name": "Create Support Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/support/ticket",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "create support ticket"
+        },
+        {
+          "info": {
+            "name": "Get Support Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/support/ticket/:ticketId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "ticketId",
+                "value": "",
+                "type": "path",
+                "description": "Ticket ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "get support ticket"
+        },
+        {
+          "info": {
+            "name": "Update Support Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/support/ticket/:ticketId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "ticketId",
+                "value": "",
+                "type": "path",
+                "description": "Ticket ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "update support ticket"
+        },
+        {
+          "info": {
+            "name": "Create Support Ticket Attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/support/ticket/:ticketId/attachment",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "ticketId",
+                "value": "",
+                "type": "path",
+                "description": "Ticket ID"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "create support ticket attachment"
+        },
+        {
+          "info": {
+            "name": "Close Support Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/support/ticket/:ticketId/close",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "ticketId",
+                "value": "",
+                "type": "path",
+                "description": "Ticket ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "close suuport ticket"
+        },
+        {
+          "info": {
+            "name": "Create Support Ticket Comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/support/ticket/:ticketId/comment",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "ticketId",
+                "value": "",
+                "type": "path",
+                "description": "Ticket ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "create support ticket comment"
+        },
+        {
+          "info": {
+            "name": "Reopen Support Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/support/ticket/:ticketId/reopen",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "ticketId",
+                "value": "",
+                "type": "path",
+                "description": "Ticket ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "reopen support ticket"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
