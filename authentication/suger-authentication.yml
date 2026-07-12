@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/suger-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: APIKeyAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: API Key for authorization in format of <Key *****>.
+  sources:
+  - openapi/suger-openapi.yml

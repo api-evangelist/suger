@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://www.suger.io/resources/security/
+url: https://www.suger.io/resources/security/
+certifications:
+- SOC 2
+- GDPR
+evidence:
+- source: https://www.suger.io/resources/security/
+  keywords:
+  - soc 2
+  - soc2
+  - gdpr

@@ -48,6 +48,14 @@ apis:
       - type: SDKs
         url: https://github.com/sugerio
 common:
+  - type: TrustCenter
+    url: security/suger-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/suger-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/suger-domain-security.yml
+  - type: Authentication
+    url: authentication/suger-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/suger-inc
   - type: Portal
