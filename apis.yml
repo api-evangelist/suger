@@ -48,6 +48,8 @@ apis:
       - type: SDKs
         url: https://github.com/sugerio
 common:
+  - type: AgenticAccess
+    url: agentic-access/suger-agentic-access.yml
   - type: TrustCenter
     url: security/suger-trust-center.yml
   - type: VulnerabilityDisclosure
