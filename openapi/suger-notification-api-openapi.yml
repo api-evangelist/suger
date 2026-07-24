@@ -1,0 +1,939 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: support@suger.io
+    name: Suger Support
+    url: https://www.suger.io/support
+  description: CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.
+  title: Suger API Notification API
+  version: '1.0'
+servers:
+- url: https://api.suger.cloud
+tags:
+- description: Access to Notification resources
+  name: Notification
+paths:
+  /org/{orgId}/notificationEvent:
+    get:
+      description: List the notification events of the given organization with pagination and optional filters.
+      operationId: ListNotificationEvents
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
+        explode: true
+        in: query
+        name: startDate
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: end date (UTC) in YYYY-MM-DD format, default is today
+        explode: true
+        in: query
+        name: endDate
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: List pagination size, default 1000, max value is 1000
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: List pagination offset, default 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: 'Filter by priorities, empty means HIGH and CRITICAL only. Valid values are: LOW, MEDIUM, HIGH, CRITICAL. Multiple values are supported, separated by comma.'
+        explode: true
+        in: query
+        name: priorities
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNotificationEventsResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: List Notification Events
+      tags:
+      - Notification
+  /org/{orgId}/notificationEvent/{entityType}/{entityId}:
+    get:
+      description: List the notification events of the given organization and entity with pagination.
+      operationId: ListNotificationEventsByEntity
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: 'Entity type, valid values are: PRODUCT, OFFER, ENTITLEMENT, INTEGRATION etc.'
+        explode: false
+        in: path
+        name: entityType
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Entity ID
+        explode: false
+        in: path
+        name: entityId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: List pagination size, default 1000, max value is 1000
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: List pagination offset, default 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNotificationEventsResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: List Notification Events By Entity
+      tags:
+      - Notification
+  /org/{orgId}/notificationMessage:
+    get:
+      description: List the notification messages of the given organization with pagination.
+      operationId: ListNotificationMessages
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: List pagination size, default 1000, max value is 1000
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: List pagination offset, default 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNotificationMessagesResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: List Notification Messages
+      tags:
+      - Notification
+  /org/{orgId}/notificationMessage/{notificationMessageId}:
+    get:
+      description: Get the notification message of the organization & notification message ID.
+      operationId: GetNotificationMessage
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Notification Message ID
+        explode: false
+        in: path
+        name: notificationMessageId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationMessage'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Get Notification Message
+      tags:
+      - Notification
+components:
+  schemas:
+    TrackEventActionType:
+      enum:
+      - OPEN_EMAIL
+      type: string
+      x-enum-varnames:
+      - TrackEventActionType_OPEN_EMAIL
+    ListNotificationMessagesResponse:
+      example:
+        notificationMessages:
+        - organizationID: organizationID
+          creationTime: 2000-01-23 04:56:07+00:00
+          recipient: recipient
+          id: id
+          type: EMAIL
+          info:
+            standardFields:
+              key: ''
+            customFields:
+              key: ''
+            subject: subject
+            rccRecipients:
+            - rccRecipients
+            - rccRecipients
+            ccRecipients:
+            - ccRecipients
+            - ccRecipients
+            action: '{}'
+            textContent: textContent
+            htmlContent: htmlContent
+        - organizationID: organizationID
+          creationTime: 2000-01-23 04:56:07+00:00
+          recipient: recipient
+          id: id
+          type: EMAIL
+          info:
+            standardFields:
+              key: ''
+            customFields:
+              key: ''
+            subject: subject
+            rccRecipients:
+            - rccRecipients
+            - rccRecipients
+            ccRecipients:
+            - ccRecipients
+            - ccRecipients
+            action: '{}'
+            textContent: textContent
+            htmlContent: htmlContent
+        nextOffset: 0
+        totalCount: 6
+      properties:
+        nextOffset:
+          description: 'The next offset to use in the next request to get the next page of notification messages.
+
+            If this field is null, there are no more notification messages to get.'
+          type: integer
+        notificationMessages:
+          items:
+            $ref: '#/components/schemas/NotificationMessage'
+          type: array
+        totalCount:
+          description: 'The total number of notification messages.
+
+            Only available when the request is made with the first offset = 0.'
+          type: integer
+      type: object
+    TrackEvent:
+      example:
+        contactId: contactId
+        action: OPEN_EMAIL
+        timestamp: 2000-01-23 04:56:07+00:00
+      properties:
+        action:
+          $ref: '#/components/schemas/TrackEventActionType'
+        contactId:
+          description: The ID of the contact who triggered the track event if applicable.
+          type: string
+        timestamp:
+          description: timestamp of the track event happened.
+          format: date-time
+          type: string
+      type: object
+    NotificationChannel:
+      enum:
+      - EMAIL
+      - SLACK
+      - SMS
+      - SNS
+      - SALESFORCE
+      - WEBHOOK
+      - SUGER_SUPPORT
+      - MICROSOFT_TEAMS
+      type: string
+      x-enum-comments:
+        NotificationChannel_MICROSOFT_TEAMS: Notify Microsoft Teams.
+        NotificationChannel_SNS: Amazon Simple Notification Service
+        NotificationChannel_SUGER_SUPPORT: Notify Suger Support team.
+      x-enum-varnames:
+      - NotificationChannel_EMAIL
+      - NotificationChannel_SLACK
+      - NotificationChannel_SMS
+      - NotificationChannel_SNS
+      - NotificationChannel_SALESFORCE
+      - NotificationChannel_WEBHOOK
+      - NotificationChannel_SUGER_SUPPORT
+      - NotificationChannel_MICROSOFT_TEAMS
+    NotificationMessage:
+      example:
+        organizationID: organizationID
+        creationTime: 2000-01-23 04:56:07+00:00
+        recipient: recipient
+        id: id
+        type: EMAIL
+        info:
+          standardFields:
+            key: ''
+          customFields:
+            key: ''
+          subject: subject
+          rccRecipients:
+          - rccRecipients
+          - rccRecipients
+          ccRecipients:
+          - ccRecipients
+          - ccRecipients
+          action: '{}'
+          textContent: textContent
+          htmlContent: htmlContent
+      properties:
+        creationTime:
+          format: date-time
+          type: string
+        id:
+          type: string
+        info:
+          $ref: '#/components/schemas/NotificationMessageInfo'
+        organizationID:
+          type: string
+        recipient:
+          type: string
+        type:
+          $ref: '#/components/schemas/NotificationChannel'
+      type: object
+    EntityType:
+      enum:
+      - ''
+      - API_CLIENT
+      - AUDITING_EVENT
+      - AUTO_SHARE_TASK
+      - BUYER
+      - CONTACT
+      - ENTITLEMENT
+      - ENTITLEMENT_TERM
+      - HEADLESS_ENTITLEMENTS
+      - HUBSPOT_USER
+      - INTEGRATION
+      - INVOICE
+      - NEW_CLIENT
+      - NOTIFICATION_MESSAGE
+      - OFFER
+      - ORGANIZATION
+      - PAYMENT_TRANSACTION
+      - PRODUCT
+      - REFERRAL
+      - REVENUE_RECORD
+      - SUPPORT_TICKET
+      - UNPURCHASED_OFFERS
+      - USAGE_RECORD_GROUP
+      - USAGE_RECORD_REPORT
+      - USER
+      - WORKFLOW
+      - WORKFLOW_EXECUTION
+      - WORKFLOW_WEBHOOK
+      type: string
+      x-enum-varnames:
+      - EntityType_UNKNOWN
+      - EntityType_API_CLIENT
+      - EntityType_AUDITING_EVENT
+      - EntityType_AUTO_SHARE_TASK
+      - EntityType_BUYER
+      - EntityType_CONTACT
+      - EntityType_ENTITLEMENT
+      - EntityType_ENTITLEMENT_TERM
+      - EntityType_HEADLESS_ENTITLEMENTS
+      - EntityType_HUBSPOT_USER
+      - EntityType_INTEGRATION
+      - EntityType_INVOICE
+      - EntityType_NEW_CLIENT
+      - EntityType_NOTIFICATION_MESSAGE
+      - EntityType_OFFER
+      - EntityType_ORGANIZATION
+      - EntityType_PAYMENT_TRANSACTION
+      - EntityType_PRODUCT
+      - EntityType_REFERRAL
+      - EntityType_REVENUE_RECORD
+      - EntityType_SUPPORT_TICKET
+      - EntityType_UNPURCHASED_OFFERS
+      - EntityType_USAGE_RECORD_GROUP
+      - EntityType_USAGE_RECORD_REPORT
+      - EntityType_USER
+      - EntityType_WORKFLOW
+      - EntityType_WORKFLOW_EXECUTION
+      - EntityType_WORKFLOW_WEBHOOK
+    Partner:
+      enum:
+      - ''
+      - ADYEN
+      - ALIBABA
+      - AWS
+      - AWS_CHINA
+      - AZURE
+      - CHARGEBEE
+      - DATABRICKS
+      - DOCUSIGN
+      - GCP
+      - GOOGLE
+      - HUBSPOT
+      - INTUIT
+      - LAGO
+      - MARKETO
+      - METRONOME
+      - MICROSOFT
+      - ORACLE
+      - ORB
+      - REDHAT
+      - SALESFORCE
+      - SLACK
+      - SNOWFLAKE
+      - STRIPE
+      - ZOHO
+      type: string
+      x-enum-varnames:
+      - Partner_UNKNOWN
+      - Partner_ADYEN
+      - Partner_ALIBABA
+      - Partner_AWS
+      - Partner_AWS_CHINA
+      - Partner_AZURE
+      - Partner_CHARGEBEE
+      - Partner_DATABRICKS
+      - Partner_DOCUSIGN
+      - Partner_GCP
+      - Partner_GOOGLE
+      - Partner_HUBSPOT
+      - Partner_INTUIT
+      - Partner_LAGO
+      - Partner_MARKETO
+      - Partner_METRONOME
+      - Partner_MICROSOFT
+      - Partner_ORACLE
+      - Partner_ORB
+      - Partner_REDHAT
+      - Partner_SALESFORCE
+      - Partner_SLACK
+      - Partner_SNOWFLAKE
+      - Partner_STRIPE
+      - Partner_ZOHO
+    NotificationEventStatus:
+      enum:
+      - ''
+      - SCHEDULED
+      - PENDING
+      - DONE
+      - FAILED
+      type: string
+      x-enum-varnames:
+      - NotificationEventStatus_UNKNOWN
+      - NotificationEventStatus_SCHEDULED
+      - NotificationEventStatus_PENDING
+      - NotificationEventStatus_DONE
+      - NotificationEventStatus_FAILED
+    NotificationEvent:
+      example:
+        eventID: eventID
+        customFields:
+          key: ''
+        entityType: ''
+        contactEmails:
+        - contactEmails
+        - contactEmails
+        entityID: entityID
+        message: message
+        priority: '{}'
+        title: title
+        contactIds:
+        - contactIds
+        - contactIds
+        organizationID: organizationID
+        ccContactIds:
+        - ccContactIds
+        - ccContactIds
+        channels:
+        - EMAIL
+        - EMAIL
+        isActionItem: true
+        partner: '{}'
+        createdBy: '{}'
+        entityStatus: entityStatus
+        entityName: entityName
+        eventStatus: '{}'
+        action: ''
+        requireAudit: true
+        trackEvents:
+        - contactId: contactId
+          action: OPEN_EMAIL
+          timestamp: 2000-01-23 04:56:07+00:00
+        - contactId: contactId
+          action: OPEN_EMAIL
+          timestamp: 2000-01-23 04:56:07+00:00
+        info: '{}'
+        lastUpdateTime: 2000-01-23 04:56:07+00:00
+        timestamp: 2000-01-23 04:56:07+00:00
+      properties:
+        action:
+          $ref: '#/components/schemas/NotificationEventAction'
+        ccContactIds:
+          description: Cc contactIds that will receive this notification
+          items:
+            type: string
+          type: array
+        channels:
+          description: The list of channels this event will be sent to, e.g., ["SLACK", "EMAIL"]
+          items:
+            $ref: '#/components/schemas/NotificationChannel'
+          type: array
+        contactEmails:
+          description: Contact emails that will receive this notification
+          items:
+            type: string
+          type: array
+        contactIds:
+          description: ContactIds that will receive this notification
+          items:
+            type: string
+          type: array
+        createdBy:
+          allOf:
+          - $ref: '#/components/schemas/LastModifiedBy'
+          description: 'Who originally created or triggered this notification event.
+
+            It can be user or API client.'
+          type: object
+        customFields:
+          additionalProperties: true
+          description: Custom fields of the notification event.
+          type: object
+        entityID:
+          type: string
+        entityName:
+          description: The name of the entity.
+          type: string
+        entityStatus:
+          type: string
+        entityType:
+          $ref: '#/components/schemas/EntityType'
+        eventID:
+          description: notification event id.
+          type: string
+        eventStatus:
+          allOf:
+          - $ref: '#/components/schemas/NotificationEventStatus'
+          description: notification event status.
+          type: object
+        info:
+          description: Additional info of the notification event.
+          type: object
+        isActionItem:
+          description: If this notification event is an action item.
+          type: boolean
+        lastUpdateTime:
+          description: timestamp of the event when it is updated.
+          format: date-time
+          type: string
+        message:
+          description: The message of the notification event such as email body, action item description.
+          type: string
+        organizationID:
+          description: suger organization id.
+          type: string
+        partner:
+          allOf:
+          - $ref: '#/components/schemas/Partner'
+          description: the partner of the entity. Optional.
+          type: object
+        priority:
+          allOf:
+          - $ref: '#/components/schemas/AuditingEventPriority'
+          description: The priority of the notification event.
+          type: object
+        requireAudit:
+          description: If this notification event is an auditing event and need to store in DB.
+          type: boolean
+        timestamp:
+          description: timestamp of the event when it is scheduled or created.
+          format: date-time
+          type: string
+        title:
+          description: The title of the notification event such as email subject, action item title.
+          type: string
+        trackEvents:
+          description: The track events of the notification event.
+          items:
+            $ref: '#/components/schemas/TrackEvent'
+          type: array
+      type: object
+    NotificationEventAction:
+      enum:
+      - ''
+      - ABNORMAL_ALERT
+      - ACCEPT
+      - ADD
+      - APPROVE
+      - CANCEL
+      - CLOSE
+      - CREATE
+      - DELETE
+      - ARCHIVE
+      - DISBURSE
+      - END_SOON
+      - EXPIRE
+      - EXPIRE_SOON
+      - MERGE
+      - METER
+      - NEW_CLIENT_SIGNUP
+      - NOTIFY
+      - NOTIFY_CONTACTS
+      - OPEN_EMAIL
+      - PENDING_CANCEL
+      - PENDING_ACCEPTANCE
+      - REINSTATE
+      - REJECT
+      - REOPEN
+      - CHARGE
+      - REFUND
+      - ISSUE
+      - SIGN
+      - ROTATE_SECRET
+      - SUSPEND
+      - TEST
+      - UPDATE
+      - ACE_ENGAGEMENT_SCORE_UPDATE
+      - ACE_SALES_REP_UPDATE
+      - ACE_CUSTOMER_EMAIL_UPDATE
+      - AZURE_STATUS_UPDATE
+      - SUBMIT_APPROVAL_REQUEST
+      - REVIEW_APPROVAL_REQUEST
+      - COMPLETE
+      - FAIL
+      - WEBHOOK
+      - MARKETPLACE_CONTACT_EMAIL_UPDATE
+      type: string
+      x-enum-comments:
+        NotificationEventAction_ADD: Add user to organization
+      x-enum-varnames:
+      - NotificationEventAction_UNKNOWN
+      - NotificationEventAction_ABNORMAL_ALERT
+      - NotificationEventAction_ACCEPT
+      - NotificationEventAction_ADD
+      - NotificationEventAction_APPROVE
+      - NotificationEventAction_CANCEL
+      - NotificationEventAction_CLOSE
+      - NotificationEventAction_CREATE
+      - NotificationEventAction_DELETE
+      - NotificationEventAction_ARCHIVE
+      - NotificationEventAction_DISBURSE
+      - NotificationEventAction_END_SOON
+      - NotificationEventAction_EXPIRE
+      - NotificationEventAction_EXPIRE_SOON
+      - NotificationEventAction_MERGE
+      - NotificationEventAction_METER
+      - NotificationEventAction_NEW_CLIENT_SIGNUP
+      - NotificationEventAction_NOTIFY
+      - NotificationEventAction_NOTIFY_CONTACTS
+      - NotificationEventAction_OPEN_EMAIL
+      - NotificationEventAction_PENDING_CANCEL
+      - NotificationEventAction_PENDING_ACCEPTANCE
+      - NotificationEventAction_REINSTATE
+      - NotificationEventAction_REJECT
+      - NotificationEventAction_REOPEN
+      - NotificationEventAction_CHARGE
+      - NotificationEventAction_REFUND
+      - NotificationEventAction_ISSUE
+      - NotificationEventAction_SIGN
+      - NotificationEventAction_ROTATE_SECRET
+      - NotificationEventAction_SUSPEND
+      - NotificationEventAction_TEST
+      - NotificationEventAction_UPDATE
+      - NotificationEventAction_ACE_ENGAGEMENT_SCORE_UPDATE
+      - NotificationEventAction_ACE_SALES_REP_UPDATE
+      - NotificationEventAction_ACE_CUSTOMER_EMAIL_UPDATE
+      - NotificationEventAction_AZURE_STATUS_UPDATE
+      - NotificationEventAction_SUBMIT_APPROVAL_REQUEST
+      - NotificationEventAction_REVIEW_APPROVAL_REQUEST
+      - NotificationEventAction_COMPLETE
+      - NotificationEventAction_FAIL
+      - NotificationEventAction_WEBHOOK
+      - NotificationEventAction_MARKETPLACE_CONTACT_EMAIL_UPDATE
+    LastModifiedBy:
+      properties:
+        email:
+          description: The email of the creator.
+          type: string
+        entityId:
+          description: The ID of the creator.
+          type: string
+        entityType:
+          allOf:
+          - $ref: '#/components/schemas/EntityType'
+          description: The Entity type of the creator, either USER or API_CLIENT.
+          type: object
+        name:
+          description: The name of the creator.
+          type: string
+      type: object
+    NotificationMessageInfo:
+      example:
+        standardFields:
+          key: ''
+        customFields:
+          key: ''
+        subject: subject
+        rccRecipients:
+        - rccRecipients
+        - rccRecipients
+        ccRecipients:
+        - ccRecipients
+        - ccRecipients
+        action: '{}'
+        textContent: textContent
+        htmlContent: htmlContent
+      properties:
+        action:
+          allOf:
+          - $ref: '#/components/schemas/NotificationEventAction'
+          description: The action of this notification message.
+          type: object
+        ccRecipients:
+          items:
+            type: string
+          type: array
+        customFields:
+          additionalProperties: true
+          description: All other fields
+          type: object
+        htmlContent:
+          description: The HTML content of the email.
+          type: string
+        rccRecipients:
+          items:
+            type: string
+          type: array
+        standardFields:
+          additionalProperties: true
+          description: The standard fields to render the email content.
+          type: object
+        subject:
+          type: string
+        textContent:
+          description: The text content of the email in case the recipient's email client does not support HTML.
+          type: string
+      type: object
+    ListNotificationEventsResponse:
+      example:
+        nextOffset: 0
+        totalCount: 6
+        notificationEvents:
+        - eventID: eventID
+          customFields:
+            key: ''
+          entityType: ''
+          contactEmails:
+          - contactEmails
+          - contactEmails
+          entityID: entityID
+          message: message
+          priority: '{}'
+          title: title
+          contactIds:
+          - contactIds
+          - contactIds
+          organizationID: organizationID
+          ccContactIds:
+          - ccContactIds
+          - ccContactIds
+          channels:
+          - EMAIL
+          - EMAIL
+          isActionItem: true
+          partner: '{}'
+          createdBy: '{}'
+          entityStatus: entityStatus
+          entityName: entityName
+          eventStatus: '{}'
+          action: ''
+          requireAudit: true
+          trackEvents:
+          - contactId: contactId
+            action: OPEN_EMAIL
+            timestamp: 2000-01-23 04:56:07+00:00
+          - contactId: contactId
+            action: OPEN_EMAIL
+            timestamp: 2000-01-23 04:56:07+00:00
+          info: '{}'
+          lastUpdateTime: 2000-01-23 04:56:07+00:00
+          timestamp: 2000-01-23 04:56:07+00:00
+        - eventID: eventID
+          customFields:
+            key: ''
+          entityType: ''
+          contactEmails:
+          - contactEmails
+          - contactEmails
+          entityID: entityID
+          message: message
+          priority: '{}'
+          title: title
+          contactIds:
+          - contactIds
+          - contactIds
+          organizationID: organizationID
+          ccContactIds:
+          - ccContactIds
+          - ccContactIds
+          channels:
+          - EMAIL
+          - EMAIL
+          isActionItem: true
+          partner: '{}'
+          createdBy: '{}'
+          entityStatus: entityStatus
+          entityName: entityName
+          eventStatus: '{}'
+          action: ''
+          requireAudit: true
+          trackEvents:
+          - contactId: contactId
+            action: OPEN_EMAIL
+            timestamp: 2000-01-23 04:56:07+00:00
+          - contactId: contactId
+            action: OPEN_EMAIL
+            timestamp: 2000-01-23 04:56:07+00:00
+          info: '{}'
+          lastUpdateTime: 2000-01-23 04:56:07+00:00
+          timestamp: 2000-01-23 04:56:07+00:00
+      properties:
+        nextOffset:
+          description: If it is nil, it means there is no more records.
+          type: integer
+        notificationEvents:
+          items:
+            $ref: '#/components/schemas/NotificationEvent'
+          type: array
+        totalCount:
+          description: Only available when the request is made with offset=0.
+          type: integer
+      type: object
+    AuditingEventPriority:
+      enum:
+      - ''
+      - LOW
+      - MEDIUM
+      - HIGH
+      - CRITICAL
+      type: string
+      x-enum-varnames:
+      - AuditingEventPriority_UNKNOWN
+      - AuditingEventPriority_LOW
+      - AuditingEventPriority_MEDIUM
+      - AuditingEventPriority_HIGH
+      - AuditingEventPriority_CRITICAL
+  securitySchemes:
+    APIKeyAuth:
+      description: API Key for authorization in format of <Key *****>.
+      in: header
+      name: Authorization
+      type: apiKey
+x-original-swagger-version: '2.0'

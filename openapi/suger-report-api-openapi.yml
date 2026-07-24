@@ -1,0 +1,2684 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: support@suger.io
+    name: Suger Support
+    url: https://www.suger.io/support
+  description: CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.
+  title: Suger API Report API
+  version: '1.0'
+servers:
+- url: https://api.suger.cloud
+tags:
+- description: Access to revenue or usage metering Report resources
+  name: Report
+paths:
+  /org/{orgId}/dailyRevenueRecord:
+    get:
+      description: list daily revenue records for the given organization, partner, entitlement, or buyer, within the given date range.
+      operationId: ListDailyRevenueRecords
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Cloud Partner
+        explode: true
+        in: query
+        name: partner
+        required: false
+        schema:
+          enum:
+          - AWS
+          - AZURE
+          - GCP
+          type: string
+        style: form
+      - description: Filter daily revenue records by the given product ID
+        explode: true
+        in: query
+        name: productId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter daily revenue records by the given buyer ID
+        explode: true
+        in: query
+        name: buyerId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter daily revenue records by the given entitlement ID
+        explode: true
+        in: query
+        name: entitlementId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
+        explode: true
+        in: query
+        name: startDate
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: end date (UTC) in YYYY-MM-DD format, default is today
+        explode: true
+        in: query
+        name: endDate
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/RevenueRecord'
+                type: array
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: List Daily Revenue Records
+      tags:
+      - Report
+  /org/{orgId}/partner/{partner}/revenueRecord:
+    get:
+      description: list the revenue records for the given organization, product, entitlement, or buyer.
+      operationId: ListRevenueRecords
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Cloud Partner
+        explode: false
+        in: path
+        name: partner
+        required: true
+        schema:
+          enum:
+          - AWS
+          - AZURE
+          - GCP
+          type: string
+        style: simple
+      - description: Filter revenue records by the given product ID
+        explode: true
+        in: query
+        name: productId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter revenue records by the given entitlement ID
+        explode: true
+        in: query
+        name: entitlementId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter revenue records by the given buyer ID
+        explode: true
+        in: query
+        name: buyerId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
+        explode: true
+        in: query
+        name: startDate
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: end date (UTC) in YYYY-MM-DD format, default is today
+        explode: true
+        in: query
+        name: endDate
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: List pagination size, default 1000, max value is 1000
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: List pagination offset, default 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListRevenueRecordsResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: List Revenue Records
+      tags:
+      - Report
+  /org/{orgId}/partner/{partner}/revenueRecordDetail:
+    get:
+      description: list the raw revenue record details for the given organization, partner, product, entitlement, or buyer.
+      operationId: ListRevenueRecordDetails
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Cloud Partner
+        explode: false
+        in: path
+        name: partner
+        required: true
+        schema:
+          enum:
+          - AWS
+          - AZURE
+          - GCP
+          type: string
+        style: simple
+      - description: Filter revenue record details by the given product ID
+        explode: true
+        in: query
+        name: productId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter revenue record details by the given buyer ID
+        explode: true
+        in: query
+        name: buyerId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter revenue record details by the given entitlement ID
+        explode: true
+        in: query
+        name: entitlementId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
+        explode: true
+        in: query
+        name: startDate
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: end date (UTC) in YYYY-MM-DD format, default is today
+        explode: true
+        in: query
+        name: endDate
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: List pagination size, default 1000, max value is 1000
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: List pagination offset, default 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListRevenueRecordDetailsResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: List Revenue Record Details
+      tags:
+      - Report
+  /org/{orgId}/partner/{partner}/usageMeteringDailyRecord:
+    get:
+      description: list the daily records of the usage metering from the cloud marketplace for the given organization, entitlement, or buyer.
+      operationId: ListUsageMeteringDailyRecords
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Filter by the Cloud Partner
+        explode: false
+        in: path
+        name: partner
+        required: true
+        schema:
+          enum:
+          - AWS
+          - AZURE
+          - GCP
+          type: string
+        style: simple
+      - description: Filter usage metering daily records by the given buyer ID
+        explode: true
+        in: query
+        name: buyerId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter usage metering daily records by the given entitlement ID
+        explode: true
+        in: query
+        name: entitlementId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
+        explode: true
+        in: query
+        name: startDate
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: end date (UTC) in YYYY-MM-DD format, default is today
+        explode: true
+        in: query
+        name: endDate
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: List pagination size, default 1000, max value is 1000
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: List pagination offset, default 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListUsageMeteringDailyRecordsResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: List Usage Metering Daily Records
+      tags:
+      - Report
+  /org/{orgId}/revenueReport:
+    post:
+      description: Get the revenue report of the given organization, product, entitlement, or buyer.
+      operationId: GetRevenueReport
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetRevenueReportParams'
+        description: Get Revenue Report Params
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RevenueReport'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Get Revenue Report
+      tags:
+      - Report
+      x-codegen-request-body-name: data
+components:
+  schemas:
+    RevenueReport:
+      example:
+        organizationID: organizationID
+        reportType: GrossAmount
+        partner: partner
+        productID: productID
+        reportDate: 2000-01-23 04:56:07+00:00
+        service: service
+        entitlementID: entitlementID
+        groupBy: '{}'
+        revenueRecords:
+        - date: 2000-01-23 04:56:07+00:00
+          amount: 0.8008281904610115
+          productID: productID
+          refundDisburseAmount: 9.965781217890562
+          entitlementID: entitlementID
+          invoiceAmount: 5.025004791520295
+          buyerID: buyerID
+          invoiceDate: 2000-01-23 04:56:07+00:00
+          collectableAmount: 6.027456183070403
+          disburseDate: 2000-01-23 04:56:07+00:00
+          refundInvoiceDate: 2000-01-23 04:56:07+00:00
+          refundDisburseDate: 2000-01-23 04:56:07+00:00
+          organizationID: organizationID
+          paymentDueDate: 2000-01-23 04:56:07+00:00
+          refundInvoiceAmount: 9.369310271410669
+          partner: partner
+          currency: currency
+          disburseAmount: 1.4658129805029452
+          id: id
+          taxAmount: 6.683562403749608
+          info:
+            awsRevenueRecords:
+            - brokerID: brokerID
+              usagePeriodStartDate:
+                valid: true
+                time: time
+              productID: productID
+              insertDate:
+                valid: true
+                time: time
+              toAccountID: toAccountID
+              usagePeriodEndDate:
+                valid: true
+                time: time
+              parentBillingEventID: parentBillingEventID
+              disbursementBillingEventID: disbursementBillingEventID
+              action: action
+              offerID: offerID
+              currency: currency
+              invoiceID: invoiceID
+              id: id
+              balanceImpacting: 5
+              amount: 5.962133916683182
+              endUserAccountID: endUserAccountID
+              dataFeedProductID: dataFeedProductID
+              entitlementID: entitlementID
+              buyerID: buyerID
+              invoiceDate:
+                valid: true
+                time: time
+              transactionReferenceID: transactionReferenceID
+              organizationID: organizationID
+              transactionType: transactionType
+              paymentDueDate:
+                valid: true
+                time: time
+              fromAccountID: fromAccountID
+              agreementID: agreementID
+              billingAddressID: billingAddressID
+              bankTraceID: bankTraceID
+            - brokerID: brokerID
+              usagePeriodStartDate:
+                valid: true
+                time: time
+              productID: productID
+              insertDate:
+                valid: true
+                time: time
+              toAccountID: toAccountID
+              usagePeriodEndDate:
+                valid: true
+                time: time
+              parentBillingEventID: parentBillingEventID
+              disbursementBillingEventID: disbursementBillingEventID
+              action: action
+              offerID: offerID
+              currency: currency
+              invoiceID: invoiceID
+              id: id
+              balanceImpacting: 5
+              amount: 5.962133916683182
+              endUserAccountID: endUserAccountID
+              dataFeedProductID: dataFeedProductID
+              entitlementID: entitlementID
+              buyerID: buyerID
+              invoiceDate:
+                valid: true
+                time: time
+              transactionReferenceID: transactionReferenceID
+              organizationID: organizationID
+              transactionType: transactionType
+              paymentDueDate:
+                valid: true
+                time: time
+              fromAccountID: fromAccountID
+              agreementID: agreementID
+              billingAddressID: billingAddressID
+              bankTraceID: bankTraceID
+            resellerName: resellerName
+            resource: resource
+            billingModel: SubscriptionBased
+            channel: '{}'
+            idSource: idSource
+            earningId: earningId
+            resellerId: resellerId
+            disbursementNotificationSent: true
+            azureRevenueRecords:
+            - purchaseRecordID: purchaseRecordID
+              productID: productID
+              termEndDate: termEndDate
+              azureCustomerID: azureCustomerID
+              billingModel: billingModel
+              payoutStatus: payoutStatus
+              resellerCity: resellerCity
+              resellerID: resellerID
+              programName: programName
+              resellerState: resellerState
+              azureAssetID: azureAssetID
+              offerID: offerID
+              earningUsd: 2.3021358869347655
+              invoiceID: invoiceID
+              azurePlanID: azurePlanID
+              paymentStatus: paymentStatus
+              revenueUsd: 7.061401241503109
+              azureBillingAccountID: azureBillingAccountID
+              entitlementID: entitlementID
+              resellerEmail: resellerEmail
+              buyerID: buyerID
+              invoiceDate:
+                valid: true
+                time: time
+              transactionDate:
+                valid: true
+                time: time
+              earningID: earningID
+              invoiceDueDate:
+                valid: true
+                time: time
+              resellerCompany: resellerCompany
+              organizationID: organizationID
+              resellerCountry: resellerCountry
+              paymentID: paymentID
+              termStartDate: termStartDate
+              azureOfferID: azureOfferID
+              estimatedPayoutMonth:
+                valid: true
+                time: time
+              paymentSentDate:
+                valid: true
+                time: time
+            - purchaseRecordID: purchaseRecordID
+              productID: productID
+              termEndDate: termEndDate
+              azureCustomerID: azureCustomerID
+              billingModel: billingModel
+              payoutStatus: payoutStatus
+              resellerCity: resellerCity
+              resellerID: resellerID
+              programName: programName
+              resellerState: resellerState
+              azureAssetID: azureAssetID
+              offerID: offerID
+              earningUsd: 2.3021358869347655
+              invoiceID: invoiceID
+              azurePlanID: azurePlanID
+              paymentStatus: paymentStatus
+              revenueUsd: 7.061401241503109
+              azureBillingAccountID: azureBillingAccountID
+              entitlementID: entitlementID
+              resellerEmail: resellerEmail
+              buyerID: buyerID
+              invoiceDate:
+                valid: true
+                time: time
+              transactionDate:
+                valid: true
+                time: time
+              earningID: earningID
+              invoiceDueDate:
+                valid: true
+                time: time
+              resellerCompany: resellerCompany
+              organizationID: organizationID
+              resellerCountry: resellerCountry
+              paymentID: paymentID
+              termStartDate: termStartDate
+              azureOfferID: azureOfferID
+              estimatedPayoutMonth:
+                valid: true
+                time: time
+              paymentSentDate:
+                valid: true
+                time: time
+            paymentId: paymentId
+            disbursementBillingEventId: disbursementBillingEventId
+            bankTraceId: bankTraceId
+            creditAmount: 9.301444243932576
+            gcpRevenueRecords:
+            - productID: productID
+              usage: 1.1730742509559433
+              withheld: 4.965218492984954
+              paymentType: paymentType
+              accountID: accountID
+              refundBalanceOutstanding: 1.4894159098541704
+              reportDate: reportDate
+              trialUse: 7.457744773683766
+              paymentSchedule: paymentSchedule
+              offerID: offerID
+              currency: currency
+              prepayCredits: 1.2315135367772556
+              abandoned: 3.616076749251911
+              sku: sku
+              released: 6.84685269835264
+              usedBy: usedBy
+              insightAccountID: insightAccountID
+              dueVendor: 4.145608029883936
+              resource: resource
+              googleEntity: googleEntity
+              refundReason: refundReason
+              entitlementID: entitlementID
+              buyerID: buyerID
+              organizationID: organizationID
+              charges: 2.027123023002322
+              unit: unit
+              refundBalanceDeductedThisMonth: 1.0246457001441578
+              ordinal: 7
+            - productID: productID
+              usage: 1.1730742509559433
+              withheld: 4.965218492984954
+              paymentType: paymentType
+              accountID: accountID
+              refundBalanceOutstanding: 1.4894159098541704
+              reportDate: reportDate
+              trialUse: 7.457744773683766
+              paymentSchedule: paymentSchedule
+              offerID: offerID
+              currency: currency
+              prepayCredits: 1.2315135367772556
+              abandoned: 3.616076749251911
+              sku: sku
+              released: 6.84685269835264
+              usedBy: usedBy
+              insightAccountID: insightAccountID
+              dueVendor: 4.145608029883936
+              resource: resource
+              googleEntity: googleEntity
+              refundReason: refundReason
+              entitlementID: entitlementID
+              buyerID: buyerID
+              organizationID: organizationID
+              charges: 2.027123023002322
+              unit: unit
+              refundBalanceDeductedThisMonth: 1.0246457001441578
+              ordinal: 7
+        - date: 2000-01-23 04:56:07+00:00
+          amount: 0.8008281904610115
+          productID: productID
+          refundDisburseAmount: 9.965781217890562
+          entitlementID: entitlementID
+          invoiceAmount: 5.025004791520295
+          buyerID: buyerID
+          invoiceDate: 2000-01-23 04:56:07+00:00
+          collectableAmount: 6.027456183070403
+          disburseDate: 2000-01-23 04:56:07+00:00
+          refundInvoiceDate: 2000-01-23 04:56:07+00:00
+          refundDisburseDate: 2000-01-23 04:56:07+00:00
+          organizationID: organizationID
+          paymentDueDate: 2000-01-23 04:56:07+00:00
+          refundInvoiceAmount: 9.369310271410669
+          partner: partner
+          currency: currency
+          disburseAmount: 1.4658129805029452
+          id: id
+          taxAmount: 6.683562403749608
+          info:
+            awsRevenueRecords:
+            - brokerID: brokerID
+              usagePeriodStartDate:
+                valid: true
+                time: time
+              productID: productID
+              insertDate:
+                valid: true
+                time: time
+              toAccountID: toAccountID
+              usagePeriodEndDate:
+                valid: true
+                time: time
+              parentBillingEventID: parentBillingEventID
+              disbursementBillingEventID: disbursementBillingEventID
+              action: action
+              offerID: offerID
+              currency: currency
+              invoiceID: invoiceID
+              id: id
+              balanceImpacting: 5
+              amount: 5.962133916683182
+              endUserAccountID: endUserAccountID
+              dataFeedProductID: dataFeedProductID
+              entitlementID: entitlementID
+              buyerID: buyerID
+              invoiceDate:
+                valid: true
+                time: time
+              transactionReferenceID: transactionReferenceID
+              organizationID: organizationID
+              transactionType: transactionType
+              paymentDueDate:
+                valid: true
+                time: time
+              fromAccountID: fromAccountID
+              agreementID: agreementID
+              billingAddressID: billingAddressID
+              bankTraceID: bankTraceID
+            - brokerID: brokerID
+              usagePeriodStartDate:
+                valid: true
+                time: time
+              productID: productID
+              insertDate:
+                valid: true
+                time: time
+              toAccountID: toAccountID
+              usagePeriodEndDate:
+                valid: true
+                time: time
+              parentBillingEventID: parentBillingEventID
+              disbursementBillingEventID: disbursementBillingEventID
+              action: action
+              offerID: offerID
+              currency: currency
+              invoiceID: invoiceID
+              id: id
+              balanceImpacting: 5
+              amount: 5.962133916683182
+              endUserAccountID: endUserAccountID
+              dataFeedProductID: dataFeedProductID
+              entitlementID: entitlementID
+              buyerID: buyerID
+              invoiceDate:
+                valid: true
+                time: time
+              transactionReferenceID: transactionReferenceID
+              organizationID: organizationID
+              transactionType: transactionType
+              paymentDueDate:
+                valid: true
+                time: time
+              fromAccountID: fromAccountID
+              agreementID: agreementID
+              billingAddressID: billingAddressID
+              bankTraceID: bankTraceID
+            resellerName: resellerName
+            resource: resource
+            billingModel: SubscriptionBased
+            channel: '{}'
+            idSource: idSource
+            earningId: earningId
+            resellerId: resellerId
+            disbursementNotificationSent: true
+            azureRevenueRecords:
+            - purchaseRecordID: purchaseRecordID
+              productID: productID
+              termEndDate: termEndDate
+              azureCustomerID: azureCustomerID
+              billingModel: billingModel
+              payoutStatus: payoutStatus
+              resellerCity: resellerCity
+              resellerID: resellerID
+              programName: programName
+              resellerState: resellerState
+              azureAssetID: azureAssetID
+              offerID: offerID
+              earningUsd: 2.3021358869347655
+              invoiceID: invoiceID
+              azurePlanID: azurePlanID
+              paymentStatus: paymentStatus
+              revenueUsd: 7.061401241503109
+              azureBillingAccountID: azureBillingAccountID
+              entitlementID: entitlementID
+              resellerEmail: resellerEmail
+              buyerID: buyerID
+              invoiceDate:
+                valid: true
+                time: time
+              transactionDate:
+                valid: true
+                time: time
+              earningID: earningID
+              invoiceDueDate:
+                valid: true
+                time: time
+              resellerCompany: resellerCompany
+              organizationID: organizationID
+              resellerCountry: resellerCountry
+              paymentID: paymentID
+              termStartDate: termStartDate
+              azureOfferID: azureOfferID
+              estimatedPayoutMonth:
+                valid: true
+                time: time
+              paymentSentDate:
+                valid: true
+                time: time
+            - purchaseRecordID: purchaseRecordID
+              productID: productID
+              termEndDate: termEndDate
+              azureCustomerID: azureCustomerID
+              billingModel: billingModel
+              payoutStatus: payoutStatus
+              resellerCity: resellerCity
+              resellerID: resellerID
+              programName: programName
+              resellerState: resellerState
+              azureAssetID: azureAssetID
+              offerID: offerID
+              earningUsd: 2.3021358869347655
+              invoiceID: invoiceID
+              azurePlanID: azurePlanID
+              paymentStatus: paymentStatus
+              revenueUsd: 7.061401241503109
+              azureBillingAccountID: azureBillingAccountID
+              entitlementID: entitlementID
+              resellerEmail: resellerEmail
+              buyerID: buyerID
+              invoiceDate:
+                valid: true
+                time: time
+              transactionDate:
+                valid: true
+                time: time
+              earningID: earningID
+              invoiceDueDate:
+                valid: true
+                time: time
+              resellerCompany: resellerCompany
+              organizationID: organizationID
+              resellerCountry: resellerCountry
+              paymentID: paymentID
+              termStartDate: termStartDate
+              azureOfferID: azureOfferID
+              estimatedPayoutMonth:
+                valid: true
+                time: time
+              paymentSentDate:
+                valid: true
+                time: time
+            paymentId: paymentId
+            disbursementBillingEventId: disbursementBillingEventId
+            bankTraceId: bankTraceId
+            creditAmount: 9.301444243932576
+            gcpRevenueRecords:
+            - productID: productID
+              usage: 1.1730742509559433
+              withheld: 4.965218492984954
+              paymentType: paymentType
+              accountID: accountID
+              refundBalanceOutstanding: 1.4894159098541704
+              reportDate: reportDate
+              trialUse: 7.457744773683766
+              paymentSchedule: paymentSchedule
+              offerID: offerID
+              currency: currency
+              prepayCredits: 1.2315135367772556
+              abandoned: 3.616076749251911
+              sku: sku
+              released: 6.84685269835264
+              usedBy: usedBy
+              insightAccountID: insightAccountID
+              dueVendor: 4.145608029883936
+              resource: resource
+              googleEntity: googleEntity
+              refundReason: refundReason
+              entitlementID: entitlementID
+              buyerID: buyerID
+              organizationID: organizationID
+              charges: 2.027123023002322
+              unit: unit
+              refundBalanceDeductedThisMonth: 1.0246457001441578
+              ordinal: 7
+            - productID: productID
+              usage: 1.1730742509559433
+              withheld: 4.965218492984954
+              paymentType: paymentType
+              accountID: accountID
+              refundBalanceOutstanding: 1.4894159098541704
+              reportDate: reportDate
+              trialUse: 7.457744773683766
+              paymentSchedule: paymentSchedule
+              offerID: offerID
+              currency: currency
+              prepayCredits: 1.2315135367772556
+              abandoned: 3.616076749251911
+              sku: sku
+              released: 6.84685269835264
+              usedBy: usedBy
+              insightAccountID: insightAccountID
+              dueVendor: 4.145608029883936
+              resource: resource
+              googleEntity: googleEntity
+              refundReason: refundReason
+              entitlementID: entitlementID
+              buyerID: buyerID
+              organizationID: organizationID
+              charges: 2.027123023002322
+              unit: unit
+              refundBalanceDeductedThisMonth: 1.0246457001441578
+              ordinal: 7
+        buyerID: buyerID
+      properties:
+        buyerID:
+          type: string
+        entitlementID:
+          type: string
+        groupBy:
+          allOf:
+          - $ref: '#/components/schemas/GroupByInterval'
+          description: The group by of the revenue report.
+          type: object
+        organizationID:
+          type: string
+        partner:
+          type: string
+        productID:
+          type: string
+        reportDate:
+          format: date-time
+          type: string
+        reportType:
+          $ref: '#/components/schemas/RevenueReportType'
+        revenueRecords:
+          items:
+            $ref: '#/components/schemas/RevenueRecord'
+          type: array
+        service:
+          type: string
+      type: object
+    UsageMeteringDailyRecord:
+      example:
+        date: 2000-01-23 04:56:07+00:00
+        amount: 6.027456183070403
+        quantity: 1.4658129805029452
+        partner: '{}'
+        entitlementID: entitlementID
+        groupBysExpression: groupBysExpression
+        key: key
+      properties:
+        amount:
+          type: number
+        date:
+          format: date-time
+          type: string
+        entitlementID:
+          description: The Entitlement ID of the usage metering daily record.
+          type: string
+        groupBysExpression:
+          description: 'The group bys expression of the usage metering.
+
+            When the same usage metering key may have multiple expressions of group bys to aggregate the usage.'
+          type: string
+        key:
+          description: The dimension key of the usage metering.
+          type: string
+        partner:
+          allOf:
+          - $ref: '#/components/schemas/Partner'
+          description: The partner where this usage metering daily record is from. Such as AWS, AZURE or GCP.
+          type: object
+        quantity:
+          type: number
+      type: object
+    GetRevenueReportParams:
+      example:
+        organizationID: organizationID
+        reportType: GrossAmount
+        partner: AWS
+        productID: productID
+        service: MARKETPLACE
+        entitlementID: entitlementID
+        groupBy: '{}'
+        buyerID: buyerID
+      properties:
+        buyerID:
+          description: Optional, if available, return the report for the Buyer.
+          type: string
+        entitlementID:
+          description: Optional, if available, return the report for the Entitlement.
+          type: string
+        groupBy:
+          allOf:
+          - $ref: '#/components/schemas/GroupByInterval'
+          description: default:"day"
+          type: object
+        organizationID:
+          description: Required. If the productID & entitlementID are emtpy, return the report for the entire Organization.
+          type: string
+        partner:
+          enum:
+          - AWS
+          - AZURE
+          - GCP
+          type: string
+        productID:
+          description: Optional, if available, return the report for the Product.
+          type: string
+        reportType:
+          $ref: '#/components/schemas/RevenueReportType'
+        service:
+          enum:
+          - MARKETPLACE
+          type: string
+      required:
+      - organizationID
+      - partner
+      - reportType
+      - service
+      type: object
+    RevenueRecord:
+      example:
+        date: 2000-01-23 04:56:07+00:00
+        amount: 0.8008281904610115
+        productID: productID
+        refundDisburseAmount: 9.965781217890562
+        entitlementID: entitlementID
+        invoiceAmount: 5.025004791520295
+        buyerID: buyerID
+        invoiceDate: 2000-01-23 04:56:07+00:00
+        collectableAmount: 6.027456183070403
+        disburseDate: 2000-01-23 04:56:07+00:00
+        refundInvoiceDate: 2000-01-23 04:56:07+00:00
+        refundDisburseDate: 2000-01-23 04:56:07+00:00
+        organizationID: organizationID
+        paymentDueDate: 2000-01-23 04:56:07+00:00
+        refundInvoiceAmount: 9.369310271410669
+        partner: partner
+        currency: currency
+        disburseAmount: 1.4658129805029452
+        id: id
+        taxAmount: 6.683562403749608
+        info:
+          awsRevenueRecords:
+          - brokerID: brokerID
+            usagePeriodStartDate:
+              valid: true
+              time: time
+            productID: productID
+            insertDate:
+              valid: true
+              time: time
+            toAccountID: toAccountID
+            usagePeriodEndDate:
+              valid: true
+              time: time
+            parentBillingEventID: parentBillingEventID
+            disbursementBillingEventID: disbursementBillingEventID
+            action: action
+            offerID: offerID
+            currency: currency
+            invoiceID: invoiceID
+            id: id
+            balanceImpacting: 5
+            amount: 5.962133916683182
+            endUserAccountID: endUserAccountID
+            dataFeedProductID: dataFeedProductID
+            entitlementID: entitlementID
+            buyerID: buyerID
+            invoiceDate:
+              valid: true
+              time: time
+            transactionReferenceID: transactionReferenceID
+            organizationID: organizationID
+            transactionType: transactionType
+            paymentDueDate:
+              valid: true
+              time: time
+            fromAccountID: fromAccountID
+            agreementID: agreementID
+            billingAddressID: billingAddressID
+            bankTraceID: bankTraceID
+          - brokerID: brokerID
+            usagePeriodStartDate:
+              valid: true
+              time: time
+            productID: productID
+            insertDate:
+              valid: true
+              time: time
+            toAccountID: toAccountID
+            usagePeriodEndDate:
+              valid: true
+              time: time
+            parentBillingEventID: parentBillingEventID
+            disbursementBillingEventID: disbursementBillingEventID
+            action: action
+            offerID: offerID
+            currency: currency
+            invoiceID: invoiceID
+            id: id
+            balanceImpacting: 5
+            amount: 5.962133916683182
+            endUserAccountID: endUserAccountID
+            dataFeedProductID: dataFeedProductID
+            entitlementID: entitlementID
+            buyerID: buyerID
+            invoiceDate:
+              valid: true
+              time: time
+            transactionReferenceID: transactionReferenceID
+            organizationID: organizationID
+            transactionType: transactionType
+            paymentDueDate:
+              valid: true
+              time: time
+            fromAccountID: fromAccountID
+            agreementID: agreementID
+            billingAddressID: billingAddressID
+            bankTraceID: bankTraceID
+          resellerName: resellerName
+          resource: resource
+          billingModel: SubscriptionBased
+          channel: '{}'
+          idSource: idSource
+          earningId: earningId
+          resellerId: resellerId
+          disbursementNotificationSent: true
+          azureRevenueRecords:
+          - purchaseRecordID: purchaseRecordID
+            productID: productID
+            termEndDate: termEndDate
+            azureCustomerID: azureCustomerID
+            billingModel: billingModel
+            payoutStatus: payoutStatus
+            resellerCity: resellerCity
+            resellerID: resellerID
+            programName: programName
+            resellerState: resellerState
+            azureAssetID: azureAssetID
+            offerID: offerID
+            earningUsd: 2.3021358869347655
+            invoiceID: invoiceID
+            azurePlanID: azurePlanID
+            paymentStatus: paymentStatus
+            revenueUsd: 7.061401241503109
+            azureBillingAccountID: azureBillingAccountID
+            entitlementID: entitlementID
+            resellerEmail: resellerEmail
+            buyerID: buyerID
+            invoiceDate:
+              valid: true
+              time: time
+            transactionDate:
+              valid: true
+              time: time
+            earningID: earningID
+            invoiceDueDate:
+              valid: true
+              time: time
+            resellerCompany: resellerCompany
+            organizationID: organizationID
+            resellerCountry: resellerCountry
+            paymentID: paymentID
+            termStartDate: termStartDate
+            azureOfferID: azureOfferID
+            estimatedPayoutMonth:
+              valid: true
+              time: time
+            paymentSentDate:
+              valid: true
+              time: time
+          - purchaseRecordID: purchaseRecordID
+            productID: productID
+            termEndDate: termEndDate
+            azureCustomerID: azureCustomerID
+            billingModel: billingModel
+            payoutStatus: payoutStatus
+            resellerCity: resellerCity
+            resellerID: resellerID
+            programName: programName
+            resellerState: resellerState
+            azureAssetID: azureAssetID
+            offerID: offerID
+            earningUsd: 2.3021358869347655
+            invoiceID: invoiceID
+            azurePlanID: azurePlanID
+            paymentStatus: paymentStatus
+            revenueUsd: 7.061401241503109
+            azureBillingAccountID: azureBillingAccountID
+            entitlementID: entitlementID
+            resellerEmail: resellerEmail
+            buyerID: buyerID
+            invoiceDate:
+              valid: true
+              time: time
+            transactionDate:
+              valid: true
+              time: time
+            earningID: earningID
+            invoiceDueDate:
+              valid: true
+              time: time
+            resellerCompany: resellerCompany
+            organizationID: organizationID
+            resellerCountry: resellerCountry
+            paymentID: paymentID
+            termStartDate: termStartDate
+            azureOfferID: azureOfferID
+            estimatedPayoutMonth:
+              valid: true
+              time: time
+            paymentSentDate:
+              valid: true
+              time: time
+          paymentId: paymentId
+          disbursementBillingEventId: disbursementBillingEventId
+          bankTraceId: bankTraceId
+          creditAmount: 9.301444243932576
+          gcpRevenueRecords:
+          - productID: productID
+            usage: 1.1730742509559433
+            withheld: 4.965218492984954
+            paymentType: paymentType
+            accountID: accountID
+            refundBalanceOutstanding: 1.4894159098541704
+            reportDate: reportDate
+            trialUse: 7.457744773683766
+            paymentSchedule: paymentSchedule
+            offerID: offerID
+            currency: currency
+            prepayCredits: 1.2315135367772556
+            abandoned: 3.616076749251911
+            sku: sku
+            released: 6.84685269835264
+            usedBy: usedBy
+            insightAccountID: insightAccountID
+            dueVendor: 4.145608029883936
+            resource: resource
+            googleEntity: googleEntity
+            refundReason: refundReason
+            entitlementID: entitlementID
+            buyerID: buyerID
+            organizationID: organizationID
+            charges: 2.027123023002322
+            unit: unit
+            refundBalanceDeductedThisMonth: 1.0246457001441578
+            ordinal: 7
+          - productID: productID
+            usage: 1.1730742509559433
+            withheld: 4.965218492984954
+            paymentType: paymentType
+            accountID: accountID
+            refundBalanceOutstanding: 1.4894159098541704
+            reportDate: reportDate
+            trialUse: 7.457744773683766
+            paymentSchedule: paymentSchedule
+            offerID: offerID
+            currency: currency
+            prepayCredits: 1.2315135367772556
+            abandoned: 3.616076749251911
+            sku: sku
+            released: 6.84685269835264
+            usedBy: usedBy
+            insightAccountID: insightAccountID
+            dueVendor: 4.145608029883936
+            resource: resource
+            googleEntity: googleEntity
+            refundReason: refundReason
+            entitlementID: entitlementID
+            buyerID: buyerID
+            organizationID: organizationID
+            charges: 2.027123023002322
+            unit: unit
+            refundBalanceDeductedThisMonth: 1.0246457001441578
+            ordinal: 7
+      properties:
+        amount:
+          description: The revenue amount for the revenue report
+          type: number
+        buyerID:
+          type: string
+        collectableAmount:
+          description: The revenue amount that the seller/ISV can collect.
+          type: number
+        currency:
+          description: The currency of the revenue in ISO 4217 format, such as "USD".
+          type: string
+        date:
+          description: The date for the revenue report
+          format: date-time
+          type: string
+        disburseAmount:
+          type: number
+        disburseDate:
+          format: date-time
+          type: string
+        entitlementID:
+          type: string
+        id:
+          type: string
+        info:
+          $ref: '#/components/schemas/RevenueRecordInfo'
+        invoiceAmount:
+          type: number
+        invoiceDate:
+          format: date-time
+          type: string
+        organizationID:
+          type: string
+        partner:
+          description: The value is from type Partner string
+          type: string
+        paymentDueDate:
+          format: date-time
+          type: string
+        productID:
+          type: string
+        refundDisburseAmount:
+          type: number
+        refundDisburseDate:
+          format: date-time
+          type: string
+        refundInvoiceAmount:
+          type: number
+        refundInvoiceDate:
+          format: date-time
+          type: string
+        taxAmount:
+          type: number
+      type: object
+    RevenueRecordDetail:
+      example:
+        awsRevenueRecordDetail: '{}'
+        gcpRevenueRecordDetail: '{}'
+        azureRevenueRecordDetail: '{}'
+      properties:
+        awsRevenueRecordDetail:
+          allOf:
+          - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingAwsBillingEvent'
+          description: For AWS Marketplace
+          type: object
+        azureRevenueRecordDetail:
+          allOf:
+          - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingAzureCmaRevenue'
+          description: For Azure Marketplace
+          type: object
+        gcpRevenueRecordDetail:
+          allOf:
+          - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingGcpChargeUsage'
+          description: For GCP Marketplace
+          type: object
+      type: object
+    RevenueReportType:
+      enum:
+      - GrossAmount
+      - InvoicedAmount
+      - CollectableAmount
+      - DisbursedAmount
+      type: string
+      x-enum-varnames:
+      - RevenueReportType_GrossAmount
+      - RevenueReportType_InvoicedAmount
+      - RevenueReportType_CollectableAmount
+      - RevenueReportType_DisbursedAmount
+    database_sql.NullTime:
+      example:
+        valid: true
+        time: time
+      properties:
+        time:
+          type: string
+        valid:
+          description: Valid is true if Time is not NULL
+          type: boolean
+      type: object
+    github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingGcpChargeUsage:
+      example:
+        productID: productID
+        usage: 1.1730742509559433
+        withheld: 4.965218492984954
+        paymentType: paymentType
+        accountID: accountID
+        refundBalanceOutstanding: 1.4894159098541704
+        reportDate: reportDate
+        trialUse: 7.457744773683766
+        paymentSchedule: paymentSchedule
+        offerID: offerID
+        currency: currency
+        prepayCredits: 1.2315135367772556
+        abandoned: 3.616076749251911
+        sku: sku
+        released: 6.84685269835264
+        usedBy: usedBy
+        insightAccountID: insightAccountID
+        dueVendor: 4.145608029883936
+        resource: resource
+        googleEntity: googleEntity
+        refundReason: refundReason
+        entitlementID: entitlementID
+        buyerID: buyerID
+        organizationID: organizationID
+        charges: 2.027123023002322
+        unit: unit
+        refundBalanceDeductedThisMonth: 1.0246457001441578
+        ordinal: 7
+      properties:
+        abandoned:
+          type: number
+        accountID:
+          type: string
+        buyerID:
+          type: string
+        charges:
+          type: number
+        currency:
+          type: string
+        dueVendor:
+          type: number
+        entitlementID:
+          type: string
+        googleEntity:
+          type: string
+        insightAccountID:
+          type: string
+        offerID:
+          type: string
+        ordinal:
+          type: integer
+        organizationID:
+          type: string
+        paymentSchedule:
+          type: string
+        paymentType:
+          type: string
+        prepayCredits:
+          type: number
+        productID:
+          type: string
+        refundBalanceDeductedThisMonth:
+          type: number
+        refundBalanceOutstanding:
+          type: number
+        refundReason:
+          type: string
+        released:
+          type: number
+        reportDate:
+          type: string
+        resource:
+          type: string
+        sku:
+          type: string
+        trialUse:
+          type: number
+        unit:
+          type: string
+        usage:
+          type: number
+        usedBy:
+          type: string
+        withheld:
+          type: number
+      type: object
+    RevenueChannel:
+      enum:
+      - DIRECT
+      - RESOLD
+      type: string
+      x-enum-varnames:
+      - RevenueChannelDirect
+      - RevenueChannelResold
+    Partner:
+      enum:
+      - ''
+      - ADYEN
+      - ALIBABA
+      - AWS
+      - AWS_CHINA
+      - AZURE
+      - CHARGEBEE
+      - DATABRICKS
+      - DOCUSIGN
+      - GCP
+      - GOOGLE
+      - HUBSPOT
+      - INTUIT
+      - LAGO
+      - MARKETO
+      - METRONOME
+      - MICROSOFT
+      - ORACLE
+      - ORB
+      - REDHAT
+      - SALESFORCE
+      - SLACK
+      - SNOWFLAKE
+      - STRIPE
+      - ZOHO
+      type: string
+      x-enum-varnames:
+      - Partner_UNKNOWN
+      - Partner_ADYEN
+      - Partner_ALIBABA
+      - Partner_AWS
+      - Partner_AWS_CHINA
+      - Partner_AZURE
+      - Partner_CHARGEBEE
+      - Partner_DATABRICKS
+      - Partner_DOCUSIGN
+      - Partner_GCP
+      - Partner_GOOGLE
+      - Partner_HUBSPOT
+      - Partner_INTUIT
+      - Partner_LAGO
+      - Partner_MARKETO
+      - Partner_METRONOME
+      - Partner_MICROSOFT
+      - Partner_ORACLE
+      - Partner_ORB
+      - Partner_REDHAT
+      - Partner_SALESFORCE
+      - Partner_SLACK
+      - Partner_SNOWFLAKE
+      - Partner_STRIPE
+      - Partner_ZOHO
+    ListRevenueRecordsResponse:
+      example:
+        revenueRecords:
+        - date: 2000-01-23 04:56:07+00:00
+          amount: 0.8008281904610115
+          productID: productID
+          refundDisburseAmount: 9.965781217890562
+          entitlementID: entitlementID
+          invoiceAmount: 5.025004791520295
+          buyerID: buyerID
+          invoiceDate: 2000-01-23 04:56:07+00:00
+          collectableAmount: 6.027456183070403
+          disburseDate: 2000-01-23 04:56:07+00:00
+          refundInvoiceDate: 2000-01-23 04:56:07+00:00
+          refundDisburseDate: 2000-01-23 04:56:07+00:00
+          organizationID: organizationID
+          paymentDueDate: 2000-01-23 04:56:07+00:00
+          refundInvoiceAmount: 9.369310271410669
+          partner: partner
+          currency: currency
+          disburseAmount: 1.4658129805029452
+          id: id
+          taxAmount: 6.683562403749608
+          info:
+            awsRevenueRecords:
+            - brokerID: brokerID
+              usagePeriodStartDate:
+                valid: true
+                time: time
+              productID: productID
+              insertDate:
+                valid: true
+                time: time
+              toAccountID: toAccountID
+              usagePeriodEndDate:
+                valid: true
+                time: time
+              parentBillingEventID: parentBillingEventID
+              disbursementBillingEventID: disbursementBillingEventID
+              action: action
+              offerID: offerID
+              currency: currency
+              invoiceID: invoiceID
+              id: id
+              balanceImpacting: 5
+              amount: 5.962133916683182
+              endUserAccountID: endUserAccountID
+              dataFeedProductID: dataFeedProductID
+              entitlementID: entitlementID
+              buyerID: buyerID
+              invoiceDate:
+                valid: true
+                time: time
+              transactionReferenceID: transactionReferenceID
+              organizationID: organizationID
+              transactionType: transactionType
+              paymentDueDate:
+                valid: true
+                time: time
+              fromAccountID: fromAccountID
+              agreementID: agreementID
+              billingAddressID: billingAddressID
+              bankTraceID: bankTraceID
+            - brokerID: brokerID
+              usagePeriodStartDate:
+                valid: true
+                time: time
+              productID: productID
+              insertDate:
+                valid: true
+                time: time
+              toAccountID: toAccountID
+              usagePeriodEndDate:
+                valid: true
+                time: time
+              parentBillingEventID: parentBillingEventID
+              disbursementBillingEventID: disbursementBillingEventID
+              action: action
+              offerID: offerID
+              currency: currency
+              invoiceID: invoiceID
+              id: id
+              balanceImpacting: 5
+              amount: 5.962133916683182
+              endUserAccountID: endUserAccountID
+              dataFeedProductID: dataFeedProductID
+              entitlementID: entitlementID
+              buyerID: buyerID
+              invoiceDate:
+                valid: true
+                time: time
+              transactionReferenceID: transactionReferenceID
+              organizationID: organizationID
+              transactionType: transactionType
+              paymentDueDate:
+                valid: true
+                time: time
+              fromAccountID: fromAccountID
+              agreementID: agreementID
+              billingAddressID: billingAddressID
+              bankTraceID: bankTraceID
+            resellerName: resellerName
+            resource: resource
+            billingModel: SubscriptionBased
+            channel: '{}'
+            idSource: idSource
+            earningId: earningId
+            resellerId: resellerId
+            disbursementNotificationSent: true
+            azureRevenueRecords:
+            - purchaseRecordID: purchaseRecordID
+              productID: productID
+              termEndDate: termEndDate
+              azureCustomerID: azureCustomerID
+              billingModel: billingModel
+              payoutStatus: payoutStatus
+              resellerCity: resellerCity
+              resellerID: resellerID
+              programName: programName
+              resellerState: resellerState
+              azureAssetID: azureAssetID
+              offerID: offerID
+              earningUsd: 2.3021358869347655
+              invoiceID: invoiceID
+              azurePlanID: azurePlanID
+              paymentStatus: paymentStatus
+              revenueUsd: 7.061401241503109
+              azureBillingAccountID: azureBillingAccountID
+              entitlementID: entitlementID
+              resellerEmail: resellerEmail
+              buyerID: buyerID
+              invoiceDate:
+                valid: true
+                time: time
+              transactionDate:
+                valid: true
+                time: time
+              earningID: earningID
+              invoiceDueDate:
+                valid: true
+                time: time
+              resellerCompany: resellerCompany
+              organizationID: organizationID
+              resellerCountry: resellerCountry
+              paymentID: paymentID
+              termStartDate: termStartDate
+              azureOfferID: azureOfferID
+              estimatedPayoutMonth:
+                valid: true
+                time: time
+              paymentSentDate:
+                valid: true
+                time: time
+            - purchaseRecordID: purchaseRecordID
+              productID: productID
+              termEndDate: termEndDate
+              azureCustomerID: azureCustomerID
+              billingModel: billingModel
+              payoutStatus: payoutStatus
+              resellerCity: resellerCity
+              resellerID: resellerID
+              programName: programName
+              resellerState: resellerState
+              azureAssetID: azureAssetID
+              offerID: offerID
+              earningUsd: 2.3021358869347655
+              invoiceID: invoiceID
+              azurePlanID: azurePlanID
+              paymentStatus: paymentStatus
+              revenueUsd: 7.061401241503109
+              azureBillingAccountID: azureBillingAccountID
+              entitlementID: entitlementID
+              resellerEmail: resellerEmail
+              buyerID: buyerID
+              invoiceDate:
+                valid: true
+                time: time
+              transactionDate:
+                valid: true
+                time: time
+              earningID: earningID
+              invoiceDueDate:
+                valid: true
+                time: time
+              resellerCompany: resellerCompany
+              organizationID: organizationID
+              resellerCountry: resellerCountry
+              paymentID: paymentID
+              termStartDate: termStartDate
+              azureOfferID: azureOfferID
+              estimatedPayoutMonth:
+                valid: true
+                time: time
+              paymentSentDate:
+                valid: true
+                time: time
+            paymentId: paymentId
+            disbursementBillingEventId: disbursementBillingEventId
+            bankTraceId: bankTraceId
+            creditAmount: 9.301444243932576
+            gcpRevenueRecords:
+            - productID: productID
+              usage: 1.1730742509559433
+              withheld: 4.965218492984954
+              paymentType: paymentType
+              accountID: accountID
+              refundBalanceOutstanding: 1.4894159098541704
+              reportDate: reportDate
+              trialUse: 7.457744773683766
+              paymentSchedule: paymentSchedule
+              offerID: offerID
+              currency: currency
+              prepayCredits: 1.2315135367772556
+              abandoned: 3.616076749251911
+              sku: sku
+              released: 6.84685269835264
+              usedBy: usedBy
+              insightAccountID: insightAccountID
+              dueVendor: 4.145608029883936
+              resource: resource
+              googleEntity: googleEntity
+              refundReason: refundReason
+              entitlementID: entitlementID
+              buyerID: buyerID
+              organizationID: organizationID
+              charges: 2.027123023002322
+              unit: unit
+              refundBalanceDeductedThisMonth: 1.0246457001441578
+              ordinal: 7
+            - productID: productID
+              usage: 1.1730742509559433
+              withheld: 4.965218492984954
+              paymentType: paymentType
+              accountID: accountID
+              refundBalanceOutstanding: 1.4894159098541704
+              reportDate: reportDate
+              trialUse: 7.457744773683766
+              paymentSchedule: paymentSchedule
+              offerID: offerID
+              currency: currency
+              prepayCredits: 1.2315135367772556
+              abandoned: 3.616076749251911
+              sku: sku
+              released: 6.84685269835264
+              usedBy: usedBy
+              insightAccountID: insightAccountID
+              dueVendor: 4.145608029883936
+              resource: resource
+              googleEntity: googleEntity
+              refundReason: refundReason
+              entitlementID: entitlementID
+              buyerID: buyerID
+              organizationID: organizationID
+              charges: 2.027123023002322
+              unit: unit
+              refundBalanceDeductedThisMonth: 1.0246457001441578
+              ordinal: 7
+        - date: 2000-01-23 04:56:07+00:00
+          amount: 0.8008281904610115
+          productID: productID
+          refundDisburseAmount: 9.965781217890562
+          entitlementID: entitlementID
+          invoiceAmount: 5.025004791520295
+          buyerID: buyerID
+          invoiceDate: 2000-01-23 04:56:07+00:00
+          collectableAmount: 6.027456183070403
+          disburseDate: 2000-01-23 04:56:07+00:00
+          refundInvoiceDate: 2000-01-23 04:56:07+00:00
+          refundDisburseDate: 2000-01-23 04:56:07+00:00
+          organizationID: organizationID
+          paymentDueDate: 2000-01-23 04:56:07+00:00
+          refundInvoiceAmount: 9.369310271410669
+          partner: partner
+          currency: currency
+          disburseAmount: 1.4658129805029452
+          id: id
+          taxAmount: 6.683562403749608
+          info:
+            awsRevenueRecords:
+            - brokerID: brokerID
+              usagePeriodStartDate:
+                valid: true
+                time: time
+              productID: productID
+              insertDate:
+                valid: true
+                time: time
+              toAccountID: toAccountID
+              usagePeriodEndDate:
+                valid: true
+                time: time
+              parentBillingEventID: parentBillingEventID
+              disbursementBillingEventID: disbursementBillingEventID
+              action: action
+              offerID: offerID
+              currency: currency
+              invoiceID: invoiceID
+              id: id
+              balanceImpacting: 5
+              amount: 5.962133916683182
+              endUserAccountID: endUserAccountID
+              dataFeedProductID: dataFeedProductID
+              entitlementID: entitlementID
+              buyerID: buyerID
+              invoiceDate:
+                valid: true
+                time: time
+              transactionReferenceID: transactionReferenceID
+              organizationID: organizationID
+              transactionType: transactionType
+              paymentDueDate:
+                valid: true
+                time: time
+              fromAccountID: fromAccountID
+              agreementID: agreementID
+              billingAddressID: billingAddressID
+              bankTraceID: bankTraceID
+            - brokerID: brokerID
+              usagePeriodStartDate:
+                valid: true
+                time: time
+              productID: productID
+              insertDate:
+                valid: true
+                time: time
+              toAccountID: toAccountID
+              usagePeriodEndDate:
+                valid: true
+                time: time
+              parentBillingEventID: parentBillingEventID
+              disbursementBillingEventID: disbursementBillingEventID
+              action: action
+              offerID: offerID
+              currency: currency
+              invoiceID: invoiceID
+              id: id
+              balanceImpacting: 5
+              amount: 5.962133916683182
+              endUserAccountID: endUserAccountID
+              dataFeedProductID: dataFeedProductID
+              entitlementID: entitlementID
+              buyerID: buyerID
+              invoiceDate:
+                valid: true
+                time: time
+              transactionReferenceID: transactionReferenceID
+              organizationID: organizationID
+              transactionType: transactionType
+              paymentDueDate:
+                valid: true
+                time: time
+              fromAccountID: fromAccountID
+              agreementID: agreementID
+              billingAddressID: billingAddressID
+              bankTraceID: bankTraceID
+            resellerName: resellerName
+            resource: resource
+            billingModel: SubscriptionBased
+            channel: '{}'
+            idSource: idSource
+            earningId: earningId
+            resellerId: resellerId
+            disbursementNotificationSent: true
+            azureRevenueRecords:
+            - purchaseRecordID: purchaseRecordID
+              productID: productID
+              termEndDate: termEndDate
+              azureCustomerID: azureCustomerID
+              billingModel: billingModel
+              payoutStatus: payoutStatus
+              resellerCity: resellerCity
+              resellerID: resellerID
+              programName: programName
+              resellerState: resellerState
+              azureAssetID: azureAssetID
+              offerID: offerID
+              earningUsd: 2.3021358869347655
+              invoiceID: invoiceID
+              azurePlanID: azurePlanID
+              paymentStatus: paymentStatus
+              revenueUsd: 7.061401241503109
+              azureBillingAccountID: azureBillingAccountID
+              entitlementID: entitlementID
+              resellerEmail: resellerEmail
+              buyerID: buyerID
+              invoiceDate:
+                valid: true
+                time: time
+              transactionDate:
+                valid: true
+                time: time
+              earningID: earningID
+              invoiceDueDate:
+                valid: true
+                time: time
+              resellerCompany: resellerCompany
+              organizationID: organizationID
+              resellerCountry: resellerCountry
+              paymentID: paymentID
+              termStartDate: termStartDate
+              azureOfferID: azureOfferID
+              estimatedPayoutMonth:
+                valid: true
+                time: time
+              paymentSentDate:
+                valid: true
+                time: time
+            - purchaseRecordID: purchaseRecordID
+              productID: productID
+              termEndDate: termEndDate
+              azureCustomerID: azureCustomerID
+              billingModel: billingModel
+              payoutStatus: payoutStatus
+              resellerCity: resellerCity
+              resellerID: resellerID
+              programName: programName
+              resellerState: resellerState
+              azureAssetID: azureAssetID
+              offerID: offerID
+              earningUsd: 2.3021358869347655
+              invoiceID: invoiceID
+              azurePlanID: azurePlanID
+              paymentStatus: paymentStatus
+              revenueUsd: 7.061401241503109
+              azureBillingAccountID: azureBillingAccountID
+              entitlementID: entitlementID
+              resellerEmail: resellerEmail
+              buyerID: buyerID
+              invoiceDate:
+                valid: true
+                time: time
+              transactionDate:
+                valid: true
+                time: time
+              earningID: earningID
+              invoiceDueDate:
+                valid: true
+                time: time
+              resellerCompany: resellerCompany
+              organizationID: organizationID
+              resellerCountry: resellerCountry
+              paymentID: paymentID
+              termStartDate: termStartDate
+              azureOfferID: azureOfferID
+              estimatedPayoutMonth:
+                valid: true
+                time: time
+              paymentSentDate:
+                valid: true
+                time: time
+            paymentId: paymentId
+            disbursementBillingEventId: disbursementBillingEventId
+            bankTraceId: bankTraceId
+            creditAmount: 9.301444243932576
+            gcpRevenueRecords:
+            - productID: productID
+              usage: 1.1730742509559433
+              withheld: 4.965218492984954
+              paymentType: paymentType
+              accountID: accountID
+              refundBalanceOutstanding: 1.4894159098541704
+              reportDate: reportDate
+              trialUse: 7.457744773683766
+              paymentSchedule: paymentSchedule
+              offerID: offerID
+              currency: currency
+              prepayCredits: 1.2315135367772556
+              abandoned: 3.616076749251911
+              sku: sku
+              released: 6.84685269835264
+              usedBy: usedBy
+              insightAccountID: insightAccountID
+              dueVendor: 4.145608029883936
+              resource: resource
+              googleEntity: googleEntity
+              refundReason: refundReason
+              entitlementID: entitlementID
+              buyerID: buyerID
+              organizationID: organizationID
+              charges: 2.027123023002322
+              unit: unit
+              refundBalanceDeductedThisMonth: 1.0246457001441578
+              ordinal: 7
+            - productID: productID
+              usage: 1.1730742509559433
+              withheld: 4.965218492984954
+              paymentType: paymentType
+              accountID: accountID
+              refundBalanceOutstanding: 1.4894159098541704
+              reportDate: reportDate
+              trialUse: 7.457744773683766
+              paymentSchedule: paymentSchedule
+              offerID: offerID
+              currency: currency
+              prepayCredits: 1.2315135367772556
+              abandoned: 3.616076749251911
+              sku: sku
+              released: 6.84685269835264
+              usedBy: usedBy
+              insightAccountID: insightAccountID
+              dueVendor: 4.145608029883936
+              resource: resource
+              googleEntity: googleEntity
+              refundReason: refundReason
+              entitlementID: entitlementID
+              buyerID: buyerID
+              organizationID: organizationID
+              charges: 2.027123023002322
+              unit: unit
+              refundBalanceDeductedThisMonth: 1.0246457001441578
+              ordinal: 7
+        nextOffset: 0
+      properties:
+        nextOffset:
+          type: integer
+        revenueRecords:
+          description: list of revenue records.
+          items:
+            $ref: '#/components/schemas/RevenueRecord'
+          type: array
+      type: object
+    github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingAwsBillingEvent:
+      example:
+        brokerID: brokerID
+        usagePeriodStartDate:
+          valid: true
+          time: time
+        productID: productID
+        insertDate:
+          valid: true
+          time: time
+        toAccountID: toAccountID
+        usagePeriodEndDate:
+          valid: true
+          time: time
+        parentBillingEventID: parentBillingEventID
+        disbursementBillingEventID: disbursementBillingEventID
+        action: action
+        offerID: offerID
+        currency: currency
+        invoiceID: invoiceID
+        id: id
+        balanceImpacting: 5
+        amount: 5.962133916683182
+        endUserAccountID: endUserAccountID
+        dataFeedProductID: dataFeedProductID
+        entitlementID: entitlementID
+        buyerID: buyerID
+        invoiceDate:
+          valid: true
+          time: time
+        transactionReferenceID: transactionReferenceID
+        organizationID: organizationID
+        transactionType: transactionType
+        paymentDueDate:
+          valid: true
+          time: time
+        fromAccountID: fromAccountID
+        agreementID: agreementID
+        billingAddressID: billingAddressID
+        bankTraceID: bankTraceID
+      properties:
+        action:
+          type: string
+        agreementID:
+          type: string
+        amount:
+          type: number
+        balanceImpacting:
+          type: integer
+        bankTraceID:
+          type: string
+        billingAddressID:
+          type: string
+        brokerID:
+          type: string
+        buyerID:
+          type: string
+        currency:
+          type: string
+        dataFeedProductID:
+          type: string
+        disbursementBillingEventID:
+          type: string
+        endUserAccountID:
+          type: string
+        entitlementID:
+          type: string
+        fromAccountID:
+          type: string
+        id:
+          type: string
+        insertDate:
+          $ref: '#/components/schemas/database_sql.NullTime'
+        invoiceDate:
+          $ref: '#/components/schemas/database_sql.NullTime'
+        invoiceID:
+          type: string
+        offerID:
+          type: string
+        organizationID:
+          type: string
+        parentBillingEventID:
+          type: string
+        paymentDueDate:
+          $ref: '#/components/schemas/database_sql.NullTime'
+        productID:
+          type: string
+        toAccountID:
+          type: string
+        transactionReferenceID:
+          type: string
+        transactionType:
+          type: string
+        usagePeriodEndDate:
+          $ref: '#/components/schemas/database_sql.NullTime'
+        usagePeriodStartDate:
+          $ref: '#/components/schemas/database_sql.NullTime'
+      type: object
+    github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingAzureCmaRevenue:
+      example:
+        purchaseRecordID: purchaseRecordID
+        productID: productID
+        termEndDate: termEndDate
+        azureCustomerID: azureCustomerID
+        billingModel: billingModel
+        payoutStatus: payoutStatus
+        resellerCity: resellerCity
+        resellerID: resellerID
+        programName: programName
+        resellerState: resellerState
+        azureAssetID: azureAssetID
+        offerID: offerID
+        earningUsd: 2.3021358869347655
+        invoiceID: invoiceID
+        azurePlanID: azurePlanID
+        paymentStatus: paymentStatus
+        revenueUsd: 7.061401241503109
+        azureBillingAccountID: azureBillingAccountID
+        entitlementID: entitlementID
+        resellerEmail: resellerEmail
+        buyerID: buyerID
+        invoiceDate:
+          valid: true
+          time: time
+        transactionDate:
+          valid: true
+          time: time
+        earningID: earningID
+        invoiceDueDate:
+          valid: true
+          time: time
+        resellerCompany: resellerCompany
+        organizationID: organizationID
+        resellerCountry: resellerCountry
+        paymentID: paymentID
+        termStartDate: termStartDate
+        azureOfferID: azureOfferID
+        estimatedPayoutMonth:
+          valid: true
+          time: time
+        paymentSentDate:
+          valid: true
+          time: time
+      properties:
+        azureAssetID:
+          type: string
+        azureBillingAccountID:
+          type: string
+        azureCustomerID:
+          type: string
+        azureOfferID:
+          type: string
+        azurePlanID:
+          type: string
+        billingModel:
+          type: string
+        buyerID:
+          type: string
+        earningID:
+          type: string
+        earningUsd:
+          type: number
+        entitlementID:
+          type: string
+        estimatedPayoutMonth:
+          $ref: '#/components/schemas/database_sql.NullTime'
+        invoiceDate:
+          $ref: '#/components/schemas/database_sql.NullTime'
+        invoiceDueDate:
+          $ref: '#/components/schemas/database_sql.NullTime'
+        invoiceID:
+          type: string
+        offerID:
+          type: string
+        organizationID:
+          type: string
+        paymentID:
+          type: string
+        paymentSentDate:
+          $ref: '#/components/schemas/database_sql.NullTime'
+        paymentStatus:
+          type: string
+        payoutStatus:
+          type: string
+        productID:
+          type: string
+        programName:
+          type: string
+        purchaseRecordID:
+          type: string
+        resellerCity:
+          type: string
+        resellerCompany:
+          type: string
+        resellerCountry:
+          type: string
+        resellerEmail:
+          type: string
+        resellerID:
+          type: string
+        resellerState:
+          type: string
+        revenueUsd:
+          type: number
+        termEndDate:
+          type: string
+        termStartDate:
+          type: string
+        transactionDate:
+          $ref: '#/components/schemas/database_sql.NullTime'
+      type: object
+    ListRevenueRecordDetailsResponse:
+      example:
+        nextOffset: 0
+        revenueRecordDetails:
+        - awsRevenueRecordDetail: '{}'
+          gcpRevenueRecordDetail: '{}'
+          azureRevenueRecordDetail: '{}'
+        - awsRevenueRecordDetail: '{}'
+          gcpRevenueRecordDetail: '{}'
+          azureRevenueRecordDetail: '{}'
+      properties:
+        nextOffset:
+          type: integer
+        revenueRecordDetails:
+          items:
+            $ref: '#/components/schemas/RevenueRecordDetail'
+          type: array
+      type: object
+    GroupByInterval:
+      enum:
+      - day
+      - month
+      type: string
+      x-enum-varnames:
+      - GroupByIntervalDay
+      - GroupByIntervalMonth
+    ListUsageMeteringDailyRecordsResponse:
+      example:
+        usageMeteringDailyRecords:
+        - date: 2000-01-23 04:56:07+00:00
+          amount: 6.027456183070403
+          quantity: 1.4658129805029452
+          partner: '{}'
+          entitlementID: entitlementID
+          groupBysExpression: groupBysExpression
+          key: key
+        - date: 2000-01-23 04:56:07+00:00
+          amount: 6.027456183070403
+          quantity: 1.4658129805029452
+          partner: '{}'
+          entitlementID: entitlementID
+          groupBysExpression: groupBysExpression
+          key: key
+        nextOffset: 0
+      properties:
+        nextOffset:
+          type: integer
+        usageMeteringDailyRecords:
+          items:
+            $ref: '#/components/schemas/UsageMeteringDailyRecord'
+          type: array
+      type: object
+    RevenueRecordInfo:
+      example:
+        awsRevenueRecords:
+        - brokerID: brokerID
+          usagePeriodStartDate:
+            valid: true
+            time: time
+          productID: productID
+          insertDate:
+            valid: true
+            time: time
+          toAccountID: toAccountID
+          usagePeriodEndDate:
+            valid: true
+            time: time
+          parentBillingEventID: parentBillingEventID
+          disbursementBillingEventID: disbursementBillingEventID
+          action: action
+          offerID: offerID
+          currency: currency
+          invoiceID: invoiceID
+          id: id
+          balanceImpacting: 5
+          amount: 5.962133916683182
+          endUserAccountID: endUserAccountID
+          dataFeedProductID: dataFeedProductID
+          entitlementID: entitlementID
+          buyerID: buyerID
+          invoiceDate:
+            valid: true
+            time: time
+          transactionReferenceID: transactionReferenceID
+          organizationID: organizationID
+          transactionType: transactionType
+          paymentDueDate:
+            valid: true
+            time: time
+          fromAccountID: fromAccountID
+          agreementID: agreementID
+          billingAddressID: billingAddressID
+          bankTraceID: bankTraceID
+        - brokerID: brokerID
+          usagePeriodStartDate:
+            valid: true
+            time: time
+          productID: productID
+          insertDate:
+            valid: true
+            time: time
+          toAccountID: toAccountID
+          usagePeriodEndDate:
+            valid: true
+            time: time
+          parentBillingEventID: parentBillingEventID
+          disbursementBillingEventID: disbursementBillingEventID
+          action: action
+          offerID: offerID
+          currency: currency
+          invoiceID: invoiceID
+          id: id
+          balanceImpacting: 5
+          amount: 5.962133916683182
+          endUserAccountID: endUserAccountID
+          dataFeedProductID: dataFeedProductID
+          entitlementID: entitlementID
+          buyerID: buyerID
+          invoiceDate:
+            valid: true
+            time: time
+          transactionReferenceID: transactionReferenceID
+          organizationID: organizationID
+          transactionType: transactionType
+          paymentDueDate:
+            valid: true
+            time: time
+          fromAccountID: fromAccountID
+          agreementID: agreementID
+          billingAddressID: billingAddressID
+          bankTraceID: bankTraceID
+        resellerName: resellerName
+        resource: resource
+        billingModel: SubscriptionBased
+        channel: '{}'
+        idSource: idSource
+        earningId: earningId
+        resellerId: resellerId
+        disbursementNotificationSent: true
+        azureRevenueRecords:
+        - purchaseRecordID: purchaseRecordID
+          productID: productID
+          termEndDate: termEndDate
+          azureCustomerID: azureCustomerID
+          billingModel: billingModel
+          payoutStatus: payoutStatus
+          resellerCity: resellerCity
+          resellerID: resellerID
+          programName: programName
+          resellerState: resellerState
+          azureAssetID: azureAssetID
+          offerID: offerID
+          earningUsd: 2.3021358869347655
+          invoiceID: invoiceID
+          azurePlanID: azurePlanID
+          paymentStatus: paymentStatus
+          revenueUsd: 7.061401241503109
+          azureBillingAccountID: azureBillingAccountID
+          entitlementID: entitlementID
+          resellerEmail: resellerEmail
+          buyerID: buyerID
+          invoiceDate:
+            valid: true
+            time: time
+          transactionDate:
+            valid: true
+            time: time
+          earningID: earningID
+          invoiceDueDate:
+            valid: true
+            time: time
+          resellerCompany: resellerCompany
+          organizationID: organizationID
+          resellerCountry: resellerCountry
+          paymentID: paymentID
+          termStartDate: termStartDate
+          azureOfferID: azureOfferID
+          estimatedPayoutMonth:
+            valid: true
+            time: time
+          paymentSentDate:
+            valid: true
+            time: time
+        - purchaseRecordID: purchaseRecordID
+          productID: productID
+          termEndDate: termEndDate
+          azureCustomerID: azureCustomerID
+          billingModel: billingModel
+          payoutStatus: payoutStatus
+          resellerCity: resellerCity
+          resellerID: resellerID
+          programName: programName
+          resellerState: resellerState
+          azureAssetID: azureAssetID
+          offerID: offerID
+          earningUsd: 2.3021358869347655
+          invoiceID: invoiceID
+          azurePlanID: azurePlanID
+          paymentStatus: paymentStatus
+          revenueUsd: 7.061401241503109
+          azureBillingAccountID: azureBillingAccountID
+          entitlementID: entitlementID
+          resellerEmail: resellerEmail
+          buyerID: buyerID
+          invoiceDate:
+            valid: true
+            time: time
+          transactionDate:
+            valid: true
+            time: time
+          earningID: earningID
+          invoiceDueDate:
+            valid: true
+            time: time
+          resellerCompany: resellerCompany
+          organizationID: organizationID
+          resellerCountry: resellerCountry
+          paymentID: paymentID
+          termStartDate: termStartDate
+          azureOfferID: azureOfferID
+          estimatedPayoutMonth:
+            valid: true
+            time: time
+          paymentSentDate:
+            valid: true
+            time: time
+        paymentId: paymentId
+        disbursementBillingEventId: disbursementBillingEventId
+        bankTraceId: bankTraceId
+        creditAmount: 9.301444243932576
+        gcpRevenueRecords:
+        - productID: productID
+          usage: 1.1730742509559433
+          withheld: 4.965218492984954
+          paymentType: paymentType
+          accountID: accountID
+          refundBalanceOutstanding: 1.4894159098541704
+          reportDate: reportDate
+          trialUse: 7.457744773683766
+          paymentSchedule: paymentSchedule
+          offerID: offerID
+          currency: currency
+          prepayCredits: 1.2315135367772556
+          abandoned: 3.616076749251911
+          sku: sku
+          released: 6.84685269835264
+          usedBy: usedBy
+          insightAccountID: insightAccountID
+          dueVendor: 4.145608029883936
+          resource: resource
+          googleEntity: googleEntity
+          refundReason: refundReason
+          entitlementID: entitlementID
+          buyerID: buyerID
+          organizationID: organizationID
+          charges: 2.027123023002322
+          unit: unit
+          refundBalanceDeductedThisMonth: 1.0246457001441578
+          ordinal: 7
+        - productID: productID
+          usage: 1.1730742509559433
+          withheld: 4.965218492984954
+          paymentType: paymentType
+          accountID: accountID
+          refundBalanceOutstanding: 1.4894159098541704
+          reportDate: reportDate
+          trialUse: 7.457744773683766
+          paymentSchedule: paymentSchedule
+          offerID: offerID
+          currency: currency
+          prepayCredits: 1.2315135367772556
+          abandoned: 3.616076749251911
+          sku: sku
+          released: 6.84685269835264
+          usedBy: usedBy
+          insightAccountID: insightAccountID
+          dueVendor: 4.145608029883936
+          resource: resource
+          googleEntity: googleEntity
+          refundReason: refundReason
+          entitlementID: entitlementID
+          buyerID: buyerID
+          organizationID: organizationID
+          charges: 2.027123023002322
+          unit: unit
+          refundBalanceDeductedThisMonth: 1.0246457001441578
+          ordinal: 7
+      properties:
+        awsRevenueRecords:
+          description: For raw revenue records in AWS Marketplace
+          items:
+            $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingAwsBillingEvent'
+          type: array
+        azureRevenueRecords:
+          description: For raw revenue records in Azure Marketplace
+          items:
+            $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingAzureCmaRevenue'
+          type: array
+        bankTraceId:
+          description: The bank trace ID of the revenue record if applicable
+          type: string
+        billingModel:
+          description: 'The billing model of the revenue record if applicable
+
+            The value is one of the following:
+
+            - SubscriptionBased: The revenue record is from a subscription or recurring commitment.
+
+            - UsageBased: The revenue record is from a usage-based metering.'
+          enum:
+          - SubscriptionBased
+          - UsageBased
+          type: string
+        channel:
+          allOf:
+          - $ref: '#/components/schemas/RevenueChannel'
+          description: The channel of revenue record.
+          type: object
+        creditAmount:
+          description: The credit amount used in the revenue record.
+          type: number
+        disbursementBillingEventId:
+          description: The disbursement ID of the revenue record if applicable
+          type: string
+        disbursementNotificationSent:
+          description: Whether the disbursement notification has been sent to the seller/ISV.
+          type: boolean
+        earningId:
+          description: The earning ID of the revenue record if applicable
+          type: string
+        gcpRevenueRecords:
+          description: For raw revenue records in GCP Marketplace
+          items:
+            $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.BillingGcpChargeUsage'
+          type: array
+        idSource:
+          description: Source of the revenue record ID.
+          type: string
+        paymentId:
+          description: The payment  ID of the revenue record if applicable
+          type: string
+        resellerId:
+          description: The reseller ID of the revenue record if applicable
+          type: string
+        resellerName:
+          description: The reseller name of the revenue record if application
+          type: string
+        resource:
+          description: Resource name for the revenue record. Applicable only to GCP Marketplace.
+          type: string
+      type: object
+  securitySchemes:
+    APIKeyAuth:
+      description: API Key for authorization in format of <Key *****>.
+      in: header
+      name: Authorization
+      type: apiKey
+x-original-swagger-version: '2.0'

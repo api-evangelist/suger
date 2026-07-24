@@ -1,0 +1,1474 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: support@suger.io
+    name: Suger Support
+    url: https://www.suger.io/support
+  description: CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.
+  title: Suger API Buyer API
+  version: '1.0'
+servers:
+- url: https://api.suger.cloud
+tags:
+- description: Access to Buyer resources
+  name: Buyer
+paths:
+  /org/{orgId}/buyer:
+    get:
+      description: list buyers by the given organization with pagination and optional filters.
+      operationId: ListBuyers
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: filter by partner
+        explode: true
+        in: query
+        name: partner
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: filter by contactId
+        explode: true
+        in: query
+        name: contactId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: filter by awsAccountId
+        explode: true
+        in: query
+        name: awsAccountId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: List pagination size, default 1000, max value is 1000
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: List pagination offset, default 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IdentityBuyer'
+                type: array
+          description: OK
+        '500':
+          content: {}
+          description: Internal Server Error
+      security:
+      - APIKeyAuth: []
+      summary: List Buyers
+      tags:
+      - Buyer
+    post:
+      description: create a new buyer for Stripe or Adyen under the given organization.
+      operationId: CreateBuyer
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBuyerParams'
+        description: CreateBuyerParams
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityBuyer'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: internal error
+      security:
+      - APIKeyAuth: []
+      summary: Create Buyer
+      tags:
+      - Buyer
+      x-codegen-request-body-name: data
+  /org/{orgId}/buyer/{buyerId}:
+    get:
+      description: get buyer by the given organization and buyer id.
+      operationId: GetBuyer
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Buyer ID
+        explode: false
+        in: path
+        name: buyerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityBuyer'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '404':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: not found
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: internal error
+      security:
+      - APIKeyAuth: []
+      summary: Get Buyer
+      tags:
+      - Buyer
+    patch:
+      description: update buyer by the given organization and buyer id.
+      operationId: UpdateBuyer
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Buyer ID
+        explode: false
+        in: path
+        name: buyerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBuyerParams'
+        description: UpdateBuyerParams
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityBuyer'
+          description: OK
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: internal error
+      security:
+      - APIKeyAuth: []
+      summary: Update Buyer
+      tags:
+      - Buyer
+      x-codegen-request-body-name: data
+  /org/{orgId}/buyer/{buyerId}/wallet:
+    get:
+      description: list all wallets of a buyer.
+      operationId: ListBuyerWallets
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Buyer ID
+        explode: false
+        in: path
+        name: buyerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BillingWallet'
+                type: array
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: List Buyer's Wallets
+      tags:
+      - Buyer
+    post:
+      description: create a new credit wallet for the buyer.
+      operationId: CreateCreditWallet
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Buyer ID
+        explode: false
+        in: path
+        name: buyerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingWallet'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Create Credit Wallet
+      tags:
+      - Buyer
+  /org/{orgId}/buyer/{buyerId}/wallet/{walletId}:
+    delete:
+      description: delete a wallet of the buyer, if it's a payment method, sync to payment provider too.
+      operationId: DeleteBuyerWallet
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Buyer ID
+        explode: false
+        in: path
+        name: buyerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Wallet ID
+        explode: false
+        in: path
+        name: walletId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Delete Buyer Wallet
+      tags:
+      - Buyer
+    patch:
+      description: update startTime or expireTime of the wallet.
+      operationId: UpdateCreditWallet
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Buyer ID
+        explode: false
+        in: path
+        name: buyerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Wallet ID
+        explode: false
+        in: path
+        name: walletId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingWallet'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Update Credit Wallet
+      tags:
+      - Buyer
+  /org/{orgId}/buyer/{buyerId}/wallet/{walletId}/close:
+    patch:
+      description: Close the given credit wallet, if it's a payment method, sync to payment provider too. Once closed, it can't be used for payment.
+      operationId: CloseCreditWallet
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Buyer ID
+        explode: false
+        in: path
+        name: buyerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Wallet ID
+        explode: false
+        in: path
+        name: walletId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingWallet'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Close Credit Wallet
+      tags:
+      - Buyer
+  /org/{orgId}/buyer/{buyerId}/wallet/{walletId}/default:
+    patch:
+      description: set a payment method wallet as buyer's default wallet.
+      operationId: SetBuyerDefaultWallet
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Buyer ID
+        explode: false
+        in: path
+        name: buyerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Wallet ID
+        explode: false
+        in: path
+        name: walletId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityBuyer'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Set Buyer Default Wallet
+      tags:
+      - Buyer
+components:
+  schemas:
+    StripeCustomerAddress:
+      properties:
+        city:
+          description: City, district, suburb, town, or village.
+          type: string
+        country:
+          description: Two-letter country code (ISO 3166-1 alpha-2)
+          type: string
+        line1:
+          description: Address line 1 (e.g., street, PO Box, or company name).
+          type: string
+        line2:
+          description: Address line 2 (e.g., apartment, suite, unit, or building).
+          type: string
+        postal_code:
+          description: ZIP or postal code.
+          type: string
+        state:
+          description: State, county, province, or region.
+          type: string
+      type: object
+    AzureADIdentifier:
+      example:
+        firstName: firstName
+        lastName: lastName
+        licenseType: licenseType
+        puid: puid
+        customerId: customerId
+        tenantId: tenantId
+        billingAccountId: billingAccountId
+        emailId: emailId
+        objectId: objectId
+      properties:
+        billingAccountId:
+          description: Azure Billing Account ID
+          type: string
+        customerId:
+          type: string
+        emailId:
+          description: Email address
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        licenseType:
+          description: Azure License Type
+          type: string
+        objectId:
+          type: string
+        puid:
+          description: ID of the user, used as External ID of suger IdentityBuyer.
+          type: string
+        tenantId:
+          type: string
+      type: object
+    GcpMarketplaceUserAccountApproval:
+      properties:
+        name:
+          type: string
+        reason:
+          description: An explanation for the state of the approval.
+          type: string
+        state:
+          $ref: '#/components/schemas/GcpMarketplaceUserAccountApprovalState'
+        updateTime:
+          description: RFC3339 UTC timestamp
+          type: string
+      type: object
+    StripePaymentMethodBACSDebit:
+      example:
+        last4: last4
+        fingerprint: fingerprint
+        sort_code: sort_code
+      properties:
+        fingerprint:
+          description: Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
+          type: string
+        last4:
+          description: Last four digits of the bank account number.
+          type: string
+        sort_code:
+          description: Sort code of the bank account. (e.g., `10-20-30`)
+          type: string
+      type: object
+    CreateBuyerParams:
+      example:
+        paymentConfig: '{}'
+        orbCustomerId: orbCustomerId
+        partner: '{}'
+        companyInfo: '{}'
+        customerId: customerId
+        name: name
+        description: description
+        adyenCustomerId: adyenCustomerId
+        lagoCustomerId: lagoCustomerId
+        metronomeCustomerId: metronomeCustomerId
+        stripeCustomerId: stripeCustomerId
+      properties:
+        adyenCustomerId:
+          description: Adyen customerId of this buyer. If not provided but Partner is ADYEN, will create a new customer on Adyen.
+          type: string
+        companyInfo:
+          allOf:
+          - $ref: '#/components/schemas/CompanyInfo'
+          description: Optional. CompanyInfo of the buyer.
+          type: object
+        customerId:
+          description: The customer ID to recognize the cloud marketplace buyer in your internal system.
+          type: string
+        description:
+          description: The description of the buyer.
+          type: string
+        lagoCustomerId:
+          description: Optional. The Lago Customer ID of the buyer.
+          type: string
+        metronomeCustomerId:
+          description: Optional. The Metronome Customer ID of the buyer.
+          type: string
+        name:
+          description: The name of the buyer.
+          type: string
+        orbCustomerId:
+          description: Optional. The Orb Customer ID of the buyer.
+          type: string
+        partner:
+          allOf:
+          - $ref: '#/components/schemas/Partner'
+          description: The channel partner where this buyer is billed. Only STRIPE & ADYEN are supported at the moment.
+          type: object
+        paymentConfig:
+          allOf:
+          - $ref: '#/components/schemas/PaymentConfig'
+          description: Payment config for billing.
+          type: object
+        stripeCustomerId:
+          description: Stripe customerId of this buyer. If not provided but Partner is STRIPE, will create a new customer on stripe.
+          type: string
+      type: object
+    Partner:
+      enum:
+      - ''
+      - ADYEN
+      - ALIBABA
+      - AWS
+      - AWS_CHINA
+      - AZURE
+      - CHARGEBEE
+      - DATABRICKS
+      - DOCUSIGN
+      - GCP
+      - GOOGLE
+      - HUBSPOT
+      - INTUIT
+      - LAGO
+      - MARKETO
+      - METRONOME
+      - MICROSOFT
+      - ORACLE
+      - ORB
+      - REDHAT
+      - SALESFORCE
+      - SLACK
+      - SNOWFLAKE
+      - STRIPE
+      - ZOHO
+      type: string
+      x-enum-varnames:
+      - Partner_UNKNOWN
+      - Partner_ADYEN
+      - Partner_ALIBABA
+      - Partner_AWS
+      - Partner_AWS_CHINA
+      - Partner_AZURE
+      - Partner_CHARGEBEE
+      - Partner_DATABRICKS
+      - Partner_DOCUSIGN
+      - Partner_GCP
+      - Partner_GOOGLE
+      - Partner_HUBSPOT
+      - Partner_INTUIT
+      - Partner_LAGO
+      - Partner_MARKETO
+      - Partner_METRONOME
+      - Partner_MICROSOFT
+      - Partner_ORACLE
+      - Partner_ORB
+      - Partner_REDHAT
+      - Partner_SALESFORCE
+      - Partner_SLACK
+      - Partner_SNOWFLAKE
+      - Partner_STRIPE
+      - Partner_ZOHO
+    GcpMarketplaceUserAccount:
+      properties:
+        approvals:
+          description: The approvals for this account, that are permitted or have been completed.
+          items:
+            $ref: '#/components/schemas/GcpMarketplaceUserAccountApproval'
+          type: array
+        billingAccountId:
+          description: The buyer's GCP billing account ID if it's a company account.
+          type: string
+        createTime:
+          description: RFC3339 UTC timestamp
+          format: date-time
+          type: string
+        id:
+          description: GCP Marketplace User Account ID.
+          type: string
+        inputProperties:
+          items:
+            type: integer
+          type: array
+        name:
+          description: The resource name of the account, in format of providers/{provider_id}/accounts/{account_id}.
+          type: string
+        parentBillingAccountId:
+          description: 'The parent account ID of the BillingAccountId if the buyer is from a reseller in GCP Marketplace.
+
+            It is the GCP billing account ID of the reseller in GCP Marketplace.'
+          type: string
+        provider:
+          description: The identifier of the service provider (SaaS Seller) that this account was created against.
+          type: string
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GcpMarketplaceUserAccountState'
+          description: The state of the account. An account might not be able to make a purchase if the billing account is suspended.
+          type: object
+        updateTime:
+          description: RFC3339 UTC timestamp
+          format: date-time
+          type: string
+        userInfo:
+          $ref: '#/components/schemas/GcpUserInfo'
+      type: object
+    GcpUserInfo:
+      properties:
+        orders:
+          description: 'a list of unique order IDs for each entitlement ID that indicates the
+
+            different offers on the same product. This field is available only if
+
+            multiple orders of the same product is enabled'
+          items:
+            type: string
+          type: array
+        roles:
+          description: 'An array of strings representing the user''s roles. Right now, it can be either: ** account_admin, which indicates that the user is a Billing Account Administrator of the billing account that purchased the product, or ** project_editor, which indicates that the user is a Project Editor, but not a Billing Administrator, of the project under that billing account.'
+          items:
+            type: string
+          type: array
+        user_identity:
+          description: The user's obfuscated GAIA ID, which can be used to initiate Open ID Connect.
+          type: string
+      type: object
+    PaymentConfig:
+      properties:
+        allowedWalletTypes:
+          description: Allowed wallet types for this buyer, include payment methods from payment provider such as card, us_bank_account and credit.
+          items:
+            $ref: '#/components/schemas/BillingWalletType'
+          type: array
+        currency:
+          description: Currency used for billing.
+          type: string
+        defaultWalletId:
+          description: Default wallet id which is a stripe payment method used to invoice.
+          type: string
+      type: object
+    AwsAccountIdentifier:
+      properties:
+        awsAccountID:
+          description: The AWS Account ID of the buyer in AWS Marketplace
+          type: string
+        awsCustomerID:
+          description: The AWS Customer ID of the buyer in AWS Marketplace
+          type: string
+        dataFeedAccountID:
+          description: The Account ID in AWS Marketplace Data Feed service
+          type: string
+      type: object
+    BillingWalletType:
+      enum:
+      - ach_debit
+      - bacs_debit
+      - card
+      - credit
+      - sepa_debit
+      type: string
+      x-enum-comments:
+        BillingWalletType_ACH_DEBIT: for USD.
+        BillingWalletType_BACS_DEBIT: for UK.
+        BillingWalletType_CREDIT: Credit managed by Suger.
+        BillingWalletType_SEPA_DEBIT: for EUR.
+      x-enum-varnames:
+      - BillingWalletType_ACH_DEBIT
+      - BillingWalletType_BACS_DEBIT
+      - BillingWalletType_CARD
+      - BillingWalletType_CREDIT
+      - BillingWalletType_SEPA_DEBIT
+    StripePaymentMethodCard:
+      example:
+        country: country
+        last4: last4
+        funding: credit
+        display_brand: display_brand
+        fingerprint: fingerprint
+        exp_month: 0
+        exp_year: 6
+        brand: amex
+      properties:
+        brand:
+          description: Card brand.
+          enum:
+          - amex
+          - diners
+          - discover
+          - eftpos_au
+          - jcb
+          - mastercard
+          - unionpay
+          - visa
+          - unknown
+          type: string
+        country:
+          description: Two-letter ISO code representing the country of the card. You could use this attribute to get a sense of the international breakdown of cards you've collected.
+          type: string
+        display_brand:
+          description: The brand to use when displaying the card, this accounts for customer's brand choice on dual-branded cards. Can be `american_express`, `cartes_bancaires`, `diners_club`, `discover`, `eftpos_australia`, `interac`, `jcb`, `mastercard`, `union_pay`, `visa`, or `other` and may contain more values in the future.
+          type: string
+        exp_month:
+          description: Two-digit number representing the card's expiration month.
+          type: integer
+        exp_year:
+          description: Four-digit number representing the card's expiration year.
+          type: integer
+        fingerprint:
+          description: Uniquely identifies this particular card number. You can use this attribute to check whether two customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number.
+          type: string
+        funding:
+          description: Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`.
+          enum:
+          - credit
+          - debit
+          - prepaid
+          - unknown
+          type: string
+        last4:
+          description: The last four digits of the card.
+          type: string
+      type: object
+    BuyerInfo:
+      example:
+        stripeBuyer: '{}'
+        invoicedAmount: 5.962133916683182
+        snowflakeBuyer: '{}'
+        companyInfo:
+          country: country
+          emailDomain: emailDomain
+          city: city
+          postalCode: postalCode
+          name: name
+          addressLine1: addressLine1
+          addressLine2: addressLine2
+          state: state
+          validFrom: validFrom
+        gcpBuyer: '{}'
+        lastModifiedBy: lastModifiedBy
+        grossAmount: 1.4658129805029452
+        collectableAmount: 0.8008281904610115
+        paymentConfig: '{}'
+        emailAddress: emailAddress
+        orbCustomerId: orbCustomerId
+        adyenBuyer: '{}'
+        azureBuyer: '{}'
+        customerId: customerId
+        lagoCustomerId: lagoCustomerId
+        awsBuyer: '{}'
+        fields:
+          key: ''
+        metronomeCustomerId: metronomeCustomerId
+        stripeCustomerId: stripeCustomerId
+        disbursedAmount: 6.027456183070403
+        spaUrl: spaUrl
+      properties:
+        adyenBuyer:
+          allOf:
+          - $ref: '#/components/schemas/AdyenBuyer'
+          description: Buyer on Adyen
+          type: object
+        awsBuyer:
+          allOf:
+          - $ref: '#/components/schemas/AwsAccountIdentifier'
+          description: Buyer from AWS Marketplace
+          type: object
+        azureBuyer:
+          allOf:
+          - $ref: '#/components/schemas/AzureADIdentifier'
+          description: Buyer from Azure Marketplace
+          type: object
+        collectableAmount:
+          description: The amount that the seller can collect. It excludes the marketplace commision fee.
+          type: number
+        companyInfo:
+          $ref: '#/components/schemas/CompanyInfo'
+        customerId:
+          description: customerID of buyer on seller's side
+          type: string
+        disbursedAmount:
+          description: The amount that has been disbursed to the seller account.
+          type: number
+        emailAddress:
+          description: The email address of the buyer. This was copied from the new client signup form.
+          type: string
+        fields:
+          additionalProperties: true
+          description: Fields to store key-value pairs of buyer information.
+          type: object
+        gcpBuyer:
+          allOf:
+          - $ref: '#/components/schemas/GcpMarketplaceUserAccount'
+          description: Buyer from GCP Marketplace
+          type: object
+        grossAmount:
+          description: The gross amount that the buyer has committed to pay, including usage metered amount.
+          type: number
+        invoicedAmount:
+          description: The amount that the buyer has got invoiced.
+          type: number
+        lagoCustomerId:
+          description: The lgo customer ID for the buyer if it is connected to a lago customer.
+          type: string
+        lastModifiedBy:
+          description: Last modifier user ID.
+          type: string
+        metronomeCustomerId:
+          description: The metronome customer ID for the buyer if it is connected to a metronome customer.
+          type: string
+        orbCustomerId:
+          description: The orb customer ID for the buyer if it is connected to a orb customer.
+          type: string
+        paymentConfig:
+          allOf:
+          - $ref: '#/components/schemas/PaymentConfig'
+          description: Payment Config for billing.
+          type: object
+        snowflakeBuyer:
+          allOf:
+          - $ref: '#/components/schemas/SnowflakeMarketplaceBuyer'
+          description: Buyer on Snowflake
+          type: object
+        spaUrl:
+          description: Buyer SPA url, public page visited with jwt.
+          type: string
+        stripeBuyer:
+          allOf:
+          - $ref: '#/components/schemas/StripeCustomer'
+          description: Buyer as Customer on Stripe
+          type: object
+        stripeCustomerId:
+          description: The stripe customer ID for the buyer if it is connected to a stripe customer.
+          type: string
+      type: object
+    BillingWallet:
+      example:
+        creationTime: 2000-01-23 04:56:07+00:00
+        usedAmount: 5.637376656633329
+        externalID: externalID
+        buyerID: buyerID
+        type: ach_debit
+        organizationID: organizationID
+        totalAmount: 5.962133916683182
+        expireTime: 2000-01-23 04:56:07+00:00
+        partner: ''
+        name: name
+        currency: currency
+        startTime: 2000-01-23 04:56:07+00:00
+        id: id
+        info:
+          closeDate: 2000-01-23 04:56:07+00:00
+          stripePaymentMethod:
+            livemode: true
+            bacs_debit:
+              last4: last4
+              fingerprint: fingerprint
+              sort_code: sort_code
+            created: 1
+            us_bank_account:
+              last4: last4
+              account_type: checking
+              account_holder_type: individual
+              bank_name: bank_name
+              fingerprint: fingerprint
+              routing_number: routing_number
+            sepa_debit:
+              branch_code: branch_code
+              bank_code: bank_code
+              country: country
+              last4: last4
+              fingerprint: fingerprint
+            id: id
+            card:
+              country: country
+              last4: last4
+              funding: credit
+              display_brand: display_brand
+              fingerprint: fingerprint
+              exp_month: 0
+              exp_year: 6
+              brand: amex
+            object: object
+          stripeSetupIntentId: stripeSetupIntentId
+        lastUpdateTime: 2000-01-23 04:56:07+00:00
+        status: ACTIVE
+      properties:
+        buyerID:
+          type: string
+        creationTime:
+          format: date-time
+          type: string
+        currency:
+          type: string
+        expireTime:
+          description: nullable
+          format: date-time
+          type: string
+        externalID:
+          description: The payment method id in payment provider, such as stripe payment method id.
+          type: string
+        id:
+          type: string
+        info:
+          $ref: '#/components/schemas/BillingWalletInfo'
+        lastUpdateTime:
+          format: date-time
+          type: string
+        name:
+          type: string
+        organizationID:
+          type: string
+        partner:
+          $ref: '#/components/schemas/Partner'
+        startTime:
+          format: date-time
+          type: string
+        status:
+          $ref: '#/components/schemas/BillingWalletStatus'
+        totalAmount:
+          type: number
+        type:
+          $ref: '#/components/schemas/BillingWalletType'
+        usedAmount:
+          type: number
+      type: object
+    UpdateBuyerParams:
+      example:
+        paymentConfig: '{}'
+        orbCustomerId: orbCustomerId
+        companyInfo: '{}'
+        customerId: customerId
+        name: name
+        description: description
+        lagoCustomerId: lagoCustomerId
+        metronomeCustomerId: metronomeCustomerId
+        stripeCustomerId: stripeCustomerId
+      properties:
+        companyInfo:
+          allOf:
+          - $ref: '#/components/schemas/CompanyInfo'
+          description: Optional. CompanyInfo of the buyer.
+          type: object
+        customerId:
+          description: 'The customer ID to recognize the cloud marketplace buyer in your internal system.
+
+            This may be used for uploading CSV files for Batch Metering Usage'
+          type: string
+        description:
+          description: The description of the buyer. If not provided, the description will not be updated.
+          type: string
+        lagoCustomerId:
+          description: The Lago Customer ID of the buyer. If not provided, the Lago Customer ID will not be updated.
+          type: string
+        metronomeCustomerId:
+          description: The Metronome Customer ID of the buyer. If not provided, the Metronome Customer ID will not be updated.
+          type: string
+        name:
+          description: The name of the buyer. If not provided, the name will not be updated.
+          type: string
+        orbCustomerId:
+          description: The Orb Customer ID of the buyer. If not provided, the Orb Customer ID will not be updated.
+          type: string
+        paymentConfig:
+          allOf:
+          - $ref: '#/components/schemas/PaymentConfig'
+          description: Optional. PaymentConfig of the buyer. The currency can't be updated.
+          type: object
+        stripeCustomerId:
+          description: The Stripe Customer ID of the buyer. If not provided, the Stripe Customer ID will not be updated.
+          type: string
+      type: object
+    AdyenBuyer:
+      properties:
+        settings:
+          additionalProperties: true
+          description: Settings store key-value pairs such as paymentMethodId,syncWithProvider,providerPaymentMethods.
+          type: object
+        shopperId:
+          description: The shopperId on the adyen platform corresponding to the buyer.
+          type: string
+      type: object
+    GcpMarketplaceUserAccountState:
+      enum:
+      - ACCOUNT_STATE_UNSPECIFIED
+      - ACCOUNT_ACTIVE
+      type: string
+      x-enum-varnames:
+      - GcpMarketplaceUserAccountState_UNSPECIFIED
+      - GcpMarketplaceUserAccountState_ACTIVE
+    StripePaymentMethodUSBankAccount:
+      example:
+        last4: last4
+        account_type: checking
+        account_holder_type: individual
+        bank_name: bank_name
+        fingerprint: fingerprint
+        routing_number: routing_number
+      properties:
+        account_holder_type:
+          description: 'Account holder type: individual or company.'
+          enum:
+          - individual
+          - company
+          type: string
+        account_type:
+          description: 'Account type: checkings or savings. Defaults to checking if omitted.'
+          enum:
+          - checking
+          - savings
+          type: string
+        bank_name:
+          description: The name of the bank.
+          type: string
+        fingerprint:
+          description: Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
+          type: string
+        last4:
+          description: Last four digits of the bank account number.
+          type: string
+        routing_number:
+          description: Routing number of the bank account.
+          type: string
+      type: object
+    BillingWalletStatus:
+      enum:
+      - ACTIVE
+      - DELETED
+      - PENDING_VERIFY
+      - EXPIRED
+      - CLOSED
+      type: string
+      x-enum-comments:
+        BillingWalletStatus_DELETED: Soft delete.
+        BillingWalletStatus_EXPIRED: for credit.
+        BillingWalletStatus_PENDING_VERIFY: for payment method.
+      x-enum-varnames:
+      - BillingWalletStatus_ACTIVE
+      - BillingWalletStatus_DELETED
+      - BillingWalletStatus_PENDING_VERIFY
+      - BillingWalletStatus_EXPIRED
+      - BillingWalletStatus_CLOSED
+    SnowflakeMarketplaceBuyer:
+      properties:
+        snowflakeCustomerID:
+          description: The customer ID of the buyer in Snowflake Marketplace.
+          type: string
+      type: object
+    IdentityBuyer:
+      example:
+        organizationID: organizationID
+        creationTime: 2000-01-23 04:56:07+00:00
+        partner: ''
+        name: name
+        description: description
+        externalID: externalID
+        id: id
+        contactIds:
+        - contactIds
+        - contactIds
+        info:
+          stripeBuyer: '{}'
+          invoicedAmount: 5.962133916683182
+          snowflakeBuyer: '{}'
+          companyInfo:
+            country: country
+            emailDomain: emailDomain
+            city: city
+            postalCode: postalCode
+            name: name
+            addressLine1: addressLine1
+            addressLine2: addressLine2
+            state: state
+            validFrom: validFrom
+          gcpBuyer: '{}'
+          lastModifiedBy: lastModifiedBy
+          grossAmount: 1.4658129805029452
+          collectableAmount: 0.8008281904610115
+          paymentConfig: '{}'
+          emailAddress: emailAddress
+          orbCustomerId: orbCustomerId
+          adyenBuyer: '{}'
+          azureBuyer: '{}'
+          customerId: customerId
+          lagoCustomerId: lagoCustomerId
+          awsBuyer: '{}'
+          fields:
+            key: ''
+          metronomeCustomerId: metronomeCustomerId
+          stripeCustomerId: stripeCustomerId
+          disbursedAmount: 6.027456183070403
+          spaUrl: spaUrl
+        lastUpdateTime: 2000-01-23 04:56:07+00:00
+      properties:
+        contactIds:
+          items:
+            type: string
+          type: array
+        creationTime:
+          format: date-time
+          type: string
+        description:
+          type: string
+        externalID:
+          type: string
+        id:
+          type: string
+        info:
+          $ref: '#/components/schemas/BuyerInfo'
+        lastUpdateTime:
+          format: date-time
+          type: string
+        name:
+          type: string
+        organizationID:
+          type: string
+        partner:
+          $ref: '#/components/schemas/Partner'
+      type: object
+    GcpMarketplaceUserAccountApprovalState:
+      enum:
+      - STATE_UNSPECIFIED
+      - PENDING
+      - APPROVED
+      - REJECTED
+      type: string
+      x-enum-varnames:
+      - GcpMarketplaceUserAccountApprovalState_STATE_UNSPECIFIED
+      - GcpMarketplaceUserAccountApprovalState_PENDING
+      - GcpMarketplaceUserAccountApprovalState_APPROVED
+      - GcpMarketplaceUserAccountApprovalState_REJECTED
+    CompanyInfo:
+      example:
+        country: country
+        emailDomain: emailDomain
+        city: city
+        postalCode: postalCode
+        name: name
+        addressLine1: addressLine1
+        addressLine2: addressLine2
+        state: state
+        validFrom: validFrom
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        emailDomain:
+          type: string
+        name:
+          type: string
+        postalCode:
+          type: string
+        state:
+          type: string
+        validFrom:
+          description: When the company info becomes valid. in format "2006-01-02T15:04:05Z"
+          type: string
+      type: object
+    StripePaymentMethod:
+      example:
+        livemode: true
+        bacs_debit:
+          last4: last4
+          fingerprint: fingerprint
+          sort_code: sort_code
+        created: 1
+        us_bank_account:
+          last4: last4
+          account_type: checking
+          account_holder_type: individual
+          bank_name: bank_name
+          fingerprint: fingerprint
+          routing_number: routing_number
+        sepa_debit:
+          branch_code: branch_code
+          bank_code: bank_code
+          country: country
+          last4: last4
+          fingerprint: fingerprint
+        id: id
+        card:
+          country: country
+          last4: last4
+          funding: credit
+          display_brand: display_brand
+          fingerprint: fingerprint
+          exp_month: 0
+          exp_year: 6
+          brand: amex
+        object: object
+      properties:
+        bacs_debit:
+          $ref: '#/components/schemas/StripePaymentMethodBACSDebit'
+        card:
+          $ref: '#/components/schemas/StripePaymentMethodCard'
+        created:
+          description: Time at which the object was created. Measured in seconds since the Unix epoch.
+          type: integer
+        id:
+          description: Unique identifier for the payment method on stripe.
+          type: string
+        livemode:
+          description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
+          type: boolean
+        object:
+          description: String representing the object’s type. Always has the value `payment_method`.
+          type: string
+        sepa_debit:
+          $ref: '#/components/schemas/StripePaymentMethodSEPADebit'
+        us_bank_account:
+          $ref: '#/components/schemas/StripePaymentMethodUSBankAccount'
+      type: object
+    BillingWalletInfo:
+      example:
+        closeDate: 2000-01-23 04:56:07+00:00
+        stripePaymentMethod:
+          livemode: true
+          bacs_debit:
+            last4: last4
+            fingerprint: fingerprint
+            sort_code: sort_code
+          created: 1
+          us_bank_account:
+            last4: last4
+            account_type: checking
+            account_holder_type: individual
+            bank_name: bank_name
+            fingerprint: fingerprint
+            routing_number: routing_number
+          sepa_debit:
+            branch_code: branch_code
+            bank_code: bank_code
+            country: country
+            last4: last4
+            fingerprint: fingerprint
+          id: id
+          card:
+            country: country
+            last4: last4
+            funding: credit
+            display_brand: display_brand
+            fingerprint: fingerprint
+            exp_month: 0
+            exp_year: 6
+            brand: amex
+          object: object
+        stripeSetupIntentId: stripeSetupIntentId
+      properties:
+        closeDate:
+          description: The close date of the wallet if applicable.
+          format: date-time
+          type: string
+        stripePaymentMethod:
+          $ref: '#/components/schemas/StripePaymentMethod'
+        stripeSetupIntentId:
+          type: string
+      type: object
+    StripeCustomer:
+      properties:
+        address:
+          $ref: '#/components/schemas/StripeCustomerAddress'
+        description:
+          type: string
+        email:
+          type: string
+        id:
+          description: The customer ID on the stripe platform.
+          type: string
+        metadata:
+          additionalProperties:
+            type: string
+          description: Set of key-value pairs that you can attach to store additional information about customer.
+          type: object
+        name:
+          type: string
+        phone:
+          type: string
+      type: object
+    StripePaymentMethodSEPADebit:
+      example:
+        branch_code: branch_code
+        bank_code: bank_code
+        country: country
+        last4: last4
+        fingerprint: fingerprint
+      properties:
+        bank_code:
+          description: Bank code of bank associated with the bank account.
+          type: string
+        branch_code:
+          description: Branch code of bank associated with the bank account.
+          type: string
+        country:
+          description: Two-letter ISO code representing the country the bank account is located in.
+          type: string
+        fingerprint:
+          description: Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
+          type: string
+        last4:
+          description: Last four characters of the IBAN.
+          type: string
+      type: object
+  securitySchemes:
+    APIKeyAuth:
+      description: API Key for authorization in format of <Key *****>.
+      in: header
+      name: Authorization
+      type: apiKey
+x-original-swagger-version: '2.0'

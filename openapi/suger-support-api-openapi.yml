@@ -1,0 +1,1149 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: support@suger.io
+    name: Suger Support
+    url: https://www.suger.io/support
+  description: CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.
+  title: Suger API Support API
+  version: '1.0'
+servers:
+- url: https://api.suger.cloud
+tags:
+- description: Access to Suger Support ticket resources
+  name: Support
+paths:
+  /org/{orgId}/support/ticket:
+    get:
+      description: list support tickets
+      operationId: ListSupportTickets
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: List pagination size, default 1000, max value is 1000
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: List pagination offset, default 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSupportTicketsResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: List Support Tickets
+      tags:
+      - Support
+    post:
+      description: create support ticket
+      operationId: CreateSupportTicket
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupportTicket'
+        description: Ticket create request
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportTicket'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Create Support Ticket
+      tags:
+      - Support
+      x-codegen-request-body-name: body
+  /org/{orgId}/support/ticket/{ticketId}:
+    get:
+      description: get support ticket
+      operationId: GetSupportTicket
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Ticket ID
+        explode: false
+        in: path
+        name: ticketId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportTicket'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Get Support Ticket
+      tags:
+      - Support
+    patch:
+      description: update support ticket
+      operationId: UpdateSupportTicket
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Ticket ID
+        explode: false
+        in: path
+        name: ticketId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSupportTicketRequest'
+        description: Ticket create request
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportTicket'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Update Support Ticket
+      tags:
+      - Support
+      x-codegen-request-body-name: body
+  /org/{orgId}/support/ticket/{ticketId}/attachment:
+    post:
+      description: create support ticket attachment
+      operationId: CreateSupportTicketAttachment
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Ticket ID
+        explode: false
+        in: path
+        name: ticketId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateSupportTicketAttachment_request'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SupportTicketAttachment'
+                type: array
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Create Support Ticket Attachment
+      tags:
+      - Support
+  /org/{orgId}/support/ticket/{ticketId}/close:
+    patch:
+      description: close suuport ticket
+      operationId: CloseSupportTicket
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Ticket ID
+        explode: false
+        in: path
+        name: ticketId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportTicket'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Close Support Ticket
+      tags:
+      - Support
+  /org/{orgId}/support/ticket/{ticketId}/comment:
+    post:
+      description: create support ticket comment
+      operationId: CreateSupportTicketComment
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Ticket ID
+        explode: false
+        in: path
+        name: ticketId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SupportTicketComment'
+        description: Ticket create request
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportTicketComment'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Create Support Ticket Comment
+      tags:
+      - Support
+      x-codegen-request-body-name: body
+  /org/{orgId}/support/ticket/{ticketId}/reopen:
+    patch:
+      description: reopen support ticket
+      operationId: ReopenSupportTicket
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Ticket ID
+        explode: false
+        in: path
+        name: ticketId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportTicket'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Reopen Support Ticket
+      tags:
+      - Support
+components:
+  schemas:
+    SupportTicketStatus:
+      enum:
+      - OPEN
+      - IN PROGRESS
+      - IN REVIEW
+      - BLOCKED
+      - CLOSED
+      - ARCHIVED
+      - DELETED
+      type: string
+      x-enum-varnames:
+      - SupportTicketStatus_OPEN
+      - SupportTicketStatus_IN_PROGRESS
+      - SupportTicketStatus_IN_REVIEW
+      - SupportTicketStatus_BLOCKED
+      - SupportTicketStatus_CLOSED
+      - SupportTicketStatus_ARCHIVED
+      - SupportTicketStatus_DELETED
+    ListSupportTicketsResponse:
+      example:
+        totalCount: 6
+        items:
+        - creator: creator
+          attachments:
+          - date: date
+            thumbnail_small: thumbnail_small
+            thumbnail_medium: thumbnail_medium
+            size: 0
+            thumbnail_large: thumbnail_large
+            mimetype: mimetype
+            id: id
+            title: title
+            url: url
+          - date: date
+            thumbnail_small: thumbnail_small
+            thumbnail_medium: thumbnail_medium
+            size: 0
+            thumbnail_large: thumbnail_large
+            mimetype: mimetype
+            id: id
+            title: title
+            url: url
+          comments:
+          - date: date
+            comment_text: comment_text
+            creator: '{}'
+            comment:
+            - image:
+                thumbnail_small: thumbnail_small
+                extension: extension
+                thumbnail_medium: thumbnail_medium
+                thumbnail_large: thumbnail_large
+                name: name
+                id: id
+                title: title
+                type: type
+                url: url
+              attachment:
+                date: date
+                thumbnail_small: thumbnail_small
+                thumbnail_medium: thumbnail_medium
+                size: 0
+                thumbnail_large: thumbnail_large
+                mimetype: mimetype
+                id: id
+                title: title
+                url: url
+              text: text
+              type: type
+              frame:
+                id: id
+                url: url
+            - image:
+                thumbnail_small: thumbnail_small
+                extension: extension
+                thumbnail_medium: thumbnail_medium
+                thumbnail_large: thumbnail_large
+                name: name
+                id: id
+                title: title
+                type: type
+                url: url
+              attachment:
+                date: date
+                thumbnail_small: thumbnail_small
+                thumbnail_medium: thumbnail_medium
+                size: 0
+                thumbnail_large: thumbnail_large
+                mimetype: mimetype
+                id: id
+                title: title
+                url: url
+              text: text
+              type: type
+              frame:
+                id: id
+                url: url
+            id: id
+          - date: date
+            comment_text: comment_text
+            creator: '{}'
+            comment:
+            - image:
+                thumbnail_small: thumbnail_small
+                extension: extension
+                thumbnail_medium: thumbnail_medium
+                thumbnail_large: thumbnail_large
+                name: name
+                id: id
+                title: title
+                type: type
+                url: url
+              attachment:
+                date: date
+                thumbnail_small: thumbnail_small
+                thumbnail_medium: thumbnail_medium
+                size: 0
+                thumbnail_large: thumbnail_large
+                mimetype: mimetype
+                id: id
+                title: title
+                url: url
+              text: text
+              type: type
+              frame:
+                id: id
+                url: url
+            - image:
+                thumbnail_small: thumbnail_small
+                extension: extension
+                thumbnail_medium: thumbnail_medium
+                thumbnail_large: thumbnail_large
+                name: name
+                id: id
+                title: title
+                type: type
+                url: url
+              attachment:
+                date: date
+                thumbnail_small: thumbnail_small
+                thumbnail_medium: thumbnail_medium
+                size: 0
+                thumbnail_large: thumbnail_large
+                mimetype: mimetype
+                id: id
+                title: title
+                url: url
+              text: text
+              type: type
+              frame:
+                id: id
+                url: url
+            id: id
+          creationTime: creationTime
+          description: description
+          watchers:
+          - watchers
+          - watchers
+          dueTime: dueTime
+          priority: LOW
+          organizationId: organizationId
+          closeTime: closeTime
+          name: name
+          id: id
+          status: OPEN
+        - creator: creator
+          attachments:
+          - date: date
+            thumbnail_small: thumbnail_small
+            thumbnail_medium: thumbnail_medium
+            size: 0
+            thumbnail_large: thumbnail_large
+            mimetype: mimetype
+            id: id
+            title: title
+            url: url
+          - date: date
+            thumbnail_small: thumbnail_small
+            thumbnail_medium: thumbnail_medium
+            size: 0
+            thumbnail_large: thumbnail_large
+            mimetype: mimetype
+            id: id
+            title: title
+            url: url
+          comments:
+          - date: date
+            comment_text: comment_text
+            creator: '{}'
+            comment:
+            - image:
+                thumbnail_small: thumbnail_small
+                extension: extension
+                thumbnail_medium: thumbnail_medium
+                thumbnail_large: thumbnail_large
+                name: name
+                id: id
+                title: title
+                type: type
+                url: url
+              attachment:
+                date: date
+                thumbnail_small: thumbnail_small
+                thumbnail_medium: thumbnail_medium
+                size: 0
+                thumbnail_large: thumbnail_large
+                mimetype: mimetype
+                id: id
+                title: title
+                url: url
+              text: text
+              type: type
+              frame:
+                id: id
+                url: url
+            - image:
+                thumbnail_small: thumbnail_small
+                extension: extension
+                thumbnail_medium: thumbnail_medium
+                thumbnail_large: thumbnail_large
+                name: name
+                id: id
+                title: title
+                type: type
+                url: url
+              attachment:
+                date: date
+                thumbnail_small: thumbnail_small
+                thumbnail_medium: thumbnail_medium
+                size: 0
+                thumbnail_large: thumbnail_large
+                mimetype: mimetype
+                id: id
+                title: title
+                url: url
+              text: text
+              type: type
+              frame:
+                id: id
+                url: url
+            id: id
+          - date: date
+            comment_text: comment_text
+            creator: '{}'
+            comment:
+            - image:
+                thumbnail_small: thumbnail_small
+                extension: extension
+                thumbnail_medium: thumbnail_medium
+                thumbnail_large: thumbnail_large
+                name: name
+                id: id
+                title: title
+                type: type
+                url: url
+              attachment:
+                date: date
+                thumbnail_small: thumbnail_small
+                thumbnail_medium: thumbnail_medium
+                size: 0
+                thumbnail_large: thumbnail_large
+                mimetype: mimetype
+                id: id
+                title: title
+                url: url
+              text: text
+              type: type
+              frame:
+                id: id
+                url: url
+            - image:
+                thumbnail_small: thumbnail_small
+                extension: extension
+                thumbnail_medium: thumbnail_medium
+                thumbnail_large: thumbnail_large
+                name: name
+                id: id
+                title: title
+                type: type
+                url: url
+              attachment:
+                date: date
+                thumbnail_small: thumbnail_small
+                thumbnail_medium: thumbnail_medium
+                size: 0
+                thumbnail_large: thumbnail_large
+                mimetype: mimetype
+                id: id
+                title: title
+                url: url
+              text: text
+              type: type
+              frame:
+                id: id
+                url: url
+            id: id
+          creationTime: creationTime
+          description: description
+          watchers:
+          - watchers
+          - watchers
+          dueTime: dueTime
+          priority: LOW
+          organizationId: organizationId
+          closeTime: closeTime
+          name: name
+          id: id
+          status: OPEN
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/SupportTicket'
+          type: array
+        totalCount:
+          description: Only available when the request is made with offset=0.
+          type: integer
+      type: object
+    SupportTicketCommentDetail:
+      example:
+        image:
+          thumbnail_small: thumbnail_small
+          extension: extension
+          thumbnail_medium: thumbnail_medium
+          thumbnail_large: thumbnail_large
+          name: name
+          id: id
+          title: title
+          type: type
+          url: url
+        attachment:
+          date: date
+          thumbnail_small: thumbnail_small
+          thumbnail_medium: thumbnail_medium
+          size: 0
+          thumbnail_large: thumbnail_large
+          mimetype: mimetype
+          id: id
+          title: title
+          url: url
+        text: text
+        type: type
+        frame:
+          id: id
+          url: url
+      properties:
+        attachment:
+          $ref: '#/components/schemas/SupportTicketAttachment'
+        frame:
+          $ref: '#/components/schemas/SupportTicketFrame'
+        image:
+          $ref: '#/components/schemas/SupportTicketImage'
+        text:
+          type: string
+        type:
+          type: string
+      type: object
+    SupportTicketAttachment:
+      example:
+        date: date
+        thumbnail_small: thumbnail_small
+        thumbnail_medium: thumbnail_medium
+        size: 0
+        thumbnail_large: thumbnail_large
+        mimetype: mimetype
+        id: id
+        title: title
+        url: url
+      properties:
+        date:
+          type: string
+        id:
+          type: string
+        mimetype:
+          type: string
+        size:
+          type: integer
+        thumbnail_large:
+          type: string
+        thumbnail_medium:
+          type: string
+        thumbnail_small:
+          type: string
+        title:
+          type: string
+        url:
+          type: string
+      type: object
+    SupportTicket:
+      example:
+        creator: creator
+        attachments:
+        - date: date
+          thumbnail_small: thumbnail_small
+          thumbnail_medium: thumbnail_medium
+          size: 0
+          thumbnail_large: thumbnail_large
+          mimetype: mimetype
+          id: id
+          title: title
+          url: url
+        - date: date
+          thumbnail_small: thumbnail_small
+          thumbnail_medium: thumbnail_medium
+          size: 0
+          thumbnail_large: thumbnail_large
+          mimetype: mimetype
+          id: id
+          title: title
+          url: url
+        comments:
+        - date: date
+          comment_text: comment_text
+          creator: '{}'
+          comment:
+          - image:
+              thumbnail_small: thumbnail_small
+              extension: extension
+              thumbnail_medium: thumbnail_medium
+              thumbnail_large: thumbnail_large
+              name: name
+              id: id
+              title: title
+              type: type
+              url: url
+            attachment:
+              date: date
+              thumbnail_small: thumbnail_small
+              thumbnail_medium: thumbnail_medium
+              size: 0
+              thumbnail_large: thumbnail_large
+              mimetype: mimetype
+              id: id
+              title: title
+              url: url
+            text: text
+            type: type
+            frame:
+              id: id
+              url: url
+          - image:
+              thumbnail_small: thumbnail_small
+              extension: extension
+              thumbnail_medium: thumbnail_medium
+              thumbnail_large: thumbnail_large
+              name: name
+              id: id
+              title: title
+              type: type
+              url: url
+            attachment:
+              date: date
+              thumbnail_small: thumbnail_small
+              thumbnail_medium: thumbnail_medium
+              size: 0
+              thumbnail_large: thumbnail_large
+              mimetype: mimetype
+              id: id
+              title: title
+              url: url
+            text: text
+            type: type
+            frame:
+              id: id
+              url: url
+          id: id
+        - date: date
+          comment_text: comment_text
+          creator: '{}'
+          comment:
+          - image:
+              thumbnail_small: thumbnail_small
+              extension: extension
+              thumbnail_medium: thumbnail_medium
+              thumbnail_large: thumbnail_large
+              name: name
+              id: id
+              title: title
+              type: type
+              url: url
+            attachment:
+              date: date
+              thumbnail_small: thumbnail_small
+              thumbnail_medium: thumbnail_medium
+              size: 0
+              thumbnail_large: thumbnail_large
+              mimetype: mimetype
+              id: id
+              title: title
+              url: url
+            text: text
+            type: type
+            frame:
+              id: id
+              url: url
+          - image:
+              thumbnail_small: thumbnail_small
+              extension: extension
+              thumbnail_medium: thumbnail_medium
+              thumbnail_large: thumbnail_large
+              name: name
+              id: id
+              title: title
+              type: type
+              url: url
+            attachment:
+              date: date
+              thumbnail_small: thumbnail_small
+              thumbnail_medium: thumbnail_medium
+              size: 0
+              thumbnail_large: thumbnail_large
+              mimetype: mimetype
+              id: id
+              title: title
+              url: url
+            text: text
+            type: type
+            frame:
+              id: id
+              url: url
+          id: id
+        creationTime: creationTime
+        description: description
+        watchers:
+        - watchers
+        - watchers
+        dueTime: dueTime
+        priority: LOW
+        organizationId: organizationId
+        closeTime: closeTime
+        name: name
+        id: id
+        status: OPEN
+      properties:
+        attachments:
+          items:
+            $ref: '#/components/schemas/SupportTicketAttachment'
+          type: array
+        closeTime:
+          type: string
+        comments:
+          items:
+            $ref: '#/components/schemas/SupportTicketComment'
+          type: array
+        creationTime:
+          type: string
+        creator:
+          type: string
+        description:
+          type: string
+        dueTime:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        organizationId:
+          type: string
+        priority:
+          $ref: '#/components/schemas/SupportTicketPriority'
+        status:
+          $ref: '#/components/schemas/SupportTicketStatus'
+        watchers:
+          items:
+            type: string
+          type: array
+      type: object
+    SupportTicketFrame:
+      example:
+        id: id
+        url: url
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+      type: object
+    SupportTicketComment:
+      example:
+        date: date
+        comment_text: comment_text
+        creator: '{}'
+        comment:
+        - image:
+            thumbnail_small: thumbnail_small
+            extension: extension
+            thumbnail_medium: thumbnail_medium
+            thumbnail_large: thumbnail_large
+            name: name
+            id: id
+            title: title
+            type: type
+            url: url
+          attachment:
+            date: date
+            thumbnail_small: thumbnail_small
+            thumbnail_medium: thumbnail_medium
+            size: 0
+            thumbnail_large: thumbnail_large
+            mimetype: mimetype
+            id: id
+            title: title
+            url: url
+          text: text
+          type: type
+          frame:
+            id: id
+            url: url
+        - image:
+            thumbnail_small: thumbnail_small
+            extension: extension
+            thumbnail_medium: thumbnail_medium
+            thumbnail_large: thumbnail_large
+            name: name
+            id: id
+            title: title
+            type: type
+            url: url
+          attachment:
+            date: date
+            thumbnail_small: thumbnail_small
+            thumbnail_medium: thumbnail_medium
+            size: 0
+            thumbnail_large: thumbnail_large
+            mimetype: mimetype
+            id: id
+            title: title
+            url: url
+          text: text
+          type: type
+          frame:
+            id: id
+            url: url
+        id: id
+      properties:
+        comment:
+          items:
+            $ref: '#/components/schemas/SupportTicketCommentDetail'
+          type: array
+        comment_text:
+          description: When creating a new comment, only CommentText is required.
+          type: string
+        creator:
+          allOf:
+          - $ref: '#/components/schemas/SupportTicketUser'
+          description: who created the comment
+          type: object
+        date:
+          type: string
+        id:
+          type: string
+      type: object
+    SupportTicketPriority:
+      enum:
+      - LOW
+      - NORMAL
+      - HIGH
+      - URGENT
+      type: string
+      x-enum-varnames:
+      - SupportTicketPriority_LOW
+      - SupportTicketPriority_NORMAL
+      - SupportTicketPriority_HIGH
+      - SupportTicketPriority_URGENT
+    SupportTicketImage:
+      example:
+        thumbnail_small: thumbnail_small
+        extension: extension
+        thumbnail_medium: thumbnail_medium
+        thumbnail_large: thumbnail_large
+        name: name
+        id: id
+        title: title
+        type: type
+        url: url
+      properties:
+        extension:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        thumbnail_large:
+          type: string
+        thumbnail_medium:
+          type: string
+        thumbnail_small:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+        url:
+          type: string
+      type: object
+    UpdateSupportTicketRequest:
+      example:
+        watchers:
+        - watchers
+        - watchers
+        priority: LOW
+      properties:
+        priority:
+          $ref: '#/components/schemas/SupportTicketPriority'
+        watchers:
+          items:
+            type: string
+          type: array
+      required:
+      - priority
+      - watchers
+      type: object
+    SupportTicketUser:
+      properties:
+        email:
+          type: string
+        id:
+          description: The Suger user ID.
+          type: string
+        isSugerEmployee:
+          description: Whether the user is a Suger employee.
+          type: boolean
+        profilePicture:
+          type: string
+        username:
+          type: string
+      type: object
+    CreateSupportTicketAttachment_request:
+      properties:
+        file:
+          description: File to upload
+          format: binary
+          type: string
+      required:
+      - file
+      type: object
+  securitySchemes:
+    APIKeyAuth:
+      description: API Key for authorization in format of <Key *****>.
+      in: header
+      name: Authorization
+      type: apiKey
+x-original-swagger-version: '2.0'

@@ -1,0 +1,1035 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: support@suger.io
+    name: Suger Support
+    url: https://www.suger.io/support
+  description: CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.
+  title: Suger API Contact API
+  version: '1.0'
+servers:
+- url: https://api.suger.cloud
+tags:
+- description: Access to Contact resources
+  name: Contact
+paths:
+  /org/{orgId}/contact:
+    get:
+      description: List all contacts under the given organization.
+      operationId: ListContactsByOrganization
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: List pagination size, default 1000, max value is 1000
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: List pagination offset, default 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IdentityContact'
+                type: array
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error description
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: internal error description
+      security:
+      - APIKeyAuth: []
+      summary: List Contacts By Organization
+      tags:
+      - Contact
+    post:
+      description: Create a contact under the given organization. If the email address already exists, return the existing contact.
+      operationId: CreateContact
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityContact'
+        description: RequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityContact'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Create Contact
+      tags:
+      - Contact
+      x-codegen-request-body-name: data
+  /org/{orgId}/contact/{contactId}:
+    get:
+      description: Get the Contact by the given contact ID.
+      operationId: GetContact
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Contact ID
+        explode: false
+        in: path
+        name: contactId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityContact'
+          description: the Contact Object
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error description
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: internal error description
+      security:
+      - APIKeyAuth: []
+      summary: Get Contact
+      tags:
+      - Contact
+    patch:
+      description: update contact by the given organization and buyer id. The given name and information should be complete. Please note that this function does not support partial updates.
+      operationId: UpdateContact
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Contact ID
+        explode: false
+        in: path
+        name: contactId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityContact'
+        description: Request Body
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityContact'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Update Contact
+      tags:
+      - Contact
+      x-codegen-request-body-name: data
+  /org/{orgId}/contact/{contactId}/buyer/{buyerId}:
+    delete:
+      description: remove contact from buyer by the given organization, buyer id and contact id.
+      operationId: RemoveContactFromBuyer
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Buyer ID
+        explode: false
+        in: path
+        name: buyerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Contact ID
+        explode: false
+        in: path
+        name: contactId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: empty string if success
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Remove Contact From Buyer
+      tags:
+      - Contact
+    post:
+      description: add contact to buyer by the given organization, buyer id and contact id.
+      operationId: AddContactToBuyer
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Buyer ID
+        explode: false
+        in: path
+        name: buyerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Contact ID
+        explode: false
+        in: path
+        name: contactId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityBuyer'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Add Contact To Buyer
+      tags:
+      - Contact
+  /org/{orgId}/contact/{contactId}/offer/{offerId}:
+    delete:
+      description: remove contact from offer by given organization, offer id and contact id.
+      operationId: RemoveContactFromOffer
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Contact ID
+        explode: false
+        in: path
+        name: contactId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Offer ID
+        explode: false
+        in: path
+        name: offerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: empty string if success
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Remove Contact From Offer
+      tags:
+      - Contact
+    post:
+      description: add contact to offer by the given organization, offer id and contact id.
+      operationId: AddContactToOffer
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Contact ID
+        explode: false
+        in: path
+        name: contactId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Offer ID
+        explode: false
+        in: path
+        name: offerId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: empty string if success
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Add Contact To Offer
+      tags:
+      - Contact
+  /org/{orgId}/contact/batch:
+    post:
+      description: Create multiple contacts under the given organization. If an email address already exists, return the existing contact.
+      operationId: BatchCreateContacts
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/IdentityContact'
+              type: array
+        description: RequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  items:
+                    $ref: '#/components/schemas/IdentityContact'
+                  type: array
+                type: array
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Batch Create Contacts
+      tags:
+      - Contact
+      x-codegen-request-body-name: data
+components:
+  schemas:
+    StripeCustomerAddress:
+      properties:
+        city:
+          description: City, district, suburb, town, or village.
+          type: string
+        country:
+          description: Two-letter country code (ISO 3166-1 alpha-2)
+          type: string
+        line1:
+          description: Address line 1 (e.g., street, PO Box, or company name).
+          type: string
+        line2:
+          description: Address line 2 (e.g., apartment, suite, unit, or building).
+          type: string
+        postal_code:
+          description: ZIP or postal code.
+          type: string
+        state:
+          description: State, county, province, or region.
+          type: string
+      type: object
+    AzureADIdentifier:
+      example:
+        firstName: firstName
+        lastName: lastName
+        licenseType: licenseType
+        puid: puid
+        customerId: customerId
+        tenantId: tenantId
+        billingAccountId: billingAccountId
+        emailId: emailId
+        objectId: objectId
+      properties:
+        billingAccountId:
+          description: Azure Billing Account ID
+          type: string
+        customerId:
+          type: string
+        emailId:
+          description: Email address
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        licenseType:
+          description: Azure License Type
+          type: string
+        objectId:
+          type: string
+        puid:
+          description: ID of the user, used as External ID of suger IdentityBuyer.
+          type: string
+        tenantId:
+          type: string
+      type: object
+    GcpMarketplaceUserAccountApproval:
+      properties:
+        name:
+          type: string
+        reason:
+          description: An explanation for the state of the approval.
+          type: string
+        state:
+          $ref: '#/components/schemas/GcpMarketplaceUserAccountApprovalState'
+        updateTime:
+          description: RFC3339 UTC timestamp
+          type: string
+      type: object
+    IdentityContact:
+      example:
+        organizationID: organizationID
+        emailAddress: emailAddress
+        creationTime: creationTime
+        name: name
+        id: id
+        info:
+          phoneNumber: phoneNumber
+          role: role
+          companyName: companyName
+          lastModifiedBy: lastModifiedBy
+          companyLocation: companyLocation
+        lastUpdateTime: lastUpdateTime
+      properties:
+        creationTime:
+          type: string
+        emailAddress:
+          type: string
+        id:
+          description: This is generated by Suger. When you create a new contact, do not provide.
+          type: string
+        info:
+          $ref: '#/components/schemas/IdentityConctactInfo'
+        lastUpdateTime:
+          type: string
+        name:
+          type: string
+        organizationID:
+          type: string
+      type: object
+    GcpMarketplaceUserAccount:
+      properties:
+        approvals:
+          description: The approvals for this account, that are permitted or have been completed.
+          items:
+            $ref: '#/components/schemas/GcpMarketplaceUserAccountApproval'
+          type: array
+        billingAccountId:
+          description: The buyer's GCP billing account ID if it's a company account.
+          type: string
+        createTime:
+          description: RFC3339 UTC timestamp
+          format: date-time
+          type: string
+        id:
+          description: GCP Marketplace User Account ID.
+          type: string
+        inputProperties:
+          items:
+            type: integer
+          type: array
+        name:
+          description: The resource name of the account, in format of providers/{provider_id}/accounts/{account_id}.
+          type: string
+        parentBillingAccountId:
+          description: 'The parent account ID of the BillingAccountId if the buyer is from a reseller in GCP Marketplace.
+
+            It is the GCP billing account ID of the reseller in GCP Marketplace.'
+          type: string
+        provider:
+          description: The identifier of the service provider (SaaS Seller) that this account was created against.
+          type: string
+        state:
+          allOf:
+          - $ref: '#/components/schemas/GcpMarketplaceUserAccountState'
+          description: The state of the account. An account might not be able to make a purchase if the billing account is suspended.
+          type: object
+        updateTime:
+          description: RFC3339 UTC timestamp
+          format: date-time
+          type: string
+        userInfo:
+          $ref: '#/components/schemas/GcpUserInfo'
+      type: object
+    Partner:
+      enum:
+      - ''
+      - ADYEN
+      - ALIBABA
+      - AWS
+      - AWS_CHINA
+      - AZURE
+      - CHARGEBEE
+      - DATABRICKS
+      - DOCUSIGN
+      - GCP
+      - GOOGLE
+      - HUBSPOT
+      - INTUIT
+      - LAGO
+      - MARKETO
+      - METRONOME
+      - MICROSOFT
+      - ORACLE
+      - ORB
+      - REDHAT
+      - SALESFORCE
+      - SLACK
+      - SNOWFLAKE
+      - STRIPE
+      - ZOHO
+      type: string
+      x-enum-varnames:
+      - Partner_UNKNOWN
+      - Partner_ADYEN
+      - Partner_ALIBABA
+      - Partner_AWS
+      - Partner_AWS_CHINA
+      - Partner_AZURE
+      - Partner_CHARGEBEE
+      - Partner_DATABRICKS
+      - Partner_DOCUSIGN
+      - Partner_GCP
+      - Partner_GOOGLE
+      - Partner_HUBSPOT
+      - Partner_INTUIT
+      - Partner_LAGO
+      - Partner_MARKETO
+      - Partner_METRONOME
+      - Partner_MICROSOFT
+      - Partner_ORACLE
+      - Partner_ORB
+      - Partner_REDHAT
+      - Partner_SALESFORCE
+      - Partner_SLACK
+      - Partner_SNOWFLAKE
+      - Partner_STRIPE
+      - Partner_ZOHO
+    GcpUserInfo:
+      properties:
+        orders:
+          description: 'a list of unique order IDs for each entitlement ID that indicates the
+
+            different offers on the same product. This field is available only if
+
+            multiple orders of the same product is enabled'
+          items:
+            type: string
+          type: array
+        roles:
+          description: 'An array of strings representing the user''s roles. Right now, it can be either: ** account_admin, which indicates that the user is a Billing Account Administrator of the billing account that purchased the product, or ** project_editor, which indicates that the user is a Project Editor, but not a Billing Administrator, of the project under that billing account.'
+          items:
+            type: string
+          type: array
+        user_identity:
+          description: The user's obfuscated GAIA ID, which can be used to initiate Open ID Connect.
+          type: string
+      type: object
+    PaymentConfig:
+      properties:
+        allowedWalletTypes:
+          description: Allowed wallet types for this buyer, include payment methods from payment provider such as card, us_bank_account and credit.
+          items:
+            $ref: '#/components/schemas/BillingWalletType'
+          type: array
+        currency:
+          description: Currency used for billing.
+          type: string
+        defaultWalletId:
+          description: Default wallet id which is a stripe payment method used to invoice.
+          type: string
+      type: object
+    AwsAccountIdentifier:
+      properties:
+        awsAccountID:
+          description: The AWS Account ID of the buyer in AWS Marketplace
+          type: string
+        awsCustomerID:
+          description: The AWS Customer ID of the buyer in AWS Marketplace
+          type: string
+        dataFeedAccountID:
+          description: The Account ID in AWS Marketplace Data Feed service
+          type: string
+      type: object
+    IdentityConctactInfo:
+      example:
+        phoneNumber: phoneNumber
+        role: role
+        companyName: companyName
+        lastModifiedBy: lastModifiedBy
+        companyLocation: companyLocation
+      properties:
+        companyLocation:
+          type: string
+        companyName:
+          type: string
+        lastModifiedBy:
+          type: string
+        phoneNumber:
+          type: string
+        role:
+          type: string
+      type: object
+    BillingWalletType:
+      enum:
+      - ach_debit
+      - bacs_debit
+      - card
+      - credit
+      - sepa_debit
+      type: string
+      x-enum-comments:
+        BillingWalletType_ACH_DEBIT: for USD.
+        BillingWalletType_BACS_DEBIT: for UK.
+        BillingWalletType_CREDIT: Credit managed by Suger.
+        BillingWalletType_SEPA_DEBIT: for EUR.
+      x-enum-varnames:
+      - BillingWalletType_ACH_DEBIT
+      - BillingWalletType_BACS_DEBIT
+      - BillingWalletType_CARD
+      - BillingWalletType_CREDIT
+      - BillingWalletType_SEPA_DEBIT
+    BuyerInfo:
+      example:
+        stripeBuyer: '{}'
+        invoicedAmount: 5.962133916683182
+        snowflakeBuyer: '{}'
+        companyInfo:
+          country: country
+          emailDomain: emailDomain
+          city: city
+          postalCode: postalCode
+          name: name
+          addressLine1: addressLine1
+          addressLine2: addressLine2
+          state: state
+          validFrom: validFrom
+        gcpBuyer: '{}'
+        lastModifiedBy: lastModifiedBy
+        grossAmount: 1.4658129805029452
+        collectableAmount: 0.8008281904610115
+        paymentConfig: '{}'
+        emailAddress: emailAddress
+        orbCustomerId: orbCustomerId
+        adyenBuyer: '{}'
+        azureBuyer: '{}'
+        customerId: customerId
+        lagoCustomerId: lagoCustomerId
+        awsBuyer: '{}'
+        fields:
+          key: ''
+        metronomeCustomerId: metronomeCustomerId
+        stripeCustomerId: stripeCustomerId
+        disbursedAmount: 6.027456183070403
+        spaUrl: spaUrl
+      properties:
+        adyenBuyer:
+          allOf:
+          - $ref: '#/components/schemas/AdyenBuyer'
+          description: Buyer on Adyen
+          type: object
+        awsBuyer:
+          allOf:
+          - $ref: '#/components/schemas/AwsAccountIdentifier'
+          description: Buyer from AWS Marketplace
+          type: object
+        azureBuyer:
+          allOf:
+          - $ref: '#/components/schemas/AzureADIdentifier'
+          description: Buyer from Azure Marketplace
+          type: object
+        collectableAmount:
+          description: The amount that the seller can collect. It excludes the marketplace commision fee.
+          type: number
+        companyInfo:
+          $ref: '#/components/schemas/CompanyInfo'
+        customerId:
+          description: customerID of buyer on seller's side
+          type: string
+        disbursedAmount:
+          description: The amount that has been disbursed to the seller account.
+          type: number
+        emailAddress:
+          description: The email address of the buyer. This was copied from the new client signup form.
+          type: string
+        fields:
+          additionalProperties: true
+          description: Fields to store key-value pairs of buyer information.
+          type: object
+        gcpBuyer:
+          allOf:
+          - $ref: '#/components/schemas/GcpMarketplaceUserAccount'
+          description: Buyer from GCP Marketplace
+          type: object
+        grossAmount:
+          description: The gross amount that the buyer has committed to pay, including usage metered amount.
+          type: number
+        invoicedAmount:
+          description: The amount that the buyer has got invoiced.
+          type: number
+        lagoCustomerId:
+          description: The lgo customer ID for the buyer if it is connected to a lago customer.
+          type: string
+        lastModifiedBy:
+          description: Last modifier user ID.
+          type: string
+        metronomeCustomerId:
+          description: The metronome customer ID for the buyer if it is connected to a metronome customer.
+          type: string
+        orbCustomerId:
+          description: The orb customer ID for the buyer if it is connected to a orb customer.
+          type: string
+        paymentConfig:
+          allOf:
+          - $ref: '#/components/schemas/PaymentConfig'
+          description: Payment Config for billing.
+          type: object
+        snowflakeBuyer:
+          allOf:
+          - $ref: '#/components/schemas/SnowflakeMarketplaceBuyer'
+          description: Buyer on Snowflake
+          type: object
+        spaUrl:
+          description: Buyer SPA url, public page visited with jwt.
+          type: string
+        stripeBuyer:
+          allOf:
+          - $ref: '#/components/schemas/StripeCustomer'
+          description: Buyer as Customer on Stripe
+          type: object
+        stripeCustomerId:
+          description: The stripe customer ID for the buyer if it is connected to a stripe customer.
+          type: string
+      type: object
+    AdyenBuyer:
+      properties:
+        settings:
+          additionalProperties: true
+          description: Settings store key-value pairs such as paymentMethodId,syncWithProvider,providerPaymentMethods.
+          type: object
+        shopperId:
+          description: The shopperId on the adyen platform corresponding to the buyer.
+          type: string
+      type: object
+    GcpMarketplaceUserAccountState:
+      enum:
+      - ACCOUNT_STATE_UNSPECIFIED
+      - ACCOUNT_ACTIVE
+      type: string
+      x-enum-varnames:
+      - GcpMarketplaceUserAccountState_UNSPECIFIED
+      - GcpMarketplaceUserAccountState_ACTIVE
+    SnowflakeMarketplaceBuyer:
+      properties:
+        snowflakeCustomerID:
+          description: The customer ID of the buyer in Snowflake Marketplace.
+          type: string
+      type: object
+    IdentityBuyer:
+      example:
+        organizationID: organizationID
+        creationTime: 2000-01-23 04:56:07+00:00
+        partner: ''
+        name: name
+        description: description
+        externalID: externalID
+        id: id
+        contactIds:
+        - contactIds
+        - contactIds
+        info:
+          stripeBuyer: '{}'
+          invoicedAmount: 5.962133916683182
+          snowflakeBuyer: '{}'
+          companyInfo:
+            country: country
+            emailDomain: emailDomain
+            city: city
+            postalCode: postalCode
+            name: name
+            addressLine1: addressLine1
+            addressLine2: addressLine2
+            state: state
+            validFrom: validFrom
+          gcpBuyer: '{}'
+          lastModifiedBy: lastModifiedBy
+          grossAmount: 1.4658129805029452
+          collectableAmount: 0.8008281904610115
+          paymentConfig: '{}'
+          emailAddress: emailAddress
+          orbCustomerId: orbCustomerId
+          adyenBuyer: '{}'
+          azureBuyer: '{}'
+          customerId: customerId
+          lagoCustomerId: lagoCustomerId
+          awsBuyer: '{}'
+          fields:
+            key: ''
+          metronomeCustomerId: metronomeCustomerId
+          stripeCustomerId: stripeCustomerId
+          disbursedAmount: 6.027456183070403
+          spaUrl: spaUrl
+        lastUpdateTime: 2000-01-23 04:56:07+00:00
+      properties:
+        contactIds:
+          items:
+            type: string
+          type: array
+        creationTime:
+          format: date-time
+          type: string
+        description:
+          type: string
+        externalID:
+          type: string
+        id:
+          type: string
+        info:
+          $ref: '#/components/schemas/BuyerInfo'
+        lastUpdateTime:
+          format: date-time
+          type: string
+        name:
+          type: string
+        organizationID:
+          type: string
+        partner:
+          $ref: '#/components/schemas/Partner'
+      type: object
+    GcpMarketplaceUserAccountApprovalState:
+      enum:
+      - STATE_UNSPECIFIED
+      - PENDING
+      - APPROVED
+      - REJECTED
+      type: string
+      x-enum-varnames:
+      - GcpMarketplaceUserAccountApprovalState_STATE_UNSPECIFIED
+      - GcpMarketplaceUserAccountApprovalState_PENDING
+      - GcpMarketplaceUserAccountApprovalState_APPROVED
+      - GcpMarketplaceUserAccountApprovalState_REJECTED
+    CompanyInfo:
+      example:
+        country: country
+        emailDomain: emailDomain
+        city: city
+        postalCode: postalCode
+        name: name
+        addressLine1: addressLine1
+        addressLine2: addressLine2
+        state: state
+        validFrom: validFrom
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        emailDomain:
+          type: string
+        name:
+          type: string
+        postalCode:
+          type: string
+        state:
+          type: string
+        validFrom:
+          description: When the company info becomes valid. in format "2006-01-02T15:04:05Z"
+          type: string
+      type: object
+    StripeCustomer:
+      properties:
+        address:
+          $ref: '#/components/schemas/StripeCustomerAddress'
+        description:
+          type: string
+        email:
+          type: string
+        id:
+          description: The customer ID on the stripe platform.
+          type: string
+        metadata:
+          additionalProperties:
+            type: string
+          description: Set of key-value pairs that you can attach to store additional information about customer.
+          type: object
+        name:
+          type: string
+        phone:
+          type: string
+      type: object
+  securitySchemes:
+    APIKeyAuth:
+      description: API Key for authorization in format of <Key *****>.
+      in: header
+      name: Authorization
+      type: apiKey
+x-original-swagger-version: '2.0'

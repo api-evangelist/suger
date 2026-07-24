@@ -1,0 +1,146 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: support@suger.io
+    name: Suger Support
+    url: https://www.suger.io/support
+  description: CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.
+  title: Suger API API
+  version: '1.0'
+servers:
+- url: https://api.suger.cloud
+tags:
+- description: Access to API client resources
+  name: API
+paths:
+  /org/{orgId}/apiClient:
+    get:
+      description: List all API clients in the given organization.
+      operationId: ListApiClients
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.IdentityApiClient'
+                type: array
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: List Api Clients
+      tags:
+      - API
+  /org/{orgId}/apiClient/{apiClientId}:
+    get:
+      description: Get the API client by ID.
+      operationId: GetApiClient
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: API client ID
+        explode: false
+        in: path
+        name: apiClientId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.IdentityApiClient'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Get Api Client
+      tags:
+      - API
+components:
+  schemas:
+    github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.IdentityApiClient:
+      example:
+        organizationID: organizationID
+        role: role
+        apiKeyHash: apiKeyHash
+        creationTime: creationTime
+        provider: provider
+        id: id
+        secret: secret
+        type: type
+        info:
+        - 0
+        - 0
+        lastUpdateTime: lastUpdateTime
+      properties:
+        apiKeyHash:
+          type: string
+        creationTime:
+          type: string
+        id:
+          type: string
+        info:
+          items:
+            type: integer
+          type: array
+        lastUpdateTime:
+          type: string
+        organizationID:
+          type: string
+        provider:
+          type: string
+        role:
+          type: string
+        secret:
+          type: string
+        type:
+          type: string
+      type: object
+  securitySchemes:
+    APIKeyAuth:
+      description: API Key for authorization in format of <Key *****>.
+      in: header
+      name: Authorization
+      type: apiKey
+x-original-swagger-version: '2.0'

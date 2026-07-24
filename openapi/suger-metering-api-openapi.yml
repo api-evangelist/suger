@@ -1,0 +1,2944 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: support@suger.io
+    name: Suger Support
+    url: https://www.suger.io/support
+  description: CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.
+  title: Suger API Metering API
+  version: '1.0'
+servers:
+- url: https://api.suger.cloud
+tags:
+- description: Access to Usage Metering resources
+  name: Metering
+paths:
+  /org/{orgId}/batchCreateUsageRecordGroups:
+    post:
+      description: Batch report new usage record groups.
+      operationId: BatchReportUsageRecordGroups
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/NewUsageRecordGroup'
+              type: array
+        description: Array of new usage record groups to report
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MeteringUsageRecordGroup'
+                type: array
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: all the quantity of usage records are zero
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Batch Report UsageRecordGroups
+      tags:
+      - Metering
+      x-codegen-request-body-name: usageRecordGroups
+  /org/{orgId}/batchValidateUsageRecordGroups:
+    post:
+      description: Provide a batch of usage record groups and validate each individual usage record group one by one.
+      operationId: BatchValidateUsageRecordGroups
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/NewUsageRecordGroup'
+              type: array
+        description: Array of usage record groups to be validated
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Empty string if validation is successful
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error description
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: validation failed for usage record group
+      security:
+      - APIKeyAuth: []
+      summary: Batch Validate UsageRecordGroups
+      tags:
+      - Metering
+      x-codegen-request-body-name: data
+  /org/{orgId}/billableMetric:
+    get:
+      description: list billable metrics for the given organization.
+      operationId: ListBillableMetrics
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Status of the billable metric
+        explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BillableMetric'
+                type: array
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: List Billable Metrics
+      tags:
+      - Metering
+    post:
+      description: Create a new billable metric for the given organization.
+      operationId: CreateBillableMetric
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillableMetric'
+        description: RequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillableMetric'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request params
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Create Billable Metric
+      tags:
+      - Metering
+      x-codegen-request-body-name: data
+  /org/{orgId}/billableMetric/{billableMetricId}:
+    get:
+      description: Get the billable metric for the given organization and billable metric ID.
+      operationId: GetBillableMetric
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Billable Metric ID
+        explode: false
+        in: path
+        name: billableMetricId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillableMetric'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '404':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: billable metric not found
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Get Billable Metric
+      tags:
+      - Metering
+    patch:
+      description: Update the name, description and status of the billable metric for the given organization.
+      operationId: UpdateBillableMetric
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Billable Metric ID
+        explode: false
+        in: path
+        name: billableMetricId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBillableMetricParams'
+        description: RequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillableMetric'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '404':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: billable metric not found
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Update Billable Metric
+      tags:
+      - Metering
+      x-codegen-request-body-name: data
+  /org/{orgId}/entitlement/{entitlementId}/usageRecordGroup:
+    post:
+      description: It is recommended to provide the ID in the request body CreateUsageRecordGroupParams, so the report can be deduplicated. All duplicate report will return error code 409.
+      operationId: ReportUsageRecordGroup
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Entitlement ID
+        explode: false
+        in: path
+        name: entitlementId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUsageRecordGroupParams'
+        description: RequestBody
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeteringUsageRecordGroup'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: all the quantity of usage records are zero
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Report UsageRecordGroup
+      tags:
+      - Metering
+      x-codegen-request-body-name: data
+  /org/{orgId}/usageMeteringConfigInfo:
+    get:
+      description: Get the usage metering config info of the given organization.
+      operationId: GetUsageMeteringConfigInfo
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageMeteringConfigInfo'
+          description: Usage metering config info
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Get Usage Metering Config Info
+      tags:
+      - Metering
+    patch:
+      description: Update the usage metering config info of the given organization.
+      operationId: UpdateUsageMeteringConfigInfo
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsageMeteringConfigInfo'
+        description: The usage metering config info to be updated
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageMeteringConfigInfo'
+          description: Usage metering config info
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Update Usage Metering Config Info
+      tags:
+      - Metering
+      x-codegen-request-body-name: data
+  /org/{orgId}/usageRecordGroup:
+    get:
+      description: 'List UsageRecordGroups by the given organization, partner, product, entitlement or buyer. Only provide one or none of the optional query parameters: partner, productId, entitlementId & buyerId .'
+      operationId: ListUsageRecordGroups
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Cloud Partner
+        explode: true
+        in: query
+        name: partner
+        required: false
+        schema:
+          enum:
+          - AWS
+          - AZURE
+          - GCP
+          type: string
+        style: form
+      - description: filter by buyer ID, default no filter by buyerId if not provided
+        explode: true
+        in: query
+        name: buyerId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: filter by entitlement ID, default no filter by entitlementId if not provided
+        explode: true
+        in: query
+        name: entitlementId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The status of the usage record group, default no filter by status if not provided
+        explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          enum:
+          - CREATED
+          - DELETED
+          - INVALID
+          - REPORTED
+          - REPORT_PENDING
+          - REPORT_FAILED
+          type: string
+        style: form
+      - description: The source of the usage record group, default no filter by source if not provided
+        explode: true
+        in: query
+        name: source
+        required: false
+        schema:
+          enum:
+          - ''
+          - API
+          - INTERNAL
+          - LAGO
+          - METRONOME
+          - ORB
+          - STRIPE
+          type: string
+        style: form
+      - description: metaInfo filter
+        explode: true
+        in: query
+        name: metaInfo
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
+        explode: true
+        in: query
+        name: startDate
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: end date (UTC) in YYYY-MM-DD format, default is today
+        explode: true
+        in: query
+        name: endDate
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: List pagination size, default 1000, max value is 1000
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: List pagination offset, default 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListUsageRecordGroupsResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: List UsageRecordGroups
+      tags:
+      - Metering
+  /org/{orgId}/usageRecordGroup/{usageRecordGroupId}:
+    delete:
+      description: delete the UsageRecordGroup for the given organization and usageRecordGroup ID. Only usageRecordGroup with status "CREATED" or "INVALID" can be deleted.
+      operationId: DeleteUsageRecordGroup
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: UsageRecordGroup ID
+        explode: false
+        in: path
+        name: usageRecordGroupId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: UsageRecordGroup's creation date (UTC) in YYYY-MM-DD format
+        explode: true
+        in: query
+        name: creationDate
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeteringUsageRecordGroup'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '404':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: usageRecordGroup not found
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Delete UsageRecordGroup
+      tags:
+      - Metering
+  /org/{orgId}/usageRecordGroup/{usageRecordGroupId}/retry:
+    post:
+      description: Retry the given UsageRecordGroup by setting from status "REPORT_FAILED" to "CREATED", and it will be ready for the next hourly report. Only usageRecordGroup with status "REPORT_FAILED" can be retried.
+      operationId: RetryUsageRecordGroup
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: UsageRecordGroup ID
+        explode: false
+        in: path
+        name: usageRecordGroupId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: UsageRecordGroup's creation date (UTC) in YYYY-MM-DD format
+        explode: true
+        in: query
+        name: creationDate
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeteringUsageRecordGroup'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '404':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: usageRecordGroup not found
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: Retry UsageRecordGroup
+      tags:
+      - Metering
+  /org/{orgId}/usageRecordReport:
+    get:
+      description: List usageRecordReports under the given organization, partner, entitlement or buyer, within the given time range and pagination.
+      operationId: ListUsageRecordReports
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: orgId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Cloud Partner
+        explode: true
+        in: query
+        name: partner
+        required: false
+        schema:
+          enum:
+          - AWS
+          - AZURE
+          - GCP
+          type: string
+        style: form
+      - description: buyer ID
+        explode: true
+        in: query
+        name: buyerId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: entitlement ID
+        explode: true
+        in: query
+        name: entitlementId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate
+        explode: true
+        in: query
+        name: startDate
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: end date (UTC) in YYYY-MM-DD format, default is today
+        explode: true
+        in: query
+        name: endDate
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: List pagination size, default 1000, max value is 1000
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: List pagination offset, default 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListUsageRecordReportsResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Bad request error
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Internal server error
+      security:
+      - APIKeyAuth: []
+      summary: List UsageRecordReports
+      tags:
+      - Metering
+components:
+  schemas:
+    MeteringUsageRecordReportInfo:
+      example:
+        creditRecords:
+          key: 2.3021358869347655
+        usedCommitAmountIncrement: 1.4894159098541704
+        gcpMeteringRequest: '{}'
+        alibabaMeteringResponse: '{}'
+        usedCommitAmount: 1.0246457001441578
+        reportedRecords:
+          key: 1.2315135367772556
+        usedCreditAmount: 6.84685269835264
+        alibabaMeteringRequest: '{}'
+        dimensionUnitListPrice:
+          key: 9.301444243932576
+        azureMeteringRequest: '{}'
+        aggregatedBillableRecords:
+        - amount: 6.027456183070403
+          quantity: 1.4658129805029452
+          name: name
+          billableMetricInfo:
+            groupBys:
+            - groupBys
+            - groupBys
+            propertyUniqueOn: propertyUniqueOn
+            filterGroups:
+            - filters:
+              - valueType: STRING
+                name: name
+                operation: IS
+                value: '{}'
+              - valueType: STRING
+                name: name
+                operation: IS
+                value: '{}'
+            - filters:
+              - valueType: STRING
+                name: name
+                operation: IS
+                value: '{}'
+              - valueType: STRING
+                name: name
+                operation: IS
+                value: '{}'
+          groupBysExpression: groupBysExpression
+          billableMetricAggregationType: COUNT
+          key: key
+          uniqueCountAggregationResult: '{}'
+        - amount: 6.027456183070403
+          quantity: 1.4658129805029452
+          name: name
+          billableMetricInfo:
+            groupBys:
+            - groupBys
+            - groupBys
+            propertyUniqueOn: propertyUniqueOn
+            filterGroups:
+            - filters:
+              - valueType: STRING
+                name: name
+                operation: IS
+                value: '{}'
+              - valueType: STRING
+                name: name
+                operation: IS
+                value: '{}'
+            - filters:
+              - valueType: STRING
+                name: name
+                operation: IS
+                value: '{}'
+              - valueType: STRING
+                name: name
+                operation: IS
+                value: '{}'
+          groupBysExpression: groupBysExpression
+          billableMetricAggregationType: COUNT
+          key: key
+          uniqueCountAggregationResult: '{}'
+        awsMeteringResponse: '{}'
+        dimensionUnitPrice:
+          key: 3.616076749251911
+        startTime: 2000-01-23 04:56:07+00:00
+        decimalParts:
+          key: 7.061401241503109
+        newDecimalParts:
+          key: 4.145608029883936
+        recordsToReportBeforeAdjustmentAtListPrice:
+          key: 7.386281948385884
+        azureMeteringResponse: '{}'
+        message: message
+        dimensionCategories:
+          key: dimensionCategories
+        awsMeteringRequest: '{}'
+        usedCreditAmountIncrement: 7.457744773683766
+        gcpMeteringResponse: '{}'
+        partner: partner
+        includedRecords:
+          key: 2.027123023002322
+        endTime: 2000-01-23 04:56:07+00:00
+        creditAmount: 5.637376656633329
+        commitAmount: 5.962133916683182
+        usageRecordGroupIds:
+        - usageRecordGroupIds
+        - usageRecordGroupIds
+        status: ''
+      properties:
+        aggregatedBillableRecords:
+          description: The aggregated billable records from the usage metering API v2.
+          items:
+            $ref: '#/components/schemas/AggregatedMeteringUsageRecord'
+          type: array
+        alibabaMeteringRequest:
+          allOf:
+          - $ref: '#/components/schemas/client.PushMeteringDataRequest'
+          description: The raw request to call Alibaba metering service.
+          type: object
+        alibabaMeteringResponse:
+          allOf:
+          - $ref: '#/components/schemas/client.PushMeteringDataResponseBody'
+          description: The raw response from Alibaba metering service.
+          type: object
+        awsMeteringRequest:
+          allOf:
+          - $ref: '#/components/schemas/AwsMarketplaceMeteringBatchMeterUsageInput'
+          description: The raw request to call AWS metering service.
+          type: object
+        awsMeteringResponse:
+          allOf:
+          - $ref: '#/components/schemas/marketplacemetering.BatchMeterUsageOutput'
+          description: The raw response from AWS metering service.
+          type: object
+        azureMeteringRequest:
+          allOf:
+          - $ref: '#/components/schemas/AzureMarketplaceMeteringBatchUsageEvent'
+          description: The raw request to call Azure metering service.
+          type: object
+        azureMeteringResponse:
+          allOf:
+          - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.BatchUsageEventOkResponse'
+          description: The raw response from Azure metering service.
+          type: object
+        commitAmount:
+          description: The amount of the commit if applicable.
+          type: number
+        creditAmount:
+          description: The amount of the credit if applicable.
+          type: number
+        creditRecords:
+          additionalProperties:
+            type: number
+          description: The credit usage records in the map of <DimensionKey, Count> for usage metering API v1.
+          type: object
+        decimalParts:
+          additionalProperties:
+            type: number
+          description: 'The decimal parts of the usage dimension quantity in the map of <DimensionKey, DecimalPart>,
+
+            before this usage record report.'
+          type: object
+        dimensionCategories:
+          additionalProperties:
+            type: string
+          description: 'The categories of the usage records in the map of <DimensionKey, Category>.
+
+            The dimension category is required when reporting usage records to Alibaba Marketplace.
+
+            It comes from the metering dimension category.'
+          type: object
+        dimensionUnitListPrice:
+          additionalProperties:
+            type: number
+          description: The public list price of each dimension in the map of <DimensionKey, UnitPrice>.
+          type: object
+        dimensionUnitPrice:
+          additionalProperties:
+            type: number
+          description: 'The unit price of each dimension in the map of <DimensionKey, UnitPrice>.
+
+            It can be the negotiated price in the private offer or the public list price.'
+          type: object
+        endTime:
+          description: time in UTC when the UsageRecordReport ends
+          format: date-time
+          type: string
+        gcpMeteringRequest:
+          allOf:
+          - $ref: '#/components/schemas/GcpMarketplaceMeteringOperation'
+          description: The raw request to call GCP metering service.
+          type: object
+        gcpMeteringResponse:
+          allOf:
+          - $ref: '#/components/schemas/servicecontrol.ReportResponse'
+          description: The raw response from GCP metering service.
+          type: object
+        includedRecords:
+          additionalProperties:
+            type: number
+          description: The included usage records in the map of <DimensionKey, Count> for usage metering API v1.
+          type: object
+        message:
+          type: string
+        newDecimalParts:
+          additionalProperties:
+            type: number
+          description: 'The decimal parts of the usage dimension quantity in the map of <DimensionKey, DecimalPart>,
+
+            after this usage record report.'
+          type: object
+        partner:
+          description: The partner where this usage record report is sent to. Such as AWS, AZURE or GCP.
+          type: string
+        recordsToReportBeforeAdjustmentAtListPrice:
+          additionalProperties:
+            type: number
+          description: 'The usage records to report before the adjustment by the commit with additional usage at list price,
+
+            in the map of <DimensionKey, Count>.'
+          type: object
+        reportedRecords:
+          additionalProperties:
+            type: number
+          description: The reported usage records in the map of <DimensionKey, Count> for usage metering API v1.
+          type: object
+        startTime:
+          description: time in UTC when the UsageRecordReport starts
+          format: date-time
+          type: string
+        status:
+          $ref: '#/components/schemas/UsageRecordReportStatus'
+        usageRecordGroupIds:
+          description: The IDs of UsageRecordGroups aggregated in this UsageRecordReport.
+          items:
+            type: string
+          type: array
+        usedCommitAmount:
+          description: The amount of the used commit before this usage record report if applicable.
+          type: number
+        usedCommitAmountIncrement:
+          description: The amount of the used commit increment in this usage record report if applicable.
+          type: number
+        usedCreditAmount:
+          description: The amount of the used credit before this usage record report if applicable.
+          type: number
+        usedCreditAmountIncrement:
+          description: The amount of the used credit increment in this usage record report if applicable.
+          type: number
+      type: object
+    github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventConflictResponse:
+      properties:
+        additionalInfo:
+          $ref: '#/components/schemas/github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventConflictResponseAdditionalInfo'
+        code:
+          type: string
+        message:
+          type: string
+      type: object
+    AwsMarketplaceMeteringUsageAllocation:
+      properties:
+        AllocatedUsageQuantity:
+          description: The total quantity allocated to this bucket of usage.
+          type: integer
+        Tags:
+          description: 'The set of tags that define the bucket of usage. For the bucket of items with no
+
+            tags, this parameter can be left out.'
+          items:
+            $ref: '#/components/schemas/AwsMarketplaceMeteringTag'
+          type: array
+      type: object
+    NewUsageRecordGroup:
+      example:
+        metaInfo: '{}'
+        records:
+          key: 0.8008281904610115
+        billableRecords:
+        - quantity: 0.8008281904610115
+          key: key
+          properties:
+            key: ''
+        - quantity: 0.8008281904610115
+          key: key
+          properties:
+            key: ''
+        entitlementID: entitlementID
+        timestamp: 2000-01-23 04:56:07+00:00
+      properties:
+        billableRecords:
+          description: for usage metering API v2, don't use it together with the records v1.
+          items:
+            $ref: '#/components/schemas/MeteringUsageRecord'
+          type: array
+        entitlementID:
+          type: string
+        metaInfo:
+          allOf:
+          - $ref: '#/components/schemas/MeteringUsageRecordGroupMetaInfo'
+          description: read-only, don't set it when validating or reporting the usage record group.
+          type: object
+        records:
+          additionalProperties:
+            type: number
+          description: for usage metering API v1, don't use it together with the billableRecords v2.
+          type: object
+        timestamp:
+          description: 'The timestamp of when the usage records were generated.
+
+            Optional, if not provided, the current report timestamp will be used.
+
+            This is not the timestamp of when the usage records were reported to Suger.'
+          format: date-time
+          type: string
+      required:
+      - entitlementID
+      - records
+      type: object
+    BillableMetricFilterGroup:
+      example:
+        filters:
+        - valueType: STRING
+          name: name
+          operation: IS
+          value: '{}'
+        - valueType: STRING
+          name: name
+          operation: IS
+          value: '{}'
+      properties:
+        filters:
+          items:
+            $ref: '#/components/schemas/BillableMetricFilter'
+          type: array
+      type: object
+    UsageRecordReportStatus:
+      enum:
+      - ''
+      - SUCCESS
+      - FAILED
+      - CREATED
+      - INVOICED
+      - DELETED
+      - CANCELED
+      type: string
+      x-enum-varnames:
+      - UsageRecordReportStatus_UNKNOWN
+      - UsageRecordReportStatus_SUCCESS
+      - UsageRecordReportStatus_FAILED
+      - UsageRecordReportStatus_CREATED
+      - UsageRecordReportStatus_INVOICED
+      - UsageRecordReportStatus_DELETED
+      - UsageRecordReportStatus_CANCELED
+    UsageMeteringConfigInfo:
+      example:
+        partnerUsageMeteringConfigs:
+        - enableCommitWithAdditionalUsageAtListPrice: true
+          enableDimensionMapping: true
+          dimensionMapping:
+            key:
+              convertionMultiplier: 0.8008281904610115
+              dimensionKey: dimensionKey
+              mappingMode: '{}'
+          partner: '{}'
+          enableBillableDimension: true
+          enableCommitWithAdditionalUsageMetering: true
+          dimensionMappingV2:
+            key:
+            - convertionMultiplier: 0.8008281904610115
+              dimensionKey: dimensionKey
+              mappingMode: '{}'
+            - convertionMultiplier: 0.8008281904610115
+              dimensionKey: dimensionKey
+              mappingMode: '{}'
+        - enableCommitWithAdditionalUsageAtListPrice: true
+          enableDimensionMapping: true
+          dimensionMapping:
+            key:
+              convertionMultiplier: 0.8008281904610115
+              dimensionKey: dimensionKey
+              mappingMode: '{}'
+          partner: '{}'
+          enableBillableDimension: true
+          enableCommitWithAdditionalUsageMetering: true
+          dimensionMappingV2:
+            key:
+            - convertionMultiplier: 0.8008281904610115
+              dimensionKey: dimensionKey
+              mappingMode: '{}'
+            - convertionMultiplier: 0.8008281904610115
+              dimensionKey: dimensionKey
+              mappingMode: '{}'
+      properties:
+        partnerUsageMeteringConfigs:
+          description: The usage metering configuration for each Partner, such as AWS, AZURE & GCP.
+          items:
+            $ref: '#/components/schemas/PartnerUsageMeteringConfig'
+          type: array
+      type: object
+    marketplacemetering.BatchMeterUsageOutput:
+      properties:
+        resultMetadata:
+          allOf:
+          - $ref: '#/components/schemas/middleware.Metadata'
+          description: Metadata pertaining to the operation's result.
+          type: object
+        results:
+          description: 'Contains all UsageRecords processed by BatchMeterUsage . These records were
+
+            either honored by AWS Marketplace Metering Service or were invalid. Invalid
+
+            records should be fixed before being resubmitted.'
+          items:
+            $ref: '#/components/schemas/types.UsageRecordResult'
+          type: array
+        unprocessedRecords:
+          description: 'Contains all UsageRecords that were not processed by BatchMeterUsage . This is a
+
+            list of UsageRecords . You can retry the failed request by making another
+
+            BatchMeterUsage call with this list as input in the BatchMeterUsageRequest .'
+          items:
+            $ref: '#/components/schemas/types.UsageRecord'
+          type: array
+      type: object
+    types.UsageRecordResult:
+      properties:
+        meteringRecordId:
+          description: The MeteringRecordId is a unique identifier for this metering event.
+          type: string
+        status:
+          allOf:
+          - $ref: '#/components/schemas/types.UsageRecordResultStatus'
+          description: "The UsageRecordResult Status indicates the status of an individual UsageRecord\nprocessed by BatchMeterUsage .\n  - Success- The UsageRecord was accepted and honored by BatchMeterUsage .\n  - CustomerNotSubscribed- The CustomerIdentifier specified is not able to use\n  your product. The UsageRecord was not honored. There are three causes for this\n  result:\n  - The customer identifier is invalid.\n  - The customer identifier provided in the metering record does not have an\n  active agreement or subscription with this product. Future UsageRecords for\n  this customer will fail until the customer subscribes to your product.\n  - The customer's AWS account was suspended.\n  - DuplicateRecord- Indicates that the UsageRecord was invalid and not honored.\n  A previously metered UsageRecord had the same customer, dimension, and time,\n  but a different quantity."
+          type: object
+        usageRecord:
+          allOf:
+          - $ref: '#/components/schemas/types.UsageRecord'
+          description: The UsageRecord that was part of the BatchMeterUsage request.
+          type: object
+      type: object
+    BillableMetricFilterValueType:
+      enum:
+      - STRING
+      - FLOAT
+      type: string
+      x-enum-varnames:
+      - BillableMetricFilterValueType_STRING
+      - BillableMetricFilterValueType_FLOAT
+    Partner:
+      enum:
+      - ''
+      - ADYEN
+      - ALIBABA
+      - AWS
+      - AWS_CHINA
+      - AZURE
+      - CHARGEBEE
+      - DATABRICKS
+      - DOCUSIGN
+      - GCP
+      - GOOGLE
+      - HUBSPOT
+      - INTUIT
+      - LAGO
+      - MARKETO
+      - METRONOME
+      - MICROSOFT
+      - ORACLE
+      - ORB
+      - REDHAT
+      - SALESFORCE
+      - SLACK
+      - SNOWFLAKE
+      - STRIPE
+      - ZOHO
+      type: string
+      x-enum-varnames:
+      - Partner_UNKNOWN
+      - Partner_ADYEN
+      - Partner_ALIBABA
+      - Partner_AWS
+      - Partner_AWS_CHINA
+      - Partner_AZURE
+      - Partner_CHARGEBEE
+      - Partner_DATABRICKS
+      - Partner_DOCUSIGN
+      - Partner_GCP
+      - Partner_GOOGLE
+      - Partner_HUBSPOT
+      - Partner_INTUIT
+      - Partner_LAGO
+      - Partner_MARKETO
+      - Partner_METRONOME
+      - Partner_MICROSOFT
+      - Partner_ORACLE
+      - Partner_ORB
+      - Partner_REDHAT
+      - Partner_SALESFORCE
+      - Partner_SLACK
+      - Partner_SNOWFLAKE
+      - Partner_STRIPE
+      - Partner_ZOHO
+    UpdateBillableMetricParams:
+      example:
+        name: name
+        description: description
+        status: ACTIVE
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/BillableMetricStatus'
+      type: object
+    client.PushMeteringDataResponseBody:
+      properties:
+        RequestId:
+          type: string
+        Success:
+          type: boolean
+      type: object
+    github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventOkResponse:
+      properties:
+        dimension:
+          description: Dimension identifier
+          type: string
+        effectiveStartTime:
+          description: Time in UTC when the usage event occurred
+          type: string
+        messageTime:
+          description: Time this message was created in UTC
+          type: string
+        planId:
+          description: Plan associated with the purchased offer
+          type: string
+        quantity:
+          description: Number of units consumed
+          type: number
+        resourceId:
+          description: Identifier of the resource against which usage is emitted
+          type: string
+        resourceUri:
+          description: Identifier of the managed app resource against which usage is emitted
+          type: string
+        status:
+          allOf:
+          - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventStatusEnum'
+          description: Status of the operation.
+          type: object
+        usageEventId:
+          description: Unique identifier associated with the usage event
+          type: string
+      type: object
+    servicecontrol.ReportResponse:
+      properties:
+        reportErrors:
+          description: 'ReportErrors: Partial failures, one for each `Operation` in the request that
+
+            failed processing. There are three possible combinations of the RPC status:
+
+            1. The combination of a successful RPC status and an empty `report_errors`
+
+            list indicates a complete success where all `Operations` in the request are
+
+            processed successfully. 2. The combination of a successful RPC status and a
+
+            non-empty `report_errors` list indicates a partial success where some
+
+            `Operations` in the request succeeded. Each `Operation` that failed
+
+            processing has a corresponding item in this list. 3. A failed RPC status
+
+            indicates a general non-deterministic failure. When this happens, it''s
+
+            impossible to know which of the ''Operations'' in the request succeeded or
+
+            failed.'
+          items:
+            $ref: '#/components/schemas/servicecontrol.ReportError'
+          type: array
+        serviceConfigId:
+          description: 'ServiceConfigId: The actual config id used to process the request.'
+          type: string
+        serviceRolloutId:
+          description: 'ServiceRolloutId: The current service rollout id used to process the
+
+            request.'
+          type: string
+      type: object
+    types.UsageRecordResultStatus:
+      enum:
+      - Success
+      - CustomerNotSubscribed
+      - DuplicateRecord
+      type: string
+      x-enum-varnames:
+      - UsageRecordResultStatusSuccess
+      - UsageRecordResultStatusCustomerNotSubscribed
+      - UsageRecordResultStatusDuplicateRecord
+    GcpMarketplaceMeteringMoney:
+      properties:
+        currencyCode:
+          description: 'CurrencyCode: The three-letter currency code defined in ISO 4217.'
+          type: string
+        nanos:
+          description: 'Nanos: Number of nano (10^-9) units of the amount. The value must be
+
+            between -999,999,999 and +999,999,999 inclusive. If `units` is
+
+            positive, `nanos` must be positive or zero. If `units` is zero,
+
+            `nanos` can be positive, zero, or negative. If `units` is negative,
+
+            `nanos` must be negative or zero. For example $-1.75 is represented
+
+            as `units`=-1 and `nanos`=-750,000,000.'
+          type: integer
+        units:
+          description: 'Units: The whole units of the amount. For example if `currencyCode`
+
+            is "USD", then 1 unit is one US dollar.'
+          example: '0'
+          type: string
+      type: object
+    BillableMetricFilter:
+      example:
+        valueType: STRING
+        name: name
+        operation: IS
+        value: '{}'
+      properties:
+        name:
+          type: string
+        operation:
+          $ref: '#/components/schemas/BillableMetricFilterOperation'
+        value:
+          description: The value of the filter. The type of the value depends on the valueType.
+          type: object
+        valueType:
+          $ref: '#/components/schemas/BillableMetricFilterValueType'
+      type: object
+    MeteringUsageRecord:
+      example:
+        quantity: 0.8008281904610115
+        key: key
+        properties:
+          key: ''
+      properties:
+        key:
+          description: Key is the unique identifier of a billable metric.
+          type: string
+        properties:
+          additionalProperties: true
+          description: 'Properties is the filters of a billable metric.
+
+            It should be equal to the filters of the billable metric.'
+          type: object
+        quantity:
+          description: The quantity (or numeric value) of a billable metric.
+          type: number
+      type: object
+    MeteringUsageRecordGroup:
+      example:
+        creationTime: 2000-01-23 04:56:07+00:00
+        records:
+          key: 9.301444243932576
+        entitlementID: entitlementID
+        buyerID: buyerID
+        organizationID: organizationID
+        metaInfo:
+          lagoAmount: 6.027456183070403
+          stripePeriodStartTime: 2000-01-23 04:56:07+00:00
+          metronomeDailyCostAmount: 1.4658129805029452
+          SkipValidation: true
+          billableRecords:
+          - quantity: 0.8008281904610115
+            key: key
+            properties:
+              key: ''
+          - quantity: 0.8008281904610115
+            key: key
+            properties:
+              key: ''
+          stripeInvoiceID: stripeInvoiceID
+          originRecords:
+            key: 2.3021358869347655
+          source: '{}'
+          stripeSubscriptionItemID: stripeSubscriptionItemID
+          lagoSubscriptionID: lagoSubscriptionID
+          stripePeriodEndTime: 2000-01-23 04:56:07+00:00
+          stripeUsageRecordSummaryID: stripeUsageRecordSummaryID
+          metronomeMonthlyInvoiceAmount: 5.962133916683182
+          metronomeMonthlyInvoiceAmountAdjusted: 5.637376656633329
+          lagoUsageStartTime: 2000-01-23 04:56:07+00:00
+          metronomeInvoiceID: metronomeInvoiceID
+          stripeUsageRecordSummaryTotalUsage: 7
+          timestamp: 2000-01-23 04:56:07+00:00
+        partner: AWS
+        serialID: 3
+        usageRecordReportID: usageRecordReportID
+        id: id
+        lastUpdateTime: 2000-01-23 04:56:07+00:00
+        reportedTime: 2000-01-23 04:56:07+00:00
+        status: status
+      properties:
+        buyerID:
+          type: string
+        creationTime:
+          format: date-time
+          type: string
+        entitlementID:
+          type: string
+        id:
+          type: string
+        lastUpdateTime:
+          format: date-time
+          type: string
+        metaInfo:
+          $ref: '#/components/schemas/MeteringUsageRecordGroupMetaInfo'
+        organizationID:
+          type: string
+        partner:
+          enum:
+          - AWS
+          - AZURE
+          - GCP
+          type: string
+        records:
+          additionalProperties:
+            type: number
+          type: object
+        reportedTime:
+          description: nullable
+          format: date-time
+          type: string
+        serialID:
+          type: integer
+        status:
+          type: string
+        usageRecordReportID:
+          type: string
+      type: object
+    BillableMetricStatus:
+      enum:
+      - ACTIVE
+      - DELETED
+      type: string
+      x-enum-varnames:
+      - BillableMetricStatus_ACTIVE
+      - BillableMetricStatus_DELETED
+    UniqueCountAggregationResult:
+      properties:
+        newItems:
+          additionalProperties: true
+          description: Unique property values of current hour that are new of today. Leave the value as interface{} to save space.
+          type: object
+      type: object
+    ListUsageRecordReportsResponse:
+      example:
+        usageRecordReports:
+        - organizationID: organizationID
+          entitlementTermID: entitlementTermID
+          creationTime: 2000-01-23 04:56:07+00:00
+          partner: partner
+          productID: productID
+          entitlementID: entitlementID
+          id: id
+          buyerID: buyerID
+          info:
+            creditRecords:
+              key: 2.3021358869347655
+            usedCommitAmountIncrement: 1.4894159098541704
+            gcpMeteringRequest: '{}'
+            alibabaMeteringResponse: '{}'
+            usedCommitAmount: 1.0246457001441578
+            reportedRecords:
+              key: 1.2315135367772556
+            usedCreditAmount: 6.84685269835264
+            alibabaMeteringRequest: '{}'
+            dimensionUnitListPrice:
+              key: 9.301444243932576
+            azureMeteringRequest: '{}'
+            aggregatedBillableRecords:
+            - amount: 6.027456183070403
+              quantity: 1.4658129805029452
+              name: name
+              billableMetricInfo:
+                groupBys:
+                - groupBys
+                - groupBys
+                propertyUniqueOn: propertyUniqueOn
+                filterGroups:
+                - filters:
+                  - valueType: STRING
+                    name: name
+                    operation: IS
+                    value: '{}'
+                  - valueType: STRING
+                    name: name
+                    operation: IS
+                    value: '{}'
+                - filters:
+                  - valueType: STRING
+                    name: name
+                    operation: IS
+                    value: '{}'
+                  - valueType: STRING
+                    name: name
+                    operation: IS
+                    value: '{}'
+              groupBysExpression: groupBysExpression
+              billableMetricAggregationType: COUNT
+              key: key
+              uniqueCountAggregationResult: '{}'
+            - amount: 6.027456183070403
+              quantity: 1.4658129805029452
+              name: name
+              billableMetricInfo:
+                groupBys:
+                - groupBys
+                - groupBys
+                propertyUniqueOn: propertyUniqueOn
+                filterGroups:
+                - filters:
+                  - valueType: STRING
+                    name: name
+                    operation: IS
+                    value: '{}'
+                  - valueType: STRING
+                    name: name
+                    operation: IS
+                    value: '{}'
+                - filters:
+                  - valueType: STRING
+                    name: name
+                    operation: IS
+                    value: '{}'
+                  - valueType: STRING
+                    name: name
+                    operation: IS
+                    value: '{}'
+              groupBysExpression: groupBysExpression
+              billableMetricAggregationType: COUNT
+              key: key
+              uniqueCountAggregationResult: '{}'
+            awsMeteringResponse: '{}'
+            dimensionUnitPrice:
+              key: 3.616076749251911
+            startTime: 2000-01-23 04:56:07+00:00
+            decimalParts:
+              key: 7.061401241503109
+            newDecimalParts:
+              key: 4.145608029883936
+            recordsToReportBeforeAdjustmentAtListPrice:
+              key: 7.386281948385884
+            azureMeteringResponse: '{}'
+            message: message
+            dimensionCategories:
+              key: dimensionCategories
+            awsMeteringRequest: '{}'
+            usedCreditAmountIncrement: 7.457744773683766
+            gcpMeteringResponse: '{}'
+            partner: partner
+            includedRecords:
+              key: 2.027123023002322
+            endTime: 2000-01-23 04:56:07+00:00
+            creditAmount: 5.637376656633329
+            commitAmount: 5.962133916683182
+            usageRecordGroupIds:
+            - usageRecordGroupIds
+            - usageRecordGroupIds
+            status: ''
+        - organizationID: organizationID
+          entitlementTermID: entitlementTermID
+          creationTime: 2000-01-23 04:56:07+00:00
+          partner: partner
+          productID: productID
+          entitlementID: entitlementID
+          id: id
+          buyerID: buyerID
+          info:
+            creditRecords:
+              key: 2.3021358869347655
+            usedCommitAmountIncrement: 1.4894159098541704
+            gcpMeteringRequest: '{}'
+            alibabaMeteringResponse: '{}'
+            usedCommitAmount: 1.0246457001441578
+            reportedRecords:
+              key: 1.2315135367772556
+            usedCreditAmount: 6.84685269835264
+            alibabaMeteringRequest: '{}'
+            dimensionUnitListPrice:
+              key: 9.301444243932576
+            azureMeteringRequest: '{}'
+            aggregatedBillableRecords:
+            - amount: 6.027456183070403
+              quantity: 1.4658129805029452
+              name: name
+              billableMetricInfo:
+                groupBys:
+                - groupBys
+                - groupBys
+                propertyUniqueOn: propertyUniqueOn
+                filterGroups:
+                - filters:
+                  - valueType: STRING
+                    name: name
+                    operation: IS
+                    value: '{}'
+                  - valueType: STRING
+                    name: name
+                    operation: IS
+                    value: '{}'
+                - filters:
+                  - valueType: STRING
+                    name: name
+                    operation: IS
+                    value: '{}'
+                  - valueType: STRING
+                    name: name
+                    operation: IS
+                    value: '{}'
+              groupBysExpression: groupBysExpression
+              billableMetricAggregationType: COUNT
+              key: key
+              uniqueCountAggregationResult: '{}'
+            - amount: 6.027456183070403
+              quantity: 1.4658129805029452
+              name: name
+              billableMetricInfo:
+                groupBys:
+                - groupBys
+                - groupBys
+                propertyUniqueOn: propertyUniqueOn
+                filterGroups:
+                - filters:
+                  - valueType: STRING
+                    name: name
+                    operation: IS
+                    value: '{}'
+                  - valueType: STRING
+                    name: name
+                    operation: IS
+                    value: '{}'
+                - filters:
+                  - valueType: STRING
+                    name: name
+                    operation: IS
+                    value: '{}'
+                  - valueType: STRING
+                    name: name
+                    operation: IS
+                    value: '{}'
+              groupBysExpression: groupBysExpression
+              billableMetricAggregationType: COUNT
+              key: key
+              uniqueCountAggregationResult: '{}'
+            awsMeteringResponse: '{}'
+            dimensionUnitPrice:
+              key: 3.616076749251911
+            startTime: 2000-01-23 04:56:07+00:00
+            decimalParts:
+              key: 7.061401241503109
+            newDecimalParts:
+              key: 4.145608029883936
+            recordsToReportBeforeAdjustmentAtListPrice:
+              key: 7.386281948385884
+            azureMeteringResponse: '{}'
+            message: message
+            dimensionCategories:
+              key: dimensionCategories
+            awsMeteringRequest: '{}'
+            usedCreditAmountIncrement: 7.457744773683766
+            gcpMeteringResponse: '{}'
+            partner: partner
+            includedRecords:
+              key: 2.027123023002322
+            endTime: 2000-01-23 04:56:07+00:00
+            creditAmount: 5.637376656633329
+            commitAmount: 5.962133916683182
+            usageRecordGroupIds:
+            - usageRecordGroupIds
+            - usageRecordGroupIds
+            status: ''
+        nextOffset: 0
+      properties:
+        nextOffset:
+          type: integer
+        usageRecordReports:
+          items:
+            $ref: '#/components/schemas/MeteringUsageRecordReport'
+          type: array
+      type: object
+    BillableMetric:
+      example:
+        organizationId: organizationId
+        aggregationType: COUNT
+        creationTime: 2000-01-23 04:56:07+00:00
+        name: name
+        description: description
+        id: id
+        info:
+          groupBys:
+          - groupBys
+          - groupBys
+          propertyUniqueOn: propertyUniqueOn
+          filterGroups:
+          - filters:
+            - valueType: STRING
+              name: name
+              operation: IS
+              value: '{}'
+            - valueType: STRING
+              name: name
+              operation: IS
+              value: '{}'
+          - filters:
+            - valueType: STRING
+              name: name
+              operation: IS
+              value: '{}'
+            - valueType: STRING
+              name: name
+              operation: IS
+              value: '{}'
+        lastUpdateTime: 2000-01-23 04:56:07+00:00
+        status: ACTIVE
+      properties:
+        aggregationType:
+          $ref: '#/components/schemas/BillableMetricAggregationType'
+        creationTime:
+          format: date-time
+          type: string
+        description:
+          maxLength: 300
+          type: string
+        id:
+          maxLength: 36
+          type: string
+        info:
+          $ref: '#/components/schemas/BillableMetricInfo'
+        lastUpdateTime:
+          format: date-time
+          type: string
+        name:
+          maxLength: 50
+          minLength: 4
+          type: string
+        organizationId:
+          type: string
+        status:
+          $ref: '#/components/schemas/BillableMetricStatus'
+      type: object
+    servicecontrol.Status:
+      properties:
+        code:
+          description: 'Code: The status code, which should be an enum value of google.rpc.Code.'
+          type: integer
+        details:
+          description: 'Details: A list of messages that carry the error details. There is a common
+
+            set of message types for APIs to use.'
+          items:
+            items:
+              type: integer
+            type: array
+          type: array
+        message:
+          description: 'Message: A developer-facing error message, which should be in English. Any
+
+            user-facing error message should be localized and sent in the
+
+            google.rpc.Status.details field, or localized by the client.'
+          type: string
+      type: object
+    types.UsageRecord:
+      properties:
+        customerIdentifier:
+          description: 'The CustomerIdentifier is obtained through the ResolveCustomer operation and
+
+            represents an individual buyer in your application.
+
+
+            This member is required.'
+          type: string
+        dimension:
+          description: 'During the process of registering a product on AWS Marketplace, dimensions are
+
+            specified. These represent different units of value in your application.
+
+
+            This member is required.'
+          type: string
+        quantity:
+          description: 'The quantity of usage consumed by the customer for the given dimension and
+
+            time. Defaults to 0 if not specified.'
+          type: integer
+        timestamp:
+          description: 'Timestamp, in UTC, for which the usage is being reported. Your application can
+
+            meter usage for up to one hour in the past. Make sure the timestamp value is
+
+            not before the start of the software usage.
+
+
+            This member is required.'
+          type: string
+        usageAllocations:
+          description: 'The set of UsageAllocations to submit. The sum of all UsageAllocation
+
+            quantities must equal the Quantity of the UsageRecord .'
+          items:
+            $ref: '#/components/schemas/types.UsageAllocation'
+          type: array
+      type: object
+    ListUsageRecordGroupsResponse:
+      example:
+        usageRecordGroups:
+        - creationTime: 2000-01-23 04:56:07+00:00
+          records:
+            key: 9.301444243932576
+          entitlementID: entitlementID
+          buyerID: buyerID
+          organizationID: organizationID
+          metaInfo:
+            lagoAmount: 6.027456183070403
+            stripePeriodStartTime: 2000-01-23 04:56:07+00:00
+            metronomeDailyCostAmount: 1.4658129805029452
+            SkipValidation: true
+            billableRecords:
+            - quantity: 0.8008281904610115
+              key: key
+              properties:
+                key: ''
+            - quantity: 0.8008281904610115
+              key: key
+              properties:
+                key: ''
+            stripeInvoiceID: stripeInvoiceID
+            originRecords:
+              key: 2.3021358869347655
+            source: '{}'
+            stripeSubscriptionItemID: stripeSubscriptionItemID
+            lagoSubscriptionID: lagoSubscriptionID
+            stripePeriodEndTime: 2000-01-23 04:56:07+00:00
+            stripeUsageRecordSummaryID: stripeUsageRecordSummaryID
+            metronomeMonthlyInvoiceAmount: 5.962133916683182
+            metronomeMonthlyInvoiceAmountAdjusted: 5.637376656633329
+            lagoUsageStartTime: 2000-01-23 04:56:07+00:00
+            metronomeInvoiceID: metronomeInvoiceID
+            stripeUsageRecordSummaryTotalUsage: 7
+            timestamp: 2000-01-23 04:56:07+00:00
+          partner: AWS
+          serialID: 3
+          usageRecordReportID: usageRecordReportID
+          id: id
+          lastUpdateTime: 2000-01-23 04:56:07+00:00
+          reportedTime: 2000-01-23 04:56:07+00:00
+          status: status
+        - creationTime: 2000-01-23 04:56:07+00:00
+          records:
+            key: 9.301444243932576
+          entitlementID: entitlementID
+          buyerID: buyerID
+          organizationID: organizationID
+          metaInfo:
+            lagoAmount: 6.027456183070403
+            stripePeriodStartTime: 2000-01-23 04:56:07+00:00
+            metronomeDailyCostAmount: 1.4658129805029452
+            SkipValidation: true
+            billableRecords:
+            - quantity: 0.8008281904610115
+              key: key
+              properties:
+                key: ''
+            - quantity: 0.8008281904610115
+              key: key
+              properties:
+                key: ''
+            stripeInvoiceID: stripeInvoiceID
+            originRecords:
+              key: 2.3021358869347655
+            source: '{}'
+            stripeSubscriptionItemID: stripeSubscriptionItemID
+            lagoSubscriptionID: lagoSubscriptionID
+            stripePeriodEndTime: 2000-01-23 04:56:07+00:00
+            stripeUsageRecordSummaryID: stripeUsageRecordSummaryID
+            metronomeMonthlyInvoiceAmount: 5.962133916683182
+            metronomeMonthlyInvoiceAmountAdjusted: 5.637376656633329
+            lagoUsageStartTime: 2000-01-23 04:56:07+00:00
+            metronomeInvoiceID: metronomeInvoiceID
+            stripeUsageRecordSummaryTotalUsage: 7
+            timestamp: 2000-01-23 04:56:07+00:00
+          partner: AWS
+          serialID: 3
+          usageRecordReportID: usageRecordReportID
+          id: id
+          lastUpdateTime: 2000-01-23 04:56:07+00:00
+          reportedTime: 2000-01-23 04:56:07+00:00
+          status: status
+        nextOffset: 0
+      properties:
+        nextOffset:
+          type: integer
+        usageRecordGroups:
+          items:
+            $ref: '#/components/schemas/MeteringUsageRecordGroup'
+          type: array
+      type: object
+    ? github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventConflictResponseAdditionalInfo
+    : properties:
+        acceptedMessage:
+          $ref: '#/components/schemas/github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventOkResponse'
+      type: object
+    github_com_aws_aws-sdk-go-v2_service_marketplacemetering_types.Tag:
+      properties:
+        key:
+          description: 'One part of a key-value pair that makes up a tag . A key is a label that acts
+
+            like a category for the specific tag values.
+
+
+            This member is required.'
+          type: string
+        value:
+          description: 'One part of a key-value pair that makes up a tag . A value acts as a descriptor
+
+            within a tag category (key). The value can be empty or null.
+
+
+            This member is required.'
+          type: string
+      type: object
+    AggregatedMeteringUsageRecord:
+      example:
+        amount: 6.027456183070403
+        quantity: 1.4658129805029452
+        name: name
+        billableMetricInfo:
+          groupBys:
+          - groupBys
+          - groupBys
+          propertyUniqueOn: propertyUniqueOn
+          filterGroups:
+          - filters:
+            - valueType: STRING
+              name: name
+              operation: IS
+              value: '{}'
+            - valueType: STRING
+              name: name
+              operation: IS
+              value: '{}'
+          - filters:
+            - valueType: STRING
+              name: name
+              operation: IS
+              value: '{}'
+            - valueType: STRING
+              name: name
+              operation: IS
+              value: '{}'
+        groupBysExpression: groupBysExpression
+        billableMetricAggregationType: COUNT
+        key: key
+        uniqueCountAggregationResult: '{}'
+      properties:
+        amount:
+          description: Amount calculated by billable dimension's price model, this is only used for report billable usage records to marketplace.
+          type: number
+        billableMetricAggregationType:
+          $ref: '#/components/schemas/BillableMetricAggregationType'
+        billableMetricInfo:
+          $ref: '#/components/schemas/BillableMetricInfo'
+        groupBysExpression:
+          description: GroupBysExpression is the string expression of array of group bys.
+          type: string
+        key:
+          description: Key is the unique identifier of a billable metric.
+          type: string
+        name:
+          description: 'Name is the name of a billable metric.
+
+            Optional, it is only for display purpose.'
+          type: string
+        quantity:
+          description: Value is the value of a billable metric.
+          type: number
+        uniqueCountAggregationResult:
+          allOf:
+          - $ref: '#/components/schemas/UniqueCountAggregationResult'
+          description: Unique count metric aggregate result.
+          type: object
+      type: object
+    github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventStatusEnum:
+      enum:
+      - Accepted
+      - Expired
+      - Duplicate
+      - Error
+      - ResourceNotFound
+      - ResourceNotAuthorized
+      - InvalidDimension
+      - InvalidQuantity
+      - BadArgument
+      type: string
+      x-enum-varnames:
+      - UsageEventStatusEnumAccepted
+      - UsageEventStatusEnumExpired
+      - UsageEventStatusEnumDuplicate
+      - UsageEventStatusEnumError
+      - UsageEventStatusEnumResourceNotFound
+      - UsageEventStatusEnumResourceNotAuthorized
+      - UsageEventStatusEnumInvalidDimension
+      - UsageEventStatusEnumInvalidQuantity
+      - UsageEventStatusEnumBadArgument
+    UsageMeteringDimensionMappingValue:
+      example:
+        convertionMultiplier: 0.8008281904610115
+        dimensionKey: dimensionKey
+        mappingMode: '{}'
+      properties:
+        convertionMultiplier:
+          description: 'The convertion multiplier when mapping from the source dimension key to the destination dimensionKey by quantity mode.
+
+            Not required if the mapping mode is AMOUNT.'
+          type: number
+        dimensionKey:
+          description: The destination dimension key of the usage metering mapping.
+          type: string
+        mappingMode:
+          allOf:
+          - $ref: '#/components/schemas/UsageMeteringDimensionMappingMode'
+          description: The conversion mode of UsageMeteringDimensionMapping. The default is QUANTITY if not available.
+          type: object
+      type: object
+    types.UsageAllocation:
+      properties:
+        allocatedUsageQuantity:
+          description: 'The total quantity allocated to this bucket of usage.
+
+
+            This member is required.'
+          type: integer
+        tags:
+          description: 'The set of tags that define the bucket of usage. For the bucket of items with
+
+            no tags, this parameter can be left out.'
+          items:
+            $ref: '#/components/schemas/github_com_aws_aws-sdk-go-v2_service_marketplacemetering_types.Tag'
+          type: array
+      type: object
+    MeteringUsageRecordGroupMetaInfo:
+      example:
+        lagoAmount: 6.027456183070403
+        stripePeriodStartTime: 2000-01-23 04:56:07+00:00
+        metronomeDailyCostAmount: 1.4658129805029452
+        SkipValidation: true
+        billableRecords:
+        - quantity: 0.8008281904610115
+          key: key
+          properties:
+            key: ''
+        - quantity: 0.8008281904610115
+          key: key
+          properties:
+            key: ''
+        stripeInvoiceID: stripeInvoiceID
+        originRecords:
+          key: 2.3021358869347655
+        source: '{}'
+        stripeSubscriptionItemID: stripeSubscriptionItemID
+        lagoSubscriptionID: lagoSubscriptionID
+        stripePeriodEndTime: 2000-01-23 04:56:07+00:00
+        stripeUsageRecordSummaryID: stripeUsageRecordSummaryID
+        metronomeMonthlyInvoiceAmount: 5.962133916683182
+        metronomeMonthlyInvoiceAmountAdjusted: 5.637376656633329
+        lagoUsageStartTime: 2000-01-23 04:56:07+00:00
+        metronomeInvoiceID: metronomeInvoiceID
+        stripeUsageRecordSummaryTotalUsage: 7
+        timestamp: 2000-01-23 04:56:07+00:00
+      properties:
+        SkipValidation:
+          description: If it is true, the validation of the usage record group is skipped.
+          type: boolean
+        billableRecords:
+          description: for usage metering API v2
+          items:
+            $ref: '#/components/schemas/MeteringUsageRecord'
+          type: array
+        lagoAmount:
+          description: 'The lago amount (in dollars) of the customer.
+
+            This field keeps the largest of the monthly amount.
+
+            So it can only be updated when the invoice month increases.'
+          type: number
+        lagoSubscriptionID:
+          description: The lago subscription ID of the customer.
+          type: string
+        lagoUsageStartTime:
+          description: The lago usage start time of the customer usage.
+          format: date-time
+          type: string
+        metronomeDailyCostAmount:
+          description: The metronome daily cost amount (in dollars) of the customer.
+          type: number
+        metronomeInvoiceID:
+          description: The metronome invoice ID of the customer.
+          type: string
+        metronomeMonthlyInvoiceAmount:
+          description: 'The metronome monthly invoice amount (in dollars) of the customer.
+
+            This field keeps the largest amount of the invoice month.
+
+            So it can only be updated when the invoice month increases.'
+          type: number
+        metronomeMonthlyInvoiceAmountAdjusted:
+          description: 'The metronome monthly invoice amount (in dollars) of the customer, which is adjusted by the seller.
+
+            This field is populated only when the invoice amount is decreased by the seller via credit granting.'
+          type: number
+        originRecords:
+          additionalProperties:
+            type: number
+          description: 'The original records reported by the customer before convertion.
+
+            If no dimension mapping is applied, this field is the same as the records field.'
+          type: object
+        source:
+          allOf:
+          - $ref: '#/components/schemas/UsageRecordGroupSource'
+          description: The source of the usage record group. Can be from Suger API or other third party services, such as Metronome.
+          type: object
+        stripeInvoiceID:
+          type: string
+        stripePeriodEndTime:
+          description: The stripe period end time of the summary or invoice. UTC time in format "YYYY-MM-DDTHH:MM:SSZ".
+          format: date-time
+          type: string
+        stripePeriodStartTime:
+          description: The stripe period start time of the summary or invoice. UTC time in format "YYYY-MM-DDTHH:MM:SSZ".
+          format: date-time
+          type: string
+        stripeSubscriptionItemID:
+          type: string
+        stripeUsageRecordSummaryID:
+          type: string
+        stripeUsageRecordSummaryTotalUsage:
+          type: integer
+        timestamp:
+          description: 'The timestamp (UTC)) of when the usage records were generated.
+
+            Optional, if not provided, the current report timestamp will be used.'
+          format: date-time
+          type: string
+      type: object
+    middleware.Metadata:
+      type: object
+    github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageBatchEventOkMessage:
+      properties:
+        dimension:
+          description: Dimension identifier
+          type: string
+        effectiveStartTime:
+          description: Time in UTC when the usage event occurred
+          type: string
+        error:
+          $ref: '#/components/schemas/github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventConflictResponse'
+        messageTime:
+          description: Time this message was created in UTC
+          type: string
+        planId:
+          description: Plan associated with the purchased offer
+          type: string
+        quantity:
+          description: Number of units consumed
+          type: number
+        resourceId:
+          description: Identifier of the resource against which usage is emitted
+          type: string
+        resourceUri:
+          description: Identifier of the managed app resource against which usage is emitted
+          type: string
+        status:
+          allOf:
+          - $ref: '#/components/schemas/github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageEventStatusEnum'
+          description: Status of the operation.
+          type: object
+        usageEventId:
+          description: Unique identifier associated with the usage event
+          type: string
+      type: object
+    BillableMetricInfo:
+      example:
+        groupBys:
+        - groupBys
+        - groupBys
+        propertyUniqueOn: propertyUniqueOn
+        filterGroups:
+        - filters:
+          - valueType: STRING
+            name: name
+            operation: IS
+            value: '{}'
+          - valueType: STRING
+            name: name
+            operation: IS
+            value: '{}'
+        - filters:
+          - valueType: STRING
+            name: name
+            operation: IS
+            value: '{}'
+          - valueType: STRING
+            name: name
+            operation: IS
+            value: '{}'
+      properties:
+        filterGroups:
+          description: 'FilterGroups is a list of filter groups.
+
+            The filterGroups are connected by AND.'
+          items:
+            $ref: '#/components/schemas/BillableMetricFilterGroup'
+          type: array
+        groupBys:
+          description: GroupBys is a list of fields to group by.
+          items:
+            type: string
+          type: array
+        propertyUniqueOn:
+          description: The target property for unique count aggregate.
+          type: string
+      type: object
+    GcpMarketplaceMeteringMetricValue:
+      properties:
+        boolValue:
+          description: 'BoolValue: A boolean value.'
+          type: boolean
+        doubleValue:
+          description: 'DoubleValue: A double precision floating point value.'
+          type: number
+        endTime:
+          description: 'EndTime: The end of the time period over which this metric value''s
+
+            measurement applies. If not specified,
+
+            google.api.servicecontrol.v1.Operation.end_time will be used.'
+          type: string
+        int64Value:
+          description: 'Int64Value: A signed 64-bit integer value.'
+          example: '0'
+          type: string
+        labels:
+          additionalProperties:
+            type: string
+          description: 'Labels: The labels describing the metric value. See comments on
+
+            google.api.servicecontrol.v1.Operation.labels for the overriding
+
+            relationship. Note that this map must not contain monitored resource
+
+            labels.'
+          type: object
+        moneyValue:
+          allOf:
+          - $ref: '#/components/schemas/GcpMarketplaceMeteringMoney'
+          description: 'MoneyValue: A money value.'
+          type: object
+        startTime:
+          description: 'StartTime: The start of the time period over which this metric
+
+            value''s measurement applies. The time period has different semantics
+
+            for different metric types (cumulative, delta, and gauge). See the
+
+            metric definition documentation in the service configuration for
+
+            details. If not specified,
+
+            google.api.servicecontrol.v1.Operation.start_time will be used.'
+          type: string
+        stringValue:
+          description: 'StringValue: A text string value.'
+          type: string
+      type: object
+    GcpMarketplaceMeteringOperation:
+      properties:
+        consumerId:
+          description: 'ConsumerId: Identity of the consumer who is using the service. This
+
+            field should be filled in for the operations initiated by a consumer,
+
+            but not for service-initiated operations that are not related to a
+
+            specific consumer. - This can be in one of the following formats: -
+
+            project:PROJECT_ID, - project`_`number:PROJECT_NUMBER, -
+
+            projects/PROJECT_ID or PROJECT_NUMBER, - folders/FOLDER_NUMBER, -
+
+            organizations/ORGANIZATION_NUMBER, - api`_`key:API_KEY.'
+          type: string
+        endTime:
+          description: 'EndTime: End time of the operation. Required when the operation is
+
+            used in ServiceController.Report, but optional when the operation is
+
+            used in ServiceController.Check.'
+          type: string
+        labels:
+          additionalProperties:
+            type: string
+          description: 'Labels: Labels describing the operation. Only the following labels
+
+            are allowed: - Labels describing monitored resources as defined in
+
+            the service configuration. - Default labels of metric values. When
+
+            specified, labels defined in the metric value override these default.
+
+            - The following labels defined by Google Cloud Platform: -
+
+            `cloud.googleapis.com/location` describing the location where the
+
+            operation happened, - `servicecontrol.googleapis.com/user_agent`
+
+            describing the user agent of the API request, -
+
+            `servicecontrol.googleapis.com/service_agent` describing the service
+
+            used to handle the API request (e.g. ESP), -
+
+            `servicecontrol.googleapis.com/platform` describing the platform
+
+            where the API is served, such as App Engine, Compute Engine, or
+
+            Kubernetes Engine.'
+          type: object
+        metricValueSets:
+          description: 'MetricValueSets: Represents information about this operation. Each
+
+            MetricValueSet corresponds to a metric defined in the service
+
+            configuration. The data type used in the MetricValueSet must agree
+
+            with the data type specified in the metric definition. Within a
+
+            single operation, it is not allowed to have more than one MetricValue
+
+            instances that have the same metric names and identical label value
+
+            combinations. If a request has such duplicated MetricValue instances,
+
+            the entire request is rejected with an invalid argument error.'
+          items:
+            $ref: '#/components/schemas/GcpMarketplaceMeteringMetricValueSet'
+          type: array
+        operationId:
+          description: 'OperationId: Identity of the operation. This must be unique within
+
+            the scope of the service that generated the operation. If the service
+
+            calls Check() and Report() on the same operation, the two calls
+
+            should carry the same id. UUID version 4 is recommended, though not
+
+            required. In scenarios where an operation is computed from existing
+
+            information and an idempotent id is desirable for deduplication
+
+            purpose, UUID version 5 is recommended. See RFC 4122 for details.'
+          type: string
+        operationName:
+          description: 'OperationName: Fully qualified name of the operation. Reserved for
+
+            future use.'
+          type: string
+        startTime:
+          description: 'StartTime: Required. Start time of the operation.'
+          type: string
+      type: object
+    github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.BatchUsageEventOkResponse:
+      properties:
+        count:
+          type: integer
+        result:
+          items:
+            $ref: '#/components/schemas/github_com_sugerio_marketplace-service_third_party_azure_sdk_marketplacemeteringv1.UsageBatchEventOkMessage'
+          type: array
+      type: object
+    servicecontrol.ReportError:
+      properties:
+        operationId:
+          description: 'OperationId: The Operation.operation_id value from the request.'
+          type: string
+        status:
+          allOf:
+          - $ref: '#/components/schemas/servicecontrol.Status'
+          description: 'Status: Details of the error when processing the Operation.'
+          type: object
+      type: object
+    AwsMarketplaceMeteringUsageRecord:
+      properties:
+        CustomerIdentifier:
+          description: 'The CustomerIdentifier is obtained through the ResolveCustomer operation and
+
+            represents an individual buyer in your application.'
+          type: string
+        Dimension:
+          description: 'During the process of registering a product on AWS Marketplace, dimensions are
+
+            specified. These represent different units of value in your application.'
+          type: string
+        Quantity:
+          description: 'The quantity of usage consumed by the customer for the given dimension and time.
+
+            Defaults to 0 if not specified.'
+          type: integer
+        Timestamp:
+          description: 'Timestamp, in UTC, for which the usage is being reported. Your application can
+
+            meter usage for up to one hour in the past. Make sure the timestamp value is not
+
+            before the start of the software usage.'
+          format: date-time
+          type: string
+        UsageAllocations:
+          description: 'The set of UsageAllocations to submit. The sum of all UsageAllocation quantities
+
+            must equal the Quantity of the UsageRecord.'
+          items:
+            $ref: '#/components/schemas/AwsMarketplaceMeteringUsageAllocation'
+          type: array
+      type: object
+    PartnerUsageMeteringConfig:
+      example:
+        enableCommitWithAdditionalUsageAtListPrice: true
+        enableDimensionMapping: true
+        dimensionMapping:
+          key:
+            convertionMultiplier: 0.8008281904610115
+            dimensionKey: dimensionKey
+            mappingMode: '{}'
+        partner: '{}'
+        enableBillableDimension: true
+        enableCommitWithAdditionalUsageMetering: true
+        dimensionMappingV2:
+          key:
+          - convertionMultiplier: 0.8008281904610115
+            dimensionKey: dimensionKey
+            mappingMode: '{}'
+          - convertionMultiplier: 0.8008281904610115
+            dimensionKey: dimensionKey
+            mappingMode: '{}'
+      properties:
+        dimensionMapping:
+          additionalProperties:
+            $ref: '#/components/schemas/UsageMeteringDimensionMappingValue'
+          description: 'Deprecated: Use DimensionMappingV2 instead.
+
+            The mapping of the source dimension key to the destination dimension key of the usage metering.'
+          type: object
+        dimensionMappingV2:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/UsageMeteringDimensionMappingValue'
+            type: array
+          description: 'The mapping of the source dimension key to the destination dimension keys of the usage metering.
+
+            The destination dimension keys are the list of the destination dimension keys.
+
+            So the source dimension key can be mapped to multiple destination dimension keys.'
+          type: object
+        enableBillableDimension:
+          type: boolean
+        enableCommitWithAdditionalUsageAtListPrice:
+          description: 'Enable the commit (discount) with additional usage metering at list price.
+
+            Only applicable if EnableCommitWithAdditionalUsageMetering is true.
+
+            The default is false, which means the commit with additional usage metering at the discounted price in the private offer.
+
+            If set to true, the additional usage is metered at the list price (the price in public product listing) instead of the discounted price.'
+          type: boolean
+        enableCommitWithAdditionalUsageMetering:
+          description: 'Enable the commit with additional usage metering.
+
+            The default is false, which means all usage records are reported to partner no matter how much is the commit.
+
+            If set to true, the usage records will be reported to partner only if the current commit has been exhausted.'
+          type: boolean
+        enableDimensionMapping:
+          description: 'Enable the dimension mapping for the usage metering.
+
+            The default is false, which means no dimension conversion and just use the origin dimension.'
+          type: boolean
+        partner:
+          allOf:
+          - $ref: '#/components/schemas/Partner'
+          description: The partner in this dimension mapping. Required. Such as AWS, AZURE or GCP.
+          type: object
+      type: object
+    client.PushMeteringDataRequest:
+      properties:
+        Metering:
+          type: string
+      type: object
+    AwsMarketplaceMeteringTag:
+      properties:
+        Key:
+          description: 'One part of a key-value pair that makes up a tag. A key is a label that acts
+
+            like a category for the specific tag values.'
+          type: string
+        Value:
+          description: 'One part of a key-value pair that makes up a tag. A value acts as a descriptor
+
+            within a tag category (key). The value can be empty or null.'
+          type: string
+      type: object
+    AzureMarketplaceMeteringUsageEvent:
+      properties:
+        dimension:
+          description: Dimension identifier
+          type: string
+        effectiveStartTime:
+          description: Time in UTC when the usage event occurred
+          type: string
+        planId:
+          description: Plan associated with the purchased offer
+          type: string
+        quantity:
+          description: Number of units consumed
+          type: number
+        resourceId:
+          description: 'subscriptionId property value for SaaS offer subscriptions; resourceUsageId property on the managed application resource
+
+            for managed application offers. For managed applications, only use one of
+
+            resourceId or resourceUri.'
+          type: string
+        resourceUri:
+          description: Resource URI for the managed app. Used with managed applications. Only use resourceUri or resourceId, but never both.
+          type: string
+      type: object
+    UsageMeteringDimensionMappingMode:
+      enum:
+      - ''
+      - QUANTITY
+      - AMOUNT
+      type: string
+      x-enum-varnames:
+      - UsageMeteringDimensionMappingMode_UNKNOWN
+      - UsageMeteringDimensionMappingMode_QUANTITY
+      - UsageMeteringDimensionMappingMode_AMOUNT
+    MeteringUsageRecordReport:
+      example:
+        organizationID: organizationID
+        entitlementTermID: entitlementTermID
+        creationTime: 2000-01-23 04:56:07+00:00
+        partner: partner
+        productID: productID
+        entitlementID: entitlementID
+        id: id
+        buyerID: buyerID
+        info:
+          creditRecords:
+            key: 2.3021358869347655
+          usedCommitAmountIncrement: 1.4894159098541704
+          gcpMeteringRequest: '{}'
+          alibabaMeteringResponse: '{}'
+          usedCommitAmount: 1.0246457001441578
+          reportedRecords:
+            key: 1.2315135367772556
+          usedCreditAmount: 6.84685269835264
+          alibabaMeteringRequest: '{}'
+          dimensionUnitListPrice:
+            key: 9.301444243932576
+          azureMeteringRequest: '{}'
+          aggregatedBillableRecords:
+          - amount: 6.027456183070403
+            quantity: 1.4658129805029452
+            name: name
+            billableMetricInfo:
+              groupBys:
+              - groupBys
+              - groupBys
+              propertyUniqueOn: propertyUniqueOn
+              filterGroups:
+              - filters:
+                - valueType: STRING
+                  name: name
+                  operation: IS
+                  value: '{}'
+                - valueType: STRING
+                  name: name
+                  operation: IS
+                  value: '{}'
+              - filters:
+                - valueType: STRING
+                  name: name
+                  operation: IS
+                  value: '{}'
+                - valueType: STRING
+                  name: name
+                  operation: IS
+                  value: '{}'
+            groupBysExpression: groupBysExpression
+            billableMetricAggregationType: COUNT
+            key: key
+            uniqueCountAggregationResult: '{}'
+          - amount: 6.027456183070403
+            quantity: 1.4658129805029452
+            name: name
+            billableMetricInfo:
+              groupBys:
+              - groupBys
+              - groupBys
+              propertyUniqueOn: propertyUniqueOn
+              filterGroups:
+              - filters:
+                - valueType: STRING
+                  name: name
+                  operation: IS
+                  value: '{}'
+                - valueType: STRING
+                  name: name
+                  operation: IS
+                  value: '{}'
+              - filters:
+                - valueType: STRING
+                  name: name
+                  operation: IS
+                  value: '{}'
+                - valueType: STRING
+                  name: name
+                  operation: IS
+                  value: '{}'
+            groupBysExpression: groupBysExpression
+            billableMetricAggregationType: COUNT
+            key: key
+            uniqueCountAggregationResult: '{}'
+          awsMeteringResponse: '{}'
+          dimensionUnitPrice:
+            key: 3.616076749251911
+          startTime: 2000-01-23 04:56:07+00:00
+          decimalParts:
+            key: 7.061401241503109
+          newDecimalParts:
+            key: 4.145608029883936
+          recordsToReportBeforeAdjustmentAtListPrice:
+            key: 7.386281948385884
+          azureMeteringResponse: '{}'
+          message: message
+          dimensionCategories:
+            key: dimensionCategories
+          awsMeteringRequest: '{}'
+          usedCreditAmountIncrement: 7.457744773683766
+          gcpMeteringResponse: '{}'
+          partner: partner
+          includedRecords:
+            key: 2.027123023002322
+          endTime: 2000-01-23 04:56:07+00:00
+          creditAmount: 5.637376656633329
+          commitAmount: 5.962133916683182
+          usageRecordGroupIds:
+          - usageRecordGroupIds
+          - usageRecordGroupIds
+          status: ''
+      properties:
+        buyerID:
+          type: string
+        creationTime:
+          format: date-time
+          type: string
+        entitlementID:
+          type: string
+        entitlementTermID:
+          type: string
+        id:
+          type: string
+        info:
+          $ref: '#/components/schemas/MeteringUsageRecordReportInfo'
+        organizationID:
+          type: string
+        partner:
+          type: string
+        productID:
+          type: string
+      type: object
+    UsageRecordGroupSource:
+      enum:
+      - ''
+      - API
+      - INTERNAL
+      - LAGO
+      - METRONOME
+      - ORB
+      - STRIPE
+      type: string
+      x-enum-varnames:
+      - UsageRecordGroupSourceUNKNOWN
+      - UsageRecordGroupSourceAPI
+      - UsageRecordGroupSourceINTERNAL
+      - UsageRecordGroupSourceLAGO
+      - UsageRecordGroupSourceMETRONOME
+      - UsageRecordGroupSourceORB
+      - UsageRecordGroupSourceSTRIPE
+    GcpMarketplaceMeteringMetricValueSet:
+      properties:
+        metricName:
+          description: 'MetricName: The metric name defined in the service configuration.'
+          type: string
+        metricValues:
+          description: 'MetricValues: The values in this metric.'
+          items:
+            $ref: '#/components/schemas/GcpMarketplaceMeteringMetricValue'
+          type: array
+      type: object
+    AwsMarketplaceMeteringBatchMeterUsageInput:
+      properties:
+        ProductCode:
+          description: 'Product code is used to uniquely identify a product in AWS Marketplace. The
+
+            product code should be the same as the one used during the publishing of a new product.'
+          type: string
+        UsageRecords:
+          description: The set of UsageRecords to submit. BatchMeterUsage accepts up to 25 UsageRecords at a time.
+          items:
+            $ref: '#/components/schemas/AwsMarketplaceMeteringUsageRecord'
+          type: array
+      type: object
+    AzureMarketplaceMeteringBatchUsageEvent:
+      properties:
+        request:
+          items:
+            $ref: '#/components/schemas/AzureMarketplaceMeteringUsageEvent'
+          type: array
+      type: object
+    CreateUsageRecordGroupParams:
+      example:
+        organizationID: organizationID
+        metaInfo: '{}'
+        records:
+          key: 0.8008281904610115
+        billableRecords:
+        - quantity: 0.8008281904610115
+          key: key
+          properties:
+            key: ''
+        - quantity: 0.8008281904610115
+          key: key
+          properties:
+            key: ''
+        entitlementID: entitlementID
+        id: id
+        timestamp: 2000-01-23 04:56:07+00:00
+      properties:
+        billableRecords:
+          description: for usage metering API v2, don't use it together with the records v1.
+          items:
+            $ref: '#/components/schemas/MeteringUsageRecord'
+          type: array
+        entitlementID:
+          type: string
+        id:
+          description: 'The uuid of the UsageRecordGroup (the size is up to 36 characters).
+
+            Optional, if not provided, suger will generate one.'
+          type: string
+        metaInfo:
+          allOf:
+          - $ref: '#/components/schemas/MeteringUsageRecordGroupMetaInfo'
+          description: read-only, don't set it up when reporting the usage record group.
+          type: object
+        organizationID:
+          type: string
+        records:
+          additionalProperties:
+            type: number
+          description: for usage metering API v1, don't use it together with the billableRecords v2.
+          type: object
+        timestamp:
+          description: 'The timestamp of when the usage records were generated.
+
+            Optional, if not provided, the current report timestamp will be used.
+
+            This is not the timestamp of when the usage records were reported to Suger.'
+          format: date-time
+          type: string
+      required:
+      - entitlementID
+      - organizationID
+      - records
+      type: object
+    BillableMetricAggregationType:
+      enum:
+      - COUNT
+      - UNIQUE_COUNT
+      - SUM
+      - MAX
+      - LAST
+      type: string
+      x-enum-varnames:
+      - BillableMetricAggregationType_COUNT
+      - BillableMetricAggregationType_UNIQUE_COUNT
+      - BillableMetricAggregationType_SUM
+      - BillableMetricAggregationType_MAX
+      - BillableMetricAggregationType_LAST
+    BillableMetricFilterOperation:
+      enum:
+      - IS
+      - NOT_IS
+      - CONTAINS
+      - NOT_CONTAINS
+      - GT
+      - GTE
+      - LT
+      - LTE
+      - EQ
+      - NOT_EQ
+      - EXISTS
+      - NOT_EXISTS
+      type: string
+      x-enum-varnames:
+      - BillableMetricFilterOperation_IS
+      - BillableMetricFilterOperation_NOT_IS
+      - BillableMetricFilterOperation_CONTAINS
+      - BillableMetricFilterOperation_NOT_CONTAINS
+      - BillableMetricFilterOperation_GT
+      - BillableMetricFilterOperation_GTE
+      - BillableMetricFilterOperation_LT
+      - BillableMetricFilterOperation_LTE
+      - BillableMetricFilterOperation_EQ
+      - BillableMetricFilterOperation_NEQ
+      - BillableMetricFilterOperation_EXISTS
+      - BillableMetricFilterOperation_NOT_EXISTS
+  securitySchemes:
+    APIKeyAuth:
+      description: API Key for authorization in format of <Key *****>.
+      in: header
+      name: Authorization
+      type: apiKey
+x-original-swagger-version: '2.0'
