@@ -5,9 +5,22 @@ description: >-
   Marketplace, Azure Marketplace, GCP Marketplace, and Snowflake Marketplace. Suger provides a full API for managing
   products, offers, entitlements, buyers, usage metering, and revenue reporting.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/suger.png
 tags:
   - Cloud Marketplace
   - GTM
@@ -21,33 +34,207 @@ created: '2025-02-21'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: suger:suger
-    name: Suger API
-    description: >-
-      CRUD operations on cloud marketplace resources including organizations, products, offers, entitlements, buyers,
-      usage record groups, billing metrics, invoices, and revenue reporting. Supports AWS, Azure, GCP, and Snowflake
-      marketplaces.
-    humanURL: https://www.suger.io/
-    baseURL: https://api.suger.cloud
-    tags:
-      - Cloud Marketplace
-      - GTM
-      - SaaS
-      - Billing
-      - Entitlement
-      - Usage Metering
-    properties:
-      - type: Documentation
-        url: https://doc.suger.io/
-      - type: Website
-        url: https://www.suger.io/
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/suger/refs/heads/main/openapi/suger-openapi.yml
-      - type: GettingStarted
-        url: https://www.suger.io/docs/get-started/api-client
-      - type: SDKs
-        url: https://github.com/sugerio
+- aid: suger:suger-api-api
+  name: Suger API API
+  description: Access to API client resources
+  humanURL: https://www.suger.io/
+  baseURL: https://api.suger.cloud
+  tags:
+  - API
+  properties:
+  - type: OpenAPI
+    url: openapi/suger-api-api-openapi.yml
+  - type: Documentation
+    url: https://doc.suger.io/
+  - type: Website
+    url: https://www.suger.io/
+  - type: GettingStarted
+    url: https://www.suger.io/docs/get-started/api-client
+  - type: SDKs
+    url: https://github.com/sugerio
+- aid: suger:suger-billing-api
+  name: Suger Billing API
+  description: Access to Billing resources, such as addon, invoice, payment, etc.
+  humanURL: https://www.suger.io/
+  baseURL: https://api.suger.cloud
+  tags:
+  - Billing
+  properties:
+  - type: OpenAPI
+    url: openapi/suger-billing-api-openapi.yml
+  - type: Documentation
+    url: https://doc.suger.io/
+  - type: Website
+    url: https://www.suger.io/
+  - type: GettingStarted
+    url: https://www.suger.io/docs/get-started/api-client
+  - type: SDKs
+    url: https://github.com/sugerio
+- aid: suger:suger-buyer-api
+  name: Suger Buyer API
+  description: Access to Buyer resources
+  humanURL: https://www.suger.io/
+  baseURL: https://api.suger.cloud
+  tags:
+  - Buyer
+  properties:
+  - type: OpenAPI
+    url: openapi/suger-buyer-api-openapi.yml
+  - type: Documentation
+    url: https://doc.suger.io/
+  - type: Website
+    url: https://www.suger.io/
+  - type: GettingStarted
+    url: https://www.suger.io/docs/get-started/api-client
+  - type: SDKs
+    url: https://github.com/sugerio
+- aid: suger:suger-contact-api
+  name: Suger Contact API
+  description: Access to Contact resources
+  humanURL: https://www.suger.io/
+  baseURL: https://api.suger.cloud
+  tags:
+  - Contact
+  properties:
+  - type: OpenAPI
+    url: openapi/suger-contact-api-openapi.yml
+  - type: Documentation
+    url: https://doc.suger.io/
+  - type: Website
+    url: https://www.suger.io/
+  - type: GettingStarted
+    url: https://www.suger.io/docs/get-started/api-client
+  - type: SDKs
+    url: https://github.com/sugerio
+- aid: suger:suger-entitlement-api
+  name: Suger Entitlement API
+  description: Access to Entitlement resources
+  humanURL: https://www.suger.io/
+  baseURL: https://api.suger.cloud
+  tags:
+  - Entitlement
+  properties:
+  - type: OpenAPI
+    url: openapi/suger-entitlement-api-openapi.yml
+  - type: Documentation
+    url: https://doc.suger.io/
+  - type: Website
+    url: https://www.suger.io/
+  - type: GettingStarted
+    url: https://www.suger.io/docs/get-started/api-client
+  - type: SDKs
+    url: https://github.com/sugerio
+- aid: suger:suger-metering-api
+  name: Suger Metering API
+  description: Access to Usage Metering resources
+  humanURL: https://www.suger.io/
+  baseURL: https://api.suger.cloud
+  tags:
+  - Metering
+  properties:
+  - type: OpenAPI
+    url: openapi/suger-metering-api-openapi.yml
+  - type: Documentation
+    url: https://doc.suger.io/
+  - type: Website
+    url: https://www.suger.io/
+  - type: GettingStarted
+    url: https://www.suger.io/docs/get-started/api-client
+  - type: SDKs
+    url: https://github.com/sugerio
+- aid: suger:suger-notification-api
+  name: Suger Notification API
+  description: Access to Notification resources
+  humanURL: https://www.suger.io/
+  baseURL: https://api.suger.cloud
+  tags:
+  - Notification
+  properties:
+  - type: OpenAPI
+    url: openapi/suger-notification-api-openapi.yml
+  - type: Documentation
+    url: https://doc.suger.io/
+  - type: Website
+    url: https://www.suger.io/
+  - type: GettingStarted
+    url: https://www.suger.io/docs/get-started/api-client
+  - type: SDKs
+    url: https://github.com/sugerio
+- aid: suger:suger-offer-api
+  name: Suger Offer API
+  description: Access to Offer resources
+  humanURL: https://www.suger.io/
+  baseURL: https://api.suger.cloud
+  tags:
+  - Offer
+  properties:
+  - type: OpenAPI
+    url: openapi/suger-offer-api-openapi.yml
+  - type: Documentation
+    url: https://doc.suger.io/
+  - type: Website
+    url: https://www.suger.io/
+  - type: GettingStarted
+    url: https://www.suger.io/docs/get-started/api-client
+  - type: SDKs
+    url: https://github.com/sugerio
+- aid: suger:suger-product-api
+  name: Suger Product API
+  description: Access to Product resources
+  humanURL: https://www.suger.io/
+  baseURL: https://api.suger.cloud
+  tags:
+  - Product
+  properties:
+  - type: OpenAPI
+    url: openapi/suger-product-api-openapi.yml
+  - type: Documentation
+    url: https://doc.suger.io/
+  - type: Website
+    url: https://www.suger.io/
+  - type: GettingStarted
+    url: https://www.suger.io/docs/get-started/api-client
+  - type: SDKs
+    url: https://github.com/sugerio
+- aid: suger:suger-report-api
+  name: Suger Report API
+  description: Access to revenue or usage metering Report resources
+  humanURL: https://www.suger.io/
+  baseURL: https://api.suger.cloud
+  tags:
+  - Report
+  properties:
+  - type: OpenAPI
+    url: openapi/suger-report-api-openapi.yml
+  - type: Documentation
+    url: https://doc.suger.io/
+  - type: Website
+    url: https://www.suger.io/
+  - type: GettingStarted
+    url: https://www.suger.io/docs/get-started/api-client
+  - type: SDKs
+    url: https://github.com/sugerio
+- aid: suger:suger-support-api
+  name: Suger Support API
+  description: Access to Suger Support ticket resources
+  humanURL: https://www.suger.io/
+  baseURL: https://api.suger.cloud
+  tags:
+  - Support
+  properties:
+  - type: OpenAPI
+    url: openapi/suger-support-api-openapi.yml
+  - type: Documentation
+    url: https://doc.suger.io/
+  - type: Website
+    url: https://www.suger.io/
+  - type: GettingStarted
+    url: https://www.suger.io/docs/get-started/api-client
+  - type: SDKs
+    url: https://github.com/sugerio
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/suger/overview
   - type: AgenticAccess
     url: agentic-access/suger-agentic-access.yml
   - type: TrustCenter
