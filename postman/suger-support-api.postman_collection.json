@@ -1,0 +1,2200 @@
+{
+  "info": {
+    "_postman_id": "0a33b489-e4c9-4db8-96bb-0b4887b07710",
+    "name": "Suger API Support API",
+    "description": "CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.\n\nContact Support:\n Name: Suger Support\n Email: support@suger.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:06:31.000Z",
+    "updatedAt": "2026-07-28T03:06:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0a33b489-e4c9-4db8-96bb-0b4887b07710"
+  },
+  "item": [
+    {
+      "name": "org",
+      "item": [
+        {
+          "name": "{orgId}",
+          "item": [
+            {
+              "name": "support",
+              "item": [
+                {
+                  "name": "ticket",
+                  "item": [
+                    {
+                      "name": "{ticketId}",
+                      "item": [
+                        {
+                          "name": "attachment",
+                          "item": [
+                            {
+                              "name": "Create Support Ticket Attachment",
+                              "id": "78c7ed35-3494-4502-bc14-ee4f858b8b29",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "apikey",
+                                  "apikey": [
+                                    {
+                                      "key": "key",
+                                      "value": "Authorization",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "value",
+                                      "value": "{{apiKey}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "in",
+                                      "value": "header",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "multipart/form-data"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "formdata",
+                                  "formdata": [
+                                    {
+                                      "description": "(Required) File to upload",
+                                      "key": "file",
+                                      "type": "file",
+                                      "value": null
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId/attachment",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "support",
+                                    "ticket",
+                                    ":ticketId",
+                                    "attachment"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "969d3bae-c76a-4544-97aa-023a81d2fbfa",
+                                      "key": "orgId",
+                                      "value": "<string>",
+                                      "description": "(Required) Organization ID"
+                                    },
+                                    {
+                                      "id": "6fac77c1-6165-452f-a837-eb403c54cdb5",
+                                      "key": "ticketId",
+                                      "value": "<string>",
+                                      "description": "(Required) Ticket ID"
+                                    }
+                                  ]
+                                },
+                                "description": "create support ticket attachment"
+                              },
+                              "response": [
+                                {
+                                  "id": "52cad343-6f18-49ea-8bbb-a8cf8c91ab65",
+                                  "name": "OK",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "multipart/form-data"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "formdata",
+                                      "formdata": [
+                                        {
+                                          "description": "(Required) File to upload",
+                                          "key": "file",
+                                          "type": "file"
+                                        }
+                                      ]
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId/attachment",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "org",
+                                        ":orgId",
+                                        "support",
+                                        "ticket",
+                                        ":ticketId",
+                                        "attachment"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "ticketId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "[\n  {\n    \"date\": \"<string>\",\n    \"id\": \"<string>\",\n    \"mimetype\": \"<string>\",\n    \"size\": \"<integer>\",\n    \"thumbnail_large\": \"<string>\",\n    \"thumbnail_medium\": \"<string>\",\n    \"thumbnail_small\": \"<string>\",\n    \"title\": \"<string>\",\n    \"url\": \"<string>\"\n  },\n  {\n    \"date\": \"<string>\",\n    \"id\": \"<string>\",\n    \"mimetype\": \"<string>\",\n    \"size\": \"<integer>\",\n    \"thumbnail_large\": \"<string>\",\n    \"thumbnail_medium\": \"<string>\",\n    \"thumbnail_small\": \"<string>\",\n    \"title\": \"<string>\",\n    \"url\": \"<string>\"\n  }\n]",
+                                  "createdAt": "2026-07-28T03:06:31.000Z",
+                                  "updatedAt": "2026-07-28T03:06:31.000Z",
+                                  "uid": "35240-52cad343-6f18-49ea-8bbb-a8cf8c91ab65"
+                                },
+                                {
+                                  "id": "63cda880-1af7-4877-8143-ccb79057ef2e",
+                                  "name": "Bad request error",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "multipart/form-data"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "formdata",
+                                      "formdata": [
+                                        {
+                                          "description": "(Required) File to upload",
+                                          "key": "file",
+                                          "type": "file"
+                                        }
+                                      ]
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId/attachment",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "org",
+                                        ":orgId",
+                                        "support",
+                                        "ticket",
+                                        ":ticketId",
+                                        "attachment"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "ticketId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "<string>",
+                                  "createdAt": "2026-07-28T03:06:31.000Z",
+                                  "updatedAt": "2026-07-28T03:06:31.000Z",
+                                  "uid": "35240-63cda880-1af7-4877-8143-ccb79057ef2e"
+                                },
+                                {
+                                  "id": "a30cb097-2d08-49cf-b7cc-9a555dca124b",
+                                  "name": "Internal server error",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "multipart/form-data"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "formdata",
+                                      "formdata": [
+                                        {
+                                          "description": "(Required) File to upload",
+                                          "key": "file",
+                                          "type": "file"
+                                        }
+                                      ]
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId/attachment",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "org",
+                                        ":orgId",
+                                        "support",
+                                        "ticket",
+                                        ":ticketId",
+                                        "attachment"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "ticketId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "<string>",
+                                  "createdAt": "2026-07-28T03:06:31.000Z",
+                                  "updatedAt": "2026-07-28T03:06:31.000Z",
+                                  "uid": "35240-a30cb097-2d08-49cf-b7cc-9a555dca124b"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:06:31.000Z",
+                              "updatedAt": "2026-07-28T03:06:31.000Z",
+                              "uid": "35240-78c7ed35-3494-4502-bc14-ee4f858b8b29"
+                            }
+                          ],
+                          "id": "6a86c8bc-e03a-40c5-a6d4-527483ba35cf",
+                          "createdAt": "2026-07-28T03:06:31.000Z",
+                          "updatedAt": "2026-07-28T03:06:31.000Z",
+                          "uid": "35240-6a86c8bc-e03a-40c5-a6d4-527483ba35cf"
+                        },
+                        {
+                          "name": "close",
+                          "item": [
+                            {
+                              "name": "Close Support Ticket",
+                              "id": "8e57db36-0ef7-49b1-a08e-1017a1034062",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "apikey",
+                                  "apikey": [
+                                    {
+                                      "key": "key",
+                                      "value": "Authorization",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "value",
+                                      "value": "{{apiKey}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "in",
+                                      "value": "header",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId/close",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "support",
+                                    "ticket",
+                                    ":ticketId",
+                                    "close"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "056e005e-c533-49ae-b2e6-14e4ea431d77",
+                                      "key": "orgId",
+                                      "value": "<string>",
+                                      "description": "(Required) Organization ID"
+                                    },
+                                    {
+                                      "id": "13da3979-eb05-472a-8b26-437493828cef",
+                                      "key": "ticketId",
+                                      "value": "<string>",
+                                      "description": "(Required) Ticket ID"
+                                    }
+                                  ]
+                                },
+                                "description": "close suuport ticket"
+                              },
+                              "response": [
+                                {
+                                  "id": "af9f8616-97f3-41f2-b38e-b2dcaac6b701",
+                                  "name": "OK",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId/close",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "org",
+                                        ":orgId",
+                                        "support",
+                                        "ticket",
+                                        ":ticketId",
+                                        "close"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "ticketId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"attachments\": [\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"closeTime\": \"<string>\",\n  \"comments\": [\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"creationTime\": \"<string>\",\n  \"creator\": \"<string>\",\n  \"description\": \"<string>\",\n  \"dueTime\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organizationId\": \"<string>\",\n  \"priority\": \"LOW\",\n  \"status\": \"DELETED\",\n  \"watchers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "createdAt": "2026-07-28T03:06:31.000Z",
+                                  "updatedAt": "2026-07-28T03:06:31.000Z",
+                                  "uid": "35240-af9f8616-97f3-41f2-b38e-b2dcaac6b701"
+                                },
+                                {
+                                  "id": "b4a960ff-70dd-49e0-bb4e-0744c6c5cbe3",
+                                  "name": "Bad request error",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId/close",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "org",
+                                        ":orgId",
+                                        "support",
+                                        "ticket",
+                                        ":ticketId",
+                                        "close"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "ticketId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "<string>",
+                                  "createdAt": "2026-07-28T03:06:31.000Z",
+                                  "updatedAt": "2026-07-28T03:06:31.000Z",
+                                  "uid": "35240-b4a960ff-70dd-49e0-bb4e-0744c6c5cbe3"
+                                },
+                                {
+                                  "id": "88703209-2378-4da4-a351-bca545614a9a",
+                                  "name": "Internal server error",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId/close",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "org",
+                                        ":orgId",
+                                        "support",
+                                        "ticket",
+                                        ":ticketId",
+                                        "close"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "ticketId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "<string>",
+                                  "createdAt": "2026-07-28T03:06:31.000Z",
+                                  "updatedAt": "2026-07-28T03:06:31.000Z",
+                                  "uid": "35240-88703209-2378-4da4-a351-bca545614a9a"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:06:31.000Z",
+                              "updatedAt": "2026-07-28T03:06:31.000Z",
+                              "uid": "35240-8e57db36-0ef7-49b1-a08e-1017a1034062"
+                            }
+                          ],
+                          "id": "18a1bb6a-0ce9-4e6a-ba0b-077267328b60",
+                          "createdAt": "2026-07-28T03:06:31.000Z",
+                          "updatedAt": "2026-07-28T03:06:31.000Z",
+                          "uid": "35240-18a1bb6a-0ce9-4e6a-ba0b-077267328b60"
+                        },
+                        {
+                          "name": "comment",
+                          "item": [
+                            {
+                              "name": "Create Support Ticket Comment",
+                              "id": "097d66bf-a3f5-408d-b320-44258ad579c0",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "apikey",
+                                  "apikey": [
+                                    {
+                                      "key": "key",
+                                      "value": "Authorization",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "value",
+                                      "value": "{{apiKey}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "in",
+                                      "value": "header",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"comment\": [\n    {\n      \"attachment\": {\n        \"date\": \"<string>\",\n        \"id\": \"<string>\",\n        \"mimetype\": \"<string>\",\n        \"size\": \"<integer>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"frame\": {\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"image\": {\n        \"extension\": \"<string>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"text\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"attachment\": {\n        \"date\": \"<string>\",\n        \"id\": \"<string>\",\n        \"mimetype\": \"<string>\",\n        \"size\": \"<integer>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"frame\": {\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"image\": {\n        \"extension\": \"<string>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"text\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"comment_text\": \"<string>\",\n  \"creator\": {\n    \"email\": \"<string>\",\n    \"id\": \"<string>\",\n    \"isSugerEmployee\": \"<boolean>\",\n    \"profilePicture\": \"<string>\",\n    \"username\": \"<string>\"\n  },\n  \"date\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId/comment",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "support",
+                                    "ticket",
+                                    ":ticketId",
+                                    "comment"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "b9db7861-0112-4e6a-a3be-655c3aaebd9e",
+                                      "key": "orgId",
+                                      "value": "<string>",
+                                      "description": "(Required) Organization ID"
+                                    },
+                                    {
+                                      "id": "fb396c67-6f1c-461e-9abf-f526dd64e04b",
+                                      "key": "ticketId",
+                                      "value": "<string>",
+                                      "description": "(Required) Ticket ID"
+                                    }
+                                  ]
+                                },
+                                "description": "create support ticket comment"
+                              },
+                              "response": [
+                                {
+                                  "id": "b7c06229-bc1b-4e22-b45f-6e158d47dda1",
+                                  "name": "OK",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"comment\": [\n    {\n      \"attachment\": {\n        \"date\": \"<string>\",\n        \"id\": \"<string>\",\n        \"mimetype\": \"<string>\",\n        \"size\": \"<integer>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"frame\": {\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"image\": {\n        \"extension\": \"<string>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"text\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"attachment\": {\n        \"date\": \"<string>\",\n        \"id\": \"<string>\",\n        \"mimetype\": \"<string>\",\n        \"size\": \"<integer>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"frame\": {\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"image\": {\n        \"extension\": \"<string>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"text\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"comment_text\": \"<string>\",\n  \"creator\": {\n    \"email\": \"<string>\",\n    \"id\": \"<string>\",\n    \"isSugerEmployee\": \"<boolean>\",\n    \"profilePicture\": \"<string>\",\n    \"username\": \"<string>\"\n  },\n  \"date\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId/comment",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "org",
+                                        ":orgId",
+                                        "support",
+                                        "ticket",
+                                        ":ticketId",
+                                        "comment"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "ticketId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"comment\": [\n    {\n      \"attachment\": {\n        \"date\": \"<string>\",\n        \"id\": \"<string>\",\n        \"mimetype\": \"<string>\",\n        \"size\": \"<integer>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"frame\": {\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"image\": {\n        \"extension\": \"<string>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"text\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"attachment\": {\n        \"date\": \"<string>\",\n        \"id\": \"<string>\",\n        \"mimetype\": \"<string>\",\n        \"size\": \"<integer>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"frame\": {\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"image\": {\n        \"extension\": \"<string>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"text\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"comment_text\": \"<string>\",\n  \"creator\": {\n    \"email\": \"<string>\",\n    \"id\": \"<string>\",\n    \"isSugerEmployee\": \"<boolean>\",\n    \"profilePicture\": \"<string>\",\n    \"username\": \"<string>\"\n  },\n  \"date\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T03:06:31.000Z",
+                                  "updatedAt": "2026-07-28T03:06:31.000Z",
+                                  "uid": "35240-b7c06229-bc1b-4e22-b45f-6e158d47dda1"
+                                },
+                                {
+                                  "id": "2b25e06f-ec54-479f-adaf-45ed68d54434",
+                                  "name": "Bad request error",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"comment\": [\n    {\n      \"attachment\": {\n        \"date\": \"<string>\",\n        \"id\": \"<string>\",\n        \"mimetype\": \"<string>\",\n        \"size\": \"<integer>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"frame\": {\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"image\": {\n        \"extension\": \"<string>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"text\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"attachment\": {\n        \"date\": \"<string>\",\n        \"id\": \"<string>\",\n        \"mimetype\": \"<string>\",\n        \"size\": \"<integer>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"frame\": {\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"image\": {\n        \"extension\": \"<string>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"text\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"comment_text\": \"<string>\",\n  \"creator\": {\n    \"email\": \"<string>\",\n    \"id\": \"<string>\",\n    \"isSugerEmployee\": \"<boolean>\",\n    \"profilePicture\": \"<string>\",\n    \"username\": \"<string>\"\n  },\n  \"date\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId/comment",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "org",
+                                        ":orgId",
+                                        "support",
+                                        "ticket",
+                                        ":ticketId",
+                                        "comment"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "ticketId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "<string>",
+                                  "createdAt": "2026-07-28T03:06:31.000Z",
+                                  "updatedAt": "2026-07-28T03:06:31.000Z",
+                                  "uid": "35240-2b25e06f-ec54-479f-adaf-45ed68d54434"
+                                },
+                                {
+                                  "id": "2a6987e8-f421-4076-857c-905b7100651a",
+                                  "name": "Internal server error",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"comment\": [\n    {\n      \"attachment\": {\n        \"date\": \"<string>\",\n        \"id\": \"<string>\",\n        \"mimetype\": \"<string>\",\n        \"size\": \"<integer>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"frame\": {\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"image\": {\n        \"extension\": \"<string>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"text\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"attachment\": {\n        \"date\": \"<string>\",\n        \"id\": \"<string>\",\n        \"mimetype\": \"<string>\",\n        \"size\": \"<integer>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"frame\": {\n        \"id\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"image\": {\n        \"extension\": \"<string>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"thumbnail_large\": \"<string>\",\n        \"thumbnail_medium\": \"<string>\",\n        \"thumbnail_small\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"text\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"comment_text\": \"<string>\",\n  \"creator\": {\n    \"email\": \"<string>\",\n    \"id\": \"<string>\",\n    \"isSugerEmployee\": \"<boolean>\",\n    \"profilePicture\": \"<string>\",\n    \"username\": \"<string>\"\n  },\n  \"date\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId/comment",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "org",
+                                        ":orgId",
+                                        "support",
+                                        "ticket",
+                                        ":ticketId",
+                                        "comment"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "ticketId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "<string>",
+                                  "createdAt": "2026-07-28T03:06:31.000Z",
+                                  "updatedAt": "2026-07-28T03:06:31.000Z",
+                                  "uid": "35240-2a6987e8-f421-4076-857c-905b7100651a"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:06:31.000Z",
+                              "updatedAt": "2026-07-28T03:06:31.000Z",
+                              "uid": "35240-097d66bf-a3f5-408d-b320-44258ad579c0"
+                            }
+                          ],
+                          "id": "020847dd-632b-45a3-b0ce-7b355e77ff1d",
+                          "createdAt": "2026-07-28T03:06:31.000Z",
+                          "updatedAt": "2026-07-28T03:06:31.000Z",
+                          "uid": "35240-020847dd-632b-45a3-b0ce-7b355e77ff1d"
+                        },
+                        {
+                          "name": "reopen",
+                          "item": [
+                            {
+                              "name": "Reopen Support Ticket",
+                              "id": "2a38d9eb-1344-4210-ab83-2342f166266f",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "apikey",
+                                  "apikey": [
+                                    {
+                                      "key": "key",
+                                      "value": "Authorization",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "value",
+                                      "value": "{{apiKey}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "in",
+                                      "value": "header",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId/reopen",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "support",
+                                    "ticket",
+                                    ":ticketId",
+                                    "reopen"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "7627da78-7171-4042-bef7-a49406e673dc",
+                                      "key": "orgId",
+                                      "value": "<string>",
+                                      "description": "(Required) Organization ID"
+                                    },
+                                    {
+                                      "id": "143d198a-2808-4613-b7d5-4638b4f8125d",
+                                      "key": "ticketId",
+                                      "value": "<string>",
+                                      "description": "(Required) Ticket ID"
+                                    }
+                                  ]
+                                },
+                                "description": "reopen support ticket"
+                              },
+                              "response": [
+                                {
+                                  "id": "918cdbc7-3cb5-4683-9ae5-80ff35015d4b",
+                                  "name": "OK",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId/reopen",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "org",
+                                        ":orgId",
+                                        "support",
+                                        "ticket",
+                                        ":ticketId",
+                                        "reopen"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "ticketId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"attachments\": [\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"closeTime\": \"<string>\",\n  \"comments\": [\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"creationTime\": \"<string>\",\n  \"creator\": \"<string>\",\n  \"description\": \"<string>\",\n  \"dueTime\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organizationId\": \"<string>\",\n  \"priority\": \"LOW\",\n  \"status\": \"DELETED\",\n  \"watchers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "createdAt": "2026-07-28T03:06:31.000Z",
+                                  "updatedAt": "2026-07-28T03:06:31.000Z",
+                                  "uid": "35240-918cdbc7-3cb5-4683-9ae5-80ff35015d4b"
+                                },
+                                {
+                                  "id": "a4797937-b6e2-4f97-a824-00e2a3820b7f",
+                                  "name": "Bad request error",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId/reopen",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "org",
+                                        ":orgId",
+                                        "support",
+                                        "ticket",
+                                        ":ticketId",
+                                        "reopen"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "ticketId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "<string>",
+                                  "createdAt": "2026-07-28T03:06:31.000Z",
+                                  "updatedAt": "2026-07-28T03:06:31.000Z",
+                                  "uid": "35240-a4797937-b6e2-4f97-a824-00e2a3820b7f"
+                                },
+                                {
+                                  "id": "1cefd099-03db-41db-afab-cdfcc679ea22",
+                                  "name": "Internal server error",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId/reopen",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "org",
+                                        ":orgId",
+                                        "support",
+                                        "ticket",
+                                        ":ticketId",
+                                        "reopen"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "ticketId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "<string>",
+                                  "createdAt": "2026-07-28T03:06:31.000Z",
+                                  "updatedAt": "2026-07-28T03:06:31.000Z",
+                                  "uid": "35240-1cefd099-03db-41db-afab-cdfcc679ea22"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:06:31.000Z",
+                              "updatedAt": "2026-07-28T03:06:31.000Z",
+                              "uid": "35240-2a38d9eb-1344-4210-ab83-2342f166266f"
+                            }
+                          ],
+                          "id": "959632a1-91e8-4557-894e-25e4eccc55b3",
+                          "createdAt": "2026-07-28T03:06:31.000Z",
+                          "updatedAt": "2026-07-28T03:06:31.000Z",
+                          "uid": "35240-959632a1-91e8-4557-894e-25e4eccc55b3"
+                        },
+                        {
+                          "name": "Get Support Ticket",
+                          "id": "f0911151-eb76-4863-a8c2-a1724cd51875",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "Authorization",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":orgId",
+                                "support",
+                                "ticket",
+                                ":ticketId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "456f4871-eda4-4b88-a2a3-6fd97a5b4d35",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) Organization ID"
+                                },
+                                {
+                                  "id": "6484a9e5-9e97-4f48-a416-cd18ab247263",
+                                  "key": "ticketId",
+                                  "value": "<string>",
+                                  "description": "(Required) Ticket ID"
+                                }
+                              ]
+                            },
+                            "description": "get support ticket"
+                          },
+                          "response": [
+                            {
+                              "id": "43567baf-31b9-4abe-9841-20c562791a8a",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "support",
+                                    "ticket",
+                                    ":ticketId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "ticketId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"attachments\": [\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"closeTime\": \"<string>\",\n  \"comments\": [\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"creationTime\": \"<string>\",\n  \"creator\": \"<string>\",\n  \"description\": \"<string>\",\n  \"dueTime\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organizationId\": \"<string>\",\n  \"priority\": \"LOW\",\n  \"status\": \"DELETED\",\n  \"watchers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "createdAt": "2026-07-28T03:06:31.000Z",
+                              "updatedAt": "2026-07-28T03:06:31.000Z",
+                              "uid": "35240-43567baf-31b9-4abe-9841-20c562791a8a"
+                            },
+                            {
+                              "id": "39d08073-f326-4a5b-a12b-405b8edddc4f",
+                              "name": "Bad request error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "support",
+                                    "ticket",
+                                    ":ticketId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "ticketId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T03:06:31.000Z",
+                              "updatedAt": "2026-07-28T03:06:31.000Z",
+                              "uid": "35240-39d08073-f326-4a5b-a12b-405b8edddc4f"
+                            },
+                            {
+                              "id": "77a62471-c864-417c-9c1d-9de28d2e5529",
+                              "name": "Internal server error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "support",
+                                    "ticket",
+                                    ":ticketId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "ticketId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T03:06:31.000Z",
+                              "updatedAt": "2026-07-28T03:06:31.000Z",
+                              "uid": "35240-77a62471-c864-417c-9c1d-9de28d2e5529"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:06:31.000Z",
+                          "updatedAt": "2026-07-28T03:06:31.000Z",
+                          "uid": "35240-f0911151-eb76-4863-a8c2-a1724cd51875"
+                        },
+                        {
+                          "name": "Update Support Ticket",
+                          "id": "4e72e47c-ec69-4a0f-bb02-4c605575127e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "Authorization",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"priority\": \"HIGH\",\n  \"watchers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":orgId",
+                                "support",
+                                "ticket",
+                                ":ticketId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "0f7cd1a2-abf0-4e9b-9d77-c19a9723a47b",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) Organization ID"
+                                },
+                                {
+                                  "id": "24482c0b-d230-4038-b2b1-75be523db26a",
+                                  "key": "ticketId",
+                                  "value": "<string>",
+                                  "description": "(Required) Ticket ID"
+                                }
+                              ]
+                            },
+                            "description": "update support ticket"
+                          },
+                          "response": [
+                            {
+                              "id": "17c9ef8b-fa28-41c3-9e19-c2b400a969e6",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"priority\": \"HIGH\",\n  \"watchers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "support",
+                                    "ticket",
+                                    ":ticketId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "ticketId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"attachments\": [\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"closeTime\": \"<string>\",\n  \"comments\": [\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"creationTime\": \"<string>\",\n  \"creator\": \"<string>\",\n  \"description\": \"<string>\",\n  \"dueTime\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organizationId\": \"<string>\",\n  \"priority\": \"LOW\",\n  \"status\": \"DELETED\",\n  \"watchers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "createdAt": "2026-07-28T03:06:31.000Z",
+                              "updatedAt": "2026-07-28T03:06:31.000Z",
+                              "uid": "35240-17c9ef8b-fa28-41c3-9e19-c2b400a969e6"
+                            },
+                            {
+                              "id": "24cd9343-6245-48c6-84ff-818608ac9194",
+                              "name": "Bad request error",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"priority\": \"HIGH\",\n  \"watchers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "support",
+                                    "ticket",
+                                    ":ticketId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "ticketId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T03:06:31.000Z",
+                              "updatedAt": "2026-07-28T03:06:31.000Z",
+                              "uid": "35240-24cd9343-6245-48c6-84ff-818608ac9194"
+                            },
+                            {
+                              "id": "7314e461-0746-44a6-ac7d-f56b92ef8e59",
+                              "name": "Internal server error",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"priority\": \"HIGH\",\n  \"watchers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/support/ticket/:ticketId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "support",
+                                    "ticket",
+                                    ":ticketId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "ticketId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T03:06:31.000Z",
+                              "updatedAt": "2026-07-28T03:06:31.000Z",
+                              "uid": "35240-7314e461-0746-44a6-ac7d-f56b92ef8e59"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:06:31.000Z",
+                          "updatedAt": "2026-07-28T03:06:31.000Z",
+                          "uid": "35240-4e72e47c-ec69-4a0f-bb02-4c605575127e"
+                        }
+                      ],
+                      "id": "25613269-3e75-4b63-a10c-2142f2031837",
+                      "createdAt": "2026-07-28T03:06:31.000Z",
+                      "updatedAt": "2026-07-28T03:06:31.000Z",
+                      "uid": "35240-25613269-3e75-4b63-a10c-2142f2031837"
+                    },
+                    {
+                      "name": "List Support Tickets",
+                      "id": "28217f9e-4803-471d-b6b0-cf5b130656f7",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "Authorization",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:orgId/support/ticket?limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":orgId",
+                            "support",
+                            "ticket"
+                          ],
+                          "query": [
+                            {
+                              "description": "List pagination size, default 1000, max value is 1000",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "List pagination offset, default 0",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "6b5f5d55-8785-4b10-82b3-0396cc2ad608",
+                              "key": "orgId",
+                              "value": "<string>",
+                              "description": "(Required) Organization ID"
+                            }
+                          ]
+                        },
+                        "description": "list support tickets"
+                      },
+                      "response": [
+                        {
+                          "id": "99d8e4ad-4e17-4cf1-ae1c-145aeb12d8f7",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:orgId/support/ticket?limit=<integer>&offset=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":orgId",
+                                "support",
+                                "ticket"
+                              ],
+                              "query": [
+                                {
+                                  "description": "List pagination size, default 1000, max value is 1000",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "List pagination offset, default 0",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orgId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"items\": [\n    {\n      \"attachments\": [\n        {\n          \"date\": \"<string>\",\n          \"id\": \"<string>\",\n          \"mimetype\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"thumbnail_large\": \"<string>\",\n          \"thumbnail_medium\": \"<string>\",\n          \"thumbnail_small\": \"<string>\",\n          \"title\": \"<string>\",\n          \"url\": \"<string>\"\n        },\n        {\n          \"date\": \"<string>\",\n          \"id\": \"<string>\",\n          \"mimetype\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"thumbnail_large\": \"<string>\",\n          \"thumbnail_medium\": \"<string>\",\n          \"thumbnail_small\": \"<string>\",\n          \"title\": \"<string>\",\n          \"url\": \"<string>\"\n        }\n      ],\n      \"closeTime\": \"<string>\",\n      \"comments\": [\n        {\n          \"comment\": [\n            {\n              \"attachment\": {\n                \"date\": \"<string>\",\n                \"id\": \"<string>\",\n                \"mimetype\": \"<string>\",\n                \"size\": \"<integer>\",\n                \"thumbnail_large\": \"<string>\",\n                \"thumbnail_medium\": \"<string>\",\n                \"thumbnail_small\": \"<string>\",\n                \"title\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"frame\": {\n                \"id\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"image\": {\n                \"extension\": \"<string>\",\n                \"id\": \"<string>\",\n                \"name\": \"<string>\",\n                \"thumbnail_large\": \"<string>\",\n                \"thumbnail_medium\": \"<string>\",\n                \"thumbnail_small\": \"<string>\",\n                \"title\": \"<string>\",\n                \"type\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"text\": \"<string>\",\n              \"type\": \"<string>\"\n            },\n            {\n              \"attachment\": {\n                \"date\": \"<string>\",\n                \"id\": \"<string>\",\n                \"mimetype\": \"<string>\",\n                \"size\": \"<integer>\",\n                \"thumbnail_large\": \"<string>\",\n                \"thumbnail_medium\": \"<string>\",\n                \"thumbnail_small\": \"<string>\",\n                \"title\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"frame\": {\n                \"id\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"image\": {\n                \"extension\": \"<string>\",\n                \"id\": \"<string>\",\n                \"name\": \"<string>\",\n                \"thumbnail_large\": \"<string>\",\n                \"thumbnail_medium\": \"<string>\",\n                \"thumbnail_small\": \"<string>\",\n                \"title\": \"<string>\",\n                \"type\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"text\": \"<string>\",\n              \"type\": \"<string>\"\n            }\n          ],\n          \"comment_text\": \"<string>\",\n          \"creator\": {\n            \"email\": \"<string>\",\n            \"id\": \"<string>\",\n            \"isSugerEmployee\": \"<boolean>\",\n            \"profilePicture\": \"<string>\",\n            \"username\": \"<string>\"\n          },\n          \"date\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"comment\": [\n            {\n              \"attachment\": {\n                \"date\": \"<string>\",\n                \"id\": \"<string>\",\n                \"mimetype\": \"<string>\",\n                \"size\": \"<integer>\",\n                \"thumbnail_large\": \"<string>\",\n                \"thumbnail_medium\": \"<string>\",\n                \"thumbnail_small\": \"<string>\",\n                \"title\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"frame\": {\n                \"id\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"image\": {\n                \"extension\": \"<string>\",\n                \"id\": \"<string>\",\n                \"name\": \"<string>\",\n                \"thumbnail_large\": \"<string>\",\n                \"thumbnail_medium\": \"<string>\",\n                \"thumbnail_small\": \"<string>\",\n                \"title\": \"<string>\",\n                \"type\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"text\": \"<string>\",\n              \"type\": \"<string>\"\n            },\n            {\n              \"attachment\": {\n                \"date\": \"<string>\",\n                \"id\": \"<string>\",\n                \"mimetype\": \"<string>\",\n                \"size\": \"<integer>\",\n                \"thumbnail_large\": \"<string>\",\n                \"thumbnail_medium\": \"<string>\",\n                \"thumbnail_small\": \"<string>\",\n                \"title\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"frame\": {\n                \"id\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"image\": {\n                \"extension\": \"<string>\",\n                \"id\": \"<string>\",\n                \"name\": \"<string>\",\n                \"thumbnail_large\": \"<string>\",\n                \"thumbnail_medium\": \"<string>\",\n                \"thumbnail_small\": \"<string>\",\n                \"title\": \"<string>\",\n                \"type\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"text\": \"<string>\",\n              \"type\": \"<string>\"\n            }\n          ],\n          \"comment_text\": \"<string>\",\n          \"creator\": {\n            \"email\": \"<string>\",\n            \"id\": \"<string>\",\n            \"isSugerEmployee\": \"<boolean>\",\n            \"profilePicture\": \"<string>\",\n            \"username\": \"<string>\"\n          },\n          \"date\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"creationTime\": \"<string>\",\n      \"creator\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dueTime\": \"<string>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"organizationId\": \"<string>\",\n      \"priority\": \"NORMAL\",\n      \"status\": \"ARCHIVED\",\n      \"watchers\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"attachments\": [\n        {\n          \"date\": \"<string>\",\n          \"id\": \"<string>\",\n          \"mimetype\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"thumbnail_large\": \"<string>\",\n          \"thumbnail_medium\": \"<string>\",\n          \"thumbnail_small\": \"<string>\",\n          \"title\": \"<string>\",\n          \"url\": \"<string>\"\n        },\n        {\n          \"date\": \"<string>\",\n          \"id\": \"<string>\",\n          \"mimetype\": \"<string>\",\n          \"size\": \"<integer>\",\n          \"thumbnail_large\": \"<string>\",\n          \"thumbnail_medium\": \"<string>\",\n          \"thumbnail_small\": \"<string>\",\n          \"title\": \"<string>\",\n          \"url\": \"<string>\"\n        }\n      ],\n      \"closeTime\": \"<string>\",\n      \"comments\": [\n        {\n          \"comment\": [\n            {\n              \"attachment\": {\n                \"date\": \"<string>\",\n                \"id\": \"<string>\",\n                \"mimetype\": \"<string>\",\n                \"size\": \"<integer>\",\n                \"thumbnail_large\": \"<string>\",\n                \"thumbnail_medium\": \"<string>\",\n                \"thumbnail_small\": \"<string>\",\n                \"title\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"frame\": {\n                \"id\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"image\": {\n                \"extension\": \"<string>\",\n                \"id\": \"<string>\",\n                \"name\": \"<string>\",\n                \"thumbnail_large\": \"<string>\",\n                \"thumbnail_medium\": \"<string>\",\n                \"thumbnail_small\": \"<string>\",\n                \"title\": \"<string>\",\n                \"type\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"text\": \"<string>\",\n              \"type\": \"<string>\"\n            },\n            {\n              \"attachment\": {\n                \"date\": \"<string>\",\n                \"id\": \"<string>\",\n                \"mimetype\": \"<string>\",\n                \"size\": \"<integer>\",\n                \"thumbnail_large\": \"<string>\",\n                \"thumbnail_medium\": \"<string>\",\n                \"thumbnail_small\": \"<string>\",\n                \"title\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"frame\": {\n                \"id\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"image\": {\n                \"extension\": \"<string>\",\n                \"id\": \"<string>\",\n                \"name\": \"<string>\",\n                \"thumbnail_large\": \"<string>\",\n                \"thumbnail_medium\": \"<string>\",\n                \"thumbnail_small\": \"<string>\",\n                \"title\": \"<string>\",\n                \"type\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"text\": \"<string>\",\n              \"type\": \"<string>\"\n            }\n          ],\n          \"comment_text\": \"<string>\",\n          \"creator\": {\n            \"email\": \"<string>\",\n            \"id\": \"<string>\",\n            \"isSugerEmployee\": \"<boolean>\",\n            \"profilePicture\": \"<string>\",\n            \"username\": \"<string>\"\n          },\n          \"date\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"comment\": [\n            {\n              \"attachment\": {\n                \"date\": \"<string>\",\n                \"id\": \"<string>\",\n                \"mimetype\": \"<string>\",\n                \"size\": \"<integer>\",\n                \"thumbnail_large\": \"<string>\",\n                \"thumbnail_medium\": \"<string>\",\n                \"thumbnail_small\": \"<string>\",\n                \"title\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"frame\": {\n                \"id\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"image\": {\n                \"extension\": \"<string>\",\n                \"id\": \"<string>\",\n                \"name\": \"<string>\",\n                \"thumbnail_large\": \"<string>\",\n                \"thumbnail_medium\": \"<string>\",\n                \"thumbnail_small\": \"<string>\",\n                \"title\": \"<string>\",\n                \"type\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"text\": \"<string>\",\n              \"type\": \"<string>\"\n            },\n            {\n              \"attachment\": {\n                \"date\": \"<string>\",\n                \"id\": \"<string>\",\n                \"mimetype\": \"<string>\",\n                \"size\": \"<integer>\",\n                \"thumbnail_large\": \"<string>\",\n                \"thumbnail_medium\": \"<string>\",\n                \"thumbnail_small\": \"<string>\",\n                \"title\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"frame\": {\n                \"id\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"image\": {\n                \"extension\": \"<string>\",\n                \"id\": \"<string>\",\n                \"name\": \"<string>\",\n                \"thumbnail_large\": \"<string>\",\n                \"thumbnail_medium\": \"<string>\",\n                \"thumbnail_small\": \"<string>\",\n                \"title\": \"<string>\",\n                \"type\": \"<string>\",\n                \"url\": \"<string>\"\n              },\n              \"text\": \"<string>\",\n              \"type\": \"<string>\"\n            }\n          ],\n          \"comment_text\": \"<string>\",\n          \"creator\": {\n            \"email\": \"<string>\",\n            \"id\": \"<string>\",\n            \"isSugerEmployee\": \"<boolean>\",\n            \"profilePicture\": \"<string>\",\n            \"username\": \"<string>\"\n          },\n          \"date\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"creationTime\": \"<string>\",\n      \"creator\": \"<string>\",\n      \"description\": \"<string>\",\n      \"dueTime\": \"<string>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"organizationId\": \"<string>\",\n      \"priority\": \"URGENT\",\n      \"status\": \"IN REVIEW\",\n      \"watchers\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"totalCount\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:06:31.000Z",
+                          "updatedAt": "2026-07-28T03:06:31.000Z",
+                          "uid": "35240-99d8e4ad-4e17-4cf1-ae1c-145aeb12d8f7"
+                        },
+                        {
+                          "id": "32a60f8d-3d67-4c85-93ad-32bef7ed193f",
+                          "name": "Bad request error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:orgId/support/ticket?limit=<integer>&offset=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":orgId",
+                                "support",
+                                "ticket"
+                              ],
+                              "query": [
+                                {
+                                  "description": "List pagination size, default 1000, max value is 1000",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "List pagination offset, default 0",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orgId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-07-28T03:06:31.000Z",
+                          "updatedAt": "2026-07-28T03:06:31.000Z",
+                          "uid": "35240-32a60f8d-3d67-4c85-93ad-32bef7ed193f"
+                        },
+                        {
+                          "id": "9dec2ac8-4356-4a0d-b1f3-f601ca3214e8",
+                          "name": "Internal server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:orgId/support/ticket?limit=<integer>&offset=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":orgId",
+                                "support",
+                                "ticket"
+                              ],
+                              "query": [
+                                {
+                                  "description": "List pagination size, default 1000, max value is 1000",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "List pagination offset, default 0",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orgId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-07-28T03:06:31.000Z",
+                          "updatedAt": "2026-07-28T03:06:31.000Z",
+                          "uid": "35240-9dec2ac8-4356-4a0d-b1f3-f601ca3214e8"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:06:31.000Z",
+                      "updatedAt": "2026-07-28T03:06:31.000Z",
+                      "uid": "35240-28217f9e-4803-471d-b6b0-cf5b130656f7"
+                    },
+                    {
+                      "name": "Create Support Ticket",
+                      "id": "f09ff53e-f53c-4e4f-9860-bacf910ca935",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "Authorization",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"attachments\": [\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"closeTime\": \"<string>\",\n  \"comments\": [\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"creationTime\": \"<string>\",\n  \"creator\": \"<string>\",\n  \"description\": \"<string>\",\n  \"dueTime\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organizationId\": \"<string>\",\n  \"priority\": \"LOW\",\n  \"status\": \"DELETED\",\n  \"watchers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:orgId/support/ticket",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":orgId",
+                            "support",
+                            "ticket"
+                          ],
+                          "variable": [
+                            {
+                              "id": "7370f3cc-741a-40d8-95da-6f4527c1f0f4",
+                              "key": "orgId",
+                              "value": "<string>",
+                              "description": "(Required) Organization ID"
+                            }
+                          ]
+                        },
+                        "description": "create support ticket"
+                      },
+                      "response": [
+                        {
+                          "id": "2d30c561-ceb2-4b9f-9307-cdc19857f187",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"attachments\": [\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"closeTime\": \"<string>\",\n  \"comments\": [\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"creationTime\": \"<string>\",\n  \"creator\": \"<string>\",\n  \"description\": \"<string>\",\n  \"dueTime\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organizationId\": \"<string>\",\n  \"priority\": \"LOW\",\n  \"status\": \"DELETED\",\n  \"watchers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:orgId/support/ticket",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":orgId",
+                                "support",
+                                "ticket"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orgId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"attachments\": [\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"closeTime\": \"<string>\",\n  \"comments\": [\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"creationTime\": \"<string>\",\n  \"creator\": \"<string>\",\n  \"description\": \"<string>\",\n  \"dueTime\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organizationId\": \"<string>\",\n  \"priority\": \"LOW\",\n  \"status\": \"DELETED\",\n  \"watchers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "createdAt": "2026-07-28T03:06:31.000Z",
+                          "updatedAt": "2026-07-28T03:06:31.000Z",
+                          "uid": "35240-2d30c561-ceb2-4b9f-9307-cdc19857f187"
+                        },
+                        {
+                          "id": "ff26420b-d9db-487c-93b7-5d2dd3b1c2a8",
+                          "name": "Bad request error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"attachments\": [\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"closeTime\": \"<string>\",\n  \"comments\": [\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"creationTime\": \"<string>\",\n  \"creator\": \"<string>\",\n  \"description\": \"<string>\",\n  \"dueTime\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organizationId\": \"<string>\",\n  \"priority\": \"LOW\",\n  \"status\": \"DELETED\",\n  \"watchers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:orgId/support/ticket",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":orgId",
+                                "support",
+                                "ticket"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orgId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-07-28T03:06:31.000Z",
+                          "updatedAt": "2026-07-28T03:06:31.000Z",
+                          "uid": "35240-ff26420b-d9db-487c-93b7-5d2dd3b1c2a8"
+                        },
+                        {
+                          "id": "41809da5-5a67-4570-a583-a37fb6c4e06e",
+                          "name": "Internal server error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"attachments\": [\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"date\": \"<string>\",\n      \"id\": \"<string>\",\n      \"mimetype\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"thumbnail_large\": \"<string>\",\n      \"thumbnail_medium\": \"<string>\",\n      \"thumbnail_small\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"closeTime\": \"<string>\",\n  \"comments\": [\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"comment\": [\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"attachment\": {\n            \"date\": \"<string>\",\n            \"id\": \"<string>\",\n            \"mimetype\": \"<string>\",\n            \"size\": \"<integer>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"frame\": {\n            \"id\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"image\": {\n            \"extension\": \"<string>\",\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"thumbnail_large\": \"<string>\",\n            \"thumbnail_medium\": \"<string>\",\n            \"thumbnail_small\": \"<string>\",\n            \"title\": \"<string>\",\n            \"type\": \"<string>\",\n            \"url\": \"<string>\"\n          },\n          \"text\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ],\n      \"comment_text\": \"<string>\",\n      \"creator\": {\n        \"email\": \"<string>\",\n        \"id\": \"<string>\",\n        \"isSugerEmployee\": \"<boolean>\",\n        \"profilePicture\": \"<string>\",\n        \"username\": \"<string>\"\n      },\n      \"date\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"creationTime\": \"<string>\",\n  \"creator\": \"<string>\",\n  \"description\": \"<string>\",\n  \"dueTime\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organizationId\": \"<string>\",\n  \"priority\": \"LOW\",\n  \"status\": \"DELETED\",\n  \"watchers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:orgId/support/ticket",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":orgId",
+                                "support",
+                                "ticket"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orgId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-07-28T03:06:31.000Z",
+                          "updatedAt": "2026-07-28T03:06:31.000Z",
+                          "uid": "35240-41809da5-5a67-4570-a583-a37fb6c4e06e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:06:31.000Z",
+                      "updatedAt": "2026-07-28T03:06:31.000Z",
+                      "uid": "35240-f09ff53e-f53c-4e4f-9860-bacf910ca935"
+                    }
+                  ],
+                  "id": "16c84805-ef44-4a28-9f81-ffb8058b5c09",
+                  "createdAt": "2026-07-28T03:06:31.000Z",
+                  "updatedAt": "2026-07-28T03:06:31.000Z",
+                  "uid": "35240-16c84805-ef44-4a28-9f81-ffb8058b5c09"
+                }
+              ],
+              "id": "823870d7-c477-497b-aa29-056a944e40b5",
+              "createdAt": "2026-07-28T03:06:31.000Z",
+              "updatedAt": "2026-07-28T03:06:31.000Z",
+              "uid": "35240-823870d7-c477-497b-aa29-056a944e40b5"
+            }
+          ],
+          "id": "9b6b5138-90b0-4245-99f7-863518afbf09",
+          "createdAt": "2026-07-28T03:06:31.000Z",
+          "updatedAt": "2026-07-28T03:06:31.000Z",
+          "uid": "35240-9b6b5138-90b0-4245-99f7-863518afbf09"
+        }
+      ],
+      "id": "986d8193-7212-4d9a-ac78-6cd48ae03bf1",
+      "createdAt": "2026-07-28T03:06:31.000Z",
+      "updatedAt": "2026-07-28T03:06:31.000Z",
+      "uid": "35240-986d8193-7212-4d9a-ac78-6cd48ae03bf1"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.suger.cloud"
+    }
+  ]
+}

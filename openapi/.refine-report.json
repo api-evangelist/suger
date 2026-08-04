@@ -1,0 +1,34 @@
+{
+  "provider": "suger",
+  "sources": [
+    "suger-api-api-openapi.yml",
+    "suger-billing-api-openapi.yml",
+    "suger-buyer-api-openapi.yml",
+    "suger-contact-api-openapi.yml",
+    "suger-entitlement-api-openapi.yml",
+    "suger-metering-api-openapi.yml",
+    "suger-notification-api-openapi.yml",
+    "suger-offer-api-openapi.yml",
+    "suger-product-api-openapi.yml",
+    "suger-report-api-openapi.yml",
+    "suger-support-api-openapi.yml"
+  ],
+  "outputs": [
+    "suger-api-api-openapi.yml",
+    "suger-billing-api-openapi.yml",
+    "suger-buyer-api-openapi.yml",
+    "suger-contact-api-openapi.yml",
+    "suger-entitlement-api-openapi.yml",
+    "suger-metering-api-openapi.yml",
+    "suger-notification-api-openapi.yml",
+    "suger-offer-api-openapi.yml",
+    "suger-product-api-openapi.yml",
+    "suger-report-api-openapi.yml",
+    "suger-support-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

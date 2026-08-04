@@ -1,0 +1,1818 @@
+{
+  "info": {
+    "_postman_id": "4b39d93c-924e-465e-bad4-33a793582590",
+    "name": "Suger API Report API",
+    "description": "CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.\n\nContact Support:\n Name: Suger Support\n Email: support@suger.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:06:29.000Z",
+    "updatedAt": "2026-07-28T03:06:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4b39d93c-924e-465e-bad4-33a793582590"
+  },
+  "item": [
+    {
+      "name": "org",
+      "item": [
+        {
+          "name": "{orgId}",
+          "item": [
+            {
+              "name": "dailyRevenueRecord",
+              "item": [
+                {
+                  "name": "List Daily Revenue Records",
+                  "id": "a99b0cf8-df42-430b-9299-a6d761398b54",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/org/:orgId/dailyRevenueRecord?partner=GCP&productId=<string>&buyerId=<string>&entitlementId=<string>&startDate=<string>&endDate=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "org",
+                        ":orgId",
+                        "dailyRevenueRecord"
+                      ],
+                      "query": [
+                        {
+                          "description": "Cloud Partner",
+                          "key": "partner",
+                          "value": "GCP"
+                        },
+                        {
+                          "description": "Filter daily revenue records by the given product ID",
+                          "key": "productId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter daily revenue records by the given buyer ID",
+                          "key": "buyerId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter daily revenue records by the given entitlement ID",
+                          "key": "entitlementId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                          "key": "startDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                          "key": "endDate",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "b261a3dd-d1c6-414d-90d6-683fd563b960",
+                          "key": "orgId",
+                          "value": "<string>",
+                          "description": "(Required) Organization ID"
+                        }
+                      ]
+                    },
+                    "description": "list daily revenue records for the given organization, partner, entitlement, or buyer, within the given date range."
+                  },
+                  "response": [
+                    {
+                      "id": "97370c3d-16bf-430d-a730-b1a2d5dc1676",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:orgId/dailyRevenueRecord?partner=GCP&productId=<string>&buyerId=<string>&entitlementId=<string>&startDate=<string>&endDate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":orgId",
+                            "dailyRevenueRecord"
+                          ],
+                          "query": [
+                            {
+                              "description": "Cloud Partner",
+                              "key": "partner",
+                              "value": "GCP"
+                            },
+                            {
+                              "description": "Filter daily revenue records by the given product ID",
+                              "key": "productId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter daily revenue records by the given buyer ID",
+                              "key": "buyerId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter daily revenue records by the given entitlement ID",
+                              "key": "entitlementId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                              "key": "startDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                              "key": "endDate",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"amount\": \"<number>\",\n    \"buyerID\": \"<string>\",\n    \"collectableAmount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"date\": \"<dateTime>\",\n    \"disburseAmount\": \"<number>\",\n    \"disburseDate\": \"<dateTime>\",\n    \"entitlementID\": \"<string>\",\n    \"id\": \"<string>\",\n    \"info\": {\n      \"awsRevenueRecords\": [\n        {\n          \"action\": \"<string>\",\n          \"agreementID\": \"<string>\",\n          \"amount\": \"<number>\",\n          \"balanceImpacting\": \"<integer>\",\n          \"bankTraceID\": \"<string>\",\n          \"billingAddressID\": \"<string>\",\n          \"brokerID\": \"<string>\",\n          \"buyerID\": \"<string>\",\n          \"currency\": \"<string>\",\n          \"dataFeedProductID\": \"<string>\",\n          \"disbursementBillingEventID\": \"<string>\",\n          \"endUserAccountID\": \"<string>\",\n          \"entitlementID\": \"<string>\",\n          \"fromAccountID\": \"<string>\",\n          \"id\": \"<string>\",\n          \"insertDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceID\": \"<string>\",\n          \"offerID\": \"<string>\",\n          \"organizationID\": \"<string>\",\n          \"parentBillingEventID\": \"<string>\",\n          \"paymentDueDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"productID\": \"<string>\",\n          \"toAccountID\": \"<string>\",\n          \"transactionReferenceID\": \"<string>\",\n          \"transactionType\": \"<string>\",\n          \"usagePeriodEndDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"usagePeriodStartDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          }\n        },\n        {\n          \"action\": \"<string>\",\n          \"agreementID\": \"<string>\",\n          \"amount\": \"<number>\",\n          \"balanceImpacting\": \"<integer>\",\n          \"bankTraceID\": \"<string>\",\n          \"billingAddressID\": \"<string>\",\n          \"brokerID\": \"<string>\",\n          \"buyerID\": \"<string>\",\n          \"currency\": \"<string>\",\n          \"dataFeedProductID\": \"<string>\",\n          \"disbursementBillingEventID\": \"<string>\",\n          \"endUserAccountID\": \"<string>\",\n          \"entitlementID\": \"<string>\",\n          \"fromAccountID\": \"<string>\",\n          \"id\": \"<string>\",\n          \"insertDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceID\": \"<string>\",\n          \"offerID\": \"<string>\",\n          \"organizationID\": \"<string>\",\n          \"parentBillingEventID\": \"<string>\",\n          \"paymentDueDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"productID\": \"<string>\",\n          \"toAccountID\": \"<string>\",\n          \"transactionReferenceID\": \"<string>\",\n          \"transactionType\": \"<string>\",\n          \"usagePeriodEndDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"usagePeriodStartDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          }\n        }\n      ],\n      \"azureRevenueRecords\": [\n        {\n          \"azureAssetID\": \"<string>\",\n          \"azureBillingAccountID\": \"<string>\",\n          \"azureCustomerID\": \"<string>\",\n          \"azureOfferID\": \"<string>\",\n          \"azurePlanID\": \"<string>\",\n          \"billingModel\": \"<string>\",\n          \"buyerID\": \"<string>\",\n          \"earningID\": \"<string>\",\n          \"earningUsd\": \"<number>\",\n          \"entitlementID\": \"<string>\",\n          \"estimatedPayoutMonth\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceDueDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceID\": \"<string>\",\n          \"offerID\": \"<string>\",\n          \"organizationID\": \"<string>\",\n          \"paymentID\": \"<string>\",\n          \"paymentSentDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"paymentStatus\": \"<string>\",\n          \"payoutStatus\": \"<string>\",\n          \"productID\": \"<string>\",\n          \"programName\": \"<string>\",\n          \"purchaseRecordID\": \"<string>\",\n          \"resellerCity\": \"<string>\",\n          \"resellerCompany\": \"<string>\",\n          \"resellerCountry\": \"<string>\",\n          \"resellerEmail\": \"<string>\",\n          \"resellerID\": \"<string>\",\n          \"resellerState\": \"<string>\",\n          \"revenueUsd\": \"<number>\",\n          \"termEndDate\": \"<string>\",\n          \"termStartDate\": \"<string>\",\n          \"transactionDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          }\n        },\n        {\n          \"azureAssetID\": \"<string>\",\n          \"azureBillingAccountID\": \"<string>\",\n          \"azureCustomerID\": \"<string>\",\n          \"azureOfferID\": \"<string>\",\n          \"azurePlanID\": \"<string>\",\n          \"billingModel\": \"<string>\",\n          \"buyerID\": \"<string>\",\n          \"earningID\": \"<string>\",\n          \"earningUsd\": \"<number>\",\n          \"entitlementID\": \"<string>\",\n          \"estimatedPayoutMonth\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceDueDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceID\": \"<string>\",\n          \"offerID\": \"<string>\",\n          \"organizationID\": \"<string>\",\n          \"paymentID\": \"<string>\",\n          \"paymentSentDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"paymentStatus\": \"<string>\",\n          \"payoutStatus\": \"<string>\",\n          \"productID\": \"<string>\",\n          \"programName\": \"<string>\",\n          \"purchaseRecordID\": \"<string>\",\n          \"resellerCity\": \"<string>\",\n          \"resellerCompany\": \"<string>\",\n          \"resellerCountry\": \"<string>\",\n          \"resellerEmail\": \"<string>\",\n          \"resellerID\": \"<string>\",\n          \"resellerState\": \"<string>\",\n          \"revenueUsd\": \"<number>\",\n          \"termEndDate\": \"<string>\",\n          \"termStartDate\": \"<string>\",\n          \"transactionDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          }\n        }\n      ],\n      \"bankTraceId\": \"<string>\",\n      \"billingModel\": \"SubscriptionBased\",\n      \"channel\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"creditAmount\": \"<number>\",\n      \"disbursementBillingEventId\": \"<string>\",\n      \"disbursementNotificationSent\": \"<boolean>\",\n      \"earningId\": \"<string>\",\n      \"gcpRevenueRecords\": [\n        {\n          \"abandoned\": \"<number>\",\n          \"accountID\": \"<string>\",\n          \"buyerID\": \"<string>\",\n          \"charges\": \"<number>\",\n          \"currency\": \"<string>\",\n          \"dueVendor\": \"<number>\",\n          \"entitlementID\": \"<string>\",\n          \"googleEntity\": \"<string>\",\n          \"insightAccountID\": \"<string>\",\n          \"offerID\": \"<string>\",\n          \"ordinal\": \"<integer>\",\n          \"organizationID\": \"<string>\",\n          \"paymentSchedule\": \"<string>\",\n          \"paymentType\": \"<string>\",\n          \"prepayCredits\": \"<number>\",\n          \"productID\": \"<string>\",\n          \"refundBalanceDeductedThisMonth\": \"<number>\",\n          \"refundBalanceOutstanding\": \"<number>\",\n          \"refundReason\": \"<string>\",\n          \"released\": \"<number>\",\n          \"reportDate\": \"<string>\",\n          \"resource\": \"<string>\",\n          \"sku\": \"<string>\",\n          \"trialUse\": \"<number>\",\n          \"unit\": \"<string>\",\n          \"usage\": \"<number>\",\n          \"usedBy\": \"<string>\",\n          \"withheld\": \"<number>\"\n        },\n        {\n          \"abandoned\": \"<number>\",\n          \"accountID\": \"<string>\",\n          \"buyerID\": \"<string>\",\n          \"charges\": \"<number>\",\n          \"currency\": \"<string>\",\n          \"dueVendor\": \"<number>\",\n          \"entitlementID\": \"<string>\",\n          \"googleEntity\": \"<string>\",\n          \"insightAccountID\": \"<string>\",\n          \"offerID\": \"<string>\",\n          \"ordinal\": \"<integer>\",\n          \"organizationID\": \"<string>\",\n          \"paymentSchedule\": \"<string>\",\n          \"paymentType\": \"<string>\",\n          \"prepayCredits\": \"<number>\",\n          \"productID\": \"<string>\",\n          \"refundBalanceDeductedThisMonth\": \"<number>\",\n          \"refundBalanceOutstanding\": \"<number>\",\n          \"refundReason\": \"<string>\",\n          \"released\": \"<number>\",\n          \"reportDate\": \"<string>\",\n          \"resource\": \"<string>\",\n          \"sku\": \"<string>\",\n          \"trialUse\": \"<number>\",\n          \"unit\": \"<string>\",\n          \"usage\": \"<number>\",\n          \"usedBy\": \"<string>\",\n          \"withheld\": \"<number>\"\n        }\n      ],\n      \"idSource\": \"<string>\",\n      \"paymentId\": \"<string>\",\n      \"resellerId\": \"<string>\",\n      \"resellerName\": \"<string>\",\n      \"resource\": \"<string>\"\n    },\n    \"invoiceAmount\": \"<number>\",\n    \"invoiceDate\": \"<dateTime>\",\n    \"organizationID\": \"<string>\",\n    \"partner\": \"<string>\",\n    \"paymentDueDate\": \"<dateTime>\",\n    \"productID\": \"<string>\",\n    \"refundDisburseAmount\": \"<number>\",\n    \"refundDisburseDate\": \"<dateTime>\",\n    \"refundInvoiceAmount\": \"<number>\",\n    \"refundInvoiceDate\": \"<dateTime>\",\n    \"taxAmount\": \"<number>\"\n  },\n  {\n    \"amount\": \"<number>\",\n    \"buyerID\": \"<string>\",\n    \"collectableAmount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"date\": \"<dateTime>\",\n    \"disburseAmount\": \"<number>\",\n    \"disburseDate\": \"<dateTime>\",\n    \"entitlementID\": \"<string>\",\n    \"id\": \"<string>\",\n    \"info\": {\n      \"awsRevenueRecords\": [\n        {\n          \"action\": \"<string>\",\n          \"agreementID\": \"<string>\",\n          \"amount\": \"<number>\",\n          \"balanceImpacting\": \"<integer>\",\n          \"bankTraceID\": \"<string>\",\n          \"billingAddressID\": \"<string>\",\n          \"brokerID\": \"<string>\",\n          \"buyerID\": \"<string>\",\n          \"currency\": \"<string>\",\n          \"dataFeedProductID\": \"<string>\",\n          \"disbursementBillingEventID\": \"<string>\",\n          \"endUserAccountID\": \"<string>\",\n          \"entitlementID\": \"<string>\",\n          \"fromAccountID\": \"<string>\",\n          \"id\": \"<string>\",\n          \"insertDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceID\": \"<string>\",\n          \"offerID\": \"<string>\",\n          \"organizationID\": \"<string>\",\n          \"parentBillingEventID\": \"<string>\",\n          \"paymentDueDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"productID\": \"<string>\",\n          \"toAccountID\": \"<string>\",\n          \"transactionReferenceID\": \"<string>\",\n          \"transactionType\": \"<string>\",\n          \"usagePeriodEndDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"usagePeriodStartDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          }\n        },\n        {\n          \"action\": \"<string>\",\n          \"agreementID\": \"<string>\",\n          \"amount\": \"<number>\",\n          \"balanceImpacting\": \"<integer>\",\n          \"bankTraceID\": \"<string>\",\n          \"billingAddressID\": \"<string>\",\n          \"brokerID\": \"<string>\",\n          \"buyerID\": \"<string>\",\n          \"currency\": \"<string>\",\n          \"dataFeedProductID\": \"<string>\",\n          \"disbursementBillingEventID\": \"<string>\",\n          \"endUserAccountID\": \"<string>\",\n          \"entitlementID\": \"<string>\",\n          \"fromAccountID\": \"<string>\",\n          \"id\": \"<string>\",\n          \"insertDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceID\": \"<string>\",\n          \"offerID\": \"<string>\",\n          \"organizationID\": \"<string>\",\n          \"parentBillingEventID\": \"<string>\",\n          \"paymentDueDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"productID\": \"<string>\",\n          \"toAccountID\": \"<string>\",\n          \"transactionReferenceID\": \"<string>\",\n          \"transactionType\": \"<string>\",\n          \"usagePeriodEndDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"usagePeriodStartDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          }\n        }\n      ],\n      \"azureRevenueRecords\": [\n        {\n          \"azureAssetID\": \"<string>\",\n          \"azureBillingAccountID\": \"<string>\",\n          \"azureCustomerID\": \"<string>\",\n          \"azureOfferID\": \"<string>\",\n          \"azurePlanID\": \"<string>\",\n          \"billingModel\": \"<string>\",\n          \"buyerID\": \"<string>\",\n          \"earningID\": \"<string>\",\n          \"earningUsd\": \"<number>\",\n          \"entitlementID\": \"<string>\",\n          \"estimatedPayoutMonth\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceDueDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceID\": \"<string>\",\n          \"offerID\": \"<string>\",\n          \"organizationID\": \"<string>\",\n          \"paymentID\": \"<string>\",\n          \"paymentSentDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"paymentStatus\": \"<string>\",\n          \"payoutStatus\": \"<string>\",\n          \"productID\": \"<string>\",\n          \"programName\": \"<string>\",\n          \"purchaseRecordID\": \"<string>\",\n          \"resellerCity\": \"<string>\",\n          \"resellerCompany\": \"<string>\",\n          \"resellerCountry\": \"<string>\",\n          \"resellerEmail\": \"<string>\",\n          \"resellerID\": \"<string>\",\n          \"resellerState\": \"<string>\",\n          \"revenueUsd\": \"<number>\",\n          \"termEndDate\": \"<string>\",\n          \"termStartDate\": \"<string>\",\n          \"transactionDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          }\n        },\n        {\n          \"azureAssetID\": \"<string>\",\n          \"azureBillingAccountID\": \"<string>\",\n          \"azureCustomerID\": \"<string>\",\n          \"azureOfferID\": \"<string>\",\n          \"azurePlanID\": \"<string>\",\n          \"billingModel\": \"<string>\",\n          \"buyerID\": \"<string>\",\n          \"earningID\": \"<string>\",\n          \"earningUsd\": \"<number>\",\n          \"entitlementID\": \"<string>\",\n          \"estimatedPayoutMonth\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceDueDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"invoiceID\": \"<string>\",\n          \"offerID\": \"<string>\",\n          \"organizationID\": \"<string>\",\n          \"paymentID\": \"<string>\",\n          \"paymentSentDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          },\n          \"paymentStatus\": \"<string>\",\n          \"payoutStatus\": \"<string>\",\n          \"productID\": \"<string>\",\n          \"programName\": \"<string>\",\n          \"purchaseRecordID\": \"<string>\",\n          \"resellerCity\": \"<string>\",\n          \"resellerCompany\": \"<string>\",\n          \"resellerCountry\": \"<string>\",\n          \"resellerEmail\": \"<string>\",\n          \"resellerID\": \"<string>\",\n          \"resellerState\": \"<string>\",\n          \"revenueUsd\": \"<number>\",\n          \"termEndDate\": \"<string>\",\n          \"termStartDate\": \"<string>\",\n          \"transactionDate\": {\n            \"time\": \"<string>\",\n            \"valid\": \"<boolean>\"\n          }\n        }\n      ],\n      \"bankTraceId\": \"<string>\",\n      \"billingModel\": \"SubscriptionBased\",\n      \"channel\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"creditAmount\": \"<number>\",\n      \"disbursementBillingEventId\": \"<string>\",\n      \"disbursementNotificationSent\": \"<boolean>\",\n      \"earningId\": \"<string>\",\n      \"gcpRevenueRecords\": [\n        {\n          \"abandoned\": \"<number>\",\n          \"accountID\": \"<string>\",\n          \"buyerID\": \"<string>\",\n          \"charges\": \"<number>\",\n          \"currency\": \"<string>\",\n          \"dueVendor\": \"<number>\",\n          \"entitlementID\": \"<string>\",\n          \"googleEntity\": \"<string>\",\n          \"insightAccountID\": \"<string>\",\n          \"offerID\": \"<string>\",\n          \"ordinal\": \"<integer>\",\n          \"organizationID\": \"<string>\",\n          \"paymentSchedule\": \"<string>\",\n          \"paymentType\": \"<string>\",\n          \"prepayCredits\": \"<number>\",\n          \"productID\": \"<string>\",\n          \"refundBalanceDeductedThisMonth\": \"<number>\",\n          \"refundBalanceOutstanding\": \"<number>\",\n          \"refundReason\": \"<string>\",\n          \"released\": \"<number>\",\n          \"reportDate\": \"<string>\",\n          \"resource\": \"<string>\",\n          \"sku\": \"<string>\",\n          \"trialUse\": \"<number>\",\n          \"unit\": \"<string>\",\n          \"usage\": \"<number>\",\n          \"usedBy\": \"<string>\",\n          \"withheld\": \"<number>\"\n        },\n        {\n          \"abandoned\": \"<number>\",\n          \"accountID\": \"<string>\",\n          \"buyerID\": \"<string>\",\n          \"charges\": \"<number>\",\n          \"currency\": \"<string>\",\n          \"dueVendor\": \"<number>\",\n          \"entitlementID\": \"<string>\",\n          \"googleEntity\": \"<string>\",\n          \"insightAccountID\": \"<string>\",\n          \"offerID\": \"<string>\",\n          \"ordinal\": \"<integer>\",\n          \"organizationID\": \"<string>\",\n          \"paymentSchedule\": \"<string>\",\n          \"paymentType\": \"<string>\",\n          \"prepayCredits\": \"<number>\",\n          \"productID\": \"<string>\",\n          \"refundBalanceDeductedThisMonth\": \"<number>\",\n          \"refundBalanceOutstanding\": \"<number>\",\n          \"refundReason\": \"<string>\",\n          \"released\": \"<number>\",\n          \"reportDate\": \"<string>\",\n          \"resource\": \"<string>\",\n          \"sku\": \"<string>\",\n          \"trialUse\": \"<number>\",\n          \"unit\": \"<string>\",\n          \"usage\": \"<number>\",\n          \"usedBy\": \"<string>\",\n          \"withheld\": \"<number>\"\n        }\n      ],\n      \"idSource\": \"<string>\",\n      \"paymentId\": \"<string>\",\n      \"resellerId\": \"<string>\",\n      \"resellerName\": \"<string>\",\n      \"resource\": \"<string>\"\n    },\n    \"invoiceAmount\": \"<number>\",\n    \"invoiceDate\": \"<dateTime>\",\n    \"organizationID\": \"<string>\",\n    \"partner\": \"<string>\",\n    \"paymentDueDate\": \"<dateTime>\",\n    \"productID\": \"<string>\",\n    \"refundDisburseAmount\": \"<number>\",\n    \"refundDisburseDate\": \"<dateTime>\",\n    \"refundInvoiceAmount\": \"<number>\",\n    \"refundInvoiceDate\": \"<dateTime>\",\n    \"taxAmount\": \"<number>\"\n  }\n]",
+                      "createdAt": "2026-07-28T03:06:30.000Z",
+                      "updatedAt": "2026-07-28T03:06:30.000Z",
+                      "uid": "35240-97370c3d-16bf-430d-a730-b1a2d5dc1676"
+                    },
+                    {
+                      "id": "4ba057e3-5419-44e5-90e0-6d237f5984c4",
+                      "name": "Bad request error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:orgId/dailyRevenueRecord?partner=GCP&productId=<string>&buyerId=<string>&entitlementId=<string>&startDate=<string>&endDate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":orgId",
+                            "dailyRevenueRecord"
+                          ],
+                          "query": [
+                            {
+                              "description": "Cloud Partner",
+                              "key": "partner",
+                              "value": "GCP"
+                            },
+                            {
+                              "description": "Filter daily revenue records by the given product ID",
+                              "key": "productId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter daily revenue records by the given buyer ID",
+                              "key": "buyerId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter daily revenue records by the given entitlement ID",
+                              "key": "entitlementId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                              "key": "startDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                              "key": "endDate",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T03:06:30.000Z",
+                      "updatedAt": "2026-07-28T03:06:30.000Z",
+                      "uid": "35240-4ba057e3-5419-44e5-90e0-6d237f5984c4"
+                    },
+                    {
+                      "id": "f11aed00-b539-4994-a0f9-3298bd221156",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:orgId/dailyRevenueRecord?partner=GCP&productId=<string>&buyerId=<string>&entitlementId=<string>&startDate=<string>&endDate=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":orgId",
+                            "dailyRevenueRecord"
+                          ],
+                          "query": [
+                            {
+                              "description": "Cloud Partner",
+                              "key": "partner",
+                              "value": "GCP"
+                            },
+                            {
+                              "description": "Filter daily revenue records by the given product ID",
+                              "key": "productId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter daily revenue records by the given buyer ID",
+                              "key": "buyerId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter daily revenue records by the given entitlement ID",
+                              "key": "entitlementId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                              "key": "startDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                              "key": "endDate",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T03:06:30.000Z",
+                      "updatedAt": "2026-07-28T03:06:30.000Z",
+                      "uid": "35240-f11aed00-b539-4994-a0f9-3298bd221156"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:06:30.000Z",
+                  "updatedAt": "2026-07-28T03:06:30.000Z",
+                  "uid": "35240-a99b0cf8-df42-430b-9299-a6d761398b54"
+                }
+              ],
+              "id": "55091091-d1b7-4fa3-a442-8137cfc5e4e8",
+              "createdAt": "2026-07-28T03:06:30.000Z",
+              "updatedAt": "2026-07-28T03:06:30.000Z",
+              "uid": "35240-55091091-d1b7-4fa3-a442-8137cfc5e4e8"
+            },
+            {
+              "name": "partner",
+              "item": [
+                {
+                  "name": "{partner}",
+                  "item": [
+                    {
+                      "name": "revenueRecord",
+                      "item": [
+                        {
+                          "name": "List Revenue Records",
+                          "id": "bdf656c6-6b10-4129-b7c8-1a9e4aec05c6",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "Authorization",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:orgId/partner/:partner/revenueRecord?productId=<string>&entitlementId=<string>&buyerId=<string>&startDate=<string>&endDate=<string>&limit=<integer>&offset=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":orgId",
+                                "partner",
+                                ":partner",
+                                "revenueRecord"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter revenue records by the given product ID",
+                                  "key": "productId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter revenue records by the given entitlement ID",
+                                  "key": "entitlementId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter revenue records by the given buyer ID",
+                                  "key": "buyerId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                                  "key": "startDate",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                                  "key": "endDate",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "List pagination size, default 1000, max value is 1000",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "List pagination offset, default 0",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "6d7a9c62-acd7-41b1-b18e-00d3b5ad5856",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) Organization ID"
+                                },
+                                {
+                                  "id": "4cdcbead-65ee-41c7-86b6-cf0b62698104",
+                                  "key": "partner",
+                                  "value": "GCP",
+                                  "description": "(Required) Cloud Partner"
+                                }
+                              ]
+                            },
+                            "description": "list the revenue records for the given organization, product, entitlement, or buyer."
+                          },
+                          "response": [
+                            {
+                              "id": "951eeffe-65c9-4e75-b3f1-a161ba5cc1a5",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/partner/:partner/revenueRecord?productId=<string>&entitlementId=<string>&buyerId=<string>&startDate=<string>&endDate=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "partner",
+                                    ":partner",
+                                    "revenueRecord"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Filter revenue records by the given product ID",
+                                      "key": "productId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter revenue records by the given entitlement ID",
+                                      "key": "entitlementId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter revenue records by the given buyer ID",
+                                      "key": "buyerId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                                      "key": "startDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                                      "key": "endDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "List pagination size, default 1000, max value is 1000",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "List pagination offset, default 0",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "partner"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"nextOffset\": \"<integer>\",\n  \"revenueRecords\": [\n    {\n      \"amount\": \"<number>\",\n      \"buyerID\": \"<string>\",\n      \"collectableAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"disburseAmount\": \"<number>\",\n      \"disburseDate\": \"<dateTime>\",\n      \"entitlementID\": \"<string>\",\n      \"id\": \"<string>\",\n      \"info\": {\n        \"awsRevenueRecords\": [\n          {\n            \"action\": \"<string>\",\n            \"agreementID\": \"<string>\",\n            \"amount\": \"<number>\",\n            \"balanceImpacting\": \"<integer>\",\n            \"bankTraceID\": \"<string>\",\n            \"billingAddressID\": \"<string>\",\n            \"brokerID\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"currency\": \"<string>\",\n            \"dataFeedProductID\": \"<string>\",\n            \"disbursementBillingEventID\": \"<string>\",\n            \"endUserAccountID\": \"<string>\",\n            \"entitlementID\": \"<string>\",\n            \"fromAccountID\": \"<string>\",\n            \"id\": \"<string>\",\n            \"insertDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"organizationID\": \"<string>\",\n            \"parentBillingEventID\": \"<string>\",\n            \"paymentDueDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"productID\": \"<string>\",\n            \"toAccountID\": \"<string>\",\n            \"transactionReferenceID\": \"<string>\",\n            \"transactionType\": \"<string>\",\n            \"usagePeriodEndDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"usagePeriodStartDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            }\n          },\n          {\n            \"action\": \"<string>\",\n            \"agreementID\": \"<string>\",\n            \"amount\": \"<number>\",\n            \"balanceImpacting\": \"<integer>\",\n            \"bankTraceID\": \"<string>\",\n            \"billingAddressID\": \"<string>\",\n            \"brokerID\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"currency\": \"<string>\",\n            \"dataFeedProductID\": \"<string>\",\n            \"disbursementBillingEventID\": \"<string>\",\n            \"endUserAccountID\": \"<string>\",\n            \"entitlementID\": \"<string>\",\n            \"fromAccountID\": \"<string>\",\n            \"id\": \"<string>\",\n            \"insertDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"organizationID\": \"<string>\",\n            \"parentBillingEventID\": \"<string>\",\n            \"paymentDueDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"productID\": \"<string>\",\n            \"toAccountID\": \"<string>\",\n            \"transactionReferenceID\": \"<string>\",\n            \"transactionType\": \"<string>\",\n            \"usagePeriodEndDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"usagePeriodStartDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            }\n          }\n        ],\n        \"azureRevenueRecords\": [\n          {\n            \"azureAssetID\": \"<string>\",\n            \"azureBillingAccountID\": \"<string>\",\n            \"azureCustomerID\": \"<string>\",\n            \"azureOfferID\": \"<string>\",\n            \"azurePlanID\": \"<string>\",\n            \"billingModel\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"earningID\": \"<string>\",\n            \"earningUsd\": \"<number>\",\n            \"entitlementID\": \"<string>\",\n            \"estimatedPayoutMonth\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDueDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"organizationID\": \"<string>\",\n            \"paymentID\": \"<string>\",\n            \"paymentSentDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"paymentStatus\": \"<string>\",\n            \"payoutStatus\": \"<string>\",\n            \"productID\": \"<string>\",\n            \"programName\": \"<string>\",\n            \"purchaseRecordID\": \"<string>\",\n            \"resellerCity\": \"<string>\",\n            \"resellerCompany\": \"<string>\",\n            \"resellerCountry\": \"<string>\",\n            \"resellerEmail\": \"<string>\",\n            \"resellerID\": \"<string>\",\n            \"resellerState\": \"<string>\",\n            \"revenueUsd\": \"<number>\",\n            \"termEndDate\": \"<string>\",\n            \"termStartDate\": \"<string>\",\n            \"transactionDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            }\n          },\n          {\n            \"azureAssetID\": \"<string>\",\n            \"azureBillingAccountID\": \"<string>\",\n            \"azureCustomerID\": \"<string>\",\n            \"azureOfferID\": \"<string>\",\n            \"azurePlanID\": \"<string>\",\n            \"billingModel\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"earningID\": \"<string>\",\n            \"earningUsd\": \"<number>\",\n            \"entitlementID\": \"<string>\",\n            \"estimatedPayoutMonth\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDueDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"organizationID\": \"<string>\",\n            \"paymentID\": \"<string>\",\n            \"paymentSentDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"paymentStatus\": \"<string>\",\n            \"payoutStatus\": \"<string>\",\n            \"productID\": \"<string>\",\n            \"programName\": \"<string>\",\n            \"purchaseRecordID\": \"<string>\",\n            \"resellerCity\": \"<string>\",\n            \"resellerCompany\": \"<string>\",\n            \"resellerCountry\": \"<string>\",\n            \"resellerEmail\": \"<string>\",\n            \"resellerID\": \"<string>\",\n            \"resellerState\": \"<string>\",\n            \"revenueUsd\": \"<number>\",\n            \"termEndDate\": \"<string>\",\n            \"termStartDate\": \"<string>\",\n            \"transactionDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            }\n          }\n        ],\n        \"bankTraceId\": \"<string>\",\n        \"billingModel\": \"UsageBased\",\n        \"channel\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"creditAmount\": \"<number>\",\n        \"disbursementBillingEventId\": \"<string>\",\n        \"disbursementNotificationSent\": \"<boolean>\",\n        \"earningId\": \"<string>\",\n        \"gcpRevenueRecords\": [\n          {\n            \"abandoned\": \"<number>\",\n            \"accountID\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"charges\": \"<number>\",\n            \"currency\": \"<string>\",\n            \"dueVendor\": \"<number>\",\n            \"entitlementID\": \"<string>\",\n            \"googleEntity\": \"<string>\",\n            \"insightAccountID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"ordinal\": \"<integer>\",\n            \"organizationID\": \"<string>\",\n            \"paymentSchedule\": \"<string>\",\n            \"paymentType\": \"<string>\",\n            \"prepayCredits\": \"<number>\",\n            \"productID\": \"<string>\",\n            \"refundBalanceDeductedThisMonth\": \"<number>\",\n            \"refundBalanceOutstanding\": \"<number>\",\n            \"refundReason\": \"<string>\",\n            \"released\": \"<number>\",\n            \"reportDate\": \"<string>\",\n            \"resource\": \"<string>\",\n            \"sku\": \"<string>\",\n            \"trialUse\": \"<number>\",\n            \"unit\": \"<string>\",\n            \"usage\": \"<number>\",\n            \"usedBy\": \"<string>\",\n            \"withheld\": \"<number>\"\n          },\n          {\n            \"abandoned\": \"<number>\",\n            \"accountID\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"charges\": \"<number>\",\n            \"currency\": \"<string>\",\n            \"dueVendor\": \"<number>\",\n            \"entitlementID\": \"<string>\",\n            \"googleEntity\": \"<string>\",\n            \"insightAccountID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"ordinal\": \"<integer>\",\n            \"organizationID\": \"<string>\",\n            \"paymentSchedule\": \"<string>\",\n            \"paymentType\": \"<string>\",\n            \"prepayCredits\": \"<number>\",\n            \"productID\": \"<string>\",\n            \"refundBalanceDeductedThisMonth\": \"<number>\",\n            \"refundBalanceOutstanding\": \"<number>\",\n            \"refundReason\": \"<string>\",\n            \"released\": \"<number>\",\n            \"reportDate\": \"<string>\",\n            \"resource\": \"<string>\",\n            \"sku\": \"<string>\",\n            \"trialUse\": \"<number>\",\n            \"unit\": \"<string>\",\n            \"usage\": \"<number>\",\n            \"usedBy\": \"<string>\",\n            \"withheld\": \"<number>\"\n          }\n        ],\n        \"idSource\": \"<string>\",\n        \"paymentId\": \"<string>\",\n        \"resellerId\": \"<string>\",\n        \"resellerName\": \"<string>\",\n        \"resource\": \"<string>\"\n      },\n      \"invoiceAmount\": \"<number>\",\n      \"invoiceDate\": \"<dateTime>\",\n      \"organizationID\": \"<string>\",\n      \"partner\": \"<string>\",\n      \"paymentDueDate\": \"<dateTime>\",\n      \"productID\": \"<string>\",\n      \"refundDisburseAmount\": \"<number>\",\n      \"refundDisburseDate\": \"<dateTime>\",\n      \"refundInvoiceAmount\": \"<number>\",\n      \"refundInvoiceDate\": \"<dateTime>\",\n      \"taxAmount\": \"<number>\"\n    },\n    {\n      \"amount\": \"<number>\",\n      \"buyerID\": \"<string>\",\n      \"collectableAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"disburseAmount\": \"<number>\",\n      \"disburseDate\": \"<dateTime>\",\n      \"entitlementID\": \"<string>\",\n      \"id\": \"<string>\",\n      \"info\": {\n        \"awsRevenueRecords\": [\n          {\n            \"action\": \"<string>\",\n            \"agreementID\": \"<string>\",\n            \"amount\": \"<number>\",\n            \"balanceImpacting\": \"<integer>\",\n            \"bankTraceID\": \"<string>\",\n            \"billingAddressID\": \"<string>\",\n            \"brokerID\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"currency\": \"<string>\",\n            \"dataFeedProductID\": \"<string>\",\n            \"disbursementBillingEventID\": \"<string>\",\n            \"endUserAccountID\": \"<string>\",\n            \"entitlementID\": \"<string>\",\n            \"fromAccountID\": \"<string>\",\n            \"id\": \"<string>\",\n            \"insertDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"organizationID\": \"<string>\",\n            \"parentBillingEventID\": \"<string>\",\n            \"paymentDueDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"productID\": \"<string>\",\n            \"toAccountID\": \"<string>\",\n            \"transactionReferenceID\": \"<string>\",\n            \"transactionType\": \"<string>\",\n            \"usagePeriodEndDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"usagePeriodStartDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            }\n          },\n          {\n            \"action\": \"<string>\",\n            \"agreementID\": \"<string>\",\n            \"amount\": \"<number>\",\n            \"balanceImpacting\": \"<integer>\",\n            \"bankTraceID\": \"<string>\",\n            \"billingAddressID\": \"<string>\",\n            \"brokerID\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"currency\": \"<string>\",\n            \"dataFeedProductID\": \"<string>\",\n            \"disbursementBillingEventID\": \"<string>\",\n            \"endUserAccountID\": \"<string>\",\n            \"entitlementID\": \"<string>\",\n            \"fromAccountID\": \"<string>\",\n            \"id\": \"<string>\",\n            \"insertDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"organizationID\": \"<string>\",\n            \"parentBillingEventID\": \"<string>\",\n            \"paymentDueDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"productID\": \"<string>\",\n            \"toAccountID\": \"<string>\",\n            \"transactionReferenceID\": \"<string>\",\n            \"transactionType\": \"<string>\",\n            \"usagePeriodEndDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"usagePeriodStartDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            }\n          }\n        ],\n        \"azureRevenueRecords\": [\n          {\n            \"azureAssetID\": \"<string>\",\n            \"azureBillingAccountID\": \"<string>\",\n            \"azureCustomerID\": \"<string>\",\n            \"azureOfferID\": \"<string>\",\n            \"azurePlanID\": \"<string>\",\n            \"billingModel\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"earningID\": \"<string>\",\n            \"earningUsd\": \"<number>\",\n            \"entitlementID\": \"<string>\",\n            \"estimatedPayoutMonth\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDueDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"organizationID\": \"<string>\",\n            \"paymentID\": \"<string>\",\n            \"paymentSentDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"paymentStatus\": \"<string>\",\n            \"payoutStatus\": \"<string>\",\n            \"productID\": \"<string>\",\n            \"programName\": \"<string>\",\n            \"purchaseRecordID\": \"<string>\",\n            \"resellerCity\": \"<string>\",\n            \"resellerCompany\": \"<string>\",\n            \"resellerCountry\": \"<string>\",\n            \"resellerEmail\": \"<string>\",\n            \"resellerID\": \"<string>\",\n            \"resellerState\": \"<string>\",\n            \"revenueUsd\": \"<number>\",\n            \"termEndDate\": \"<string>\",\n            \"termStartDate\": \"<string>\",\n            \"transactionDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            }\n          },\n          {\n            \"azureAssetID\": \"<string>\",\n            \"azureBillingAccountID\": \"<string>\",\n            \"azureCustomerID\": \"<string>\",\n            \"azureOfferID\": \"<string>\",\n            \"azurePlanID\": \"<string>\",\n            \"billingModel\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"earningID\": \"<string>\",\n            \"earningUsd\": \"<number>\",\n            \"entitlementID\": \"<string>\",\n            \"estimatedPayoutMonth\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDueDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"organizationID\": \"<string>\",\n            \"paymentID\": \"<string>\",\n            \"paymentSentDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"paymentStatus\": \"<string>\",\n            \"payoutStatus\": \"<string>\",\n            \"productID\": \"<string>\",\n            \"programName\": \"<string>\",\n            \"purchaseRecordID\": \"<string>\",\n            \"resellerCity\": \"<string>\",\n            \"resellerCompany\": \"<string>\",\n            \"resellerCountry\": \"<string>\",\n            \"resellerEmail\": \"<string>\",\n            \"resellerID\": \"<string>\",\n            \"resellerState\": \"<string>\",\n            \"revenueUsd\": \"<number>\",\n            \"termEndDate\": \"<string>\",\n            \"termStartDate\": \"<string>\",\n            \"transactionDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            }\n          }\n        ],\n        \"bankTraceId\": \"<string>\",\n        \"billingModel\": \"SubscriptionBased\",\n        \"channel\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"creditAmount\": \"<number>\",\n        \"disbursementBillingEventId\": \"<string>\",\n        \"disbursementNotificationSent\": \"<boolean>\",\n        \"earningId\": \"<string>\",\n        \"gcpRevenueRecords\": [\n          {\n            \"abandoned\": \"<number>\",\n            \"accountID\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"charges\": \"<number>\",\n            \"currency\": \"<string>\",\n            \"dueVendor\": \"<number>\",\n            \"entitlementID\": \"<string>\",\n            \"googleEntity\": \"<string>\",\n            \"insightAccountID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"ordinal\": \"<integer>\",\n            \"organizationID\": \"<string>\",\n            \"paymentSchedule\": \"<string>\",\n            \"paymentType\": \"<string>\",\n            \"prepayCredits\": \"<number>\",\n            \"productID\": \"<string>\",\n            \"refundBalanceDeductedThisMonth\": \"<number>\",\n            \"refundBalanceOutstanding\": \"<number>\",\n            \"refundReason\": \"<string>\",\n            \"released\": \"<number>\",\n            \"reportDate\": \"<string>\",\n            \"resource\": \"<string>\",\n            \"sku\": \"<string>\",\n            \"trialUse\": \"<number>\",\n            \"unit\": \"<string>\",\n            \"usage\": \"<number>\",\n            \"usedBy\": \"<string>\",\n            \"withheld\": \"<number>\"\n          },\n          {\n            \"abandoned\": \"<number>\",\n            \"accountID\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"charges\": \"<number>\",\n            \"currency\": \"<string>\",\n            \"dueVendor\": \"<number>\",\n            \"entitlementID\": \"<string>\",\n            \"googleEntity\": \"<string>\",\n            \"insightAccountID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"ordinal\": \"<integer>\",\n            \"organizationID\": \"<string>\",\n            \"paymentSchedule\": \"<string>\",\n            \"paymentType\": \"<string>\",\n            \"prepayCredits\": \"<number>\",\n            \"productID\": \"<string>\",\n            \"refundBalanceDeductedThisMonth\": \"<number>\",\n            \"refundBalanceOutstanding\": \"<number>\",\n            \"refundReason\": \"<string>\",\n            \"released\": \"<number>\",\n            \"reportDate\": \"<string>\",\n            \"resource\": \"<string>\",\n            \"sku\": \"<string>\",\n            \"trialUse\": \"<number>\",\n            \"unit\": \"<string>\",\n            \"usage\": \"<number>\",\n            \"usedBy\": \"<string>\",\n            \"withheld\": \"<number>\"\n          }\n        ],\n        \"idSource\": \"<string>\",\n        \"paymentId\": \"<string>\",\n        \"resellerId\": \"<string>\",\n        \"resellerName\": \"<string>\",\n        \"resource\": \"<string>\"\n      },\n      \"invoiceAmount\": \"<number>\",\n      \"invoiceDate\": \"<dateTime>\",\n      \"organizationID\": \"<string>\",\n      \"partner\": \"<string>\",\n      \"paymentDueDate\": \"<dateTime>\",\n      \"productID\": \"<string>\",\n      \"refundDisburseAmount\": \"<number>\",\n      \"refundDisburseDate\": \"<dateTime>\",\n      \"refundInvoiceAmount\": \"<number>\",\n      \"refundInvoiceDate\": \"<dateTime>\",\n      \"taxAmount\": \"<number>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T03:06:30.000Z",
+                              "updatedAt": "2026-07-28T03:06:30.000Z",
+                              "uid": "35240-951eeffe-65c9-4e75-b3f1-a161ba5cc1a5"
+                            },
+                            {
+                              "id": "4004179e-eb76-4dfe-b694-455c1ed6ea96",
+                              "name": "Bad request error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/partner/:partner/revenueRecord?productId=<string>&entitlementId=<string>&buyerId=<string>&startDate=<string>&endDate=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "partner",
+                                    ":partner",
+                                    "revenueRecord"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Filter revenue records by the given product ID",
+                                      "key": "productId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter revenue records by the given entitlement ID",
+                                      "key": "entitlementId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter revenue records by the given buyer ID",
+                                      "key": "buyerId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                                      "key": "startDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                                      "key": "endDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "List pagination size, default 1000, max value is 1000",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "List pagination offset, default 0",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "partner"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T03:06:30.000Z",
+                              "updatedAt": "2026-07-28T03:06:30.000Z",
+                              "uid": "35240-4004179e-eb76-4dfe-b694-455c1ed6ea96"
+                            },
+                            {
+                              "id": "46e69a5d-4714-48ab-8f27-7cd40b9f9729",
+                              "name": "Internal server error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/partner/:partner/revenueRecord?productId=<string>&entitlementId=<string>&buyerId=<string>&startDate=<string>&endDate=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "partner",
+                                    ":partner",
+                                    "revenueRecord"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Filter revenue records by the given product ID",
+                                      "key": "productId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter revenue records by the given entitlement ID",
+                                      "key": "entitlementId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter revenue records by the given buyer ID",
+                                      "key": "buyerId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                                      "key": "startDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                                      "key": "endDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "List pagination size, default 1000, max value is 1000",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "List pagination offset, default 0",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "partner"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T03:06:30.000Z",
+                              "updatedAt": "2026-07-28T03:06:30.000Z",
+                              "uid": "35240-46e69a5d-4714-48ab-8f27-7cd40b9f9729"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:06:30.000Z",
+                          "updatedAt": "2026-07-28T03:06:30.000Z",
+                          "uid": "35240-bdf656c6-6b10-4129-b7c8-1a9e4aec05c6"
+                        }
+                      ],
+                      "id": "5ae44412-ae5b-4f84-88e6-a078e9717594",
+                      "createdAt": "2026-07-28T03:06:30.000Z",
+                      "updatedAt": "2026-07-28T03:06:30.000Z",
+                      "uid": "35240-5ae44412-ae5b-4f84-88e6-a078e9717594"
+                    },
+                    {
+                      "name": "revenueRecordDetail",
+                      "item": [
+                        {
+                          "name": "List Revenue Record Details",
+                          "id": "6808407b-8eb4-465e-bdf1-e396ab234a20",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "Authorization",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:orgId/partner/:partner/revenueRecordDetail?productId=<string>&buyerId=<string>&entitlementId=<string>&startDate=<string>&endDate=<string>&limit=<integer>&offset=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":orgId",
+                                "partner",
+                                ":partner",
+                                "revenueRecordDetail"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter revenue record details by the given product ID",
+                                  "key": "productId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter revenue record details by the given buyer ID",
+                                  "key": "buyerId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter revenue record details by the given entitlement ID",
+                                  "key": "entitlementId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                                  "key": "startDate",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                                  "key": "endDate",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "List pagination size, default 1000, max value is 1000",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "List pagination offset, default 0",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "6aa8654c-d361-4645-82d0-e21ae9cd7298",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) Organization ID"
+                                },
+                                {
+                                  "id": "21f1868a-4866-415f-b21a-050cf64af2fd",
+                                  "key": "partner",
+                                  "value": "GCP",
+                                  "description": "(Required) Cloud Partner"
+                                }
+                              ]
+                            },
+                            "description": "list the raw revenue record details for the given organization, partner, product, entitlement, or buyer."
+                          },
+                          "response": [
+                            {
+                              "id": "bdcc8888-2f48-46a8-9dc2-a693ebe6aaa9",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/partner/:partner/revenueRecordDetail?productId=<string>&buyerId=<string>&entitlementId=<string>&startDate=<string>&endDate=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "partner",
+                                    ":partner",
+                                    "revenueRecordDetail"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Filter revenue record details by the given product ID",
+                                      "key": "productId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter revenue record details by the given buyer ID",
+                                      "key": "buyerId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter revenue record details by the given entitlement ID",
+                                      "key": "entitlementId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                                      "key": "startDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                                      "key": "endDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "List pagination size, default 1000, max value is 1000",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "List pagination offset, default 0",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "partner"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"nextOffset\": \"<integer>\",\n  \"revenueRecordDetails\": [\n    {\n      \"awsRevenueRecordDetail\": {\n        \"action\": \"<string>\",\n        \"agreementID\": \"<string>\",\n        \"amount\": \"<number>\",\n        \"balanceImpacting\": \"<integer>\",\n        \"bankTraceID\": \"<string>\",\n        \"billingAddressID\": \"<string>\",\n        \"brokerID\": \"<string>\",\n        \"buyerID\": \"<string>\",\n        \"currency\": \"<string>\",\n        \"dataFeedProductID\": \"<string>\",\n        \"disbursementBillingEventID\": \"<string>\",\n        \"endUserAccountID\": \"<string>\",\n        \"entitlementID\": \"<string>\",\n        \"fromAccountID\": \"<string>\",\n        \"id\": \"<string>\",\n        \"insertDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        },\n        \"invoiceDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        },\n        \"invoiceID\": \"<string>\",\n        \"offerID\": \"<string>\",\n        \"organizationID\": \"<string>\",\n        \"parentBillingEventID\": \"<string>\",\n        \"paymentDueDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        },\n        \"productID\": \"<string>\",\n        \"toAccountID\": \"<string>\",\n        \"transactionReferenceID\": \"<string>\",\n        \"transactionType\": \"<string>\",\n        \"usagePeriodEndDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        },\n        \"usagePeriodStartDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        }\n      },\n      \"azureRevenueRecordDetail\": {\n        \"azureAssetID\": \"<string>\",\n        \"azureBillingAccountID\": \"<string>\",\n        \"azureCustomerID\": \"<string>\",\n        \"azureOfferID\": \"<string>\",\n        \"azurePlanID\": \"<string>\",\n        \"billingModel\": \"<string>\",\n        \"buyerID\": \"<string>\",\n        \"earningID\": \"<string>\",\n        \"earningUsd\": \"<number>\",\n        \"entitlementID\": \"<string>\",\n        \"estimatedPayoutMonth\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        },\n        \"invoiceDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        },\n        \"invoiceDueDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        },\n        \"invoiceID\": \"<string>\",\n        \"offerID\": \"<string>\",\n        \"organizationID\": \"<string>\",\n        \"paymentID\": \"<string>\",\n        \"paymentSentDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        },\n        \"paymentStatus\": \"<string>\",\n        \"payoutStatus\": \"<string>\",\n        \"productID\": \"<string>\",\n        \"programName\": \"<string>\",\n        \"purchaseRecordID\": \"<string>\",\n        \"resellerCity\": \"<string>\",\n        \"resellerCompany\": \"<string>\",\n        \"resellerCountry\": \"<string>\",\n        \"resellerEmail\": \"<string>\",\n        \"resellerID\": \"<string>\",\n        \"resellerState\": \"<string>\",\n        \"revenueUsd\": \"<number>\",\n        \"termEndDate\": \"<string>\",\n        \"termStartDate\": \"<string>\",\n        \"transactionDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        }\n      },\n      \"gcpRevenueRecordDetail\": {\n        \"abandoned\": \"<number>\",\n        \"accountID\": \"<string>\",\n        \"buyerID\": \"<string>\",\n        \"charges\": \"<number>\",\n        \"currency\": \"<string>\",\n        \"dueVendor\": \"<number>\",\n        \"entitlementID\": \"<string>\",\n        \"googleEntity\": \"<string>\",\n        \"insightAccountID\": \"<string>\",\n        \"offerID\": \"<string>\",\n        \"ordinal\": \"<integer>\",\n        \"organizationID\": \"<string>\",\n        \"paymentSchedule\": \"<string>\",\n        \"paymentType\": \"<string>\",\n        \"prepayCredits\": \"<number>\",\n        \"productID\": \"<string>\",\n        \"refundBalanceDeductedThisMonth\": \"<number>\",\n        \"refundBalanceOutstanding\": \"<number>\",\n        \"refundReason\": \"<string>\",\n        \"released\": \"<number>\",\n        \"reportDate\": \"<string>\",\n        \"resource\": \"<string>\",\n        \"sku\": \"<string>\",\n        \"trialUse\": \"<number>\",\n        \"unit\": \"<string>\",\n        \"usage\": \"<number>\",\n        \"usedBy\": \"<string>\",\n        \"withheld\": \"<number>\"\n      }\n    },\n    {\n      \"awsRevenueRecordDetail\": {\n        \"action\": \"<string>\",\n        \"agreementID\": \"<string>\",\n        \"amount\": \"<number>\",\n        \"balanceImpacting\": \"<integer>\",\n        \"bankTraceID\": \"<string>\",\n        \"billingAddressID\": \"<string>\",\n        \"brokerID\": \"<string>\",\n        \"buyerID\": \"<string>\",\n        \"currency\": \"<string>\",\n        \"dataFeedProductID\": \"<string>\",\n        \"disbursementBillingEventID\": \"<string>\",\n        \"endUserAccountID\": \"<string>\",\n        \"entitlementID\": \"<string>\",\n        \"fromAccountID\": \"<string>\",\n        \"id\": \"<string>\",\n        \"insertDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        },\n        \"invoiceDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        },\n        \"invoiceID\": \"<string>\",\n        \"offerID\": \"<string>\",\n        \"organizationID\": \"<string>\",\n        \"parentBillingEventID\": \"<string>\",\n        \"paymentDueDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        },\n        \"productID\": \"<string>\",\n        \"toAccountID\": \"<string>\",\n        \"transactionReferenceID\": \"<string>\",\n        \"transactionType\": \"<string>\",\n        \"usagePeriodEndDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        },\n        \"usagePeriodStartDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        }\n      },\n      \"azureRevenueRecordDetail\": {\n        \"azureAssetID\": \"<string>\",\n        \"azureBillingAccountID\": \"<string>\",\n        \"azureCustomerID\": \"<string>\",\n        \"azureOfferID\": \"<string>\",\n        \"azurePlanID\": \"<string>\",\n        \"billingModel\": \"<string>\",\n        \"buyerID\": \"<string>\",\n        \"earningID\": \"<string>\",\n        \"earningUsd\": \"<number>\",\n        \"entitlementID\": \"<string>\",\n        \"estimatedPayoutMonth\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        },\n        \"invoiceDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        },\n        \"invoiceDueDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        },\n        \"invoiceID\": \"<string>\",\n        \"offerID\": \"<string>\",\n        \"organizationID\": \"<string>\",\n        \"paymentID\": \"<string>\",\n        \"paymentSentDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        },\n        \"paymentStatus\": \"<string>\",\n        \"payoutStatus\": \"<string>\",\n        \"productID\": \"<string>\",\n        \"programName\": \"<string>\",\n        \"purchaseRecordID\": \"<string>\",\n        \"resellerCity\": \"<string>\",\n        \"resellerCompany\": \"<string>\",\n        \"resellerCountry\": \"<string>\",\n        \"resellerEmail\": \"<string>\",\n        \"resellerID\": \"<string>\",\n        \"resellerState\": \"<string>\",\n        \"revenueUsd\": \"<number>\",\n        \"termEndDate\": \"<string>\",\n        \"termStartDate\": \"<string>\",\n        \"transactionDate\": {\n          \"time\": \"<string>\",\n          \"valid\": \"<boolean>\"\n        }\n      },\n      \"gcpRevenueRecordDetail\": {\n        \"abandoned\": \"<number>\",\n        \"accountID\": \"<string>\",\n        \"buyerID\": \"<string>\",\n        \"charges\": \"<number>\",\n        \"currency\": \"<string>\",\n        \"dueVendor\": \"<number>\",\n        \"entitlementID\": \"<string>\",\n        \"googleEntity\": \"<string>\",\n        \"insightAccountID\": \"<string>\",\n        \"offerID\": \"<string>\",\n        \"ordinal\": \"<integer>\",\n        \"organizationID\": \"<string>\",\n        \"paymentSchedule\": \"<string>\",\n        \"paymentType\": \"<string>\",\n        \"prepayCredits\": \"<number>\",\n        \"productID\": \"<string>\",\n        \"refundBalanceDeductedThisMonth\": \"<number>\",\n        \"refundBalanceOutstanding\": \"<number>\",\n        \"refundReason\": \"<string>\",\n        \"released\": \"<number>\",\n        \"reportDate\": \"<string>\",\n        \"resource\": \"<string>\",\n        \"sku\": \"<string>\",\n        \"trialUse\": \"<number>\",\n        \"unit\": \"<string>\",\n        \"usage\": \"<number>\",\n        \"usedBy\": \"<string>\",\n        \"withheld\": \"<number>\"\n      }\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T03:06:30.000Z",
+                              "updatedAt": "2026-07-28T03:06:30.000Z",
+                              "uid": "35240-bdcc8888-2f48-46a8-9dc2-a693ebe6aaa9"
+                            },
+                            {
+                              "id": "9dd78cc1-6d74-4c56-abc0-abe37dae7084",
+                              "name": "Bad request error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/partner/:partner/revenueRecordDetail?productId=<string>&buyerId=<string>&entitlementId=<string>&startDate=<string>&endDate=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "partner",
+                                    ":partner",
+                                    "revenueRecordDetail"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Filter revenue record details by the given product ID",
+                                      "key": "productId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter revenue record details by the given buyer ID",
+                                      "key": "buyerId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter revenue record details by the given entitlement ID",
+                                      "key": "entitlementId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                                      "key": "startDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                                      "key": "endDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "List pagination size, default 1000, max value is 1000",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "List pagination offset, default 0",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "partner"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T03:06:30.000Z",
+                              "updatedAt": "2026-07-28T03:06:30.000Z",
+                              "uid": "35240-9dd78cc1-6d74-4c56-abc0-abe37dae7084"
+                            },
+                            {
+                              "id": "9694dced-b386-4d0f-86f8-f9e3624132fe",
+                              "name": "Internal server error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/partner/:partner/revenueRecordDetail?productId=<string>&buyerId=<string>&entitlementId=<string>&startDate=<string>&endDate=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "partner",
+                                    ":partner",
+                                    "revenueRecordDetail"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Filter revenue record details by the given product ID",
+                                      "key": "productId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter revenue record details by the given buyer ID",
+                                      "key": "buyerId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter revenue record details by the given entitlement ID",
+                                      "key": "entitlementId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                                      "key": "startDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                                      "key": "endDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "List pagination size, default 1000, max value is 1000",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "List pagination offset, default 0",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "partner"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T03:06:30.000Z",
+                              "updatedAt": "2026-07-28T03:06:30.000Z",
+                              "uid": "35240-9694dced-b386-4d0f-86f8-f9e3624132fe"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:06:30.000Z",
+                          "updatedAt": "2026-07-28T03:06:30.000Z",
+                          "uid": "35240-6808407b-8eb4-465e-bdf1-e396ab234a20"
+                        }
+                      ],
+                      "id": "0e987439-4a9c-461e-aba5-015b94ff3223",
+                      "createdAt": "2026-07-28T03:06:30.000Z",
+                      "updatedAt": "2026-07-28T03:06:30.000Z",
+                      "uid": "35240-0e987439-4a9c-461e-aba5-015b94ff3223"
+                    },
+                    {
+                      "name": "usageMeteringDailyRecord",
+                      "item": [
+                        {
+                          "name": "List Usage Metering Daily Records",
+                          "id": "822cb7ac-ea28-43d4-a9a5-37f42015eaa3",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "Authorization",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:orgId/partner/:partner/usageMeteringDailyRecord?buyerId=<string>&entitlementId=<string>&startDate=<string>&endDate=<string>&limit=<integer>&offset=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":orgId",
+                                "partner",
+                                ":partner",
+                                "usageMeteringDailyRecord"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter usage metering daily records by the given buyer ID",
+                                  "key": "buyerId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter usage metering daily records by the given entitlement ID",
+                                  "key": "entitlementId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                                  "key": "startDate",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                                  "key": "endDate",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "List pagination size, default 1000, max value is 1000",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "List pagination offset, default 0",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "db5d3fb4-efde-403d-95ba-d507a572ad0e",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) Organization ID"
+                                },
+                                {
+                                  "id": "3a2c0f4c-3d7a-4c5d-923d-9322af898a10",
+                                  "key": "partner",
+                                  "value": "GCP",
+                                  "description": "(Required) Filter by the Cloud Partner"
+                                }
+                              ]
+                            },
+                            "description": "list the daily records of the usage metering from the cloud marketplace for the given organization, entitlement, or buyer."
+                          },
+                          "response": [
+                            {
+                              "id": "8acf2150-f8fe-4547-a772-a822a4fabac8",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/partner/:partner/usageMeteringDailyRecord?buyerId=<string>&entitlementId=<string>&startDate=<string>&endDate=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "partner",
+                                    ":partner",
+                                    "usageMeteringDailyRecord"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Filter usage metering daily records by the given buyer ID",
+                                      "key": "buyerId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter usage metering daily records by the given entitlement ID",
+                                      "key": "entitlementId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                                      "key": "startDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                                      "key": "endDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "List pagination size, default 1000, max value is 1000",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "List pagination offset, default 0",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "partner"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"nextOffset\": \"<integer>\",\n  \"usageMeteringDailyRecords\": [\n    {\n      \"amount\": \"<number>\",\n      \"date\": \"<dateTime>\",\n      \"entitlementID\": \"<string>\",\n      \"groupBysExpression\": \"<string>\",\n      \"key\": \"<string>\",\n      \"partner\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"quantity\": \"<number>\"\n    },\n    {\n      \"amount\": \"<number>\",\n      \"date\": \"<dateTime>\",\n      \"entitlementID\": \"<string>\",\n      \"groupBysExpression\": \"<string>\",\n      \"key\": \"<string>\",\n      \"partner\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"quantity\": \"<number>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T03:06:30.000Z",
+                              "updatedAt": "2026-07-28T03:06:30.000Z",
+                              "uid": "35240-8acf2150-f8fe-4547-a772-a822a4fabac8"
+                            },
+                            {
+                              "id": "3adf2bab-5ca2-44fd-a4cd-74a5350ef695",
+                              "name": "Bad request error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/partner/:partner/usageMeteringDailyRecord?buyerId=<string>&entitlementId=<string>&startDate=<string>&endDate=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "partner",
+                                    ":partner",
+                                    "usageMeteringDailyRecord"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Filter usage metering daily records by the given buyer ID",
+                                      "key": "buyerId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter usage metering daily records by the given entitlement ID",
+                                      "key": "entitlementId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                                      "key": "startDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                                      "key": "endDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "List pagination size, default 1000, max value is 1000",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "List pagination offset, default 0",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "partner"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T03:06:30.000Z",
+                              "updatedAt": "2026-07-28T03:06:30.000Z",
+                              "uid": "35240-3adf2bab-5ca2-44fd-a4cd-74a5350ef695"
+                            },
+                            {
+                              "id": "d10ff865-94ec-4c39-b174-f21bc2a6166d",
+                              "name": "Internal server error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/partner/:partner/usageMeteringDailyRecord?buyerId=<string>&entitlementId=<string>&startDate=<string>&endDate=<string>&limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "partner",
+                                    ":partner",
+                                    "usageMeteringDailyRecord"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Filter usage metering daily records by the given buyer ID",
+                                      "key": "buyerId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "Filter usage metering daily records by the given entitlement ID",
+                                      "key": "entitlementId",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                                      "key": "startDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                                      "key": "endDate",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "List pagination size, default 1000, max value is 1000",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "List pagination offset, default 0",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "partner"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T03:06:30.000Z",
+                              "updatedAt": "2026-07-28T03:06:30.000Z",
+                              "uid": "35240-d10ff865-94ec-4c39-b174-f21bc2a6166d"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:06:30.000Z",
+                          "updatedAt": "2026-07-28T03:06:30.000Z",
+                          "uid": "35240-822cb7ac-ea28-43d4-a9a5-37f42015eaa3"
+                        }
+                      ],
+                      "id": "39707484-030b-46a2-93c8-fd3e446ff5d5",
+                      "createdAt": "2026-07-28T03:06:30.000Z",
+                      "updatedAt": "2026-07-28T03:06:30.000Z",
+                      "uid": "35240-39707484-030b-46a2-93c8-fd3e446ff5d5"
+                    }
+                  ],
+                  "id": "75cff951-011e-49ae-9331-690c7ca906a1",
+                  "createdAt": "2026-07-28T03:06:30.000Z",
+                  "updatedAt": "2026-07-28T03:06:30.000Z",
+                  "uid": "35240-75cff951-011e-49ae-9331-690c7ca906a1"
+                }
+              ],
+              "id": "7c023d1d-9dbe-4804-9022-187951791391",
+              "createdAt": "2026-07-28T03:06:30.000Z",
+              "updatedAt": "2026-07-28T03:06:30.000Z",
+              "uid": "35240-7c023d1d-9dbe-4804-9022-187951791391"
+            },
+            {
+              "name": "revenueReport",
+              "item": [
+                {
+                  "name": "Get Revenue Report",
+                  "id": "5c565d45-b29e-4bfc-b0c8-67338afe4495",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"organizationID\": \"<string>\",\n  \"partner\": \"GCP\",\n  \"reportType\": \"CollectableAmount\",\n  \"service\": \"MARKETPLACE\",\n  \"buyerID\": \"<string>\",\n  \"entitlementID\": \"<string>\",\n  \"groupBy\": {\n    \"value\": \"<Error: Could not resolve allOf schema\"\n  },\n  \"productID\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/org/:orgId/revenueReport",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "org",
+                        ":orgId",
+                        "revenueReport"
+                      ],
+                      "variable": [
+                        {
+                          "id": "94db5d8c-b158-4800-9316-39db69a5d180",
+                          "key": "orgId",
+                          "value": "<string>",
+                          "description": "(Required) Organization ID"
+                        }
+                      ]
+                    },
+                    "description": "Get the revenue report of the given organization, product, entitlement, or buyer."
+                  },
+                  "response": [
+                    {
+                      "id": "829d68ab-e06a-42b5-b645-9d3f8a2987ed",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"organizationID\": \"<string>\",\n  \"partner\": \"GCP\",\n  \"reportType\": \"CollectableAmount\",\n  \"service\": \"MARKETPLACE\",\n  \"buyerID\": \"<string>\",\n  \"entitlementID\": \"<string>\",\n  \"groupBy\": {\n    \"value\": \"<Error: Could not resolve allOf schema\"\n  },\n  \"productID\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:orgId/revenueReport",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":orgId",
+                            "revenueReport"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"buyerID\": \"<string>\",\n  \"entitlementID\": \"<string>\",\n  \"groupBy\": {\n    \"value\": \"<Error: Could not resolve allOf schema\"\n  },\n  \"organizationID\": \"<string>\",\n  \"partner\": \"<string>\",\n  \"productID\": \"<string>\",\n  \"reportDate\": \"<dateTime>\",\n  \"reportType\": \"DisbursedAmount\",\n  \"revenueRecords\": [\n    {\n      \"amount\": \"<number>\",\n      \"buyerID\": \"<string>\",\n      \"collectableAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"disburseAmount\": \"<number>\",\n      \"disburseDate\": \"<dateTime>\",\n      \"entitlementID\": \"<string>\",\n      \"id\": \"<string>\",\n      \"info\": {\n        \"awsRevenueRecords\": [\n          {\n            \"action\": \"<string>\",\n            \"agreementID\": \"<string>\",\n            \"amount\": \"<number>\",\n            \"balanceImpacting\": \"<integer>\",\n            \"bankTraceID\": \"<string>\",\n            \"billingAddressID\": \"<string>\",\n            \"brokerID\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"currency\": \"<string>\",\n            \"dataFeedProductID\": \"<string>\",\n            \"disbursementBillingEventID\": \"<string>\",\n            \"endUserAccountID\": \"<string>\",\n            \"entitlementID\": \"<string>\",\n            \"fromAccountID\": \"<string>\",\n            \"id\": \"<string>\",\n            \"insertDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"organizationID\": \"<string>\",\n            \"parentBillingEventID\": \"<string>\",\n            \"paymentDueDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"productID\": \"<string>\",\n            \"toAccountID\": \"<string>\",\n            \"transactionReferenceID\": \"<string>\",\n            \"transactionType\": \"<string>\",\n            \"usagePeriodEndDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"usagePeriodStartDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            }\n          },\n          {\n            \"action\": \"<string>\",\n            \"agreementID\": \"<string>\",\n            \"amount\": \"<number>\",\n            \"balanceImpacting\": \"<integer>\",\n            \"bankTraceID\": \"<string>\",\n            \"billingAddressID\": \"<string>\",\n            \"brokerID\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"currency\": \"<string>\",\n            \"dataFeedProductID\": \"<string>\",\n            \"disbursementBillingEventID\": \"<string>\",\n            \"endUserAccountID\": \"<string>\",\n            \"entitlementID\": \"<string>\",\n            \"fromAccountID\": \"<string>\",\n            \"id\": \"<string>\",\n            \"insertDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"organizationID\": \"<string>\",\n            \"parentBillingEventID\": \"<string>\",\n            \"paymentDueDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"productID\": \"<string>\",\n            \"toAccountID\": \"<string>\",\n            \"transactionReferenceID\": \"<string>\",\n            \"transactionType\": \"<string>\",\n            \"usagePeriodEndDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"usagePeriodStartDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            }\n          }\n        ],\n        \"azureRevenueRecords\": [\n          {\n            \"azureAssetID\": \"<string>\",\n            \"azureBillingAccountID\": \"<string>\",\n            \"azureCustomerID\": \"<string>\",\n            \"azureOfferID\": \"<string>\",\n            \"azurePlanID\": \"<string>\",\n            \"billingModel\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"earningID\": \"<string>\",\n            \"earningUsd\": \"<number>\",\n            \"entitlementID\": \"<string>\",\n            \"estimatedPayoutMonth\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDueDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"organizationID\": \"<string>\",\n            \"paymentID\": \"<string>\",\n            \"paymentSentDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"paymentStatus\": \"<string>\",\n            \"payoutStatus\": \"<string>\",\n            \"productID\": \"<string>\",\n            \"programName\": \"<string>\",\n            \"purchaseRecordID\": \"<string>\",\n            \"resellerCity\": \"<string>\",\n            \"resellerCompany\": \"<string>\",\n            \"resellerCountry\": \"<string>\",\n            \"resellerEmail\": \"<string>\",\n            \"resellerID\": \"<string>\",\n            \"resellerState\": \"<string>\",\n            \"revenueUsd\": \"<number>\",\n            \"termEndDate\": \"<string>\",\n            \"termStartDate\": \"<string>\",\n            \"transactionDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            }\n          },\n          {\n            \"azureAssetID\": \"<string>\",\n            \"azureBillingAccountID\": \"<string>\",\n            \"azureCustomerID\": \"<string>\",\n            \"azureOfferID\": \"<string>\",\n            \"azurePlanID\": \"<string>\",\n            \"billingModel\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"earningID\": \"<string>\",\n            \"earningUsd\": \"<number>\",\n            \"entitlementID\": \"<string>\",\n            \"estimatedPayoutMonth\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDueDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"organizationID\": \"<string>\",\n            \"paymentID\": \"<string>\",\n            \"paymentSentDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"paymentStatus\": \"<string>\",\n            \"payoutStatus\": \"<string>\",\n            \"productID\": \"<string>\",\n            \"programName\": \"<string>\",\n            \"purchaseRecordID\": \"<string>\",\n            \"resellerCity\": \"<string>\",\n            \"resellerCompany\": \"<string>\",\n            \"resellerCountry\": \"<string>\",\n            \"resellerEmail\": \"<string>\",\n            \"resellerID\": \"<string>\",\n            \"resellerState\": \"<string>\",\n            \"revenueUsd\": \"<number>\",\n            \"termEndDate\": \"<string>\",\n            \"termStartDate\": \"<string>\",\n            \"transactionDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            }\n          }\n        ],\n        \"bankTraceId\": \"<string>\",\n        \"billingModel\": \"UsageBased\",\n        \"channel\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"creditAmount\": \"<number>\",\n        \"disbursementBillingEventId\": \"<string>\",\n        \"disbursementNotificationSent\": \"<boolean>\",\n        \"earningId\": \"<string>\",\n        \"gcpRevenueRecords\": [\n          {\n            \"abandoned\": \"<number>\",\n            \"accountID\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"charges\": \"<number>\",\n            \"currency\": \"<string>\",\n            \"dueVendor\": \"<number>\",\n            \"entitlementID\": \"<string>\",\n            \"googleEntity\": \"<string>\",\n            \"insightAccountID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"ordinal\": \"<integer>\",\n            \"organizationID\": \"<string>\",\n            \"paymentSchedule\": \"<string>\",\n            \"paymentType\": \"<string>\",\n            \"prepayCredits\": \"<number>\",\n            \"productID\": \"<string>\",\n            \"refundBalanceDeductedThisMonth\": \"<number>\",\n            \"refundBalanceOutstanding\": \"<number>\",\n            \"refundReason\": \"<string>\",\n            \"released\": \"<number>\",\n            \"reportDate\": \"<string>\",\n            \"resource\": \"<string>\",\n            \"sku\": \"<string>\",\n            \"trialUse\": \"<number>\",\n            \"unit\": \"<string>\",\n            \"usage\": \"<number>\",\n            \"usedBy\": \"<string>\",\n            \"withheld\": \"<number>\"\n          },\n          {\n            \"abandoned\": \"<number>\",\n            \"accountID\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"charges\": \"<number>\",\n            \"currency\": \"<string>\",\n            \"dueVendor\": \"<number>\",\n            \"entitlementID\": \"<string>\",\n            \"googleEntity\": \"<string>\",\n            \"insightAccountID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"ordinal\": \"<integer>\",\n            \"organizationID\": \"<string>\",\n            \"paymentSchedule\": \"<string>\",\n            \"paymentType\": \"<string>\",\n            \"prepayCredits\": \"<number>\",\n            \"productID\": \"<string>\",\n            \"refundBalanceDeductedThisMonth\": \"<number>\",\n            \"refundBalanceOutstanding\": \"<number>\",\n            \"refundReason\": \"<string>\",\n            \"released\": \"<number>\",\n            \"reportDate\": \"<string>\",\n            \"resource\": \"<string>\",\n            \"sku\": \"<string>\",\n            \"trialUse\": \"<number>\",\n            \"unit\": \"<string>\",\n            \"usage\": \"<number>\",\n            \"usedBy\": \"<string>\",\n            \"withheld\": \"<number>\"\n          }\n        ],\n        \"idSource\": \"<string>\",\n        \"paymentId\": \"<string>\",\n        \"resellerId\": \"<string>\",\n        \"resellerName\": \"<string>\",\n        \"resource\": \"<string>\"\n      },\n      \"invoiceAmount\": \"<number>\",\n      \"invoiceDate\": \"<dateTime>\",\n      \"organizationID\": \"<string>\",\n      \"partner\": \"<string>\",\n      \"paymentDueDate\": \"<dateTime>\",\n      \"productID\": \"<string>\",\n      \"refundDisburseAmount\": \"<number>\",\n      \"refundDisburseDate\": \"<dateTime>\",\n      \"refundInvoiceAmount\": \"<number>\",\n      \"refundInvoiceDate\": \"<dateTime>\",\n      \"taxAmount\": \"<number>\"\n    },\n    {\n      \"amount\": \"<number>\",\n      \"buyerID\": \"<string>\",\n      \"collectableAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"disburseAmount\": \"<number>\",\n      \"disburseDate\": \"<dateTime>\",\n      \"entitlementID\": \"<string>\",\n      \"id\": \"<string>\",\n      \"info\": {\n        \"awsRevenueRecords\": [\n          {\n            \"action\": \"<string>\",\n            \"agreementID\": \"<string>\",\n            \"amount\": \"<number>\",\n            \"balanceImpacting\": \"<integer>\",\n            \"bankTraceID\": \"<string>\",\n            \"billingAddressID\": \"<string>\",\n            \"brokerID\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"currency\": \"<string>\",\n            \"dataFeedProductID\": \"<string>\",\n            \"disbursementBillingEventID\": \"<string>\",\n            \"endUserAccountID\": \"<string>\",\n            \"entitlementID\": \"<string>\",\n            \"fromAccountID\": \"<string>\",\n            \"id\": \"<string>\",\n            \"insertDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"organizationID\": \"<string>\",\n            \"parentBillingEventID\": \"<string>\",\n            \"paymentDueDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"productID\": \"<string>\",\n            \"toAccountID\": \"<string>\",\n            \"transactionReferenceID\": \"<string>\",\n            \"transactionType\": \"<string>\",\n            \"usagePeriodEndDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"usagePeriodStartDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            }\n          },\n          {\n            \"action\": \"<string>\",\n            \"agreementID\": \"<string>\",\n            \"amount\": \"<number>\",\n            \"balanceImpacting\": \"<integer>\",\n            \"bankTraceID\": \"<string>\",\n            \"billingAddressID\": \"<string>\",\n            \"brokerID\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"currency\": \"<string>\",\n            \"dataFeedProductID\": \"<string>\",\n            \"disbursementBillingEventID\": \"<string>\",\n            \"endUserAccountID\": \"<string>\",\n            \"entitlementID\": \"<string>\",\n            \"fromAccountID\": \"<string>\",\n            \"id\": \"<string>\",\n            \"insertDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"organizationID\": \"<string>\",\n            \"parentBillingEventID\": \"<string>\",\n            \"paymentDueDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"productID\": \"<string>\",\n            \"toAccountID\": \"<string>\",\n            \"transactionReferenceID\": \"<string>\",\n            \"transactionType\": \"<string>\",\n            \"usagePeriodEndDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"usagePeriodStartDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            }\n          }\n        ],\n        \"azureRevenueRecords\": [\n          {\n            \"azureAssetID\": \"<string>\",\n            \"azureBillingAccountID\": \"<string>\",\n            \"azureCustomerID\": \"<string>\",\n            \"azureOfferID\": \"<string>\",\n            \"azurePlanID\": \"<string>\",\n            \"billingModel\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"earningID\": \"<string>\",\n            \"earningUsd\": \"<number>\",\n            \"entitlementID\": \"<string>\",\n            \"estimatedPayoutMonth\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDueDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"organizationID\": \"<string>\",\n            \"paymentID\": \"<string>\",\n            \"paymentSentDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"paymentStatus\": \"<string>\",\n            \"payoutStatus\": \"<string>\",\n            \"productID\": \"<string>\",\n            \"programName\": \"<string>\",\n            \"purchaseRecordID\": \"<string>\",\n            \"resellerCity\": \"<string>\",\n            \"resellerCompany\": \"<string>\",\n            \"resellerCountry\": \"<string>\",\n            \"resellerEmail\": \"<string>\",\n            \"resellerID\": \"<string>\",\n            \"resellerState\": \"<string>\",\n            \"revenueUsd\": \"<number>\",\n            \"termEndDate\": \"<string>\",\n            \"termStartDate\": \"<string>\",\n            \"transactionDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            }\n          },\n          {\n            \"azureAssetID\": \"<string>\",\n            \"azureBillingAccountID\": \"<string>\",\n            \"azureCustomerID\": \"<string>\",\n            \"azureOfferID\": \"<string>\",\n            \"azurePlanID\": \"<string>\",\n            \"billingModel\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"earningID\": \"<string>\",\n            \"earningUsd\": \"<number>\",\n            \"entitlementID\": \"<string>\",\n            \"estimatedPayoutMonth\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceDueDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"invoiceID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"organizationID\": \"<string>\",\n            \"paymentID\": \"<string>\",\n            \"paymentSentDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            },\n            \"paymentStatus\": \"<string>\",\n            \"payoutStatus\": \"<string>\",\n            \"productID\": \"<string>\",\n            \"programName\": \"<string>\",\n            \"purchaseRecordID\": \"<string>\",\n            \"resellerCity\": \"<string>\",\n            \"resellerCompany\": \"<string>\",\n            \"resellerCountry\": \"<string>\",\n            \"resellerEmail\": \"<string>\",\n            \"resellerID\": \"<string>\",\n            \"resellerState\": \"<string>\",\n            \"revenueUsd\": \"<number>\",\n            \"termEndDate\": \"<string>\",\n            \"termStartDate\": \"<string>\",\n            \"transactionDate\": {\n              \"time\": \"<string>\",\n              \"valid\": \"<boolean>\"\n            }\n          }\n        ],\n        \"bankTraceId\": \"<string>\",\n        \"billingModel\": \"SubscriptionBased\",\n        \"channel\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"creditAmount\": \"<number>\",\n        \"disbursementBillingEventId\": \"<string>\",\n        \"disbursementNotificationSent\": \"<boolean>\",\n        \"earningId\": \"<string>\",\n        \"gcpRevenueRecords\": [\n          {\n            \"abandoned\": \"<number>\",\n            \"accountID\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"charges\": \"<number>\",\n            \"currency\": \"<string>\",\n            \"dueVendor\": \"<number>\",\n            \"entitlementID\": \"<string>\",\n            \"googleEntity\": \"<string>\",\n            \"insightAccountID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"ordinal\": \"<integer>\",\n            \"organizationID\": \"<string>\",\n            \"paymentSchedule\": \"<string>\",\n            \"paymentType\": \"<string>\",\n            \"prepayCredits\": \"<number>\",\n            \"productID\": \"<string>\",\n            \"refundBalanceDeductedThisMonth\": \"<number>\",\n            \"refundBalanceOutstanding\": \"<number>\",\n            \"refundReason\": \"<string>\",\n            \"released\": \"<number>\",\n            \"reportDate\": \"<string>\",\n            \"resource\": \"<string>\",\n            \"sku\": \"<string>\",\n            \"trialUse\": \"<number>\",\n            \"unit\": \"<string>\",\n            \"usage\": \"<number>\",\n            \"usedBy\": \"<string>\",\n            \"withheld\": \"<number>\"\n          },\n          {\n            \"abandoned\": \"<number>\",\n            \"accountID\": \"<string>\",\n            \"buyerID\": \"<string>\",\n            \"charges\": \"<number>\",\n            \"currency\": \"<string>\",\n            \"dueVendor\": \"<number>\",\n            \"entitlementID\": \"<string>\",\n            \"googleEntity\": \"<string>\",\n            \"insightAccountID\": \"<string>\",\n            \"offerID\": \"<string>\",\n            \"ordinal\": \"<integer>\",\n            \"organizationID\": \"<string>\",\n            \"paymentSchedule\": \"<string>\",\n            \"paymentType\": \"<string>\",\n            \"prepayCredits\": \"<number>\",\n            \"productID\": \"<string>\",\n            \"refundBalanceDeductedThisMonth\": \"<number>\",\n            \"refundBalanceOutstanding\": \"<number>\",\n            \"refundReason\": \"<string>\",\n            \"released\": \"<number>\",\n            \"reportDate\": \"<string>\",\n            \"resource\": \"<string>\",\n            \"sku\": \"<string>\",\n            \"trialUse\": \"<number>\",\n            \"unit\": \"<string>\",\n            \"usage\": \"<number>\",\n            \"usedBy\": \"<string>\",\n            \"withheld\": \"<number>\"\n          }\n        ],\n        \"idSource\": \"<string>\",\n        \"paymentId\": \"<string>\",\n        \"resellerId\": \"<string>\",\n        \"resellerName\": \"<string>\",\n        \"resource\": \"<string>\"\n      },\n      \"invoiceAmount\": \"<number>\",\n      \"invoiceDate\": \"<dateTime>\",\n      \"organizationID\": \"<string>\",\n      \"partner\": \"<string>\",\n      \"paymentDueDate\": \"<dateTime>\",\n      \"productID\": \"<string>\",\n      \"refundDisburseAmount\": \"<number>\",\n      \"refundDisburseDate\": \"<dateTime>\",\n      \"refundInvoiceAmount\": \"<number>\",\n      \"refundInvoiceDate\": \"<dateTime>\",\n      \"taxAmount\": \"<number>\"\n    }\n  ],\n  \"service\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:06:30.000Z",
+                      "updatedAt": "2026-07-28T03:06:30.000Z",
+                      "uid": "35240-829d68ab-e06a-42b5-b645-9d3f8a2987ed"
+                    },
+                    {
+                      "id": "3dd15d3c-ca87-400a-8a69-9670f38a11a6",
+                      "name": "Bad request error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"organizationID\": \"<string>\",\n  \"partner\": \"GCP\",\n  \"reportType\": \"CollectableAmount\",\n  \"service\": \"MARKETPLACE\",\n  \"buyerID\": \"<string>\",\n  \"entitlementID\": \"<string>\",\n  \"groupBy\": {\n    \"value\": \"<Error: Could not resolve allOf schema\"\n  },\n  \"productID\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:orgId/revenueReport",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":orgId",
+                            "revenueReport"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T03:06:30.000Z",
+                      "updatedAt": "2026-07-28T03:06:30.000Z",
+                      "uid": "35240-3dd15d3c-ca87-400a-8a69-9670f38a11a6"
+                    },
+                    {
+                      "id": "de11cdfb-69b1-491d-aaf9-b05d4a9f399d",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"organizationID\": \"<string>\",\n  \"partner\": \"GCP\",\n  \"reportType\": \"CollectableAmount\",\n  \"service\": \"MARKETPLACE\",\n  \"buyerID\": \"<string>\",\n  \"entitlementID\": \"<string>\",\n  \"groupBy\": {\n    \"value\": \"<Error: Could not resolve allOf schema\"\n  },\n  \"productID\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:orgId/revenueReport",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":orgId",
+                            "revenueReport"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T03:06:30.000Z",
+                      "updatedAt": "2026-07-28T03:06:30.000Z",
+                      "uid": "35240-de11cdfb-69b1-491d-aaf9-b05d4a9f399d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:06:30.000Z",
+                  "updatedAt": "2026-07-28T03:06:30.000Z",
+                  "uid": "35240-5c565d45-b29e-4bfc-b0c8-67338afe4495"
+                }
+              ],
+              "id": "793d3793-2cbe-4192-b75c-8dbba2bcb443",
+              "createdAt": "2026-07-28T03:06:30.000Z",
+              "updatedAt": "2026-07-28T03:06:30.000Z",
+              "uid": "35240-793d3793-2cbe-4192-b75c-8dbba2bcb443"
+            }
+          ],
+          "id": "5de3a59a-b392-4bb5-9473-def73a47d025",
+          "createdAt": "2026-07-28T03:06:30.000Z",
+          "updatedAt": "2026-07-28T03:06:30.000Z",
+          "uid": "35240-5de3a59a-b392-4bb5-9473-def73a47d025"
+        }
+      ],
+      "id": "d11789d7-111d-4f6b-ac0c-7dfdd3e1fa6a",
+      "createdAt": "2026-07-28T03:06:30.000Z",
+      "updatedAt": "2026-07-28T03:06:30.000Z",
+      "uid": "35240-d11789d7-111d-4f6b-ac0c-7dfdd3e1fa6a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.suger.cloud"
+    }
+  ]
+}

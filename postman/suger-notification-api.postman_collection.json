@@ -1,0 +1,1176 @@
+{
+  "info": {
+    "_postman_id": "533908a1-65ae-4504-baad-0dc66bdc7710",
+    "name": "Suger API Notification API",
+    "description": "CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.\n\nContact Support:\n Name: Suger Support\n Email: support@suger.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:06:18.000Z",
+    "updatedAt": "2026-07-28T03:06:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-533908a1-65ae-4504-baad-0dc66bdc7710"
+  },
+  "item": [
+    {
+      "name": "org",
+      "item": [
+        {
+          "name": "{orgId}",
+          "item": [
+            {
+              "name": "notificationEvent",
+              "item": [
+                {
+                  "name": "{entityType}",
+                  "item": [
+                    {
+                      "name": "{entityId}",
+                      "item": [
+                        {
+                          "name": "List Notification Events By Entity",
+                          "id": "7066ba19-cee3-46ba-9a49-6043edfa31c9",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "Authorization",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:orgId/notificationEvent/:entityType/:entityId?limit=<integer>&offset=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":orgId",
+                                "notificationEvent",
+                                ":entityType",
+                                ":entityId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "List pagination size, default 1000, max value is 1000",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "List pagination offset, default 0",
+                                  "key": "offset",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "6f7e1000-e6f3-4c70-b249-884293ae24c4",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) Organization ID"
+                                },
+                                {
+                                  "id": "621b7418-ef25-4a18-abc3-f5881fa3f659",
+                                  "key": "entityType",
+                                  "value": "<string>",
+                                  "description": "(Required) Entity type, valid values are: PRODUCT, OFFER, ENTITLEMENT, INTEGRATION etc."
+                                },
+                                {
+                                  "id": "c237cb63-db8a-459c-8e54-15d5810f5e26",
+                                  "key": "entityId",
+                                  "value": "<string>",
+                                  "description": "(Required) Entity ID"
+                                }
+                              ]
+                            },
+                            "description": "List the notification events of the given organization and entity with pagination."
+                          },
+                          "response": [
+                            {
+                              "id": "3bc8e2b3-3a0e-4ae8-b183-240279ee3179",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/notificationEvent/:entityType/:entityId?limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "notificationEvent",
+                                    ":entityType",
+                                    ":entityId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "List pagination size, default 1000, max value is 1000",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "List pagination offset, default 0",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "entityType"
+                                    },
+                                    {
+                                      "key": "entityId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"nextOffset\": \"<integer>\",\n  \"notificationEvents\": [\n    {\n      \"action\": \"DISBURSE\",\n      \"ccContactIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"channels\": [\n        \"SMS\",\n        \"SALESFORCE\"\n      ],\n      \"contactEmails\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"contactIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"createdBy\": {\n        \"email\": \"<string>\",\n        \"entityId\": \"<string>\",\n        \"entityType\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"name\": \"<string>\"\n      },\n      \"customFields\": {\n        \"cupidatat_3\": true,\n        \"consequat007\": -65996694,\n        \"nisi_5d4\": -8615621\n      },\n      \"entityID\": \"<string>\",\n      \"entityName\": \"<string>\",\n      \"entityStatus\": \"<string>\",\n      \"entityType\": \"NEW_CLIENT\",\n      \"eventID\": \"<string>\",\n      \"eventStatus\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"info\": {},\n      \"isActionItem\": \"<boolean>\",\n      \"lastUpdateTime\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"organizationID\": \"<string>\",\n      \"partner\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"priority\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"requireAudit\": \"<boolean>\",\n      \"timestamp\": \"<dateTime>\",\n      \"title\": \"<string>\",\n      \"trackEvents\": [\n        {\n          \"action\": \"OPEN_EMAIL\",\n          \"contactId\": \"<string>\",\n          \"timestamp\": \"<dateTime>\"\n        },\n        {\n          \"action\": \"OPEN_EMAIL\",\n          \"contactId\": \"<string>\",\n          \"timestamp\": \"<dateTime>\"\n        }\n      ]\n    },\n    {\n      \"action\": \"OPEN_EMAIL\",\n      \"ccContactIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"channels\": [\n        \"MICROSOFT_TEAMS\",\n        \"EMAIL\"\n      ],\n      \"contactEmails\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"contactIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"createdBy\": {\n        \"email\": \"<string>\",\n        \"entityId\": \"<string>\",\n        \"entityType\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"name\": \"<string>\"\n      },\n      \"customFields\": {\n        \"qui_7\": 57876017.44705841\n      },\n      \"entityID\": \"<string>\",\n      \"entityName\": \"<string>\",\n      \"entityStatus\": \"<string>\",\n      \"entityType\": \"ORGANIZATION\",\n      \"eventID\": \"<string>\",\n      \"eventStatus\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"info\": {},\n      \"isActionItem\": \"<boolean>\",\n      \"lastUpdateTime\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"organizationID\": \"<string>\",\n      \"partner\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"priority\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"requireAudit\": \"<boolean>\",\n      \"timestamp\": \"<dateTime>\",\n      \"title\": \"<string>\",\n      \"trackEvents\": [\n        {\n          \"action\": \"OPEN_EMAIL\",\n          \"contactId\": \"<string>\",\n          \"timestamp\": \"<dateTime>\"\n        },\n        {\n          \"action\": \"OPEN_EMAIL\",\n          \"contactId\": \"<string>\",\n          \"timestamp\": \"<dateTime>\"\n        }\n      ]\n    }\n  ],\n  \"totalCount\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T03:06:18.000Z",
+                              "updatedAt": "2026-07-28T03:06:18.000Z",
+                              "uid": "35240-3bc8e2b3-3a0e-4ae8-b183-240279ee3179"
+                            },
+                            {
+                              "id": "1a43c927-c1dc-4916-b645-5025860269cb",
+                              "name": "Bad request error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/notificationEvent/:entityType/:entityId?limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "notificationEvent",
+                                    ":entityType",
+                                    ":entityId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "List pagination size, default 1000, max value is 1000",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "List pagination offset, default 0",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "entityType"
+                                    },
+                                    {
+                                      "key": "entityId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T03:06:18.000Z",
+                              "updatedAt": "2026-07-28T03:06:18.000Z",
+                              "uid": "35240-1a43c927-c1dc-4916-b645-5025860269cb"
+                            },
+                            {
+                              "id": "785be0d5-7fe9-407f-a06c-6c305516ae15",
+                              "name": "Internal server error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/org/:orgId/notificationEvent/:entityType/:entityId?limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "org",
+                                    ":orgId",
+                                    "notificationEvent",
+                                    ":entityType",
+                                    ":entityId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "List pagination size, default 1000, max value is 1000",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "List pagination offset, default 0",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "entityType"
+                                    },
+                                    {
+                                      "key": "entityId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-07-28T03:06:18.000Z",
+                              "updatedAt": "2026-07-28T03:06:18.000Z",
+                              "uid": "35240-785be0d5-7fe9-407f-a06c-6c305516ae15"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:06:18.000Z",
+                          "updatedAt": "2026-07-28T03:06:18.000Z",
+                          "uid": "35240-7066ba19-cee3-46ba-9a49-6043edfa31c9"
+                        }
+                      ],
+                      "id": "591d9e5a-8887-4cb9-a004-5e566a0a838c",
+                      "createdAt": "2026-07-28T03:06:18.000Z",
+                      "updatedAt": "2026-07-28T03:06:18.000Z",
+                      "uid": "35240-591d9e5a-8887-4cb9-a004-5e566a0a838c"
+                    }
+                  ],
+                  "id": "7384f08d-e2d4-4fa9-a84e-59c910169cce",
+                  "createdAt": "2026-07-28T03:06:18.000Z",
+                  "updatedAt": "2026-07-28T03:06:18.000Z",
+                  "uid": "35240-7384f08d-e2d4-4fa9-a84e-59c910169cce"
+                },
+                {
+                  "name": "List Notification Events",
+                  "id": "44bc2ed1-134d-41d3-aad8-6af835151348",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/org/:orgId/notificationEvent?startDate=<string>&endDate=<string>&limit=<integer>&offset=<integer>&priorities=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "org",
+                        ":orgId",
+                        "notificationEvent"
+                      ],
+                      "query": [
+                        {
+                          "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                          "key": "startDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                          "key": "endDate",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "List pagination size, default 1000, max value is 1000",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "List pagination offset, default 0",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by priorities, empty means HIGH and CRITICAL only. Valid values are: LOW, MEDIUM, HIGH, CRITICAL. Multiple values are supported, separated by comma.",
+                          "key": "priorities",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "7d390ee3-8556-4b64-ab2a-ebf9cbe4143b",
+                          "key": "orgId",
+                          "value": "<string>",
+                          "description": "(Required) Organization ID"
+                        }
+                      ]
+                    },
+                    "description": "List the notification events of the given organization with pagination and optional filters."
+                  },
+                  "response": [
+                    {
+                      "id": "3988091a-a77b-458a-89b7-e570c8ae3aa5",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:orgId/notificationEvent?startDate=<string>&endDate=<string>&limit=<integer>&offset=<integer>&priorities=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":orgId",
+                            "notificationEvent"
+                          ],
+                          "query": [
+                            {
+                              "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                              "key": "startDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                              "key": "endDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "List pagination size, default 1000, max value is 1000",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "List pagination offset, default 0",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter by priorities, empty means HIGH and CRITICAL only. Valid values are: LOW, MEDIUM, HIGH, CRITICAL. Multiple values are supported, separated by comma.",
+                              "key": "priorities",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"nextOffset\": \"<integer>\",\n  \"notificationEvents\": [\n    {\n      \"action\": \"DISBURSE\",\n      \"ccContactIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"channels\": [\n        \"SMS\",\n        \"SALESFORCE\"\n      ],\n      \"contactEmails\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"contactIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"createdBy\": {\n        \"email\": \"<string>\",\n        \"entityId\": \"<string>\",\n        \"entityType\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"name\": \"<string>\"\n      },\n      \"customFields\": {\n        \"cupidatat_3\": true,\n        \"consequat007\": -65996694,\n        \"nisi_5d4\": -8615621\n      },\n      \"entityID\": \"<string>\",\n      \"entityName\": \"<string>\",\n      \"entityStatus\": \"<string>\",\n      \"entityType\": \"NEW_CLIENT\",\n      \"eventID\": \"<string>\",\n      \"eventStatus\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"info\": {},\n      \"isActionItem\": \"<boolean>\",\n      \"lastUpdateTime\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"organizationID\": \"<string>\",\n      \"partner\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"priority\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"requireAudit\": \"<boolean>\",\n      \"timestamp\": \"<dateTime>\",\n      \"title\": \"<string>\",\n      \"trackEvents\": [\n        {\n          \"action\": \"OPEN_EMAIL\",\n          \"contactId\": \"<string>\",\n          \"timestamp\": \"<dateTime>\"\n        },\n        {\n          \"action\": \"OPEN_EMAIL\",\n          \"contactId\": \"<string>\",\n          \"timestamp\": \"<dateTime>\"\n        }\n      ]\n    },\n    {\n      \"action\": \"OPEN_EMAIL\",\n      \"ccContactIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"channels\": [\n        \"MICROSOFT_TEAMS\",\n        \"EMAIL\"\n      ],\n      \"contactEmails\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"contactIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"createdBy\": {\n        \"email\": \"<string>\",\n        \"entityId\": \"<string>\",\n        \"entityType\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"name\": \"<string>\"\n      },\n      \"customFields\": {\n        \"qui_7\": 57876017.44705841\n      },\n      \"entityID\": \"<string>\",\n      \"entityName\": \"<string>\",\n      \"entityStatus\": \"<string>\",\n      \"entityType\": \"ORGANIZATION\",\n      \"eventID\": \"<string>\",\n      \"eventStatus\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"info\": {},\n      \"isActionItem\": \"<boolean>\",\n      \"lastUpdateTime\": \"<dateTime>\",\n      \"message\": \"<string>\",\n      \"organizationID\": \"<string>\",\n      \"partner\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"priority\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"requireAudit\": \"<boolean>\",\n      \"timestamp\": \"<dateTime>\",\n      \"title\": \"<string>\",\n      \"trackEvents\": [\n        {\n          \"action\": \"OPEN_EMAIL\",\n          \"contactId\": \"<string>\",\n          \"timestamp\": \"<dateTime>\"\n        },\n        {\n          \"action\": \"OPEN_EMAIL\",\n          \"contactId\": \"<string>\",\n          \"timestamp\": \"<dateTime>\"\n        }\n      ]\n    }\n  ],\n  \"totalCount\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T03:06:18.000Z",
+                      "updatedAt": "2026-07-28T03:06:18.000Z",
+                      "uid": "35240-3988091a-a77b-458a-89b7-e570c8ae3aa5"
+                    },
+                    {
+                      "id": "111f4d4c-b4ad-461f-8b9d-fad0b6c0ef32",
+                      "name": "Bad request error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:orgId/notificationEvent?startDate=<string>&endDate=<string>&limit=<integer>&offset=<integer>&priorities=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":orgId",
+                            "notificationEvent"
+                          ],
+                          "query": [
+                            {
+                              "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                              "key": "startDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                              "key": "endDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "List pagination size, default 1000, max value is 1000",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "List pagination offset, default 0",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter by priorities, empty means HIGH and CRITICAL only. Valid values are: LOW, MEDIUM, HIGH, CRITICAL. Multiple values are supported, separated by comma.",
+                              "key": "priorities",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T03:06:18.000Z",
+                      "updatedAt": "2026-07-28T03:06:18.000Z",
+                      "uid": "35240-111f4d4c-b4ad-461f-8b9d-fad0b6c0ef32"
+                    },
+                    {
+                      "id": "1f2b7bbb-5253-4cbf-9022-c300b0f65281",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:orgId/notificationEvent?startDate=<string>&endDate=<string>&limit=<integer>&offset=<integer>&priorities=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":orgId",
+                            "notificationEvent"
+                          ],
+                          "query": [
+                            {
+                              "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate",
+                              "key": "startDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "end date (UTC) in YYYY-MM-DD format, default is today",
+                              "key": "endDate",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "List pagination size, default 1000, max value is 1000",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "List pagination offset, default 0",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter by priorities, empty means HIGH and CRITICAL only. Valid values are: LOW, MEDIUM, HIGH, CRITICAL. Multiple values are supported, separated by comma.",
+                              "key": "priorities",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T03:06:18.000Z",
+                      "updatedAt": "2026-07-28T03:06:18.000Z",
+                      "uid": "35240-1f2b7bbb-5253-4cbf-9022-c300b0f65281"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:06:18.000Z",
+                  "updatedAt": "2026-07-28T03:06:18.000Z",
+                  "uid": "35240-44bc2ed1-134d-41d3-aad8-6af835151348"
+                }
+              ],
+              "id": "dd2523f8-421a-44ba-9a9e-75b58be4921f",
+              "createdAt": "2026-07-28T03:06:18.000Z",
+              "updatedAt": "2026-07-28T03:06:18.000Z",
+              "uid": "35240-dd2523f8-421a-44ba-9a9e-75b58be4921f"
+            },
+            {
+              "name": "notificationMessage",
+              "item": [
+                {
+                  "name": "{notificationMessageId}",
+                  "item": [
+                    {
+                      "name": "Get Notification Message",
+                      "id": "ce071615-f9ba-4565-b8c4-2fe93e9ecb7d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "Authorization",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:orgId/notificationMessage/:notificationMessageId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":orgId",
+                            "notificationMessage",
+                            ":notificationMessageId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3346b9dc-c687-4a25-a3df-dcb6bb61dcaf",
+                              "key": "orgId",
+                              "value": "<string>",
+                              "description": "(Required) Organization ID"
+                            },
+                            {
+                              "id": "47d2b836-5d60-4657-a84a-a5fdd647097e",
+                              "key": "notificationMessageId",
+                              "value": "<string>",
+                              "description": "(Required) Notification Message ID"
+                            }
+                          ]
+                        },
+                        "description": "Get the notification message of the organization & notification message ID."
+                      },
+                      "response": [
+                        {
+                          "id": "5ad387cb-0eb1-4611-a0a7-940a1d9d2d31",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:orgId/notificationMessage/:notificationMessageId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":orgId",
+                                "notificationMessage",
+                                ":notificationMessageId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orgId"
+                                },
+                                {
+                                  "key": "notificationMessageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"creationTime\": \"<dateTime>\",\n  \"id\": \"<string>\",\n  \"info\": {\n    \"action\": {\n      \"value\": \"<Error: Could not resolve allOf schema\"\n    },\n    \"ccRecipients\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"customFields\": {\n      \"voluptate7c\": \"sit officia Ut\"\n    },\n    \"htmlContent\": \"<string>\",\n    \"rccRecipients\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"standardFields\": {\n      \"fugiat_3_2\": false\n    },\n    \"subject\": \"<string>\",\n    \"textContent\": \"<string>\"\n  },\n  \"organizationID\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"type\": \"SUGER_SUPPORT\"\n}",
+                          "createdAt": "2026-07-28T03:06:18.000Z",
+                          "updatedAt": "2026-07-28T03:06:18.000Z",
+                          "uid": "35240-5ad387cb-0eb1-4611-a0a7-940a1d9d2d31"
+                        },
+                        {
+                          "id": "dbe2ffda-761e-44ed-a38c-e159a84c78c5",
+                          "name": "Bad request error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:orgId/notificationMessage/:notificationMessageId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":orgId",
+                                "notificationMessage",
+                                ":notificationMessageId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orgId"
+                                },
+                                {
+                                  "key": "notificationMessageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-07-28T03:06:18.000Z",
+                          "updatedAt": "2026-07-28T03:06:18.000Z",
+                          "uid": "35240-dbe2ffda-761e-44ed-a38c-e159a84c78c5"
+                        },
+                        {
+                          "id": "10f0e9df-c919-42ae-987f-bc09f872d011",
+                          "name": "Internal server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/org/:orgId/notificationMessage/:notificationMessageId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "org",
+                                ":orgId",
+                                "notificationMessage",
+                                ":notificationMessageId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orgId"
+                                },
+                                {
+                                  "key": "notificationMessageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<string>",
+                          "createdAt": "2026-07-28T03:06:18.000Z",
+                          "updatedAt": "2026-07-28T03:06:18.000Z",
+                          "uid": "35240-10f0e9df-c919-42ae-987f-bc09f872d011"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:06:18.000Z",
+                      "updatedAt": "2026-07-28T03:06:18.000Z",
+                      "uid": "35240-ce071615-f9ba-4565-b8c4-2fe93e9ecb7d"
+                    }
+                  ],
+                  "id": "4cc1b6ff-c15a-4057-9b3e-edafb48d7567",
+                  "createdAt": "2026-07-28T03:06:18.000Z",
+                  "updatedAt": "2026-07-28T03:06:18.000Z",
+                  "uid": "35240-4cc1b6ff-c15a-4057-9b3e-edafb48d7567"
+                },
+                {
+                  "name": "List Notification Messages",
+                  "id": "210b155c-b125-491e-b14e-c556dd270776",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/org/:orgId/notificationMessage?limit=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "org",
+                        ":orgId",
+                        "notificationMessage"
+                      ],
+                      "query": [
+                        {
+                          "description": "List pagination size, default 1000, max value is 1000",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "List pagination offset, default 0",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "e92a686e-7f5f-4c78-8b61-50a2d71d13fa",
+                          "key": "orgId",
+                          "value": "<string>",
+                          "description": "(Required) Organization ID"
+                        }
+                      ]
+                    },
+                    "description": "List the notification messages of the given organization with pagination."
+                  },
+                  "response": [
+                    {
+                      "id": "210d7e1b-4317-45e1-8ff5-d0329c233a29",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:orgId/notificationMessage?limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":orgId",
+                            "notificationMessage"
+                          ],
+                          "query": [
+                            {
+                              "description": "List pagination size, default 1000, max value is 1000",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "List pagination offset, default 0",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"nextOffset\": \"<integer>\",\n  \"notificationMessages\": [\n    {\n      \"creationTime\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"info\": {\n        \"action\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"ccRecipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"customFields\": {\n          \"enim_\": \"ut in magna dolor\"\n        },\n        \"htmlContent\": \"<string>\",\n        \"rccRecipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"standardFields\": {\n          \"dolore_54\": 58048034,\n          \"nulla0\": false,\n          \"cillum_a35\": 95961532.07586539\n        },\n        \"subject\": \"<string>\",\n        \"textContent\": \"<string>\"\n      },\n      \"organizationID\": \"<string>\",\n      \"recipient\": \"<string>\",\n      \"type\": \"SNS\"\n    },\n    {\n      \"creationTime\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"info\": {\n        \"action\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"ccRecipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"customFields\": {\n          \"Duis_07\": 38077910,\n          \"Excepteur_6e8\": false,\n          \"minim_7\": true,\n          \"ullamcob\": true\n        },\n        \"htmlContent\": \"<string>\",\n        \"rccRecipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"standardFields\": {\n          \"fugiatb\": true,\n          \"adipisicing_e7\": -94712659.47219476\n        },\n        \"subject\": \"<string>\",\n        \"textContent\": \"<string>\"\n      },\n      \"organizationID\": \"<string>\",\n      \"recipient\": \"<string>\",\n      \"type\": \"EMAIL\"\n    }\n  ],\n  \"totalCount\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T03:06:18.000Z",
+                      "updatedAt": "2026-07-28T03:06:18.000Z",
+                      "uid": "35240-210d7e1b-4317-45e1-8ff5-d0329c233a29"
+                    },
+                    {
+                      "id": "a1d42b6d-a98d-4ad0-89a8-0cd712e00d90",
+                      "name": "Bad request error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:orgId/notificationMessage?limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":orgId",
+                            "notificationMessage"
+                          ],
+                          "query": [
+                            {
+                              "description": "List pagination size, default 1000, max value is 1000",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "List pagination offset, default 0",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T03:06:18.000Z",
+                      "updatedAt": "2026-07-28T03:06:18.000Z",
+                      "uid": "35240-a1d42b6d-a98d-4ad0-89a8-0cd712e00d90"
+                    },
+                    {
+                      "id": "87456059-763b-434e-9187-9734f0aec357",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/:orgId/notificationMessage?limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            ":orgId",
+                            "notificationMessage"
+                          ],
+                          "query": [
+                            {
+                              "description": "List pagination size, default 1000, max value is 1000",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "List pagination offset, default 0",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T03:06:18.000Z",
+                      "updatedAt": "2026-07-28T03:06:18.000Z",
+                      "uid": "35240-87456059-763b-434e-9187-9734f0aec357"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:06:18.000Z",
+                  "updatedAt": "2026-07-28T03:06:18.000Z",
+                  "uid": "35240-210b155c-b125-491e-b14e-c556dd270776"
+                }
+              ],
+              "id": "b13294e1-074f-48f7-95d6-f6a6b73bf9f2",
+              "createdAt": "2026-07-28T03:06:18.000Z",
+              "updatedAt": "2026-07-28T03:06:18.000Z",
+              "uid": "35240-b13294e1-074f-48f7-95d6-f6a6b73bf9f2"
+            }
+          ],
+          "id": "86455a0e-253f-4804-8032-913326e0ca07",
+          "createdAt": "2026-07-28T03:06:18.000Z",
+          "updatedAt": "2026-07-28T03:06:18.000Z",
+          "uid": "35240-86455a0e-253f-4804-8032-913326e0ca07"
+        }
+      ],
+      "id": "65e2b4ec-10db-4e1b-80f9-5ae0ef9dd017",
+      "createdAt": "2026-07-28T03:06:18.000Z",
+      "updatedAt": "2026-07-28T03:06:18.000Z",
+      "uid": "35240-65e2b4ec-10db-4e1b-80f9-5ae0ef9dd017"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.suger.cloud"
+    }
+  ]
+}
