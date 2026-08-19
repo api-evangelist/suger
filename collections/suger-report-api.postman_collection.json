@@ -1,0 +1,1761 @@
+{
+  "item": [
+    {
+      "id": "c0b8f7a2-174d-4f97-a285-826f56790e43",
+      "name": "Report",
+      "description": {
+        "content": "Access to revenue or usage metering Report resources",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "52d0fc19-af68-4680-844c-bb5099890a3f",
+          "name": "List Daily Revenue Records",
+          "request": {
+            "name": "List Daily Revenue Records",
+            "description": {
+              "content": "list daily revenue records for the given organization, partner, entitlement, or buyer, within the given date range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "dailyRevenueRecord"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "partner",
+                  "value": "<string>",
+                  "description": "Cloud Partner"
+                },
+                {
+                  "disabled": false,
+                  "key": "productId",
+                  "value": "<string>",
+                  "description": "Filter daily revenue records by the given product ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "Filter daily revenue records by the given buyer ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "entitlementId",
+                  "value": "<string>",
+                  "description": "Filter daily revenue records by the given entitlement ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<string>",
+                  "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>",
+                  "description": "end date (UTC) in YYYY-MM-DD format, default is today"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "09bf2a1d-6a32-4fa7-a679-57c4542c9052",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "dailyRevenueRecord"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partner",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"2000-01-23 04:56:07+00:00\",\n    \"amount\": 0.8008281904610115,\n    \"productID\": \"productID\",\n    \"refundDisburseAmount\": 9.965781217890562,\n    \"entitlementID\": \"entitlementID\",\n    \"invoiceAmount\": 5.025004791520295,\n    \"buyerID\": \"buyerID\",\n    \"invoiceDate\": \"2000-01-23 04:56:07+00:00\",\n    \"collectableAmount\": 6.027456183070403,\n    \"disburseDate\": \"2000-01-23 04:56:07+00:00\",\n    \"refundInvoiceDate\": \"2000-01-23 04:56:07+00:00\",\n    \"refundDisburseDate\": \"2000-01-23 04:56:07+00:00\",\n    \"organizationID\": \"organizationID\",\n    \"paymentDueDate\": \"2000-01-23 04:56:07+00:00\",\n    \"refundInvoiceAmount\": 9.369310271410669,\n    \"partner\": \"partner\",\n    \"currency\": \"currency\",\n    \"disburseAmount\": 1.4658129805029452,\n    \"taxAmount\": 6.683562403749608,\n    \"info\": {\n      \"awsRevenueRecords\": [\n        {\n          \"brokerID\": \"brokerID\",\n          \"usagePeriodStartDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"productID\": \"productID\",\n          \"insertDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"toAccountID\": \"toAccountID\",\n          \"usagePeriodEndDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"parentBillingEventID\": \"parentBillingEventID\",\n          \"disbursementBillingEventID\": \"disbursementBillingEventID\",\n          \"action\": \"action\",\n          \"offerID\": \"offerID\",\n          \"currency\": \"currency\",\n          \"invoiceID\": \"invoiceID\",\n          \"balanceImpacting\": 5,\n          \"amount\": 5.962133916683182,\n          \"endUserAccountID\": \"endUserAccountID\",\n          \"dataFeedProductID\": \"dataFeedProductID\",\n          \"entitlementID\": \"entitlementID\",\n          \"buyerID\": \"buyerID\",\n          \"invoiceDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"transactionReferenceID\": \"transactionReferenceID\",\n          \"organizationID\": \"organizationID\",\n          \"transactionType\": \"transactionType\",\n          \"paymentDueDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"fromAccountID\": \"fromAccountID\",\n          \"agreementID\": \"agreementID\",\n          \"billingAddressID\": \"billingAddressID\",\n          \"bankTraceID\": \"bankTraceID\"\n        },\n        {\n          \"brokerID\": \"brokerID\",\n          \"usagePeriodStartDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"productID\": \"productID\",\n          \"insertDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"toAccountID\": \"toAccountID\",\n          \"usagePeriodEndDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"parentBillingEventID\": \"parentBillingEventID\",\n          \"disbursementBillingEventID\": \"disbursementBillingEventID\",\n          \"action\": \"action\",\n          \"offerID\": \"offerID\",\n          \"currency\": \"currency\",\n          \"invoiceID\": \"invoiceID\",\n          \"balanceImpacting\": 5,\n          \"amount\": 5.962133916683182,\n          \"endUserAccountID\": \"endUserAccountID\",\n          \"dataFeedProductID\": \"dataFeedProductID\",\n          \"entitlementID\": \"entitlementID\",\n          \"buyerID\": \"buyerID\",\n          \"invoiceDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"transactionReferenceID\": \"transactionReferenceID\",\n          \"organizationID\": \"organizationID\",\n          \"transactionType\": \"transactionType\",\n          \"paymentDueDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"fromAccountID\": \"fromAccountID\",\n          \"agreementID\": \"agreementID\",\n          \"billingAddressID\": \"billingAddressID\",\n          \"bankTraceID\": \"bankTraceID\"\n        }\n      ],\n      \"resellerName\": \"resellerName\",\n      \"resource\": \"resource\",\n      \"billingModel\": \"SubscriptionBased\",\n      \"channel\": \"{}\",\n      \"idSource\": \"idSource\",\n      \"earningId\": \"earningId\",\n      \"resellerId\": \"resellerId\",\n      \"disbursementNotificationSent\": true,\n      \"azureRevenueRecords\": [\n        {\n          \"purchaseRecordID\": \"purchaseRecordID\",\n          \"productID\": \"productID\",\n          \"termEndDate\": \"termEndDate\",\n          \"azureCustomerID\": \"azureCustomerID\",\n          \"billingModel\": \"billingModel\",\n          \"payoutStatus\": \"payoutStatus\",\n          \"resellerCity\": \"resellerCity\",\n          \"resellerID\": \"resellerID\",\n          \"programName\": \"programName\",\n          \"resellerState\": \"resellerState\",\n          \"azureAssetID\": \"azureAssetID\",\n          \"offerID\": \"offerID\",\n          \"earningUsd\": 2.3021358869347655,\n          \"invoiceID\": \"invoiceID\",\n          \"azurePlanID\": \"azurePlanID\",\n          \"paymentStatus\": \"paymentStatus\",\n          \"revenueUsd\": 7.061401241503109,\n          \"azureBillingAccountID\": \"azureBillingAccountID\",\n          \"entitlementID\": \"entitlementID\",\n          \"resellerEmail\": \"resellerEmail\",\n          \"buyerID\": \"buyerID\",\n          \"invoiceDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"transactionDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"earningID\": \"earningID\",\n          \"invoiceDueDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"resellerCompany\": \"resellerCompany\",\n          \"organizationID\": \"organizationID\",\n          \"resellerCountry\": \"resellerCountry\",\n          \"paymentID\": \"paymentID\",\n          \"termStartDate\": \"termStartDate\",\n          \"azureOfferID\": \"azureOfferID\",\n          \"estimatedPayoutMonth\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"paymentSentDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          }\n        },\n        {\n          \"purchaseRecordID\": \"purchaseRecordID\",\n          \"productID\": \"productID\",\n          \"termEndDate\": \"termEndDate\",\n          \"azureCustomerID\": \"azureCustomerID\",\n          \"billingModel\": \"billingModel\",\n          \"payoutStatus\": \"payoutStatus\",\n          \"resellerCity\": \"resellerCity\",\n          \"resellerID\": \"resellerID\",\n          \"programName\": \"programName\",\n          \"resellerState\": \"resellerState\",\n          \"azureAssetID\": \"azureAssetID\",\n          \"offerID\": \"offerID\",\n          \"earningUsd\": 2.3021358869347655,\n          \"invoiceID\": \"invoiceID\",\n          \"azurePlanID\": \"azurePlanID\",\n          \"paymentStatus\": \"paymentStatus\",\n          \"revenueUsd\": 7.061401241503109,\n          \"azureBillingAccountID\": \"azureBillingAccountID\",\n          \"entitlementID\": \"entitlementID\",\n          \"resellerEmail\": \"resellerEmail\",\n          \"buyerID\": \"buyerID\",\n          \"invoiceDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"transactionDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"earningID\": \"earningID\",\n          \"invoiceDueDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"resellerCompany\": \"resellerCompany\",\n          \"organizationID\": \"organizationID\",\n          \"resellerCountry\": \"resellerCountry\",\n          \"paymentID\": \"paymentID\",\n          \"termStartDate\": \"termStartDate\",\n          \"azureOfferID\": \"azureOfferID\",\n          \"estimatedPayoutMonth\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"paymentSentDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          }\n        }\n      ],\n      \"paymentId\": \"paymentId\",\n      \"disbursementBillingEventId\": \"disbursementBillingEventId\",\n      \"bankTraceId\": \"bankTraceId\",\n      \"creditAmount\": 9.301444243932576,\n      \"gcpRevenueRecords\": [\n        {\n          \"productID\": \"productID\",\n          \"usage\": 1.1730742509559433,\n          \"withheld\": 4.965218492984954,\n          \"paymentType\": \"paymentType\",\n          \"accountID\": \"accountID\",\n          \"refundBalanceOutstanding\": 1.4894159098541704,\n          \"reportDate\": \"reportDate\",\n          \"trialUse\": 7.457744773683766,\n          \"paymentSchedule\": \"paymentSchedule\",\n          \"offerID\": \"offerID\",\n          \"currency\": \"currency\",\n          \"prepayCredits\": 1.2315135367772556,\n          \"abandoned\": 3.616076749251911,\n          \"sku\": \"sku\",\n          \"released\": 6.84685269835264,\n          \"usedBy\": \"usedBy\",\n          \"insightAccountID\": \"insightAccountID\",\n          \"dueVendor\": 4.145608029883936,\n          \"resource\": \"resource\",\n          \"googleEntity\": \"googleEntity\",\n          \"refundReason\": \"refundReason\",\n          \"entitlementID\": \"entitlementID\",\n          \"buyerID\": \"buyerID\",\n          \"organizationID\": \"organizationID\",\n          \"charges\": 2.027123023002322,\n          \"unit\": \"unit\",\n          \"refundBalanceDeductedThisMonth\": 1.0246457001441578,\n          \"ordinal\": 7\n        },\n        {\n          \"productID\": \"productID\",\n          \"usage\": 1.1730742509559433,\n          \"withheld\": 4.965218492984954,\n          \"paymentType\": \"paymentType\",\n          \"accountID\": \"accountID\",\n          \"refundBalanceOutstanding\": 1.4894159098541704,\n          \"reportDate\": \"reportDate\",\n          \"trialUse\": 7.457744773683766,\n          \"paymentSchedule\": \"paymentSchedule\",\n          \"offerID\": \"offerID\",\n          \"currency\": \"currency\",\n          \"prepayCredits\": 1.2315135367772556,\n          \"abandoned\": 3.616076749251911,\n          \"sku\": \"sku\",\n          \"released\": 6.84685269835264,\n          \"usedBy\": \"usedBy\",\n          \"insightAccountID\": \"insightAccountID\",\n          \"dueVendor\": 4.145608029883936,\n          \"resource\": \"resource\",\n          \"googleEntity\": \"googleEntity\",\n          \"refundReason\": \"refundReason\",\n          \"entitlementID\": \"entitlementID\",\n          \"buyerID\": \"buyerID\",\n          \"organizationID\": \"organizationID\",\n          \"charges\": 2.027123023002322,\n          \"unit\": \"unit\",\n          \"refundBalanceDeductedThisMonth\": 1.0246457001441578,\n          \"ordinal\": 7\n        }\n      ]\n    }\n  },\n  {\n    \"date\": \"2000-01-23 04:56:07+00:00\",\n    \"amount\": 0.8008281904610115,\n    \"productID\": \"productID\",\n    \"refundDisburseAmount\": 9.965781217890562,\n    \"entitlementID\": \"entitlementID\",\n    \"invoiceAmount\": 5.025004791520295,\n    \"buyerID\": \"buyerID\",\n    \"invoiceDate\": \"2000-01-23 04:56:07+00:00\",\n    \"collectableAmount\": 6.027456183070403,\n    \"disburseDate\": \"2000-01-23 04:56:07+00:00\",\n    \"refundInvoiceDate\": \"2000-01-23 04:56:07+00:00\",\n    \"refundDisburseDate\": \"2000-01-23 04:56:07+00:00\",\n    \"organizationID\": \"organizationID\",\n    \"paymentDueDate\": \"2000-01-23 04:56:07+00:00\",\n    \"refundInvoiceAmount\": 9.369310271410669,\n    \"partner\": \"partner\",\n    \"currency\": \"currency\",\n    \"disburseAmount\": 1.4658129805029452,\n    \"taxAmount\": 6.683562403749608,\n    \"info\": {\n      \"awsRevenueRecords\": [\n        {\n          \"brokerID\": \"brokerID\",\n          \"usagePeriodStartDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"productID\": \"productID\",\n          \"insertDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"toAccountID\": \"toAccountID\",\n          \"usagePeriodEndDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"parentBillingEventID\": \"parentBillingEventID\",\n          \"disbursementBillingEventID\": \"disbursementBillingEventID\",\n          \"action\": \"action\",\n          \"offerID\": \"offerID\",\n          \"currency\": \"currency\",\n          \"invoiceID\": \"invoiceID\",\n          \"balanceImpacting\": 5,\n          \"amount\": 5.962133916683182,\n          \"endUserAccountID\": \"endUserAccountID\",\n          \"dataFeedProductID\": \"dataFeedProductID\",\n          \"entitlementID\": \"entitlementID\",\n          \"buyerID\": \"buyerID\",\n          \"invoiceDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"transactionReferenceID\": \"transactionReferenceID\",\n          \"organizationID\": \"organizationID\",\n          \"transactionType\": \"transactionType\",\n          \"paymentDueDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"fromAccountID\": \"fromAccountID\",\n          \"agreementID\": \"agreementID\",\n          \"billingAddressID\": \"billingAddressID\",\n          \"bankTraceID\": \"bankTraceID\"\n        },\n        {\n          \"brokerID\": \"brokerID\",\n          \"usagePeriodStartDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"productID\": \"productID\",\n          \"insertDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"toAccountID\": \"toAccountID\",\n          \"usagePeriodEndDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"parentBillingEventID\": \"parentBillingEventID\",\n          \"disbursementBillingEventID\": \"disbursementBillingEventID\",\n          \"action\": \"action\",\n          \"offerID\": \"offerID\",\n          \"currency\": \"currency\",\n          \"invoiceID\": \"invoiceID\",\n          \"balanceImpacting\": 5,\n          \"amount\": 5.962133916683182,\n          \"endUserAccountID\": \"endUserAccountID\",\n          \"dataFeedProductID\": \"dataFeedProductID\",\n          \"entitlementID\": \"entitlementID\",\n          \"buyerID\": \"buyerID\",\n          \"invoiceDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"transactionReferenceID\": \"transactionReferenceID\",\n          \"organizationID\": \"organizationID\",\n          \"transactionType\": \"transactionType\",\n          \"paymentDueDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"fromAccountID\": \"fromAccountID\",\n          \"agreementID\": \"agreementID\",\n          \"billingAddressID\": \"billingAddressID\",\n          \"bankTraceID\": \"bankTraceID\"\n        }\n      ],\n      \"resellerName\": \"resellerName\",\n      \"resource\": \"resource\",\n      \"billingModel\": \"SubscriptionBased\",\n      \"channel\": \"{}\",\n      \"idSource\": \"idSource\",\n      \"earningId\": \"earningId\",\n      \"resellerId\": \"resellerId\",\n      \"disbursementNotificationSent\": true,\n      \"azureRevenueRecords\": [\n        {\n          \"purchaseRecordID\": \"purchaseRecordID\",\n          \"productID\": \"productID\",\n          \"termEndDate\": \"termEndDate\",\n          \"azureCustomerID\": \"azureCustomerID\",\n          \"billingModel\": \"billingModel\",\n          \"payoutStatus\": \"payoutStatus\",\n          \"resellerCity\": \"resellerCity\",\n          \"resellerID\": \"resellerID\",\n          \"programName\": \"programName\",\n          \"resellerState\": \"resellerState\",\n          \"azureAssetID\": \"azureAssetID\",\n          \"offerID\": \"offerID\",\n          \"earningUsd\": 2.3021358869347655,\n          \"invoiceID\": \"invoiceID\",\n          \"azurePlanID\": \"azurePlanID\",\n          \"paymentStatus\": \"paymentStatus\",\n          \"revenueUsd\": 7.061401241503109,\n          \"azureBillingAccountID\": \"azureBillingAccountID\",\n          \"entitlementID\": \"entitlementID\",\n          \"resellerEmail\": \"resellerEmail\",\n          \"buyerID\": \"buyerID\",\n          \"invoiceDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"transactionDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"earningID\": \"earningID\",\n          \"invoiceDueDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"resellerCompany\": \"resellerCompany\",\n          \"organizationID\": \"organizationID\",\n          \"resellerCountry\": \"resellerCountry\",\n          \"paymentID\": \"paymentID\",\n          \"termStartDate\": \"termStartDate\",\n          \"azureOfferID\": \"azureOfferID\",\n          \"estimatedPayoutMonth\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"paymentSentDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          }\n        },\n        {\n          \"purchaseRecordID\": \"purchaseRecordID\",\n          \"productID\": \"productID\",\n          \"termEndDate\": \"termEndDate\",\n          \"azureCustomerID\": \"azureCustomerID\",\n          \"billingModel\": \"billingModel\",\n          \"payoutStatus\": \"payoutStatus\",\n          \"resellerCity\": \"resellerCity\",\n          \"resellerID\": \"resellerID\",\n          \"programName\": \"programName\",\n          \"resellerState\": \"resellerState\",\n          \"azureAssetID\": \"azureAssetID\",\n          \"offerID\": \"offerID\",\n          \"earningUsd\": 2.3021358869347655,\n          \"invoiceID\": \"invoiceID\",\n          \"azurePlanID\": \"azurePlanID\",\n          \"paymentStatus\": \"paymentStatus\",\n          \"revenueUsd\": 7.061401241503109,\n          \"azureBillingAccountID\": \"azureBillingAccountID\",\n          \"entitlementID\": \"entitlementID\",\n          \"resellerEmail\": \"resellerEmail\",\n          \"buyerID\": \"buyerID\",\n          \"invoiceDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"transactionDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"earningID\": \"earningID\",\n          \"invoiceDueDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"resellerCompany\": \"resellerCompany\",\n          \"organizationID\": \"organizationID\",\n          \"resellerCountry\": \"resellerCountry\",\n          \"paymentID\": \"paymentID\",\n          \"termStartDate\": \"termStartDate\",\n          \"azureOfferID\": \"azureOfferID\",\n          \"estimatedPayoutMonth\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          },\n          \"paymentSentDate\": {\n            \"valid\": true,\n            \"time\": \"time\"\n          }\n        }\n      ],\n      \"paymentId\": \"paymentId\",\n      \"disbursementBillingEventId\": \"disbursementBillingEventId\",\n      \"bankTraceId\": \"bankTraceId\",\n      \"creditAmount\": 9.301444243932576,\n      \"gcpRevenueRecords\": [\n        {\n          \"productID\": \"productID\",\n          \"usage\": 1.1730742509559433,\n          \"withheld\": 4.965218492984954,\n          \"paymentType\": \"paymentType\",\n          \"accountID\": \"accountID\",\n          \"refundBalanceOutstanding\": 1.4894159098541704,\n          \"reportDate\": \"reportDate\",\n          \"trialUse\": 7.457744773683766,\n          \"paymentSchedule\": \"paymentSchedule\",\n          \"offerID\": \"offerID\",\n          \"currency\": \"currency\",\n          \"prepayCredits\": 1.2315135367772556,\n          \"abandoned\": 3.616076749251911,\n          \"sku\": \"sku\",\n          \"released\": 6.84685269835264,\n          \"usedBy\": \"usedBy\",\n          \"insightAccountID\": \"insightAccountID\",\n          \"dueVendor\": 4.145608029883936,\n          \"resource\": \"resource\",\n          \"googleEntity\": \"googleEntity\",\n          \"refundReason\": \"refundReason\",\n          \"entitlementID\": \"entitlementID\",\n          \"buyerID\": \"buyerID\",\n          \"organizationID\": \"organizationID\",\n          \"charges\": 2.027123023002322,\n          \"unit\": \"unit\",\n          \"refundBalanceDeductedThisMonth\": 1.0246457001441578,\n          \"ordinal\": 7\n        },\n        {\n          \"productID\": \"productID\",\n          \"usage\": 1.1730742509559433,\n          \"withheld\": 4.965218492984954,\n          \"paymentType\": \"paymentType\",\n          \"accountID\": \"accountID\",\n          \"refundBalanceOutstanding\": 1.4894159098541704,\n          \"reportDate\": \"reportDate\",\n          \"trialUse\": 7.457744773683766,\n          \"paymentSchedule\": \"paymentSchedule\",\n          \"offerID\": \"offerID\",\n          \"currency\": \"currency\",\n          \"prepayCredits\": 1.2315135367772556,\n          \"abandoned\": 3.616076749251911,\n          \"sku\": \"sku\",\n          \"released\": 6.84685269835264,\n          \"usedBy\": \"usedBy\",\n          \"insightAccountID\": \"insightAccountID\",\n          \"dueVendor\": 4.145608029883936,\n          \"resource\": \"resource\",\n          \"googleEntity\": \"googleEntity\",\n          \"refundReason\": \"refundReason\",\n          \"entitlementID\": \"entitlementID\",\n          \"buyerID\": \"buyerID\",\n          \"organizationID\": \"organizationID\",\n          \"charges\": 2.027123023002322,\n          \"unit\": \"unit\",\n          \"refundBalanceDeductedThisMonth\": 1.0246457001441578,\n          \"ordinal\": 7\n        }\n      ]\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2904750f-589b-4332-a330-342ac2b11cfb",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "dailyRevenueRecord"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partner",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78a817eb-bed5-4ab5-aa3e-7fc45b644598",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "dailyRevenueRecord"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partner",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38ffb7a5-793e-4993-a2b0-78c226452a32",
+          "name": "List Revenue Records",
+          "request": {
+            "name": "List Revenue Records",
+            "description": {
+              "content": "list the revenue records for the given organization, product, entitlement, or buyer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "partner",
+                ":partner",
+                "revenueRecord"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "productId",
+                  "value": "<string>",
+                  "description": "Filter revenue records by the given product ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "entitlementId",
+                  "value": "<string>",
+                  "description": "Filter revenue records by the given entitlement ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "Filter revenue records by the given buyer ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<string>",
+                  "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>",
+                  "description": "end date (UTC) in YYYY-MM-DD format, default is today"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "List pagination size, default 1000, max value is 1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "List pagination offset, default 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partner",
+                  "description": "(Required) Cloud Partner"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "50be8a43-bcc6-47a0-89d1-fb788d90e455",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "partner",
+                    ":partner",
+                    "revenueRecord"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner",
+                      "description": "(Required) Cloud Partner"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"revenueRecords\": [\n    {\n      \"date\": \"2000-01-23 04:56:07+00:00\",\n      \"amount\": 0.8008281904610115,\n      \"productID\": \"productID\",\n      \"refundDisburseAmount\": 9.965781217890562,\n      \"entitlementID\": \"entitlementID\",\n      \"invoiceAmount\": 5.025004791520295,\n      \"buyerID\": \"buyerID\",\n      \"invoiceDate\": \"2000-01-23 04:56:07+00:00\",\n      \"collectableAmount\": 6.027456183070403,\n      \"disburseDate\": \"2000-01-23 04:56:07+00:00\",\n      \"refundInvoiceDate\": \"2000-01-23 04:56:07+00:00\",\n      \"refundDisburseDate\": \"2000-01-23 04:56:07+00:00\",\n      \"organizationID\": \"organizationID\",\n      \"paymentDueDate\": \"2000-01-23 04:56:07+00:00\",\n      \"refundInvoiceAmount\": 9.369310271410669,\n      \"partner\": \"partner\",\n      \"currency\": \"currency\",\n      \"disburseAmount\": 1.4658129805029452,\n      \"taxAmount\": 6.683562403749608,\n      \"info\": {\n        \"awsRevenueRecords\": [\n          {\n            \"brokerID\": \"brokerID\",\n            \"usagePeriodStartDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"productID\": \"productID\",\n            \"insertDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"toAccountID\": \"toAccountID\",\n            \"usagePeriodEndDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"parentBillingEventID\": \"parentBillingEventID\",\n            \"disbursementBillingEventID\": \"disbursementBillingEventID\",\n            \"action\": \"action\",\n            \"offerID\": \"offerID\",\n            \"currency\": \"currency\",\n            \"invoiceID\": \"invoiceID\",\n            \"balanceImpacting\": 5,\n            \"amount\": 5.962133916683182,\n            \"endUserAccountID\": \"endUserAccountID\",\n            \"dataFeedProductID\": \"dataFeedProductID\",\n            \"entitlementID\": \"entitlementID\",\n            \"buyerID\": \"buyerID\",\n            \"invoiceDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"transactionReferenceID\": \"transactionReferenceID\",\n            \"organizationID\": \"organizationID\",\n            \"transactionType\": \"transactionType\",\n            \"paymentDueDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"fromAccountID\": \"fromAccountID\",\n            \"agreementID\": \"agreementID\",\n            \"billingAddressID\": \"billingAddressID\",\n            \"bankTraceID\": \"bankTraceID\"\n          },\n          {\n            \"brokerID\": \"brokerID\",\n            \"usagePeriodStartDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"productID\": \"productID\",\n            \"insertDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"toAccountID\": \"toAccountID\",\n            \"usagePeriodEndDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"parentBillingEventID\": \"parentBillingEventID\",\n            \"disbursementBillingEventID\": \"disbursementBillingEventID\",\n            \"action\": \"action\",\n            \"offerID\": \"offerID\",\n            \"currency\": \"currency\",\n            \"invoiceID\": \"invoiceID\",\n            \"balanceImpacting\": 5,\n            \"amount\": 5.962133916683182,\n            \"endUserAccountID\": \"endUserAccountID\",\n            \"dataFeedProductID\": \"dataFeedProductID\",\n            \"entitlementID\": \"entitlementID\",\n            \"buyerID\": \"buyerID\",\n            \"invoiceDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"transactionReferenceID\": \"transactionReferenceID\",\n            \"organizationID\": \"organizationID\",\n            \"transactionType\": \"transactionType\",\n            \"paymentDueDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"fromAccountID\": \"fromAccountID\",\n            \"agreementID\": \"agreementID\",\n            \"billingAddressID\": \"billingAddressID\",\n            \"bankTraceID\": \"bankTraceID\"\n          }\n        ],\n        \"resellerName\": \"resellerName\",\n        \"resource\": \"resource\",\n        \"billingModel\": \"SubscriptionBased\",\n        \"channel\": \"{}\",\n        \"idSource\": \"idSource\",\n        \"earningId\": \"earningId\",\n        \"resellerId\": \"resellerId\",\n        \"disbursementNotificationSent\": true,\n        \"azureRevenueRecords\": [\n          {\n            \"purchaseRecordID\": \"purchaseRecordID\",\n            \"productID\": \"productID\",\n            \"termEndDate\": \"termEndDate\",\n            \"azureCustomerID\": \"azureCustomerID\",\n            \"billingModel\": \"billingModel\",\n            \"payoutStatus\": \"payoutStatus\",\n            \"resellerCity\": \"resellerCity\",\n            \"resellerID\": \"resellerID\",\n            \"programName\": \"programName\",\n            \"resellerState\": \"resellerState\",\n            \"azureAssetID\": \"azureAssetID\",\n            \"offerID\": \"offerID\",\n            \"earningUsd\": 2.3021358869347655,\n            \"invoiceID\": \"invoiceID\",\n            \"azurePlanID\": \"azurePlanID\",\n            \"paymentStatus\": \"paymentStatus\",\n            \"revenueUsd\": 7.061401241503109,\n            \"azureBillingAccountID\": \"azureBillingAccountID\",\n            \"entitlementID\": \"entitlementID\",\n            \"resellerEmail\": \"resellerEmail\",\n            \"buyerID\": \"buyerID\",\n            \"invoiceDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"transactionDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"earningID\": \"earningID\",\n            \"invoiceDueDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"resellerCompany\": \"resellerCompany\",\n            \"organizationID\": \"organizationID\",\n            \"resellerCountry\": \"resellerCountry\",\n            \"paymentID\": \"paymentID\",\n            \"termStartDate\": \"termStartDate\",\n            \"azureOfferID\": \"azureOfferID\",\n            \"estimatedPayoutMonth\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"paymentSentDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            }\n          },\n          {\n            \"purchaseRecordID\": \"purchaseRecordID\",\n            \"productID\": \"productID\",\n            \"termEndDate\": \"termEndDate\",\n            \"azureCustomerID\": \"azureCustomerID\",\n            \"billingModel\": \"billingModel\",\n            \"payoutStatus\": \"payoutStatus\",\n            \"resellerCity\": \"resellerCity\",\n            \"resellerID\": \"resellerID\",\n            \"programName\": \"programName\",\n            \"resellerState\": \"resellerState\",\n            \"azureAssetID\": \"azureAssetID\",\n            \"offerID\": \"offerID\",\n            \"earningUsd\": 2.3021358869347655,\n            \"invoiceID\": \"invoiceID\",\n            \"azurePlanID\": \"azurePlanID\",\n            \"paymentStatus\": \"paymentStatus\",\n            \"revenueUsd\": 7.061401241503109,\n            \"azureBillingAccountID\": \"azureBillingAccountID\",\n            \"entitlementID\": \"entitlementID\",\n            \"resellerEmail\": \"resellerEmail\",\n            \"buyerID\": \"buyerID\",\n            \"invoiceDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"transactionDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"earningID\": \"earningID\",\n            \"invoiceDueDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"resellerCompany\": \"resellerCompany\",\n            \"organizationID\": \"organizationID\",\n            \"resellerCountry\": \"resellerCountry\",\n            \"paymentID\": \"paymentID\",\n            \"termStartDate\": \"termStartDate\",\n            \"azureOfferID\": \"azureOfferID\",\n            \"estimatedPayoutMonth\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"paymentSentDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            }\n          }\n        ],\n        \"paymentId\": \"paymentId\",\n        \"disbursementBillingEventId\": \"disbursementBillingEventId\",\n        \"bankTraceId\": \"bankTraceId\",\n        \"creditAmount\": 9.301444243932576,\n        \"gcpRevenueRecords\": [\n          {\n            \"productID\": \"productID\",\n            \"usage\": 1.1730742509559433,\n            \"withheld\": 4.965218492984954,\n            \"paymentType\": \"paymentType\",\n            \"accountID\": \"accountID\",\n            \"refundBalanceOutstanding\": 1.4894159098541704,\n            \"reportDate\": \"reportDate\",\n            \"trialUse\": 7.457744773683766,\n            \"paymentSchedule\": \"paymentSchedule\",\n            \"offerID\": \"offerID\",\n            \"currency\": \"currency\",\n            \"prepayCredits\": 1.2315135367772556,\n            \"abandoned\": 3.616076749251911,\n            \"sku\": \"sku\",\n            \"released\": 6.84685269835264,\n            \"usedBy\": \"usedBy\",\n            \"insightAccountID\": \"insightAccountID\",\n            \"dueVendor\": 4.145608029883936,\n            \"resource\": \"resource\",\n            \"googleEntity\": \"googleEntity\",\n            \"refundReason\": \"refundReason\",\n            \"entitlementID\": \"entitlementID\",\n            \"buyerID\": \"buyerID\",\n            \"organizationID\": \"organizationID\",\n            \"charges\": 2.027123023002322,\n            \"unit\": \"unit\",\n            \"refundBalanceDeductedThisMonth\": 1.0246457001441578,\n            \"ordinal\": 7\n          },\n          {\n            \"productID\": \"productID\",\n            \"usage\": 1.1730742509559433,\n            \"withheld\": 4.965218492984954,\n            \"paymentType\": \"paymentType\",\n            \"accountID\": \"accountID\",\n            \"refundBalanceOutstanding\": 1.4894159098541704,\n            \"reportDate\": \"reportDate\",\n            \"trialUse\": 7.457744773683766,\n            \"paymentSchedule\": \"paymentSchedule\",\n            \"offerID\": \"offerID\",\n            \"currency\": \"currency\",\n            \"prepayCredits\": 1.2315135367772556,\n            \"abandoned\": 3.616076749251911,\n            \"sku\": \"sku\",\n            \"released\": 6.84685269835264,\n            \"usedBy\": \"usedBy\",\n            \"insightAccountID\": \"insightAccountID\",\n            \"dueVendor\": 4.145608029883936,\n            \"resource\": \"resource\",\n            \"googleEntity\": \"googleEntity\",\n            \"refundReason\": \"refundReason\",\n            \"entitlementID\": \"entitlementID\",\n            \"buyerID\": \"buyerID\",\n            \"organizationID\": \"organizationID\",\n            \"charges\": 2.027123023002322,\n            \"unit\": \"unit\",\n            \"refundBalanceDeductedThisMonth\": 1.0246457001441578,\n            \"ordinal\": 7\n          }\n        ]\n      }\n    },\n    {\n      \"date\": \"2000-01-23 04:56:07+00:00\",\n      \"amount\": 0.8008281904610115,\n      \"productID\": \"productID\",\n      \"refundDisburseAmount\": 9.965781217890562,\n      \"entitlementID\": \"entitlementID\",\n      \"invoiceAmount\": 5.025004791520295,\n      \"buyerID\": \"buyerID\",\n      \"invoiceDate\": \"2000-01-23 04:56:07+00:00\",\n      \"collectableAmount\": 6.027456183070403,\n      \"disburseDate\": \"2000-01-23 04:56:07+00:00\",\n      \"refundInvoiceDate\": \"2000-01-23 04:56:07+00:00\",\n      \"refundDisburseDate\": \"2000-01-23 04:56:07+00:00\",\n      \"organizationID\": \"organizationID\",\n      \"paymentDueDate\": \"2000-01-23 04:56:07+00:00\",\n      \"refundInvoiceAmount\": 9.369310271410669,\n      \"partner\": \"partner\",\n      \"currency\": \"currency\",\n      \"disburseAmount\": 1.4658129805029452,\n      \"taxAmount\": 6.683562403749608,\n      \"info\": {\n        \"awsRevenueRecords\": [\n          {\n            \"brokerID\": \"brokerID\",\n            \"usagePeriodStartDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"productID\": \"productID\",\n            \"insertDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"toAccountID\": \"toAccountID\",\n            \"usagePeriodEndDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"parentBillingEventID\": \"parentBillingEventID\",\n            \"disbursementBillingEventID\": \"disbursementBillingEventID\",\n            \"action\": \"action\",\n            \"offerID\": \"offerID\",\n            \"currency\": \"currency\",\n            \"invoiceID\": \"invoiceID\",\n            \"balanceImpacting\": 5,\n            \"amount\": 5.962133916683182,\n            \"endUserAccountID\": \"endUserAccountID\",\n            \"dataFeedProductID\": \"dataFeedProductID\",\n            \"entitlementID\": \"entitlementID\",\n            \"buyerID\": \"buyerID\",\n            \"invoiceDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"transactionReferenceID\": \"transactionReferenceID\",\n            \"organizationID\": \"organizationID\",\n            \"transactionType\": \"transactionType\",\n            \"paymentDueDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"fromAccountID\": \"fromAccountID\",\n            \"agreementID\": \"agreementID\",\n            \"billingAddressID\": \"billingAddressID\",\n            \"bankTraceID\": \"bankTraceID\"\n          },\n          {\n            \"brokerID\": \"brokerID\",\n            \"usagePeriodStartDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"productID\": \"productID\",\n            \"insertDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"toAccountID\": \"toAccountID\",\n            \"usagePeriodEndDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"parentBillingEventID\": \"parentBillingEventID\",\n            \"disbursementBillingEventID\": \"disbursementBillingEventID\",\n            \"action\": \"action\",\n            \"offerID\": \"offerID\",\n            \"currency\": \"currency\",\n            \"invoiceID\": \"invoiceID\",\n            \"balanceImpacting\": 5,\n            \"amount\": 5.962133916683182,\n            \"endUserAccountID\": \"endUserAccountID\",\n            \"dataFeedProductID\": \"dataFeedProductID\",\n            \"entitlementID\": \"entitlementID\",\n            \"buyerID\": \"buyerID\",\n            \"invoiceDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"transactionReferenceID\": \"transactionReferenceID\",\n            \"organizationID\": \"organizationID\",\n            \"transactionType\": \"transactionType\",\n            \"paymentDueDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"fromAccountID\": \"fromAccountID\",\n            \"agreementID\": \"agreementID\",\n            \"billingAddressID\": \"billingAddressID\",\n            \"bankTraceID\": \"bankTraceID\"\n          }\n        ],\n        \"resellerName\": \"resellerName\",\n        \"resource\": \"resource\",\n        \"billingModel\": \"SubscriptionBased\",\n        \"channel\": \"{}\",\n        \"idSource\": \"idSource\",\n        \"earningId\": \"earningId\",\n        \"resellerId\": \"resellerId\",\n        \"disbursementNotificationSent\": true,\n        \"azureRevenueRecords\": [\n          {\n            \"purchaseRecordID\": \"purchaseRecordID\",\n            \"productID\": \"productID\",\n            \"termEndDate\": \"termEndDate\",\n            \"azureCustomerID\": \"azureCustomerID\",\n            \"billingModel\": \"billingModel\",\n            \"payoutStatus\": \"payoutStatus\",\n            \"resellerCity\": \"resellerCity\",\n            \"resellerID\": \"resellerID\",\n            \"programName\": \"programName\",\n            \"resellerState\": \"resellerState\",\n            \"azureAssetID\": \"azureAssetID\",\n            \"offerID\": \"offerID\",\n            \"earningUsd\": 2.3021358869347655,\n            \"invoiceID\": \"invoiceID\",\n            \"azurePlanID\": \"azurePlanID\",\n            \"paymentStatus\": \"paymentStatus\",\n            \"revenueUsd\": 7.061401241503109,\n            \"azureBillingAccountID\": \"azureBillingAccountID\",\n            \"entitlementID\": \"entitlementID\",\n            \"resellerEmail\": \"resellerEmail\",\n            \"buyerID\": \"buyerID\",\n            \"invoiceDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"transactionDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"earningID\": \"earningID\",\n            \"invoiceDueDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"resellerCompany\": \"resellerCompany\",\n            \"organizationID\": \"organizationID\",\n            \"resellerCountry\": \"resellerCountry\",\n            \"paymentID\": \"paymentID\",\n            \"termStartDate\": \"termStartDate\",\n            \"azureOfferID\": \"azureOfferID\",\n            \"estimatedPayoutMonth\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"paymentSentDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            }\n          },\n          {\n            \"purchaseRecordID\": \"purchaseRecordID\",\n            \"productID\": \"productID\",\n            \"termEndDate\": \"termEndDate\",\n            \"azureCustomerID\": \"azureCustomerID\",\n            \"billingModel\": \"billingModel\",\n            \"payoutStatus\": \"payoutStatus\",\n            \"resellerCity\": \"resellerCity\",\n            \"resellerID\": \"resellerID\",\n            \"programName\": \"programName\",\n            \"resellerState\": \"resellerState\",\n            \"azureAssetID\": \"azureAssetID\",\n            \"offerID\": \"offerID\",\n            \"earningUsd\": 2.3021358869347655,\n            \"invoiceID\": \"invoiceID\",\n            \"azurePlanID\": \"azurePlanID\",\n            \"paymentStatus\": \"paymentStatus\",\n            \"revenueUsd\": 7.061401241503109,\n            \"azureBillingAccountID\": \"azureBillingAccountID\",\n            \"entitlementID\": \"entitlementID\",\n            \"resellerEmail\": \"resellerEmail\",\n            \"buyerID\": \"buyerID\",\n            \"invoiceDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"transactionDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"earningID\": \"earningID\",\n            \"invoiceDueDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"resellerCompany\": \"resellerCompany\",\n            \"organizationID\": \"organizationID\",\n            \"resellerCountry\": \"resellerCountry\",\n            \"paymentID\": \"paymentID\",\n            \"termStartDate\": \"termStartDate\",\n            \"azureOfferID\": \"azureOfferID\",\n            \"estimatedPayoutMonth\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"paymentSentDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            }\n          }\n        ],\n        \"paymentId\": \"paymentId\",\n        \"disbursementBillingEventId\": \"disbursementBillingEventId\",\n        \"bankTraceId\": \"bankTraceId\",\n        \"creditAmount\": 9.301444243932576,\n        \"gcpRevenueRecords\": [\n          {\n            \"productID\": \"productID\",\n            \"usage\": 1.1730742509559433,\n            \"withheld\": 4.965218492984954,\n            \"paymentType\": \"paymentType\",\n            \"accountID\": \"accountID\",\n            \"refundBalanceOutstanding\": 1.4894159098541704,\n            \"reportDate\": \"reportDate\",\n            \"trialUse\": 7.457744773683766,\n            \"paymentSchedule\": \"paymentSchedule\",\n            \"offerID\": \"offerID\",\n            \"currency\": \"currency\",\n            \"prepayCredits\": 1.2315135367772556,\n            \"abandoned\": 3.616076749251911,\n            \"sku\": \"sku\",\n            \"released\": 6.84685269835264,\n            \"usedBy\": \"usedBy\",\n            \"insightAccountID\": \"insightAccountID\",\n            \"dueVendor\": 4.145608029883936,\n            \"resource\": \"resource\",\n            \"googleEntity\": \"googleEntity\",\n            \"refundReason\": \"refundReason\",\n            \"entitlementID\": \"entitlementID\",\n            \"buyerID\": \"buyerID\",\n            \"organizationID\": \"organizationID\",\n            \"charges\": 2.027123023002322,\n            \"unit\": \"unit\",\n            \"refundBalanceDeductedThisMonth\": 1.0246457001441578,\n            \"ordinal\": 7\n          },\n          {\n            \"productID\": \"productID\",\n            \"usage\": 1.1730742509559433,\n            \"withheld\": 4.965218492984954,\n            \"paymentType\": \"paymentType\",\n            \"accountID\": \"accountID\",\n            \"refundBalanceOutstanding\": 1.4894159098541704,\n            \"reportDate\": \"reportDate\",\n            \"trialUse\": 7.457744773683766,\n            \"paymentSchedule\": \"paymentSchedule\",\n            \"offerID\": \"offerID\",\n            \"currency\": \"currency\",\n            \"prepayCredits\": 1.2315135367772556,\n            \"abandoned\": 3.616076749251911,\n            \"sku\": \"sku\",\n            \"released\": 6.84685269835264,\n            \"usedBy\": \"usedBy\",\n            \"insightAccountID\": \"insightAccountID\",\n            \"dueVendor\": 4.145608029883936,\n            \"resource\": \"resource\",\n            \"googleEntity\": \"googleEntity\",\n            \"refundReason\": \"refundReason\",\n            \"entitlementID\": \"entitlementID\",\n            \"buyerID\": \"buyerID\",\n            \"organizationID\": \"organizationID\",\n            \"charges\": 2.027123023002322,\n            \"unit\": \"unit\",\n            \"refundBalanceDeductedThisMonth\": 1.0246457001441578,\n            \"ordinal\": 7\n          }\n        ]\n      }\n    }\n  ],\n  \"nextOffset\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "639a7352-6d2b-4b6a-bc42-6ac262fc602d",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "partner",
+                    ":partner",
+                    "revenueRecord"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner",
+                      "description": "(Required) Cloud Partner"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40950a8d-ea5c-41af-aaef-8959330f6c71",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "partner",
+                    ":partner",
+                    "revenueRecord"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner",
+                      "description": "(Required) Cloud Partner"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "daf0ac8f-c7f5-4122-9690-0eab36112d81",
+          "name": "List Revenue Record Details",
+          "request": {
+            "name": "List Revenue Record Details",
+            "description": {
+              "content": "list the raw revenue record details for the given organization, partner, product, entitlement, or buyer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "partner",
+                ":partner",
+                "revenueRecordDetail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "productId",
+                  "value": "<string>",
+                  "description": "Filter revenue record details by the given product ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "Filter revenue record details by the given buyer ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "entitlementId",
+                  "value": "<string>",
+                  "description": "Filter revenue record details by the given entitlement ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<string>",
+                  "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>",
+                  "description": "end date (UTC) in YYYY-MM-DD format, default is today"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "List pagination size, default 1000, max value is 1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "List pagination offset, default 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partner",
+                  "description": "(Required) Cloud Partner"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3cd55be8-f704-4759-a851-779045d303b1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "partner",
+                    ":partner",
+                    "revenueRecordDetail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner",
+                      "description": "(Required) Cloud Partner"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nextOffset\": 7937,\n  \"revenueRecordDetails\": [\n    {\n      \"awsRevenueRecordDetail\": {\n        \"brokerID\": \"brokerID\",\n        \"usagePeriodStartDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"productID\": \"productID\",\n        \"insertDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"toAccountID\": \"toAccountID\",\n        \"usagePeriodEndDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"parentBillingEventID\": \"parentBillingEventID\",\n        \"disbursementBillingEventID\": \"disbursementBillingEventID\",\n        \"action\": \"action\",\n        \"offerID\": \"offerID\",\n        \"currency\": \"currency\",\n        \"invoiceID\": \"invoiceID\",\n        \"balanceImpacting\": 5,\n        \"amount\": 5.962133916683182,\n        \"endUserAccountID\": \"endUserAccountID\",\n        \"dataFeedProductID\": \"dataFeedProductID\",\n        \"entitlementID\": \"entitlementID\",\n        \"buyerID\": \"buyerID\",\n        \"invoiceDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"transactionReferenceID\": \"transactionReferenceID\",\n        \"organizationID\": \"organizationID\",\n        \"transactionType\": \"transactionType\",\n        \"paymentDueDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"fromAccountID\": \"fromAccountID\",\n        \"agreementID\": \"agreementID\",\n        \"billingAddressID\": \"billingAddressID\",\n        \"bankTraceID\": \"bankTraceID\"\n      },\n      \"azureRevenueRecordDetail\": {\n        \"purchaseRecordID\": \"purchaseRecordID\",\n        \"productID\": \"productID\",\n        \"termEndDate\": \"termEndDate\",\n        \"azureCustomerID\": \"azureCustomerID\",\n        \"billingModel\": \"billingModel\",\n        \"payoutStatus\": \"payoutStatus\",\n        \"resellerCity\": \"resellerCity\",\n        \"resellerID\": \"resellerID\",\n        \"programName\": \"programName\",\n        \"resellerState\": \"resellerState\",\n        \"azureAssetID\": \"azureAssetID\",\n        \"offerID\": \"offerID\",\n        \"earningUsd\": 2.3021358869347655,\n        \"invoiceID\": \"invoiceID\",\n        \"azurePlanID\": \"azurePlanID\",\n        \"paymentStatus\": \"paymentStatus\",\n        \"revenueUsd\": 7.061401241503109,\n        \"azureBillingAccountID\": \"azureBillingAccountID\",\n        \"entitlementID\": \"entitlementID\",\n        \"resellerEmail\": \"resellerEmail\",\n        \"buyerID\": \"buyerID\",\n        \"invoiceDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"transactionDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"earningID\": \"earningID\",\n        \"invoiceDueDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"resellerCompany\": \"resellerCompany\",\n        \"organizationID\": \"organizationID\",\n        \"resellerCountry\": \"resellerCountry\",\n        \"paymentID\": \"paymentID\",\n        \"termStartDate\": \"termStartDate\",\n        \"azureOfferID\": \"azureOfferID\",\n        \"estimatedPayoutMonth\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"paymentSentDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        }\n      },\n      \"gcpRevenueRecordDetail\": {\n        \"productID\": \"productID\",\n        \"usage\": 1.1730742509559433,\n        \"withheld\": 4.965218492984954,\n        \"paymentType\": \"paymentType\",\n        \"accountID\": \"accountID\",\n        \"refundBalanceOutstanding\": 1.4894159098541704,\n        \"reportDate\": \"reportDate\",\n        \"trialUse\": 7.457744773683766,\n        \"paymentSchedule\": \"paymentSchedule\",\n        \"offerID\": \"offerID\",\n        \"currency\": \"currency\",\n        \"prepayCredits\": 1.2315135367772556,\n        \"abandoned\": 3.616076749251911,\n        \"sku\": \"sku\",\n        \"released\": 6.84685269835264,\n        \"usedBy\": \"usedBy\",\n        \"insightAccountID\": \"insightAccountID\",\n        \"dueVendor\": 4.145608029883936,\n        \"resource\": \"resource\",\n        \"googleEntity\": \"googleEntity\",\n        \"refundReason\": \"refundReason\",\n        \"entitlementID\": \"entitlementID\",\n        \"buyerID\": \"buyerID\",\n        \"organizationID\": \"organizationID\",\n        \"charges\": 2.027123023002322,\n        \"unit\": \"unit\",\n        \"refundBalanceDeductedThisMonth\": 1.0246457001441578,\n        \"ordinal\": 7\n      }\n    },\n    {\n      \"awsRevenueRecordDetail\": {\n        \"brokerID\": \"brokerID\",\n        \"usagePeriodStartDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"productID\": \"productID\",\n        \"insertDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"toAccountID\": \"toAccountID\",\n        \"usagePeriodEndDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"parentBillingEventID\": \"parentBillingEventID\",\n        \"disbursementBillingEventID\": \"disbursementBillingEventID\",\n        \"action\": \"action\",\n        \"offerID\": \"offerID\",\n        \"currency\": \"currency\",\n        \"invoiceID\": \"invoiceID\",\n        \"balanceImpacting\": 5,\n        \"amount\": 5.962133916683182,\n        \"endUserAccountID\": \"endUserAccountID\",\n        \"dataFeedProductID\": \"dataFeedProductID\",\n        \"entitlementID\": \"entitlementID\",\n        \"buyerID\": \"buyerID\",\n        \"invoiceDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"transactionReferenceID\": \"transactionReferenceID\",\n        \"organizationID\": \"organizationID\",\n        \"transactionType\": \"transactionType\",\n        \"paymentDueDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"fromAccountID\": \"fromAccountID\",\n        \"agreementID\": \"agreementID\",\n        \"billingAddressID\": \"billingAddressID\",\n        \"bankTraceID\": \"bankTraceID\"\n      },\n      \"azureRevenueRecordDetail\": {\n        \"purchaseRecordID\": \"purchaseRecordID\",\n        \"productID\": \"productID\",\n        \"termEndDate\": \"termEndDate\",\n        \"azureCustomerID\": \"azureCustomerID\",\n        \"billingModel\": \"billingModel\",\n        \"payoutStatus\": \"payoutStatus\",\n        \"resellerCity\": \"resellerCity\",\n        \"resellerID\": \"resellerID\",\n        \"programName\": \"programName\",\n        \"resellerState\": \"resellerState\",\n        \"azureAssetID\": \"azureAssetID\",\n        \"offerID\": \"offerID\",\n        \"earningUsd\": 2.3021358869347655,\n        \"invoiceID\": \"invoiceID\",\n        \"azurePlanID\": \"azurePlanID\",\n        \"paymentStatus\": \"paymentStatus\",\n        \"revenueUsd\": 7.061401241503109,\n        \"azureBillingAccountID\": \"azureBillingAccountID\",\n        \"entitlementID\": \"entitlementID\",\n        \"resellerEmail\": \"resellerEmail\",\n        \"buyerID\": \"buyerID\",\n        \"invoiceDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"transactionDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"earningID\": \"earningID\",\n        \"invoiceDueDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"resellerCompany\": \"resellerCompany\",\n        \"organizationID\": \"organizationID\",\n        \"resellerCountry\": \"resellerCountry\",\n        \"paymentID\": \"paymentID\",\n        \"termStartDate\": \"termStartDate\",\n        \"azureOfferID\": \"azureOfferID\",\n        \"estimatedPayoutMonth\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        },\n        \"paymentSentDate\": {\n          \"valid\": true,\n          \"time\": \"time\"\n        }\n      },\n      \"gcpRevenueRecordDetail\": {\n        \"productID\": \"productID\",\n        \"usage\": 1.1730742509559433,\n        \"withheld\": 4.965218492984954,\n        \"paymentType\": \"paymentType\",\n        \"accountID\": \"accountID\",\n        \"refundBalanceOutstanding\": 1.4894159098541704,\n        \"reportDate\": \"reportDate\",\n        \"trialUse\": 7.457744773683766,\n        \"paymentSchedule\": \"paymentSchedule\",\n        \"offerID\": \"offerID\",\n        \"currency\": \"currency\",\n        \"prepayCredits\": 1.2315135367772556,\n        \"abandoned\": 3.616076749251911,\n        \"sku\": \"sku\",\n        \"released\": 6.84685269835264,\n        \"usedBy\": \"usedBy\",\n        \"insightAccountID\": \"insightAccountID\",\n        \"dueVendor\": 4.145608029883936,\n        \"resource\": \"resource\",\n        \"googleEntity\": \"googleEntity\",\n        \"refundReason\": \"refundReason\",\n        \"entitlementID\": \"entitlementID\",\n        \"buyerID\": \"buyerID\",\n        \"organizationID\": \"organizationID\",\n        \"charges\": 2.027123023002322,\n        \"unit\": \"unit\",\n        \"refundBalanceDeductedThisMonth\": 1.0246457001441578,\n        \"ordinal\": 7\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5d52ce7-c891-4bc8-99f3-5b838d949dae",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "partner",
+                    ":partner",
+                    "revenueRecordDetail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner",
+                      "description": "(Required) Cloud Partner"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06689cee-fe31-4b35-85a0-8012b2be13b0",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "partner",
+                    ":partner",
+                    "revenueRecordDetail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner",
+                      "description": "(Required) Cloud Partner"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2749f21d-5037-4156-9028-233aff6e55e5",
+          "name": "List Usage Metering Daily Records",
+          "request": {
+            "name": "List Usage Metering Daily Records",
+            "description": {
+              "content": "list the daily records of the usage metering from the cloud marketplace for the given organization, entitlement, or buyer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "partner",
+                ":partner",
+                "usageMeteringDailyRecord"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "Filter usage metering daily records by the given buyer ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "entitlementId",
+                  "value": "<string>",
+                  "description": "Filter usage metering daily records by the given entitlement ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<string>",
+                  "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>",
+                  "description": "end date (UTC) in YYYY-MM-DD format, default is today"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "List pagination size, default 1000, max value is 1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "List pagination offset, default 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partner",
+                  "description": "(Required) Filter by the Cloud Partner"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "96197b63-564f-4045-948a-681c3803a422",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "partner",
+                    ":partner",
+                    "usageMeteringDailyRecord"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner",
+                      "description": "(Required) Filter by the Cloud Partner"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"usageMeteringDailyRecords\": [\n    {\n      \"date\": \"2000-01-23 04:56:07+00:00\",\n      \"amount\": 6.027456183070403,\n      \"quantity\": 1.4658129805029452,\n      \"partner\": \"{}\",\n      \"entitlementID\": \"entitlementID\",\n      \"groupBysExpression\": \"groupBysExpression\",\n      \"key\": \"key\"\n    },\n    {\n      \"date\": \"2000-01-23 04:56:07+00:00\",\n      \"amount\": 6.027456183070403,\n      \"quantity\": 1.4658129805029452,\n      \"partner\": \"{}\",\n      \"entitlementID\": \"entitlementID\",\n      \"groupBysExpression\": \"groupBysExpression\",\n      \"key\": \"key\"\n    }\n  ],\n  \"nextOffset\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6510bd9f-c9a8-4b4c-9750-3c0f92271773",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "partner",
+                    ":partner",
+                    "usageMeteringDailyRecord"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner",
+                      "description": "(Required) Filter by the Cloud Partner"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35fd90f7-f8e7-4b2a-a620-c632013493c4",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "partner",
+                    ":partner",
+                    "usageMeteringDailyRecord"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partner",
+                      "description": "(Required) Filter by the Cloud Partner"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77d40b1a-e6cb-425c-b5b3-5b4c01b99697",
+          "name": "Get Revenue Report",
+          "request": {
+            "name": "Get Revenue Report",
+            "description": {
+              "content": "Get the revenue report of the given organization, product, entitlement, or buyer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "revenueReport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"organizationID\": \"<string>\",\n  \"partner\": \"<string>\",\n  \"reportType\": \"<string>\",\n  \"service\": \"<string>\",\n  \"buyerID\": \"<string>\",\n  \"entitlementID\": \"<string>\",\n  \"groupBy\": {\n    \"value\": \"<Error: Could not resolve allOf schema\"\n  },\n  \"productID\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "920d8bc1-eec1-4f42-a054-5b07ddd90a4e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "revenueReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationID\": \"organizationID\",\n  \"reportType\": \"GrossAmount\",\n  \"partner\": \"AWS\",\n  \"productID\": \"productID\",\n  \"service\": \"MARKETPLACE\",\n  \"entitlementID\": \"entitlementID\",\n  \"groupBy\": \"{}\",\n  \"buyerID\": \"buyerID\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organizationID\": \"organizationID\",\n  \"reportType\": \"GrossAmount\",\n  \"partner\": \"partner\",\n  \"productID\": \"productID\",\n  \"reportDate\": \"2000-01-23 04:56:07+00:00\",\n  \"service\": \"service\",\n  \"entitlementID\": \"entitlementID\",\n  \"groupBy\": \"{}\",\n  \"revenueRecords\": [\n    {\n      \"date\": \"2000-01-23 04:56:07+00:00\",\n      \"amount\": 0.8008281904610115,\n      \"productID\": \"productID\",\n      \"refundDisburseAmount\": 9.965781217890562,\n      \"entitlementID\": \"entitlementID\",\n      \"invoiceAmount\": 5.025004791520295,\n      \"buyerID\": \"buyerID\",\n      \"invoiceDate\": \"2000-01-23 04:56:07+00:00\",\n      \"collectableAmount\": 6.027456183070403,\n      \"disburseDate\": \"2000-01-23 04:56:07+00:00\",\n      \"refundInvoiceDate\": \"2000-01-23 04:56:07+00:00\",\n      \"refundDisburseDate\": \"2000-01-23 04:56:07+00:00\",\n      \"organizationID\": \"organizationID\",\n      \"paymentDueDate\": \"2000-01-23 04:56:07+00:00\",\n      \"refundInvoiceAmount\": 9.369310271410669,\n      \"partner\": \"partner\",\n      \"currency\": \"currency\",\n      \"disburseAmount\": 1.4658129805029452,\n      \"taxAmount\": 6.683562403749608,\n      \"info\": {\n        \"awsRevenueRecords\": [\n          {\n            \"brokerID\": \"brokerID\",\n            \"usagePeriodStartDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"productID\": \"productID\",\n            \"insertDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"toAccountID\": \"toAccountID\",\n            \"usagePeriodEndDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"parentBillingEventID\": \"parentBillingEventID\",\n            \"disbursementBillingEventID\": \"disbursementBillingEventID\",\n            \"action\": \"action\",\n            \"offerID\": \"offerID\",\n            \"currency\": \"currency\",\n            \"invoiceID\": \"invoiceID\",\n            \"balanceImpacting\": 5,\n            \"amount\": 5.962133916683182,\n            \"endUserAccountID\": \"endUserAccountID\",\n            \"dataFeedProductID\": \"dataFeedProductID\",\n            \"entitlementID\": \"entitlementID\",\n            \"buyerID\": \"buyerID\",\n            \"invoiceDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"transactionReferenceID\": \"transactionReferenceID\",\n            \"organizationID\": \"organizationID\",\n            \"transactionType\": \"transactionType\",\n            \"paymentDueDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"fromAccountID\": \"fromAccountID\",\n            \"agreementID\": \"agreementID\",\n            \"billingAddressID\": \"billingAddressID\",\n            \"bankTraceID\": \"bankTraceID\"\n          },\n          {\n            \"brokerID\": \"brokerID\",\n            \"usagePeriodStartDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"productID\": \"productID\",\n            \"insertDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"toAccountID\": \"toAccountID\",\n            \"usagePeriodEndDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"parentBillingEventID\": \"parentBillingEventID\",\n            \"disbursementBillingEventID\": \"disbursementBillingEventID\",\n            \"action\": \"action\",\n            \"offerID\": \"offerID\",\n            \"currency\": \"currency\",\n            \"invoiceID\": \"invoiceID\",\n            \"balanceImpacting\": 5,\n            \"amount\": 5.962133916683182,\n            \"endUserAccountID\": \"endUserAccountID\",\n            \"dataFeedProductID\": \"dataFeedProductID\",\n            \"entitlementID\": \"entitlementID\",\n            \"buyerID\": \"buyerID\",\n            \"invoiceDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"transactionReferenceID\": \"transactionReferenceID\",\n            \"organizationID\": \"organizationID\",\n            \"transactionType\": \"transactionType\",\n            \"paymentDueDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"fromAccountID\": \"fromAccountID\",\n            \"agreementID\": \"agreementID\",\n            \"billingAddressID\": \"billingAddressID\",\n            \"bankTraceID\": \"bankTraceID\"\n          }\n        ],\n        \"resellerName\": \"resellerName\",\n        \"resource\": \"resource\",\n        \"billingModel\": \"SubscriptionBased\",\n        \"channel\": \"{}\",\n        \"idSource\": \"idSource\",\n        \"earningId\": \"earningId\",\n        \"resellerId\": \"resellerId\",\n        \"disbursementNotificationSent\": true,\n        \"azureRevenueRecords\": [\n          {\n            \"purchaseRecordID\": \"purchaseRecordID\",\n            \"productID\": \"productID\",\n            \"termEndDate\": \"termEndDate\",\n            \"azureCustomerID\": \"azureCustomerID\",\n            \"billingModel\": \"billingModel\",\n            \"payoutStatus\": \"payoutStatus\",\n            \"resellerCity\": \"resellerCity\",\n            \"resellerID\": \"resellerID\",\n            \"programName\": \"programName\",\n            \"resellerState\": \"resellerState\",\n            \"azureAssetID\": \"azureAssetID\",\n            \"offerID\": \"offerID\",\n            \"earningUsd\": 2.3021358869347655,\n            \"invoiceID\": \"invoiceID\",\n            \"azurePlanID\": \"azurePlanID\",\n            \"paymentStatus\": \"paymentStatus\",\n            \"revenueUsd\": 7.061401241503109,\n            \"azureBillingAccountID\": \"azureBillingAccountID\",\n            \"entitlementID\": \"entitlementID\",\n            \"resellerEmail\": \"resellerEmail\",\n            \"buyerID\": \"buyerID\",\n            \"invoiceDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"transactionDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"earningID\": \"earningID\",\n            \"invoiceDueDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"resellerCompany\": \"resellerCompany\",\n            \"organizationID\": \"organizationID\",\n            \"resellerCountry\": \"resellerCountry\",\n            \"paymentID\": \"paymentID\",\n            \"termStartDate\": \"termStartDate\",\n            \"azureOfferID\": \"azureOfferID\",\n            \"estimatedPayoutMonth\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"paymentSentDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            }\n          },\n          {\n            \"purchaseRecordID\": \"purchaseRecordID\",\n            \"productID\": \"productID\",\n            \"termEndDate\": \"termEndDate\",\n            \"azureCustomerID\": \"azureCustomerID\",\n            \"billingModel\": \"billingModel\",\n            \"payoutStatus\": \"payoutStatus\",\n            \"resellerCity\": \"resellerCity\",\n            \"resellerID\": \"resellerID\",\n            \"programName\": \"programName\",\n            \"resellerState\": \"resellerState\",\n            \"azureAssetID\": \"azureAssetID\",\n            \"offerID\": \"offerID\",\n            \"earningUsd\": 2.3021358869347655,\n            \"invoiceID\": \"invoiceID\",\n            \"azurePlanID\": \"azurePlanID\",\n            \"paymentStatus\": \"paymentStatus\",\n            \"revenueUsd\": 7.061401241503109,\n            \"azureBillingAccountID\": \"azureBillingAccountID\",\n            \"entitlementID\": \"entitlementID\",\n            \"resellerEmail\": \"resellerEmail\",\n            \"buyerID\": \"buyerID\",\n            \"invoiceDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"transactionDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"earningID\": \"earningID\",\n            \"invoiceDueDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"resellerCompany\": \"resellerCompany\",\n            \"organizationID\": \"organizationID\",\n            \"resellerCountry\": \"resellerCountry\",\n            \"paymentID\": \"paymentID\",\n            \"termStartDate\": \"termStartDate\",\n            \"azureOfferID\": \"azureOfferID\",\n            \"estimatedPayoutMonth\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"paymentSentDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            }\n          }\n        ],\n        \"paymentId\": \"paymentId\",\n        \"disbursementBillingEventId\": \"disbursementBillingEventId\",\n        \"bankTraceId\": \"bankTraceId\",\n        \"creditAmount\": 9.301444243932576,\n        \"gcpRevenueRecords\": [\n          {\n            \"productID\": \"productID\",\n            \"usage\": 1.1730742509559433,\n            \"withheld\": 4.965218492984954,\n            \"paymentType\": \"paymentType\",\n            \"accountID\": \"accountID\",\n            \"refundBalanceOutstanding\": 1.4894159098541704,\n            \"reportDate\": \"reportDate\",\n            \"trialUse\": 7.457744773683766,\n            \"paymentSchedule\": \"paymentSchedule\",\n            \"offerID\": \"offerID\",\n            \"currency\": \"currency\",\n            \"prepayCredits\": 1.2315135367772556,\n            \"abandoned\": 3.616076749251911,\n            \"sku\": \"sku\",\n            \"released\": 6.84685269835264,\n            \"usedBy\": \"usedBy\",\n            \"insightAccountID\": \"insightAccountID\",\n            \"dueVendor\": 4.145608029883936,\n            \"resource\": \"resource\",\n            \"googleEntity\": \"googleEntity\",\n            \"refundReason\": \"refundReason\",\n            \"entitlementID\": \"entitlementID\",\n            \"buyerID\": \"buyerID\",\n            \"organizationID\": \"organizationID\",\n            \"charges\": 2.027123023002322,\n            \"unit\": \"unit\",\n            \"refundBalanceDeductedThisMonth\": 1.0246457001441578,\n            \"ordinal\": 7\n          },\n          {\n            \"productID\": \"productID\",\n            \"usage\": 1.1730742509559433,\n            \"withheld\": 4.965218492984954,\n            \"paymentType\": \"paymentType\",\n            \"accountID\": \"accountID\",\n            \"refundBalanceOutstanding\": 1.4894159098541704,\n            \"reportDate\": \"reportDate\",\n            \"trialUse\": 7.457744773683766,\n            \"paymentSchedule\": \"paymentSchedule\",\n            \"offerID\": \"offerID\",\n            \"currency\": \"currency\",\n            \"prepayCredits\": 1.2315135367772556,\n            \"abandoned\": 3.616076749251911,\n            \"sku\": \"sku\",\n            \"released\": 6.84685269835264,\n            \"usedBy\": \"usedBy\",\n            \"insightAccountID\": \"insightAccountID\",\n            \"dueVendor\": 4.145608029883936,\n            \"resource\": \"resource\",\n            \"googleEntity\": \"googleEntity\",\n            \"refundReason\": \"refundReason\",\n            \"entitlementID\": \"entitlementID\",\n            \"buyerID\": \"buyerID\",\n            \"organizationID\": \"organizationID\",\n            \"charges\": 2.027123023002322,\n            \"unit\": \"unit\",\n            \"refundBalanceDeductedThisMonth\": 1.0246457001441578,\n            \"ordinal\": 7\n          }\n        ]\n      }\n    },\n    {\n      \"date\": \"2000-01-23 04:56:07+00:00\",\n      \"amount\": 0.8008281904610115,\n      \"productID\": \"productID\",\n      \"refundDisburseAmount\": 9.965781217890562,\n      \"entitlementID\": \"entitlementID\",\n      \"invoiceAmount\": 5.025004791520295,\n      \"buyerID\": \"buyerID\",\n      \"invoiceDate\": \"2000-01-23 04:56:07+00:00\",\n      \"collectableAmount\": 6.027456183070403,\n      \"disburseDate\": \"2000-01-23 04:56:07+00:00\",\n      \"refundInvoiceDate\": \"2000-01-23 04:56:07+00:00\",\n      \"refundDisburseDate\": \"2000-01-23 04:56:07+00:00\",\n      \"organizationID\": \"organizationID\",\n      \"paymentDueDate\": \"2000-01-23 04:56:07+00:00\",\n      \"refundInvoiceAmount\": 9.369310271410669,\n      \"partner\": \"partner\",\n      \"currency\": \"currency\",\n      \"disburseAmount\": 1.4658129805029452,\n      \"taxAmount\": 6.683562403749608,\n      \"info\": {\n        \"awsRevenueRecords\": [\n          {\n            \"brokerID\": \"brokerID\",\n            \"usagePeriodStartDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"productID\": \"productID\",\n            \"insertDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"toAccountID\": \"toAccountID\",\n            \"usagePeriodEndDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"parentBillingEventID\": \"parentBillingEventID\",\n            \"disbursementBillingEventID\": \"disbursementBillingEventID\",\n            \"action\": \"action\",\n            \"offerID\": \"offerID\",\n            \"currency\": \"currency\",\n            \"invoiceID\": \"invoiceID\",\n            \"balanceImpacting\": 5,\n            \"amount\": 5.962133916683182,\n            \"endUserAccountID\": \"endUserAccountID\",\n            \"dataFeedProductID\": \"dataFeedProductID\",\n            \"entitlementID\": \"entitlementID\",\n            \"buyerID\": \"buyerID\",\n            \"invoiceDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"transactionReferenceID\": \"transactionReferenceID\",\n            \"organizationID\": \"organizationID\",\n            \"transactionType\": \"transactionType\",\n            \"paymentDueDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"fromAccountID\": \"fromAccountID\",\n            \"agreementID\": \"agreementID\",\n            \"billingAddressID\": \"billingAddressID\",\n            \"bankTraceID\": \"bankTraceID\"\n          },\n          {\n            \"brokerID\": \"brokerID\",\n            \"usagePeriodStartDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"productID\": \"productID\",\n            \"insertDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"toAccountID\": \"toAccountID\",\n            \"usagePeriodEndDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"parentBillingEventID\": \"parentBillingEventID\",\n            \"disbursementBillingEventID\": \"disbursementBillingEventID\",\n            \"action\": \"action\",\n            \"offerID\": \"offerID\",\n            \"currency\": \"currency\",\n            \"invoiceID\": \"invoiceID\",\n            \"balanceImpacting\": 5,\n            \"amount\": 5.962133916683182,\n            \"endUserAccountID\": \"endUserAccountID\",\n            \"dataFeedProductID\": \"dataFeedProductID\",\n            \"entitlementID\": \"entitlementID\",\n            \"buyerID\": \"buyerID\",\n            \"invoiceDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"transactionReferenceID\": \"transactionReferenceID\",\n            \"organizationID\": \"organizationID\",\n            \"transactionType\": \"transactionType\",\n            \"paymentDueDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"fromAccountID\": \"fromAccountID\",\n            \"agreementID\": \"agreementID\",\n            \"billingAddressID\": \"billingAddressID\",\n            \"bankTraceID\": \"bankTraceID\"\n          }\n        ],\n        \"resellerName\": \"resellerName\",\n        \"resource\": \"resource\",\n        \"billingModel\": \"SubscriptionBased\",\n        \"channel\": \"{}\",\n        \"idSource\": \"idSource\",\n        \"earningId\": \"earningId\",\n        \"resellerId\": \"resellerId\",\n        \"disbursementNotificationSent\": true,\n        \"azureRevenueRecords\": [\n          {\n            \"purchaseRecordID\": \"purchaseRecordID\",\n            \"productID\": \"productID\",\n            \"termEndDate\": \"termEndDate\",\n            \"azureCustomerID\": \"azureCustomerID\",\n            \"billingModel\": \"billingModel\",\n            \"payoutStatus\": \"payoutStatus\",\n            \"resellerCity\": \"resellerCity\",\n            \"resellerID\": \"resellerID\",\n            \"programName\": \"programName\",\n            \"resellerState\": \"resellerState\",\n            \"azureAssetID\": \"azureAssetID\",\n            \"offerID\": \"offerID\",\n            \"earningUsd\": 2.3021358869347655,\n            \"invoiceID\": \"invoiceID\",\n            \"azurePlanID\": \"azurePlanID\",\n            \"paymentStatus\": \"paymentStatus\",\n            \"revenueUsd\": 7.061401241503109,\n            \"azureBillingAccountID\": \"azureBillingAccountID\",\n            \"entitlementID\": \"entitlementID\",\n            \"resellerEmail\": \"resellerEmail\",\n            \"buyerID\": \"buyerID\",\n            \"invoiceDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"transactionDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"earningID\": \"earningID\",\n            \"invoiceDueDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"resellerCompany\": \"resellerCompany\",\n            \"organizationID\": \"organizationID\",\n            \"resellerCountry\": \"resellerCountry\",\n            \"paymentID\": \"paymentID\",\n            \"termStartDate\": \"termStartDate\",\n            \"azureOfferID\": \"azureOfferID\",\n            \"estimatedPayoutMonth\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"paymentSentDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            }\n          },\n          {\n            \"purchaseRecordID\": \"purchaseRecordID\",\n            \"productID\": \"productID\",\n            \"termEndDate\": \"termEndDate\",\n            \"azureCustomerID\": \"azureCustomerID\",\n            \"billingModel\": \"billingModel\",\n            \"payoutStatus\": \"payoutStatus\",\n            \"resellerCity\": \"resellerCity\",\n            \"resellerID\": \"resellerID\",\n            \"programName\": \"programName\",\n            \"resellerState\": \"resellerState\",\n            \"azureAssetID\": \"azureAssetID\",\n            \"offerID\": \"offerID\",\n            \"earningUsd\": 2.3021358869347655,\n            \"invoiceID\": \"invoiceID\",\n            \"azurePlanID\": \"azurePlanID\",\n            \"paymentStatus\": \"paymentStatus\",\n            \"revenueUsd\": 7.061401241503109,\n            \"azureBillingAccountID\": \"azureBillingAccountID\",\n            \"entitlementID\": \"entitlementID\",\n            \"resellerEmail\": \"resellerEmail\",\n            \"buyerID\": \"buyerID\",\n            \"invoiceDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"transactionDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"earningID\": \"earningID\",\n            \"invoiceDueDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"resellerCompany\": \"resellerCompany\",\n            \"organizationID\": \"organizationID\",\n            \"resellerCountry\": \"resellerCountry\",\n            \"paymentID\": \"paymentID\",\n            \"termStartDate\": \"termStartDate\",\n            \"azureOfferID\": \"azureOfferID\",\n            \"estimatedPayoutMonth\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            },\n            \"paymentSentDate\": {\n              \"valid\": true,\n              \"time\": \"time\"\n            }\n          }\n        ],\n        \"paymentId\": \"paymentId\",\n        \"disbursementBillingEventId\": \"disbursementBillingEventId\",\n        \"bankTraceId\": \"bankTraceId\",\n        \"creditAmount\": 9.301444243932576,\n        \"gcpRevenueRecords\": [\n          {\n            \"productID\": \"productID\",\n            \"usage\": 1.1730742509559433,\n            \"withheld\": 4.965218492984954,\n            \"paymentType\": \"paymentType\",\n            \"accountID\": \"accountID\",\n            \"refundBalanceOutstanding\": 1.4894159098541704,\n            \"reportDate\": \"reportDate\",\n            \"trialUse\": 7.457744773683766,\n            \"paymentSchedule\": \"paymentSchedule\",\n            \"offerID\": \"offerID\",\n            \"currency\": \"currency\",\n            \"prepayCredits\": 1.2315135367772556,\n            \"abandoned\": 3.616076749251911,\n            \"sku\": \"sku\",\n            \"released\": 6.84685269835264,\n            \"usedBy\": \"usedBy\",\n            \"insightAccountID\": \"insightAccountID\",\n            \"dueVendor\": 4.145608029883936,\n            \"resource\": \"resource\",\n            \"googleEntity\": \"googleEntity\",\n            \"refundReason\": \"refundReason\",\n            \"entitlementID\": \"entitlementID\",\n            \"buyerID\": \"buyerID\",\n            \"organizationID\": \"organizationID\",\n            \"charges\": 2.027123023002322,\n            \"unit\": \"unit\",\n            \"refundBalanceDeductedThisMonth\": 1.0246457001441578,\n            \"ordinal\": 7\n          },\n          {\n            \"productID\": \"productID\",\n            \"usage\": 1.1730742509559433,\n            \"withheld\": 4.965218492984954,\n            \"paymentType\": \"paymentType\",\n            \"accountID\": \"accountID\",\n            \"refundBalanceOutstanding\": 1.4894159098541704,\n            \"reportDate\": \"reportDate\",\n            \"trialUse\": 7.457744773683766,\n            \"paymentSchedule\": \"paymentSchedule\",\n            \"offerID\": \"offerID\",\n            \"currency\": \"currency\",\n            \"prepayCredits\": 1.2315135367772556,\n            \"abandoned\": 3.616076749251911,\n            \"sku\": \"sku\",\n            \"released\": 6.84685269835264,\n            \"usedBy\": \"usedBy\",\n            \"insightAccountID\": \"insightAccountID\",\n            \"dueVendor\": 4.145608029883936,\n            \"resource\": \"resource\",\n            \"googleEntity\": \"googleEntity\",\n            \"refundReason\": \"refundReason\",\n            \"entitlementID\": \"entitlementID\",\n            \"buyerID\": \"buyerID\",\n            \"organizationID\": \"organizationID\",\n            \"charges\": 2.027123023002322,\n            \"unit\": \"unit\",\n            \"refundBalanceDeductedThisMonth\": 1.0246457001441578,\n            \"ordinal\": 7\n          }\n        ]\n      }\n    }\n  ],\n  \"buyerID\": \"buyerID\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8780e10b-0817-4810-a6ab-cbf4b81737ac",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "revenueReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationID\": \"organizationID\",\n  \"reportType\": \"GrossAmount\",\n  \"partner\": \"AWS\",\n  \"productID\": \"productID\",\n  \"service\": \"MARKETPLACE\",\n  \"entitlementID\": \"entitlementID\",\n  \"groupBy\": \"{}\",\n  \"buyerID\": \"buyerID\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01c857d6-807d-408f-898b-04297b91e52f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "revenueReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationID\": \"organizationID\",\n  \"reportType\": \"GrossAmount\",\n  \"partner\": \"AWS\",\n  \"productID\": \"productID\",\n  \"service\": \"MARKETPLACE\",\n  \"entitlementID\": \"entitlementID\",\n  \"groupBy\": \"{}\",\n  \"buyerID\": \"buyerID\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.suger.cloud",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4254cabb-3ee3-4010-a9e5-81eee5ad0bfa",
+    "name": "Suger API Report API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.\n\nContact Support:\n Name: Suger Support\n Email: support@suger.io",
+      "type": "text/plain"
+    }
+  }
+}

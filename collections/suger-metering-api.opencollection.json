@@ -1,0 +1,517 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Suger API Metering API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metering",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Batch Report UsageRecordGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/batchCreateUsageRecordGroups",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Batch report new usage record groups."
+        },
+        {
+          "info": {
+            "name": "Batch Validate UsageRecordGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/batchValidateUsageRecordGroups",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Provide a batch of usage record groups and validate each individual usage record group one by one."
+        },
+        {
+          "info": {
+            "name": "List Billable Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/billableMetric",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Status of the billable metric"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "list billable metrics for the given organization."
+        },
+        {
+          "info": {
+            "name": "Create Billable Metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/billableMetric",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new billable metric for the given organization."
+        },
+        {
+          "info": {
+            "name": "Get Billable Metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/billableMetric/:billableMetricId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "billableMetricId",
+                "value": "",
+                "type": "path",
+                "description": "Billable Metric ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the billable metric for the given organization and billable metric ID."
+        },
+        {
+          "info": {
+            "name": "Update Billable Metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/billableMetric/:billableMetricId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "billableMetricId",
+                "value": "",
+                "type": "path",
+                "description": "Billable Metric ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the name, description and status of the billable metric for the given organization."
+        },
+        {
+          "info": {
+            "name": "Report UsageRecordGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/usageRecordGroup",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "It is recommended to provide the ID in the request body CreateUsageRecordGroupParams, so the report can be deduplicated. All duplicate report will return error code 409."
+        },
+        {
+          "info": {
+            "name": "Get Usage Metering Config Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/usageMeteringConfigInfo",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the usage metering config info of the given organization."
+        },
+        {
+          "info": {
+            "name": "Update Usage Metering Config Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/usageMeteringConfigInfo",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the usage metering config info of the given organization."
+        },
+        {
+          "info": {
+            "name": "List UsageRecordGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/usageRecordGroup",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "partner",
+                "value": "",
+                "type": "query",
+                "description": "Cloud Partner"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "filter by buyer ID, default no filter by buyerId if not provided"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "query",
+                "description": "filter by entitlement ID, default no filter by entitlementId if not provided"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "The status of the usage record group, default no filter by status if not provided"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "The source of the usage record group, default no filter by source if not provided"
+              },
+              {
+                "name": "metaInfo",
+                "value": "",
+                "type": "query",
+                "description": "metaInfo filter"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "end date (UTC) in YYYY-MM-DD format, default is today"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List UsageRecordGroups by the given organization, partner, product, entitlement or buyer. Only provide one or none of the optional query parameters: partner, productId, entitlementId & buyerId ."
+        },
+        {
+          "info": {
+            "name": "Delete UsageRecordGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.suger.cloud/org/:orgId/usageRecordGroup/:usageRecordGroupId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "usageRecordGroupId",
+                "value": "",
+                "type": "path",
+                "description": "UsageRecordGroup ID"
+              },
+              {
+                "name": "creationDate",
+                "value": "",
+                "type": "query",
+                "description": "UsageRecordGroup's creation date (UTC) in YYYY-MM-DD format"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "delete the UsageRecordGroup for the given organization and usageRecordGroup ID. Only usageRecordGroup with status \"CREATED\" or \"INVALID\" can be deleted."
+        },
+        {
+          "info": {
+            "name": "Retry UsageRecordGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/usageRecordGroup/:usageRecordGroupId/retry",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "usageRecordGroupId",
+                "value": "",
+                "type": "path",
+                "description": "UsageRecordGroup ID"
+              },
+              {
+                "name": "creationDate",
+                "value": "",
+                "type": "query",
+                "description": "UsageRecordGroup's creation date (UTC) in YYYY-MM-DD format"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retry the given UsageRecordGroup by setting from status \"REPORT_FAILED\" to \"CREATED\", and it will be ready for the next hourly report. Only usageRecordGroup with status \"REPORT_FAILED\" can be retried."
+        },
+        {
+          "info": {
+            "name": "List UsageRecordReports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/usageRecordReport",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "partner",
+                "value": "",
+                "type": "query",
+                "description": "Cloud Partner"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "buyer ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "query",
+                "description": "entitlement ID"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "end date (UTC) in YYYY-MM-DD format, default is today"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List usageRecordReports under the given organization, partner, entitlement or buyer, within the given time range and pagination."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

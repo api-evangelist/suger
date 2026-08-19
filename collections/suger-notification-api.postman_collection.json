@@ -1,0 +1,1182 @@
+{
+  "item": [
+    {
+      "id": "7a989b66-ae6a-4350-a144-8d333cbfa5bd",
+      "name": "Notification",
+      "description": {
+        "content": "Access to Notification resources",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "deb287d7-24e6-4365-9351-e137de2c1c46",
+          "name": "List Notification Events",
+          "request": {
+            "name": "List Notification Events",
+            "description": {
+              "content": "List the notification events of the given organization with pagination and optional filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "notificationEvent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<string>",
+                  "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>",
+                  "description": "end date (UTC) in YYYY-MM-DD format, default is today"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "List pagination size, default 1000, max value is 1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "List pagination offset, default 0"
+                },
+                {
+                  "disabled": false,
+                  "key": "priorities",
+                  "value": "<string>",
+                  "description": "Filter by priorities, empty means HIGH and CRITICAL only. Valid values are: LOW, MEDIUM, HIGH, CRITICAL. Multiple values are supported, separated by comma."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5b718611-e7eb-4234-93b9-d47ea8aa7ebb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "notificationEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "priorities",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nextOffset\": 6555,\n  \"notificationEvents\": [\n    {\n      \"action\": \"EXPIRE\",\n      \"ccContactIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"channels\": [\n        \"WEBHOOK\",\n        \"EMAIL\"\n      ],\n      \"contactEmails\": [\n        \"string\",\n        \"string\"\n      ],\n      \"contactIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"createdBy\": {\n        \"email\": \"string\",\n        \"entityId\": \"string\",\n        \"entityType\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"name\": \"string\"\n      },\n      \"customFields\": {\n        \"key_0\": true,\n        \"key_1\": 9496\n      },\n      \"entityID\": \"string\",\n      \"entityName\": \"string\",\n      \"entityStatus\": \"string\",\n      \"entityType\": \"AUDITING_EVENT\",\n      \"eventID\": \"string\",\n      \"eventStatus\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"info\": {},\n      \"isActionItem\": true,\n      \"lastUpdateTime\": \"1953-10-29T18:51:28.090Z\",\n      \"message\": \"string\",\n      \"organizationID\": \"string\",\n      \"partner\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"priority\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"requireAudit\": false,\n      \"timestamp\": \"1974-01-25T04:41:05.031Z\",\n      \"title\": \"string\",\n      \"trackEvents\": [\n        {\n          \"contactId\": \"contactId\",\n          \"action\": \"OPEN_EMAIL\",\n          \"timestamp\": \"2000-01-23 04:56:07+00:00\"\n        },\n        {\n          \"contactId\": \"contactId\",\n          \"action\": \"OPEN_EMAIL\",\n          \"timestamp\": \"2000-01-23 04:56:07+00:00\"\n        }\n      ]\n    },\n    {\n      \"action\": \"MARKETPLACE_CONTACT_EMAIL_UPDATE\",\n      \"ccContactIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"channels\": [\n        \"SMS\",\n        \"WEBHOOK\"\n      ],\n      \"contactEmails\": [\n        \"string\",\n        \"string\"\n      ],\n      \"contactIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"createdBy\": {\n        \"email\": \"string\",\n        \"entityId\": \"string\",\n        \"entityType\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"name\": \"string\"\n      },\n      \"customFields\": {\n        \"key_0\": 8338,\n        \"key_1\": true\n      },\n      \"entityID\": \"string\",\n      \"entityName\": \"string\",\n      \"entityStatus\": \"string\",\n      \"entityType\": \"CONTACT\",\n      \"eventID\": \"string\",\n      \"eventStatus\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"info\": {},\n      \"isActionItem\": false,\n      \"lastUpdateTime\": \"2017-11-26T13:37:00.808Z\",\n      \"message\": \"string\",\n      \"organizationID\": \"string\",\n      \"partner\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"priority\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"requireAudit\": false,\n      \"timestamp\": \"1989-09-25T03:50:34.744Z\",\n      \"title\": \"string\",\n      \"trackEvents\": [\n        {\n          \"contactId\": \"contactId\",\n          \"action\": \"OPEN_EMAIL\",\n          \"timestamp\": \"2000-01-23 04:56:07+00:00\"\n        },\n        {\n          \"contactId\": \"contactId\",\n          \"action\": \"OPEN_EMAIL\",\n          \"timestamp\": \"2000-01-23 04:56:07+00:00\"\n        }\n      ]\n    }\n  ],\n  \"totalCount\": 911\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7044f22-b173-49ca-8244-167d8e193801",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "notificationEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "priorities",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5bc2f89-f0fe-4f46-ae97-ea688b414151",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "notificationEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "priorities",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6644349-840f-4f96-a5f5-c7d752175583",
+          "name": "List Notification Events By Entity",
+          "request": {
+            "name": "List Notification Events By Entity",
+            "description": {
+              "content": "List the notification events of the given organization and entity with pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "notificationEvent",
+                ":entityType",
+                ":entityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "List pagination size, default 1000, max value is 1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "List pagination offset, default 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entityType",
+                  "description": "(Required) Entity type, valid values are: PRODUCT, OFFER, ENTITLEMENT, INTEGRATION etc."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entityId",
+                  "description": "(Required) Entity ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b23954df-cfb5-42cb-91c2-0756b7099ba6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "notificationEvent",
+                    ":entityType",
+                    ":entityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityType",
+                      "description": "(Required) Entity type, valid values are: PRODUCT, OFFER, ENTITLEMENT, INTEGRATION etc."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityId",
+                      "description": "(Required) Entity ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nextOffset\": 8883,\n  \"notificationEvents\": [\n    {\n      \"action\": \"APPROVE\",\n      \"ccContactIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"channels\": [\n        \"MICROSOFT_TEAMS\",\n        \"WEBHOOK\"\n      ],\n      \"contactEmails\": [\n        \"string\",\n        \"string\"\n      ],\n      \"contactIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"createdBy\": {\n        \"email\": \"string\",\n        \"entityId\": \"string\",\n        \"entityType\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"name\": \"string\"\n      },\n      \"customFields\": {\n        \"key_0\": 9251.626218344503,\n        \"key_1\": 6908.008033704408\n      },\n      \"entityID\": \"string\",\n      \"entityName\": \"string\",\n      \"entityStatus\": \"string\",\n      \"entityType\": \"USAGE_RECORD_GROUP\",\n      \"eventID\": \"string\",\n      \"eventStatus\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"info\": {},\n      \"isActionItem\": true,\n      \"lastUpdateTime\": \"1986-04-23T20:52:52.320Z\",\n      \"message\": \"string\",\n      \"organizationID\": \"string\",\n      \"partner\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"priority\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"requireAudit\": false,\n      \"timestamp\": \"1989-02-28T15:57:54.645Z\",\n      \"title\": \"string\",\n      \"trackEvents\": [\n        {\n          \"contactId\": \"contactId\",\n          \"action\": \"OPEN_EMAIL\",\n          \"timestamp\": \"2000-01-23 04:56:07+00:00\"\n        },\n        {\n          \"contactId\": \"contactId\",\n          \"action\": \"OPEN_EMAIL\",\n          \"timestamp\": \"2000-01-23 04:56:07+00:00\"\n        }\n      ]\n    },\n    {\n      \"action\": \"APPROVE\",\n      \"ccContactIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"channels\": [\n        \"SNS\",\n        \"SNS\"\n      ],\n      \"contactEmails\": [\n        \"string\",\n        \"string\"\n      ],\n      \"contactIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"createdBy\": {\n        \"email\": \"string\",\n        \"entityId\": \"string\",\n        \"entityType\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"name\": \"string\"\n      },\n      \"customFields\": {\n        \"key_0\": true,\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"entityID\": \"string\",\n      \"entityName\": \"string\",\n      \"entityStatus\": \"string\",\n      \"entityType\": \"AUTO_SHARE_TASK\",\n      \"eventID\": \"string\",\n      \"eventStatus\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"info\": {},\n      \"isActionItem\": true,\n      \"lastUpdateTime\": \"2016-12-27T16:06:35.184Z\",\n      \"message\": \"string\",\n      \"organizationID\": \"string\",\n      \"partner\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"priority\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"requireAudit\": true,\n      \"timestamp\": \"1951-07-19T02:49:40.556Z\",\n      \"title\": \"string\",\n      \"trackEvents\": [\n        {\n          \"contactId\": \"contactId\",\n          \"action\": \"OPEN_EMAIL\",\n          \"timestamp\": \"2000-01-23 04:56:07+00:00\"\n        },\n        {\n          \"contactId\": \"contactId\",\n          \"action\": \"OPEN_EMAIL\",\n          \"timestamp\": \"2000-01-23 04:56:07+00:00\"\n        }\n      ]\n    }\n  ],\n  \"totalCount\": 978\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ce47605-a19f-4a31-9a9b-ccc356850670",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "notificationEvent",
+                    ":entityType",
+                    ":entityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityType",
+                      "description": "(Required) Entity type, valid values are: PRODUCT, OFFER, ENTITLEMENT, INTEGRATION etc."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityId",
+                      "description": "(Required) Entity ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db917ac1-a268-431b-af80-88e09eff9590",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "notificationEvent",
+                    ":entityType",
+                    ":entityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityType",
+                      "description": "(Required) Entity type, valid values are: PRODUCT, OFFER, ENTITLEMENT, INTEGRATION etc."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityId",
+                      "description": "(Required) Entity ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46892e4a-24d6-4089-b8c6-f8bad45b8e5f",
+          "name": "List Notification Messages",
+          "request": {
+            "name": "List Notification Messages",
+            "description": {
+              "content": "List the notification messages of the given organization with pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "notificationMessage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "List pagination size, default 1000, max value is 1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "List pagination offset, default 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6db28f19-cf2c-45dd-8b68-8a8c2d5d98ef",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "notificationMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"notificationMessages\": [\n    {\n      \"organizationID\": \"organizationID\",\n      \"creationTime\": \"2000-01-23 04:56:07+00:00\",\n      \"recipient\": \"recipient\",\n      \"type\": \"EMAIL\",\n      \"info\": {\n        \"standardFields\": {\n          \"key\": \"\"\n        },\n        \"customFields\": {\n          \"key\": \"\"\n        },\n        \"subject\": \"subject\",\n        \"rccRecipients\": [\n          \"rccRecipients\",\n          \"rccRecipients\"\n        ],\n        \"ccRecipients\": [\n          \"ccRecipients\",\n          \"ccRecipients\"\n        ],\n        \"action\": \"{}\",\n        \"textContent\": \"textContent\",\n        \"htmlContent\": \"htmlContent\"\n      }\n    },\n    {\n      \"organizationID\": \"organizationID\",\n      \"creationTime\": \"2000-01-23 04:56:07+00:00\",\n      \"recipient\": \"recipient\",\n      \"type\": \"EMAIL\",\n      \"info\": {\n        \"standardFields\": {\n          \"key\": \"\"\n        },\n        \"customFields\": {\n          \"key\": \"\"\n        },\n        \"subject\": \"subject\",\n        \"rccRecipients\": [\n          \"rccRecipients\",\n          \"rccRecipients\"\n        ],\n        \"ccRecipients\": [\n          \"ccRecipients\",\n          \"ccRecipients\"\n        ],\n        \"action\": \"{}\",\n        \"textContent\": \"textContent\",\n        \"htmlContent\": \"htmlContent\"\n      }\n    }\n  ],\n  \"nextOffset\": 0,\n  \"totalCount\": 6\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7164ecf6-ad90-410e-863c-5fe117c648a2",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "notificationMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6318cd0f-e4e4-43bb-9aae-31ae746a4e94",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "notificationMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dec5cf26-1e98-438d-be82-1ec15286168e",
+          "name": "Get Notification Message",
+          "request": {
+            "name": "Get Notification Message",
+            "description": {
+              "content": "Get the notification message of the organization & notification message ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "notificationMessage",
+                ":notificationMessageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "notificationMessageId",
+                  "description": "(Required) Notification Message ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1756b73a-0114-4f03-9e5b-ffa5d48cb435",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "notificationMessage",
+                    ":notificationMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "notificationMessageId",
+                      "description": "(Required) Notification Message ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organizationID\": \"organizationID\",\n  \"creationTime\": \"2000-01-23 04:56:07+00:00\",\n  \"recipient\": \"recipient\",\n  \"type\": \"EMAIL\",\n  \"info\": {\n    \"standardFields\": {\n      \"key\": \"\"\n    },\n    \"customFields\": {\n      \"key\": \"\"\n    },\n    \"subject\": \"subject\",\n    \"rccRecipients\": [\n      \"rccRecipients\",\n      \"rccRecipients\"\n    ],\n    \"ccRecipients\": [\n      \"ccRecipients\",\n      \"ccRecipients\"\n    ],\n    \"action\": \"{}\",\n    \"textContent\": \"textContent\",\n    \"htmlContent\": \"htmlContent\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "071134c6-1b44-4aa6-8a44-475875d7e0bc",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "notificationMessage",
+                    ":notificationMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "notificationMessageId",
+                      "description": "(Required) Notification Message ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7be3a6da-ba0f-4136-b3b2-6bd9916852e0",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "notificationMessage",
+                    ":notificationMessageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "notificationMessageId",
+                      "description": "(Required) Notification Message ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.suger.cloud",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b578930b-3022-4d6b-9fe2-d7538799a895",
+    "name": "Suger API Notification API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.\n\nContact Support:\n Name: Suger Support\n Email: support@suger.io",
+      "type": "text/plain"
+    }
+  }
+}

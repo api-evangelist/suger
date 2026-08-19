@@ -1,0 +1,190 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Suger API Notification API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Notification Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/notificationEvent",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "start date (UTC) in YYYY-MM-DD format, default is 30 days before the endDate"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "end date (UTC) in YYYY-MM-DD format, default is today"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              },
+              {
+                "name": "priorities",
+                "value": "",
+                "type": "query",
+                "description": "Filter by priorities, empty means HIGH and CRITICAL only. Valid values are: LOW, MEDIUM, HIGH, CRITICAL. Multiple values are supported, separated by comma."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List the notification events of the given organization with pagination and optional filters."
+        },
+        {
+          "info": {
+            "name": "List Notification Events By Entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/notificationEvent/:entityType/:entityId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entityType",
+                "value": "",
+                "type": "path",
+                "description": "Entity type, valid values are: PRODUCT, OFFER, ENTITLEMENT, INTEGRATION etc."
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "path",
+                "description": "Entity ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List the notification events of the given organization and entity with pagination."
+        },
+        {
+          "info": {
+            "name": "List Notification Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/notificationMessage",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List the notification messages of the given organization with pagination."
+        },
+        {
+          "info": {
+            "name": "Get Notification Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/notificationMessage/:notificationMessageId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "notificationMessageId",
+                "value": "",
+                "type": "path",
+                "description": "Notification Message ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the notification message of the organization & notification message ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

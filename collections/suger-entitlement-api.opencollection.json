@@ -1,0 +1,631 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Suger API Entitlement API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Entitlement",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Entitlements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "partner",
+                "value": "",
+                "type": "query",
+                "description": "filter by partner"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "query",
+                "description": "filter by productId"
+              },
+              {
+                "name": "offerId",
+                "value": "",
+                "type": "query",
+                "description": "filter by offerId"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "filter by buyerId"
+              },
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "query",
+                "description": "filter by externalId"
+              },
+              {
+                "name": "buyerAccountId",
+                "value": "",
+                "type": "query",
+                "description": "filter by buyerAccountId is currently supported only for AWS"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "List pagination size, default 1000, max value is 1000"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "List pagination offset, default 0"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List entitlements under the given organization with pagination and optional filters."
+        },
+        {
+          "info": {
+            "name": "Create Entitlement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create an new entitlement for the given buyer & offer. Only applicable to non cloud billing partners."
+        },
+        {
+          "info": {
+            "name": "Get Entitlement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the entitlement by ID."
+        },
+        {
+          "info": {
+            "name": "Add Entitlement Credit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/addCredit",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add the credit amount to the given Entitlement. The credit amount is accumulated & saved in the current Entitlement Term of the gvien Entitlement."
+        },
+        {
+          "info": {
+            "name": "Apply Addon To Entitlement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/addon",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Apply one billing addon to the given Entitlement. The entitlement status must be ACTIVE."
+        },
+        {
+          "info": {
+            "name": "Approve Entitlement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/approve",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Approve the given Entitlement. Only applicable to the Azure or GCP Entitlements with the status of \"PENDING_START\". Return 200 if the entitlement is already active."
+        },
+        {
+          "info": {
+            "name": "Cancel Entitlement",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/cancel",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Cancel the active subscription in Azure Marketplace."
+        },
+        {
+          "info": {
+            "name": "Divide Entitlement Commit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/divideCommit",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Divide the commit equally from the given entitlement into sub entitlement terms based on the given time periods."
+        },
+        {
+          "info": {
+            "name": "Update Entitlement Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/entitlementName",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the name of the given Entitlement."
+        },
+        {
+          "info": {
+            "name": "List Entitlement Terms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/entitlementTerm",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all Entitlement Terms of the given Entitlement."
+        },
+        {
+          "info": {
+            "name": "Get Entitlement Term",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/entitlementTerm/:entitlementTermId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              },
+              {
+                "name": "entitlementTermId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement Term ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the entitlement term by ID."
+        },
+        {
+          "info": {
+            "name": "Delete Entitlement Term",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/entitlementTerm/:entitlementTermId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              },
+              {
+                "name": "entitlementTermId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement Term ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete the entitlement term by the given entitlement ID and entitlement term ID. Only allow to delete the divided entitlement term."
+        },
+        {
+          "info": {
+            "name": "Update Entitlement Meta Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/metaInfo",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the meta info of the given entitlement."
+        },
+        {
+          "info": {
+            "name": "Update Entitlement Price Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/priceModel",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the price model of the given entitlement, such as recurring commits, billable dimensions. Only applicable to non cloud billing partners."
+        },
+        {
+          "info": {
+            "name": "Schedule Entitlement Cancellation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/scheduleCancellation",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Schedule the cancellation of the given Entitlement."
+        },
+        {
+          "info": {
+            "name": "Update Seat For The Active AZURE Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/seat",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              },
+              {
+                "name": "newSeat",
+                "value": "",
+                "type": "query",
+                "description": "New seat number"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the seat number for the active AZURE subscription."
+        },
+        {
+          "info": {
+            "name": "Unschedule Entitlement Cancellation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.suger.cloud/org/:orgId/entitlement/:entitlementId/unscheduleCancellation",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "entitlementId",
+                "value": "",
+                "type": "path",
+                "description": "Entitlement ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Unschedule the cancellation of the given Entitlement."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

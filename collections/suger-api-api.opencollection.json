@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Suger API API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Api Clients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/apiClient",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all API clients in the given organization."
+        },
+        {
+          "info": {
+            "name": "Get Api Client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.suger.cloud/org/:orgId/apiClient/:apiClientId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "apiClientId",
+                "value": "",
+                "type": "path",
+                "description": "API client ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the API client by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

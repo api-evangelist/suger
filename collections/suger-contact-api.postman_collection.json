@@ -1,0 +1,2503 @@
+{
+  "item": [
+    {
+      "id": "0830a91a-dc01-4fdd-9935-c75e0c4a29ff",
+      "name": "Contact",
+      "description": {
+        "content": "Access to Contact resources",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f657f317-2ca3-4b86-9d75-a13a1dd935a0",
+          "name": "List Contacts By Organization",
+          "request": {
+            "name": "List Contacts By Organization",
+            "description": {
+              "content": "List all contacts under the given organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "contact"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "List pagination size, default 1000, max value is 1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "List pagination offset, default 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6f61b4ca-11ae-4489-9d55-68d965205733",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"organizationID\": \"organizationID\",\n    \"emailAddress\": \"emailAddress\",\n    \"creationTime\": \"creationTime\",\n    \"name\": \"name\",\n    \"info\": {\n      \"phoneNumber\": \"phoneNumber\",\n      \"role\": \"role\",\n      \"companyName\": \"companyName\",\n      \"lastModifiedBy\": \"lastModifiedBy\",\n      \"companyLocation\": \"companyLocation\"\n    },\n    \"lastUpdateTime\": \"lastUpdateTime\"\n  },\n  {\n    \"organizationID\": \"organizationID\",\n    \"emailAddress\": \"emailAddress\",\n    \"creationTime\": \"creationTime\",\n    \"name\": \"name\",\n    \"info\": {\n      \"phoneNumber\": \"phoneNumber\",\n      \"role\": \"role\",\n      \"companyName\": \"companyName\",\n      \"lastModifiedBy\": \"lastModifiedBy\",\n      \"companyLocation\": \"companyLocation\"\n    },\n    \"lastUpdateTime\": \"lastUpdateTime\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63e5750c-5e86-4002-b5ec-17ed9378ff04",
+              "name": "Bad request error description",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c907b27-45de-4db8-8fbd-8d148c6f264e",
+              "name": "internal error description",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69f03971-cdcb-48ee-9ce7-03fbf317fdb8",
+          "name": "Create Contact",
+          "request": {
+            "name": "Create Contact",
+            "description": {
+              "content": "Create a contact under the given organization. If the email address already exists, return the existing contact.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "contact"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"creationTime\": \"<string>\",\n  \"emailAddress\": \"<string>\",\n  \"id\": \"<string>\",\n  \"info\": {\n    \"companyLocation\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"role\": \"<string>\"\n  },\n  \"lastUpdateTime\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organizationID\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7ceca9b0-1d34-47cc-a97b-2f9fed86d8e5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationID\": \"organizationID\",\n  \"emailAddress\": \"emailAddress\",\n  \"creationTime\": \"creationTime\",\n  \"name\": \"name\",\n  \"info\": {\n    \"phoneNumber\": \"phoneNumber\",\n    \"role\": \"role\",\n    \"companyName\": \"companyName\",\n    \"lastModifiedBy\": \"lastModifiedBy\",\n    \"companyLocation\": \"companyLocation\"\n  },\n  \"lastUpdateTime\": \"lastUpdateTime\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organizationID\": \"organizationID\",\n  \"emailAddress\": \"emailAddress\",\n  \"creationTime\": \"creationTime\",\n  \"name\": \"name\",\n  \"info\": {\n    \"phoneNumber\": \"phoneNumber\",\n    \"role\": \"role\",\n    \"companyName\": \"companyName\",\n    \"lastModifiedBy\": \"lastModifiedBy\",\n    \"companyLocation\": \"companyLocation\"\n  },\n  \"lastUpdateTime\": \"lastUpdateTime\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "035ed36d-4726-43f7-8141-891ae33ace74",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationID\": \"organizationID\",\n  \"emailAddress\": \"emailAddress\",\n  \"creationTime\": \"creationTime\",\n  \"name\": \"name\",\n  \"info\": {\n    \"phoneNumber\": \"phoneNumber\",\n    \"role\": \"role\",\n    \"companyName\": \"companyName\",\n    \"lastModifiedBy\": \"lastModifiedBy\",\n    \"companyLocation\": \"companyLocation\"\n  },\n  \"lastUpdateTime\": \"lastUpdateTime\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "abbfc8e2-e055-4bbc-b0ce-34dd7b7051dc",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationID\": \"organizationID\",\n  \"emailAddress\": \"emailAddress\",\n  \"creationTime\": \"creationTime\",\n  \"name\": \"name\",\n  \"info\": {\n    \"phoneNumber\": \"phoneNumber\",\n    \"role\": \"role\",\n    \"companyName\": \"companyName\",\n    \"lastModifiedBy\": \"lastModifiedBy\",\n    \"companyLocation\": \"companyLocation\"\n  },\n  \"lastUpdateTime\": \"lastUpdateTime\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f0666c2-c2b6-4aee-b56f-8d7b0ca91212",
+          "name": "Get Contact",
+          "request": {
+            "name": "Get Contact",
+            "description": {
+              "content": "Get the Contact by the given contact ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "contact",
+                ":contactId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contactId",
+                  "description": "(Required) Contact ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f2119c9f-828f-4be6-9919-2500610d69a6",
+              "name": "the Contact Object",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organizationID\": \"organizationID\",\n  \"emailAddress\": \"emailAddress\",\n  \"creationTime\": \"creationTime\",\n  \"name\": \"name\",\n  \"info\": {\n    \"phoneNumber\": \"phoneNumber\",\n    \"role\": \"role\",\n    \"companyName\": \"companyName\",\n    \"lastModifiedBy\": \"lastModifiedBy\",\n    \"companyLocation\": \"companyLocation\"\n  },\n  \"lastUpdateTime\": \"lastUpdateTime\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef0b0fb9-93af-400c-8688-38c7527c4c10",
+              "name": "Bad request error description",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11d99686-d607-4c32-8fb8-48eacb68a8c0",
+              "name": "internal error description",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86294918-19a6-4ea1-a6dc-ba51b5d82018",
+          "name": "Update Contact",
+          "request": {
+            "name": "Update Contact",
+            "description": {
+              "content": "update contact by the given organization and buyer id. The given name and information should be complete. Please note that this function does not support partial updates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "contact",
+                ":contactId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contactId",
+                  "description": "(Required) Contact ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"creationTime\": \"<string>\",\n  \"emailAddress\": \"<string>\",\n  \"id\": \"<string>\",\n  \"info\": {\n    \"companyLocation\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"lastModifiedBy\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"role\": \"<string>\"\n  },\n  \"lastUpdateTime\": \"<string>\",\n  \"name\": \"<string>\",\n  \"organizationID\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9b75381e-9cc8-464b-95ef-4136694e35a1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationID\": \"organizationID\",\n  \"emailAddress\": \"emailAddress\",\n  \"creationTime\": \"creationTime\",\n  \"name\": \"name\",\n  \"info\": {\n    \"phoneNumber\": \"phoneNumber\",\n    \"role\": \"role\",\n    \"companyName\": \"companyName\",\n    \"lastModifiedBy\": \"lastModifiedBy\",\n    \"companyLocation\": \"companyLocation\"\n  },\n  \"lastUpdateTime\": \"lastUpdateTime\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organizationID\": \"organizationID\",\n  \"emailAddress\": \"emailAddress\",\n  \"creationTime\": \"creationTime\",\n  \"name\": \"name\",\n  \"info\": {\n    \"phoneNumber\": \"phoneNumber\",\n    \"role\": \"role\",\n    \"companyName\": \"companyName\",\n    \"lastModifiedBy\": \"lastModifiedBy\",\n    \"companyLocation\": \"companyLocation\"\n  },\n  \"lastUpdateTime\": \"lastUpdateTime\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41d02e6d-a74a-4443-b318-bef8f569684f",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationID\": \"organizationID\",\n  \"emailAddress\": \"emailAddress\",\n  \"creationTime\": \"creationTime\",\n  \"name\": \"name\",\n  \"info\": {\n    \"phoneNumber\": \"phoneNumber\",\n    \"role\": \"role\",\n    \"companyName\": \"companyName\",\n    \"lastModifiedBy\": \"lastModifiedBy\",\n    \"companyLocation\": \"companyLocation\"\n  },\n  \"lastUpdateTime\": \"lastUpdateTime\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66491e4a-c8c1-42af-9573-1750b920c722",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organizationID\": \"organizationID\",\n  \"emailAddress\": \"emailAddress\",\n  \"creationTime\": \"creationTime\",\n  \"name\": \"name\",\n  \"info\": {\n    \"phoneNumber\": \"phoneNumber\",\n    \"role\": \"role\",\n    \"companyName\": \"companyName\",\n    \"lastModifiedBy\": \"lastModifiedBy\",\n    \"companyLocation\": \"companyLocation\"\n  },\n  \"lastUpdateTime\": \"lastUpdateTime\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b383899-507d-48a1-814d-8ad2bac06374",
+          "name": "Remove Contact From Buyer",
+          "request": {
+            "name": "Remove Contact From Buyer",
+            "description": {
+              "content": "remove contact from buyer by the given organization, buyer id and contact id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "contact",
+                ":contactId",
+                "buyer",
+                ":buyerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "buyerId",
+                  "description": "(Required) Buyer ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contactId",
+                  "description": "(Required) Contact ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "aef769da-530f-4fa3-9216-b6ac179ca860",
+              "name": "empty string if success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId",
+                    "buyer",
+                    ":buyerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "buyerId",
+                      "description": "(Required) Buyer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87a470f6-e082-4968-a4c3-d694d6766261",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId",
+                    "buyer",
+                    ":buyerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "buyerId",
+                      "description": "(Required) Buyer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0122da8c-2a26-49d7-a9e8-1105c8e1a68d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId",
+                    "buyer",
+                    ":buyerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "buyerId",
+                      "description": "(Required) Buyer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca84c945-189d-46e2-a848-c83b1a3cdf85",
+          "name": "Add Contact To Buyer",
+          "request": {
+            "name": "Add Contact To Buyer",
+            "description": {
+              "content": "add contact to buyer by the given organization, buyer id and contact id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "contact",
+                ":contactId",
+                "buyer",
+                ":buyerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "buyerId",
+                  "description": "(Required) Buyer ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contactId",
+                  "description": "(Required) Contact ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fad98c36-3fa7-42db-8d0b-6d2a6cfee424",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId",
+                    "buyer",
+                    ":buyerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "buyerId",
+                      "description": "(Required) Buyer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contactIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"creationTime\": \"2025-09-11T00:14:19.433Z\",\n  \"description\": \"string\",\n  \"externalID\": \"string\",\n  \"id\": \"string\",\n  \"info\": {\n    \"adyenBuyer\": {\n      \"settings\": {\n        \"key_0\": true,\n        \"key_1\": \"string\",\n        \"key_2\": 1277.317016507068\n      },\n      \"shopperId\": \"string\"\n    },\n    \"awsBuyer\": {\n      \"awsAccountID\": \"string\",\n      \"awsCustomerID\": \"string\",\n      \"dataFeedAccountID\": \"string\"\n    },\n    \"azureBuyer\": {\n      \"firstName\": \"firstName\",\n      \"lastName\": \"lastName\",\n      \"licenseType\": \"licenseType\",\n      \"puid\": \"puid\",\n      \"customerId\": \"customerId\",\n      \"tenantId\": \"tenantId\",\n      \"billingAccountId\": \"billingAccountId\",\n      \"emailId\": \"emailId\",\n      \"objectId\": \"objectId\"\n    },\n    \"collectableAmount\": 5390.851198712359,\n    \"companyInfo\": {\n      \"country\": \"country\",\n      \"emailDomain\": \"emailDomain\",\n      \"city\": \"city\",\n      \"postalCode\": \"postalCode\",\n      \"name\": \"name\",\n      \"addressLine1\": \"addressLine1\",\n      \"addressLine2\": \"addressLine2\",\n      \"state\": \"state\",\n      \"validFrom\": \"validFrom\"\n    },\n    \"customerId\": \"string\",\n    \"disbursedAmount\": 213.70451660808197,\n    \"emailAddress\": \"string\",\n    \"fields\": {\n      \"key_0\": 2530\n    },\n    \"gcpBuyer\": {\n      \"approvals\": [\n        {\n          \"name\": \"string\",\n          \"reason\": \"string\",\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"updateTime\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"reason\": \"string\",\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"updateTime\": \"string\"\n        }\n      ],\n      \"billingAccountId\": \"string\",\n      \"createTime\": \"2004-03-06T02:01:05.446Z\",\n      \"id\": \"string\",\n      \"inputProperties\": [\n        2839,\n        8614\n      ],\n      \"name\": \"string\",\n      \"parentBillingAccountId\": \"string\",\n      \"provider\": \"string\",\n      \"state\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"updateTime\": \"1952-11-02T09:53:57.017Z\",\n      \"userInfo\": {\n        \"orders\": [\n          \"string\",\n          \"string\"\n        ],\n        \"roles\": [\n          \"string\",\n          \"string\"\n        ],\n        \"user_identity\": \"string\"\n      }\n    },\n    \"grossAmount\": 7624.983471249813,\n    \"invoicedAmount\": 3390.7432521700844,\n    \"lagoCustomerId\": \"string\",\n    \"lastModifiedBy\": \"string\",\n    \"metronomeCustomerId\": \"string\",\n    \"orbCustomerId\": \"string\",\n    \"paymentConfig\": {\n      \"allowedWalletTypes\": [\n        \"credit\",\n        \"credit\"\n      ],\n      \"currency\": \"string\",\n      \"defaultWalletId\": \"string\"\n    },\n    \"snowflakeBuyer\": {\n      \"snowflakeCustomerID\": \"string\"\n    },\n    \"spaUrl\": \"string\",\n    \"stripeBuyer\": {\n      \"address\": {\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"postal_code\": \"string\",\n        \"state\": \"string\"\n      },\n      \"description\": \"string\",\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"name\": \"string\",\n      \"phone\": \"string\"\n    },\n    \"stripeCustomerId\": \"string\"\n  },\n  \"lastUpdateTime\": \"1997-03-14T08:06:06.332Z\",\n  \"name\": \"string\",\n  \"organizationID\": \"string\",\n  \"partner\": \"MARKETO\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fefda82f-3f8f-490d-b1fb-dc1ed75420b1",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId",
+                    "buyer",
+                    ":buyerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "buyerId",
+                      "description": "(Required) Buyer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6deb3a04-43a7-406c-88fc-01e0a74ad3b2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId",
+                    "buyer",
+                    ":buyerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "buyerId",
+                      "description": "(Required) Buyer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c70ceed0-81df-4e95-9ad4-d1c67b257017",
+          "name": "Remove Contact From Offer",
+          "request": {
+            "name": "Remove Contact From Offer",
+            "description": {
+              "content": "remove contact from offer by given organization, offer id and contact id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "contact",
+                ":contactId",
+                "offer",
+                ":offerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contactId",
+                  "description": "(Required) Contact ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "offerId",
+                  "description": "(Required) Offer ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a6d191c5-edbe-4817-8c40-cc32d7d90fd8",
+              "name": "empty string if success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId",
+                    "offer",
+                    ":offerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "offerId",
+                      "description": "(Required) Offer ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ef47d56-7d6f-4f53-83a8-f4e8025988e2",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId",
+                    "offer",
+                    ":offerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "offerId",
+                      "description": "(Required) Offer ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a270b2dc-7956-4615-a47c-6feaa9d38cdf",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId",
+                    "offer",
+                    ":offerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "offerId",
+                      "description": "(Required) Offer ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cec79958-0cad-4f38-8a87-3d34dfdb88fa",
+          "name": "Add Contact To Offer",
+          "request": {
+            "name": "Add Contact To Offer",
+            "description": {
+              "content": "add contact to offer by the given organization, offer id and contact id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "contact",
+                ":contactId",
+                "offer",
+                ":offerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "contactId",
+                  "description": "(Required) Contact ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "offerId",
+                  "description": "(Required) Offer ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c81c6bf1-d3cf-483f-9389-4e2ff383fa4f",
+              "name": "empty string if success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId",
+                    "offer",
+                    ":offerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "offerId",
+                      "description": "(Required) Offer ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e94acf25-3225-47a7-8c88-f55186f52bd7",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId",
+                    "offer",
+                    ":offerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "offerId",
+                      "description": "(Required) Offer ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d68f13a0-d6d3-4141-8ebf-0a9c0bfa8367",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    ":contactId",
+                    "offer",
+                    ":offerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "contactId",
+                      "description": "(Required) Contact ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "offerId",
+                      "description": "(Required) Offer ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1998c5a-9de4-4530-b4f8-f9215bd7414c",
+          "name": "Batch Create Contacts",
+          "request": {
+            "name": "Batch Create Contacts",
+            "description": {
+              "content": "Create multiple contacts under the given organization. If an email address already exists, return the existing contact.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "contact",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"creationTime\": \"<string>\",\n    \"emailAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"info\": {\n      \"companyLocation\": \"<string>\",\n      \"companyName\": \"<string>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"role\": \"<string>\"\n    },\n    \"lastUpdateTime\": \"<string>\",\n    \"name\": \"<string>\",\n    \"organizationID\": \"<string>\"\n  },\n  {\n    \"creationTime\": \"<string>\",\n    \"emailAddress\": \"<string>\",\n    \"id\": \"<string>\",\n    \"info\": {\n      \"companyLocation\": \"<string>\",\n      \"companyName\": \"<string>\",\n      \"lastModifiedBy\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"role\": \"<string>\"\n    },\n    \"lastUpdateTime\": \"<string>\",\n    \"name\": \"<string>\",\n    \"organizationID\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "62fc232d-4617-4a72-939c-a553768e4725",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"organizationID\": \"organizationID\",\n    \"emailAddress\": \"emailAddress\",\n    \"creationTime\": \"creationTime\",\n    \"name\": \"name\",\n    \"info\": {\n      \"phoneNumber\": \"phoneNumber\",\n      \"role\": \"role\",\n      \"companyName\": \"companyName\",\n      \"lastModifiedBy\": \"lastModifiedBy\",\n      \"companyLocation\": \"companyLocation\"\n    },\n    \"lastUpdateTime\": \"lastUpdateTime\"\n  },\n  {\n    \"organizationID\": \"organizationID\",\n    \"emailAddress\": \"emailAddress\",\n    \"creationTime\": \"creationTime\",\n    \"name\": \"name\",\n    \"info\": {\n      \"phoneNumber\": \"phoneNumber\",\n      \"role\": \"role\",\n      \"companyName\": \"companyName\",\n      \"lastModifiedBy\": \"lastModifiedBy\",\n      \"companyLocation\": \"companyLocation\"\n    },\n    \"lastUpdateTime\": \"lastUpdateTime\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  [\n    {\n      \"organizationID\": \"organizationID\",\n      \"emailAddress\": \"emailAddress\",\n      \"creationTime\": \"creationTime\",\n      \"name\": \"name\",\n      \"info\": {\n        \"phoneNumber\": \"phoneNumber\",\n        \"role\": \"role\",\n        \"companyName\": \"companyName\",\n        \"lastModifiedBy\": \"lastModifiedBy\",\n        \"companyLocation\": \"companyLocation\"\n      },\n      \"lastUpdateTime\": \"lastUpdateTime\"\n    },\n    {\n      \"organizationID\": \"organizationID\",\n      \"emailAddress\": \"emailAddress\",\n      \"creationTime\": \"creationTime\",\n      \"name\": \"name\",\n      \"info\": {\n        \"phoneNumber\": \"phoneNumber\",\n        \"role\": \"role\",\n        \"companyName\": \"companyName\",\n        \"lastModifiedBy\": \"lastModifiedBy\",\n        \"companyLocation\": \"companyLocation\"\n      },\n      \"lastUpdateTime\": \"lastUpdateTime\"\n    }\n  ],\n  [\n    {\n      \"organizationID\": \"organizationID\",\n      \"emailAddress\": \"emailAddress\",\n      \"creationTime\": \"creationTime\",\n      \"name\": \"name\",\n      \"info\": {\n        \"phoneNumber\": \"phoneNumber\",\n        \"role\": \"role\",\n        \"companyName\": \"companyName\",\n        \"lastModifiedBy\": \"lastModifiedBy\",\n        \"companyLocation\": \"companyLocation\"\n      },\n      \"lastUpdateTime\": \"lastUpdateTime\"\n    },\n    {\n      \"organizationID\": \"organizationID\",\n      \"emailAddress\": \"emailAddress\",\n      \"creationTime\": \"creationTime\",\n      \"name\": \"name\",\n      \"info\": {\n        \"phoneNumber\": \"phoneNumber\",\n        \"role\": \"role\",\n        \"companyName\": \"companyName\",\n        \"lastModifiedBy\": \"lastModifiedBy\",\n        \"companyLocation\": \"companyLocation\"\n      },\n      \"lastUpdateTime\": \"lastUpdateTime\"\n    }\n  ]\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "003344a4-4f76-4c46-95f3-5e133de9130c",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"organizationID\": \"organizationID\",\n    \"emailAddress\": \"emailAddress\",\n    \"creationTime\": \"creationTime\",\n    \"name\": \"name\",\n    \"info\": {\n      \"phoneNumber\": \"phoneNumber\",\n      \"role\": \"role\",\n      \"companyName\": \"companyName\",\n      \"lastModifiedBy\": \"lastModifiedBy\",\n      \"companyLocation\": \"companyLocation\"\n    },\n    \"lastUpdateTime\": \"lastUpdateTime\"\n  },\n  {\n    \"organizationID\": \"organizationID\",\n    \"emailAddress\": \"emailAddress\",\n    \"creationTime\": \"creationTime\",\n    \"name\": \"name\",\n    \"info\": {\n      \"phoneNumber\": \"phoneNumber\",\n      \"role\": \"role\",\n      \"companyName\": \"companyName\",\n      \"lastModifiedBy\": \"lastModifiedBy\",\n      \"companyLocation\": \"companyLocation\"\n    },\n    \"lastUpdateTime\": \"lastUpdateTime\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e204c785-c6bb-415f-808d-13a32aa8e13a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "contact",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"organizationID\": \"organizationID\",\n    \"emailAddress\": \"emailAddress\",\n    \"creationTime\": \"creationTime\",\n    \"name\": \"name\",\n    \"info\": {\n      \"phoneNumber\": \"phoneNumber\",\n      \"role\": \"role\",\n      \"companyName\": \"companyName\",\n      \"lastModifiedBy\": \"lastModifiedBy\",\n      \"companyLocation\": \"companyLocation\"\n    },\n    \"lastUpdateTime\": \"lastUpdateTime\"\n  },\n  {\n    \"organizationID\": \"organizationID\",\n    \"emailAddress\": \"emailAddress\",\n    \"creationTime\": \"creationTime\",\n    \"name\": \"name\",\n    \"info\": {\n      \"phoneNumber\": \"phoneNumber\",\n      \"role\": \"role\",\n      \"companyName\": \"companyName\",\n      \"lastModifiedBy\": \"lastModifiedBy\",\n      \"companyLocation\": \"companyLocation\"\n    },\n    \"lastUpdateTime\": \"lastUpdateTime\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.suger.cloud",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "40c82003-af99-4edc-b66e-9f8312d38306",
+    "name": "Suger API Contact API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.\n\nContact Support:\n Name: Suger Support\n Email: support@suger.io",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,4218 @@
+{
+  "item": [
+    {
+      "id": "18bda005-3976-470e-853e-b675da7fc3d5",
+      "name": "Billing",
+      "description": {
+        "content": "Access to Billing resources, such as addon, invoice, payment, etc.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c1769ff8-0dec-4399-ba82-fcc8413cbdb8",
+          "name": "List Addons",
+          "request": {
+            "name": "List Addons",
+            "description": {
+              "content": "List all addon templates",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "addon"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "List pagination size, default 1000, max value is 1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "List pagination offset, default 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a8a142b0-ef7c-41ae-bfa5-e07c7fcff9d2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "addon"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"organizationID\": \"organizationID\",\n    \"creationTime\": \"2000-01-23 04:56:07+00:00\",\n    \"name\": \"name\",\n    \"description\": \"description\",\n    \"info\": {\n      \"amount\": 0.8008281904610115\n    },\n    \"lastUpdateTime\": \"2000-01-23 04:56:07+00:00\",\n    \"status\": \"ACTIVE\"\n  },\n  {\n    \"organizationID\": \"organizationID\",\n    \"creationTime\": \"2000-01-23 04:56:07+00:00\",\n    \"name\": \"name\",\n    \"description\": \"description\",\n    \"info\": {\n      \"amount\": 0.8008281904610115\n    },\n    \"lastUpdateTime\": \"2000-01-23 04:56:07+00:00\",\n    \"status\": \"ACTIVE\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc58493e-a374-49f8-8959-4b26d4a10964",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "addon"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29fa62f6-dd6a-4ff6-aa03-e8f805d23e39",
+              "name": "internal error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "addon"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53860731-6d82-49ae-a75a-a33228660936",
+          "name": "Create Addon",
+          "request": {
+            "name": "Create Addon",
+            "description": {
+              "content": "Create an addon template",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "addon"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<number>\",\n  \"description\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ce0512b4-0265-4ebf-84e2-76cd71b59562",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "addon"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 0.8008281904610115,\n  \"name\": \"name\",\n  \"description\": \"description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organizationID\": \"organizationID\",\n  \"creationTime\": \"2000-01-23 04:56:07+00:00\",\n  \"name\": \"name\",\n  \"description\": \"description\",\n  \"info\": {\n    \"amount\": 0.8008281904610115\n  },\n  \"lastUpdateTime\": \"2000-01-23 04:56:07+00:00\",\n  \"status\": \"ACTIVE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "434461dc-c324-4f73-9de8-2439b98dfd48",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "addon"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 0.8008281904610115,\n  \"name\": \"name\",\n  \"description\": \"description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47001817-24d9-46bf-bd3f-17e9f5c966fa",
+              "name": "internal error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "addon"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 0.8008281904610115,\n  \"name\": \"name\",\n  \"description\": \"description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73dd0981-5a1d-4363-b4ee-98d5bb6ed3fb",
+          "name": "Delete Addon",
+          "request": {
+            "name": "Delete Addon",
+            "description": {
+              "content": "Soft delete an addon template",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "addon",
+                ":addonId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "addonId",
+                  "description": "(Required) Addon ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "66d3a6c6-4818-4ca1-a405-04bfca20d8e9",
+              "name": "Empty string if deletion is successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "addon",
+                    ":addonId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "addonId",
+                      "description": "(Required) Addon ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23faa731-e88a-4c86-a5bd-22c351f33e48",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "addon",
+                    ":addonId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "addonId",
+                      "description": "(Required) Addon ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47ce4d00-4398-45f4-bb9e-aa84f8b5c2fe",
+              "name": "internal error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "addon",
+                    ":addonId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "addonId",
+                      "description": "(Required) Addon ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97c87726-387a-44db-a5bb-d774103f33f5",
+          "name": "Get Addon",
+          "request": {
+            "name": "Get Addon",
+            "description": {
+              "content": "Get an addon template",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "addon",
+                ":addonId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "addonId",
+                  "description": "(Required) Addon ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "32aa64c5-2c94-4b25-a520-259cea81ce0e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "addon",
+                    ":addonId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "addonId",
+                      "description": "(Required) Addon ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organizationID\": \"organizationID\",\n  \"creationTime\": \"2000-01-23 04:56:07+00:00\",\n  \"name\": \"name\",\n  \"description\": \"description\",\n  \"info\": {\n    \"amount\": 0.8008281904610115\n  },\n  \"lastUpdateTime\": \"2000-01-23 04:56:07+00:00\",\n  \"status\": \"ACTIVE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab8b775d-1dc8-4f77-9924-4b36378e0d25",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "addon",
+                    ":addonId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "addonId",
+                      "description": "(Required) Addon ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ee0fe08-050a-4c9d-8003-c8299d3e17e8",
+              "name": "internal error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "addon",
+                    ":addonId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "addonId",
+                      "description": "(Required) Addon ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bec7f2ce-8318-4e02-89f7-2dc80f16ef4e",
+          "name": "Update Addon",
+          "request": {
+            "name": "Update Addon",
+            "description": {
+              "content": "Update an addon template",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "addon",
+                ":addonId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "addonId",
+                  "description": "(Required) Addon ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<number>\",\n  \"description\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "167f6fc8-b47d-4d1e-9f7c-46d865319912",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "addon",
+                    ":addonId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "addonId",
+                      "description": "(Required) Addon ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 0.8008281904610115,\n  \"name\": \"name\",\n  \"description\": \"description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organizationID\": \"organizationID\",\n  \"creationTime\": \"2000-01-23 04:56:07+00:00\",\n  \"name\": \"name\",\n  \"description\": \"description\",\n  \"info\": {\n    \"amount\": 0.8008281904610115\n  },\n  \"lastUpdateTime\": \"2000-01-23 04:56:07+00:00\",\n  \"status\": \"ACTIVE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7755e3fe-faef-4093-83a8-efa67d8f4faa",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "addon",
+                    ":addonId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "addonId",
+                      "description": "(Required) Addon ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 0.8008281904610115,\n  \"name\": \"name\",\n  \"description\": \"description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b8aa65d-f332-436b-b3b8-6a96c1f5186a",
+              "name": "internal error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "addon",
+                    ":addonId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "addonId",
+                      "description": "(Required) Addon ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 0.8008281904610115,\n  \"name\": \"name\",\n  \"description\": \"description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e62b898d-c64b-47bb-a7f2-94296c83a4d7",
+          "name": "List Refunds.",
+          "request": {
+            "name": "List Refunds.",
+            "description": {
+              "content": "list refunds of the payment transactions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "buyer",
+                ":buyerId",
+                "paymentTransaction",
+                ":paymentTransactionId",
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "buyerId",
+                  "description": "(Required) Buyer ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "paymentTransactionId",
+                  "description": "(Required) Payment transaction ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "37c120d5-dc57-4fcb-a4f5-c328fdc05d47",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "buyer",
+                    ":buyerId",
+                    "paymentTransaction",
+                    ":paymentTransactionId",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "buyerId",
+                      "description": "(Required) Buyer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "paymentTransactionId",
+                      "description": "(Required) Payment transaction ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"amount\": 5010.693441285232,\n    \"buyerID\": \"string\",\n    \"creationTime\": \"1967-12-24T07:57:21.500Z\",\n    \"currency\": \"string\",\n    \"entitlementID\": \"string\",\n    \"id\": \"string\",\n    \"info\": {\n      \"invoiceDate\": \"2002-02-26T13:12:32.405Z\",\n      \"refundExists\": false,\n      \"stripeBalanceTransaction\": {\n        \"amount\": 3363,\n        \"available_on\": 5712,\n        \"chargeId\": \"string\",\n        \"created\": 5898,\n        \"description\": \"string\",\n        \"exchange_rate\": 7959.7133788429355,\n        \"fee\": 1320,\n        \"fee_details\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"id\": \"string\",\n        \"net\": 5097,\n        \"status\": \"string\",\n        \"type\": \"string\"\n      },\n      \"stripeDisputes\": [\n        {\n          \"paymentIntentId\": \"paymentIntentId\",\n          \"reason\": \"reason\",\n          \"amount\": 6,\n          \"is_charge_refundable\": true,\n          \"livemode\": true,\n          \"chargeId\": \"chargeId\",\n          \"created\": 1,\n          \"status\": \"status\"\n        },\n        {\n          \"paymentIntentId\": \"paymentIntentId\",\n          \"reason\": \"reason\",\n          \"amount\": 6,\n          \"is_charge_refundable\": true,\n          \"livemode\": true,\n          \"chargeId\": \"chargeId\",\n          \"created\": 1,\n          \"status\": \"status\"\n        }\n      ],\n      \"stripeError\": {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"param\": \"string\",\n        \"status\": 3855,\n        \"type\": \"string\"\n      },\n      \"stripePaymentIntent\": {\n        \"id\": \"string\",\n        \"last_payment_error\": {},\n        \"livemode\": false,\n        \"status\": {}\n      },\n      \"stripeRefund\": {\n        \"chargeId\": \"string\",\n        \"estinationDetails\": {},\n        \"failureBalanceTransactionId\": \"string\",\n        \"failureReason\": \"string\",\n        \"id\": \"string\",\n        \"paymentIntentId\": \"string\",\n        \"status\": {}\n      }\n    },\n    \"invoiceID\": \"string\",\n    \"lastUpdateTime\": \"2021-06-20T04:18:52.545Z\",\n    \"organizationID\": \"string\",\n    \"parentID\": \"string\",\n    \"partner\": \"MARKETO\",\n    \"status\": \"FAILED\",\n    \"type\": \"CHARGE\",\n    \"walletID\": \"string\",\n    \"walletType\": \"bacs_debit\"\n  },\n  {\n    \"amount\": 1211.8840716275802,\n    \"buyerID\": \"string\",\n    \"creationTime\": \"2006-07-07T18:20:23.617Z\",\n    \"currency\": \"string\",\n    \"entitlementID\": \"string\",\n    \"id\": \"string\",\n    \"info\": {\n      \"invoiceDate\": \"2011-06-22T18:05:32.888Z\",\n      \"refundExists\": true,\n      \"stripeBalanceTransaction\": {\n        \"amount\": 4794,\n        \"available_on\": 2440,\n        \"chargeId\": \"string\",\n        \"created\": 6735,\n        \"description\": \"string\",\n        \"exchange_rate\": 4015.079613500463,\n        \"fee\": 8060,\n        \"fee_details\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"id\": \"string\",\n        \"net\": 3048,\n        \"status\": \"string\",\n        \"type\": \"string\"\n      },\n      \"stripeDisputes\": [\n        {\n          \"paymentIntentId\": \"paymentIntentId\",\n          \"reason\": \"reason\",\n          \"amount\": 6,\n          \"is_charge_refundable\": true,\n          \"livemode\": true,\n          \"chargeId\": \"chargeId\",\n          \"created\": 1,\n          \"status\": \"status\"\n        },\n        {\n          \"paymentIntentId\": \"paymentIntentId\",\n          \"reason\": \"reason\",\n          \"amount\": 6,\n          \"is_charge_refundable\": true,\n          \"livemode\": true,\n          \"chargeId\": \"chargeId\",\n          \"created\": 1,\n          \"status\": \"status\"\n        }\n      ],\n      \"stripeError\": {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"param\": \"string\",\n        \"status\": 87,\n        \"type\": \"string\"\n      },\n      \"stripePaymentIntent\": {\n        \"id\": \"string\",\n        \"last_payment_error\": {},\n        \"livemode\": false,\n        \"status\": {}\n      },\n      \"stripeRefund\": {\n        \"chargeId\": \"string\",\n        \"estinationDetails\": {},\n        \"failureBalanceTransactionId\": \"string\",\n        \"failureReason\": \"string\",\n        \"id\": \"string\",\n        \"paymentIntentId\": \"string\",\n        \"status\": {}\n      }\n    },\n    \"invoiceID\": \"string\",\n    \"lastUpdateTime\": \"1959-09-27T18:58:49.043Z\",\n    \"organizationID\": \"string\",\n    \"parentID\": \"string\",\n    \"partner\": \"GCP\",\n    \"status\": \"FAILED\",\n    \"type\": \"CHARGE\",\n    \"walletID\": \"string\",\n    \"walletType\": \"sepa_debit\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ccf93322-c045-4041-a1f0-eb7e83bc8735",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "buyer",
+                    ":buyerId",
+                    "paymentTransaction",
+                    ":paymentTransactionId",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "buyerId",
+                      "description": "(Required) Buyer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "paymentTransactionId",
+                      "description": "(Required) Payment transaction ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5ceecec-b504-4066-b95c-167f69beb927",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "buyer",
+                    ":buyerId",
+                    "paymentTransaction",
+                    ":paymentTransactionId",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "buyerId",
+                      "description": "(Required) Buyer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "paymentTransactionId",
+                      "description": "(Required) Payment transaction ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78271cb2-b801-448d-a245-26e9b5c8e5ac",
+          "name": "Create Refund.",
+          "request": {
+            "name": "Create Refund.",
+            "description": {
+              "content": "create refund on the payment transaction, support partial refunds multiple times.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "buyer",
+                ":buyerId",
+                "paymentTransaction",
+                ":paymentTransactionId",
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "<number>",
+                  "description": "(Required) Refund amount"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "buyerId",
+                  "description": "(Required) Buyer ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "paymentTransactionId",
+                  "description": "(Required) Payment transaction ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1f919fff-cc09-46e1-9253-d837c17e756a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "buyer",
+                    ":buyerId",
+                    "paymentTransaction",
+                    ":paymentTransactionId",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "amount",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "buyerId",
+                      "description": "(Required) Buyer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "paymentTransactionId",
+                      "description": "(Required) Payment transaction ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"amount\": 3737.0913894934197,\n  \"buyerID\": \"string\",\n  \"creationTime\": \"2009-07-20T12:19:47.571Z\",\n  \"currency\": \"string\",\n  \"entitlementID\": \"string\",\n  \"id\": \"string\",\n  \"info\": {\n    \"invoiceDate\": \"1987-03-05T11:53:02.807Z\",\n    \"refundExists\": true,\n    \"stripeBalanceTransaction\": {\n      \"amount\": 4069,\n      \"available_on\": 8348,\n      \"chargeId\": \"string\",\n      \"created\": 4219,\n      \"description\": \"string\",\n      \"exchange_rate\": 4070.7691947815792,\n      \"fee\": 8230,\n      \"fee_details\": [\n        {\n          \"amount\": 6231,\n          \"application\": \"string\",\n          \"description\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"amount\": 952,\n          \"application\": \"string\",\n          \"description\": \"string\",\n          \"type\": \"string\"\n        }\n      ],\n      \"id\": \"string\",\n      \"net\": 7184,\n      \"status\": \"string\",\n      \"type\": \"string\"\n    },\n    \"stripeDisputes\": [\n      {\n        \"paymentIntentId\": \"paymentIntentId\",\n        \"reason\": \"reason\",\n        \"amount\": 6,\n        \"is_charge_refundable\": true,\n        \"livemode\": true,\n        \"chargeId\": \"chargeId\",\n        \"created\": 1,\n        \"status\": \"status\"\n      },\n      {\n        \"paymentIntentId\": \"paymentIntentId\",\n        \"reason\": \"reason\",\n        \"amount\": 6,\n        \"is_charge_refundable\": true,\n        \"livemode\": true,\n        \"chargeId\": \"chargeId\",\n        \"created\": 1,\n        \"status\": \"status\"\n      }\n    ],\n    \"stripeError\": {\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"param\": \"string\",\n      \"status\": 6388,\n      \"type\": \"string\"\n    },\n    \"stripePaymentIntent\": {\n      \"id\": \"string\",\n      \"last_payment_error\": {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"param\": \"string\",\n        \"status\": 6524,\n        \"type\": \"string\"\n      },\n      \"livemode\": false,\n      \"status\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      }\n    },\n    \"stripeRefund\": {\n      \"chargeId\": \"string\",\n      \"estinationDetails\": {\n        \"card\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"string\",\n        \"us_bank_transfer\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"failureBalanceTransactionId\": \"string\",\n      \"failureReason\": \"string\",\n      \"id\": \"string\",\n      \"paymentIntentId\": \"string\",\n      \"status\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      }\n    }\n  },\n  \"invoiceID\": \"string\",\n  \"lastUpdateTime\": \"1961-08-12T15:01:35.898Z\",\n  \"organizationID\": \"string\",\n  \"parentID\": \"string\",\n  \"partner\": \"AZURE\",\n  \"status\": \"SUCCESS\",\n  \"type\": \"CHARGE\",\n  \"walletID\": \"string\",\n  \"walletType\": \"sepa_debit\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de7f04cf-cf44-4873-ba8b-766ed10fc73d",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "buyer",
+                    ":buyerId",
+                    "paymentTransaction",
+                    ":paymentTransactionId",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "amount",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "buyerId",
+                      "description": "(Required) Buyer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "paymentTransactionId",
+                      "description": "(Required) Payment transaction ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d38f9f5-ee00-40e9-af96-0cd9a9a35a9b",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "buyer",
+                    ":buyerId",
+                    "paymentTransaction",
+                    ":paymentTransactionId",
+                    "refund"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "amount",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "buyerId",
+                      "description": "(Required) Buyer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "paymentTransactionId",
+                      "description": "(Required) Payment transaction ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a82ff8d7-7425-4bd0-b54f-b8f3dc351433",
+          "name": "List Invoices",
+          "request": {
+            "name": "List Invoices",
+            "description": {
+              "content": "List invoices with pagination and filter by status (optional)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "invoice"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "entitlementId",
+                  "value": "<string>",
+                  "description": "Optional, filter by the entitlement ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "Optional, filter by the given buyer ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Optional, filter by invoice status as filter, if not provided, all status invoices are returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "List pagination size, default 1000, max value is 1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "List pagination offset, default 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b474a365-4889-41ff-b8fb-4433a7a8c244",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"buyerID\": \"string\",\n    \"creationTime\": \"1974-05-11T12:11:48.971Z\",\n    \"endDate\": \"1989-12-31T10:49:18.859Z\",\n    \"entitlementID\": \"string\",\n    \"id\": \"string\",\n    \"info\": {\n      \"addFixedFees\": [\n        {\n          \"reason\": \"reason\",\n          \"quantity\": 0,\n          \"endDate\": \"2000-01-23 04:56:07+00:00\",\n          \"rate\": 6.027456183070403,\n          \"startDate\": \"2000-01-23 04:56:07+00:00\"\n        },\n        {\n          \"reason\": \"reason\",\n          \"quantity\": 0,\n          \"endDate\": \"2000-01-23 04:56:07+00:00\",\n          \"rate\": 6.027456183070403,\n          \"startDate\": \"2000-01-23 04:56:07+00:00\"\n        }\n      ],\n      \"addonDetail\": {\n        \"amount\": 0.8008281904610115,\n        \"name\": \"name\",\n        \"description\": \"description\",\n        \"chargeOn\": \"2000-01-23 04:56:07+00:00\"\n      },\n      \"adjustDiscountByDimensions\": [\n        {\n          \"reason\": \"reason\",\n          \"dimensionKey\": \"dimensionKey\",\n          \"discount\": {\n            \"discountType\": \"PERCENTAGE\",\n            \"value\": 1.4658129805029452\n          }\n        },\n        {\n          \"reason\": \"reason\",\n          \"dimensionKey\": \"dimensionKey\",\n          \"discount\": {\n            \"discountType\": \"PERCENTAGE\",\n            \"value\": 1.4658129805029452\n          }\n        }\n      ],\n      \"adjustMinimumSpendByDimensions\": [\n        {\n          \"minimumSpend\": 5.962133916683182,\n          \"reason\": \"reason\",\n          \"dimensionKey\": \"dimensionKey\"\n        },\n        {\n          \"minimumSpend\": 5.962133916683182,\n          \"reason\": \"reason\",\n          \"dimensionKey\": \"dimensionKey\"\n        }\n      ],\n      \"adjustOverallDiscount\": {\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        },\n        \"reason\": \"string\"\n      },\n      \"adjustOverallMinimumSpend\": {\n        \"minimumSpend\": 9682.628743721685,\n        \"reason\": \"string\"\n      },\n      \"billableDimensionDetails\": [\n        {\n          \"amount\": 7527.561402480839,\n          \"billableMetricKey\": {},\n          \"category\": {},\n          \"details\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"discount\": {},\n          \"discountExpression\": \"string\",\n          \"isTrial\": true,\n          \"minimumCommit\": 885.3060877198426,\n          \"minimumCommitScope\": {},\n          \"name\": \"string\",\n          \"quantity\": 4049.0819437762216\n        },\n        {\n          \"amount\": 6896.388118052326,\n          \"billableMetricKey\": {},\n          \"category\": {},\n          \"details\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"discount\": {},\n          \"discountExpression\": \"string\",\n          \"isTrial\": false,\n          \"minimumCommit\": 3196.1924039696855,\n          \"minimumCommitScope\": {},\n          \"name\": \"string\",\n          \"quantity\": 2670.622787053897\n        }\n      ],\n      \"commitsRevenueDetails\": [\n        {\n          \"amount\": 9.301444243932576,\n          \"expression\": \"expression\",\n          \"quantity\": 3,\n          \"rate\": 2.027123023002322,\n          \"name\": \"name\",\n          \"description\": \"description\",\n          \"key\": \"key\"\n        },\n        {\n          \"amount\": 9.301444243932576,\n          \"expression\": \"expression\",\n          \"quantity\": 3,\n          \"rate\": 2.027123023002322,\n          \"name\": \"name\",\n          \"description\": \"description\",\n          \"key\": \"key\"\n        }\n      ],\n      \"creationDate\": \"2019-07-18T07:35:59.130Z\",\n      \"currency\": \"string\",\n      \"deductedCommitAmount\": 9482.802322039608,\n      \"deductedCommitInvoiceID\": \"string\",\n      \"description\": \"string\",\n      \"dueAmount\": 1344.0484185453226,\n      \"dueDate\": \"1981-10-18T18:55:23.965Z\",\n      \"gracePeriodInDays\": 8014,\n      \"isMeteringOverageCommit\": false,\n      \"issueDate\": \"2019-12-09T09:08:41.842Z\",\n      \"memo\": \"string\",\n      \"netTermsInDays\": 218,\n      \"paymentInstallmentsDetail\": {\n        \"amount\": 1.4894159098541704,\n        \"description\": \"description\",\n        \"chargeOn\": \"2000-01-23 04:56:07+00:00\"\n      },\n      \"periodTotalDays\": 4362,\n      \"receiptUrl\": \"string\",\n      \"spaUrl\": \"string\",\n      \"subtotalAmount\": 1721.943219314308,\n      \"taxAmount\": 2933.352617768409,\n      \"trialPeriodInDays\": 5485,\n      \"usageDailyRevenues\": [\n        {\n          \"date\": \"date\",\n          \"uniquePropertyItems\": {\n            \"key\": \"\"\n          },\n          \"quantity\": 5.025004791520295,\n          \"billableMetricKey\": {\n            \"groupBysExpression\": \"groupBysExpression\"\n          }\n        },\n        {\n          \"date\": \"date\",\n          \"uniquePropertyItems\": {\n            \"key\": \"\"\n          },\n          \"quantity\": 5.025004791520295,\n          \"billableMetricKey\": {\n            \"groupBysExpression\": \"groupBysExpression\"\n          }\n        }\n      ]\n    },\n    \"invoiceURL\": \"string\",\n    \"lastUpdateTime\": \"1993-11-04T05:12:01.440Z\",\n    \"organizationID\": \"string\",\n    \"paymentStatus\": \"FAILED\",\n    \"startDate\": \"1979-07-07T08:56:18.051Z\",\n    \"status\": \"CANCELED\",\n    \"type\": \"USAGE\"\n  },\n  {\n    \"buyerID\": \"string\",\n    \"creationTime\": \"1966-12-11T14:38:02.939Z\",\n    \"endDate\": \"2017-10-04T03:07:17.426Z\",\n    \"entitlementID\": \"string\",\n    \"id\": \"string\",\n    \"info\": {\n      \"addFixedFees\": [\n        {\n          \"reason\": \"reason\",\n          \"quantity\": 0,\n          \"endDate\": \"2000-01-23 04:56:07+00:00\",\n          \"rate\": 6.027456183070403,\n          \"startDate\": \"2000-01-23 04:56:07+00:00\"\n        },\n        {\n          \"reason\": \"reason\",\n          \"quantity\": 0,\n          \"endDate\": \"2000-01-23 04:56:07+00:00\",\n          \"rate\": 6.027456183070403,\n          \"startDate\": \"2000-01-23 04:56:07+00:00\"\n        }\n      ],\n      \"addonDetail\": {\n        \"amount\": 0.8008281904610115,\n        \"name\": \"name\",\n        \"description\": \"description\",\n        \"chargeOn\": \"2000-01-23 04:56:07+00:00\"\n      },\n      \"adjustDiscountByDimensions\": [\n        {\n          \"reason\": \"reason\",\n          \"dimensionKey\": \"dimensionKey\",\n          \"discount\": {\n            \"discountType\": \"PERCENTAGE\",\n            \"value\": 1.4658129805029452\n          }\n        },\n        {\n          \"reason\": \"reason\",\n          \"dimensionKey\": \"dimensionKey\",\n          \"discount\": {\n            \"discountType\": \"PERCENTAGE\",\n            \"value\": 1.4658129805029452\n          }\n        }\n      ],\n      \"adjustMinimumSpendByDimensions\": [\n        {\n          \"minimumSpend\": 5.962133916683182,\n          \"reason\": \"reason\",\n          \"dimensionKey\": \"dimensionKey\"\n        },\n        {\n          \"minimumSpend\": 5.962133916683182,\n          \"reason\": \"reason\",\n          \"dimensionKey\": \"dimensionKey\"\n        }\n      ],\n      \"adjustOverallDiscount\": {\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        },\n        \"reason\": \"string\"\n      },\n      \"adjustOverallMinimumSpend\": {\n        \"minimumSpend\": 766.971199830736,\n        \"reason\": \"string\"\n      },\n      \"billableDimensionDetails\": [\n        {\n          \"amount\": 5463.98586712277,\n          \"billableMetricKey\": {},\n          \"category\": {},\n          \"details\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"discount\": {},\n          \"discountExpression\": \"string\",\n          \"isTrial\": false,\n          \"minimumCommit\": 4996.659670513432,\n          \"minimumCommitScope\": {},\n          \"name\": \"string\",\n          \"quantity\": 4197.0303662181595\n        },\n        {\n          \"amount\": 4631.985555873725,\n          \"billableMetricKey\": {},\n          \"category\": {},\n          \"details\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"discount\": {},\n          \"discountExpression\": \"string\",\n          \"isTrial\": false,\n          \"minimumCommit\": 1484.5071840730773,\n          \"minimumCommitScope\": {},\n          \"name\": \"string\",\n          \"quantity\": 9456.975547962173\n        }\n      ],\n      \"commitsRevenueDetails\": [\n        {\n          \"amount\": 9.301444243932576,\n          \"expression\": \"expression\",\n          \"quantity\": 3,\n          \"rate\": 2.027123023002322,\n          \"name\": \"name\",\n          \"description\": \"description\",\n          \"key\": \"key\"\n        },\n        {\n          \"amount\": 9.301444243932576,\n          \"expression\": \"expression\",\n          \"quantity\": 3,\n          \"rate\": 2.027123023002322,\n          \"name\": \"name\",\n          \"description\": \"description\",\n          \"key\": \"key\"\n        }\n      ],\n      \"creationDate\": \"1955-07-21T15:34:20.066Z\",\n      \"currency\": \"string\",\n      \"deductedCommitAmount\": 1754.2072755764427,\n      \"deductedCommitInvoiceID\": \"string\",\n      \"description\": \"string\",\n      \"dueAmount\": 507.6818141834105,\n      \"dueDate\": \"1987-03-27T14:59:38.278Z\",\n      \"gracePeriodInDays\": 7633,\n      \"isMeteringOverageCommit\": false,\n      \"issueDate\": \"2015-11-24T00:24:34.279Z\",\n      \"memo\": \"string\",\n      \"netTermsInDays\": 2955,\n      \"paymentInstallmentsDetail\": {\n        \"amount\": 1.4894159098541704,\n        \"description\": \"description\",\n        \"chargeOn\": \"2000-01-23 04:56:07+00:00\"\n      },\n      \"periodTotalDays\": 5266,\n      \"receiptUrl\": \"string\",\n      \"spaUrl\": \"string\",\n      \"subtotalAmount\": 9168.710086981075,\n      \"taxAmount\": 9298.213688666832,\n      \"trialPeriodInDays\": 390,\n      \"usageDailyRevenues\": [\n        {\n          \"date\": \"date\",\n          \"uniquePropertyItems\": {\n            \"key\": \"\"\n          },\n          \"quantity\": 5.025004791520295,\n          \"billableMetricKey\": {\n            \"groupBysExpression\": \"groupBysExpression\"\n          }\n        },\n        {\n          \"date\": \"date\",\n          \"uniquePropertyItems\": {\n            \"key\": \"\"\n          },\n          \"quantity\": 5.025004791520295,\n          \"billableMetricKey\": {\n            \"groupBysExpression\": \"groupBysExpression\"\n          }\n        }\n      ]\n    },\n    \"invoiceURL\": \"string\",\n    \"lastUpdateTime\": \"2020-01-11T10:14:40.026Z\",\n    \"organizationID\": \"string\",\n    \"paymentStatus\": \"PENDING\",\n    \"startDate\": \"1996-06-12T15:23:50.214Z\",\n    \"status\": \"FINALIZED\",\n    \"type\": \"USAGE\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a57c8545-9334-4255-9399-26c187fa1ecb",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b81f10d-b0d6-4a62-bf8d-eaa042c8f54c",
+              "name": "Internal error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9884e2f8-1b0a-4d49-8805-fa21d646c37f",
+          "name": "Get Invoice",
+          "request": {
+            "name": "Get Invoice",
+            "description": {
+              "content": "Get the invoice by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "invoice",
+                ":invoiceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoiceId",
+                  "description": "(Required) Invoice ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "916c51da-2185-4808-99ea-73b2b06d5efa",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"buyerID\": \"string\",\n  \"creationTime\": \"1975-04-30T10:10:26.410Z\",\n  \"endDate\": \"1960-03-06T17:32:37.255Z\",\n  \"entitlementID\": \"string\",\n  \"id\": \"string\",\n  \"info\": {\n    \"addFixedFees\": [\n      {\n        \"reason\": \"reason\",\n        \"quantity\": 0,\n        \"endDate\": \"2000-01-23 04:56:07+00:00\",\n        \"rate\": 6.027456183070403,\n        \"startDate\": \"2000-01-23 04:56:07+00:00\"\n      },\n      {\n        \"reason\": \"reason\",\n        \"quantity\": 0,\n        \"endDate\": \"2000-01-23 04:56:07+00:00\",\n        \"rate\": 6.027456183070403,\n        \"startDate\": \"2000-01-23 04:56:07+00:00\"\n      }\n    ],\n    \"addonDetail\": {\n      \"amount\": 0.8008281904610115,\n      \"name\": \"name\",\n      \"description\": \"description\",\n      \"chargeOn\": \"2000-01-23 04:56:07+00:00\"\n    },\n    \"adjustDiscountByDimensions\": [\n      {\n        \"reason\": \"reason\",\n        \"dimensionKey\": \"dimensionKey\",\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        }\n      },\n      {\n        \"reason\": \"reason\",\n        \"dimensionKey\": \"dimensionKey\",\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        }\n      }\n    ],\n    \"adjustMinimumSpendByDimensions\": [\n      {\n        \"minimumSpend\": 5.962133916683182,\n        \"reason\": \"reason\",\n        \"dimensionKey\": \"dimensionKey\"\n      },\n      {\n        \"minimumSpend\": 5.962133916683182,\n        \"reason\": \"reason\",\n        \"dimensionKey\": \"dimensionKey\"\n      }\n    ],\n    \"adjustOverallDiscount\": {\n      \"discount\": {\n        \"discountType\": \"PERCENTAGE\",\n        \"value\": 1.4658129805029452\n      },\n      \"reason\": \"string\"\n    },\n    \"adjustOverallMinimumSpend\": {\n      \"minimumSpend\": 2786.536142703122,\n      \"reason\": \"string\"\n    },\n    \"billableDimensionDetails\": [\n      {\n        \"amount\": 7661.558450855012,\n        \"billableMetricKey\": {\n          \"groupBysExpression\": \"groupBysExpression\"\n        },\n        \"category\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"details\": [\n          {\n            \"feeExpressions\": \"feeExpressions\",\n            \"descriptions\": \"descriptions\"\n          },\n          {\n            \"feeExpressions\": \"feeExpressions\",\n            \"descriptions\": \"descriptions\"\n          }\n        ],\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        },\n        \"discountExpression\": \"string\",\n        \"isTrial\": true,\n        \"minimumCommit\": 4766.40030926071,\n        \"minimumCommitScope\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"name\": \"string\",\n        \"quantity\": 2980.029046755618\n      },\n      {\n        \"amount\": 9126.928074397838,\n        \"billableMetricKey\": {\n          \"groupBysExpression\": \"groupBysExpression\"\n        },\n        \"category\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"details\": [\n          {\n            \"feeExpressions\": \"feeExpressions\",\n            \"descriptions\": \"descriptions\"\n          },\n          {\n            \"feeExpressions\": \"feeExpressions\",\n            \"descriptions\": \"descriptions\"\n          }\n        ],\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        },\n        \"discountExpression\": \"string\",\n        \"isTrial\": false,\n        \"minimumCommit\": 815.0603697061365,\n        \"minimumCommitScope\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"name\": \"string\",\n        \"quantity\": 6186.121056308176\n      }\n    ],\n    \"commitsRevenueDetails\": [\n      {\n        \"amount\": 9.301444243932576,\n        \"expression\": \"expression\",\n        \"quantity\": 3,\n        \"rate\": 2.027123023002322,\n        \"name\": \"name\",\n        \"description\": \"description\",\n        \"key\": \"key\"\n      },\n      {\n        \"amount\": 9.301444243932576,\n        \"expression\": \"expression\",\n        \"quantity\": 3,\n        \"rate\": 2.027123023002322,\n        \"name\": \"name\",\n        \"description\": \"description\",\n        \"key\": \"key\"\n      }\n    ],\n    \"creationDate\": \"1949-03-04T08:49:44.822Z\",\n    \"currency\": \"string\",\n    \"deductedCommitAmount\": 3054.012711664664,\n    \"deductedCommitInvoiceID\": \"string\",\n    \"description\": \"string\",\n    \"dueAmount\": 3992.0333213769723,\n    \"dueDate\": \"2006-02-17T16:27:23.486Z\",\n    \"gracePeriodInDays\": 5727,\n    \"isMeteringOverageCommit\": true,\n    \"issueDate\": \"2015-06-02T09:37:11.279Z\",\n    \"memo\": \"string\",\n    \"netTermsInDays\": 1154,\n    \"paymentInstallmentsDetail\": {\n      \"amount\": 1.4894159098541704,\n      \"description\": \"description\",\n      \"chargeOn\": \"2000-01-23 04:56:07+00:00\"\n    },\n    \"periodTotalDays\": 4893,\n    \"receiptUrl\": \"string\",\n    \"spaUrl\": \"string\",\n    \"subtotalAmount\": 7104.588696515538,\n    \"taxAmount\": 2513.5948847330624,\n    \"trialPeriodInDays\": 9159,\n    \"usageDailyRevenues\": [\n      {\n        \"date\": \"date\",\n        \"uniquePropertyItems\": {\n          \"key\": \"\"\n        },\n        \"quantity\": 5.025004791520295,\n        \"billableMetricKey\": {\n          \"groupBysExpression\": \"groupBysExpression\"\n        }\n      },\n      {\n        \"date\": \"date\",\n        \"uniquePropertyItems\": {\n          \"key\": \"\"\n        },\n        \"quantity\": 5.025004791520295,\n        \"billableMetricKey\": {\n          \"groupBysExpression\": \"groupBysExpression\"\n        }\n      }\n    ]\n  },\n  \"invoiceURL\": \"string\",\n  \"lastUpdateTime\": \"1946-11-18T02:47:44.967Z\",\n  \"organizationID\": \"string\",\n  \"paymentStatus\": \"PROCESSING\",\n  \"startDate\": \"2010-10-29T05:44:26.673Z\",\n  \"status\": \"DELETED\",\n  \"type\": \"ADDON\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6b13367-c5c9-4e88-8a95-b5a405a5eee7",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93975617-24b8-4169-8dd0-a3f41bef2f22",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "646c7e2c-c437-40ec-8608-7488c8190049",
+          "name": "Update Invoice Info",
+          "request": {
+            "name": "Update Invoice Info",
+            "description": {
+              "content": "Update a draft invoice. Only DueDate, OverallDiscount, and Memo can be updated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "invoice",
+                ":invoiceId",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoiceId",
+                  "description": "(Required) Invoice ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"discountAmount\": \"<number>\",\n  \"discountType\": {\n    \"value\": \"<Error: Could not resolve allOf schema\"\n  },\n  \"dueDate\": \"<string>\",\n  \"memo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2e7c050-4f9e-49e6-84cc-a0dd999b28f6",
+              "name": "Updated Invoice info",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dueDate\": \"dueDate\",\n  \"discountAmount\": 0.8008281904610115,\n  \"memo\": \"memo\",\n  \"discountType\": \"{}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addFixedFees\": [\n    {\n      \"reason\": \"reason\",\n      \"quantity\": 0,\n      \"endDate\": \"2000-01-23 04:56:07+00:00\",\n      \"rate\": 6.027456183070403,\n      \"startDate\": \"2000-01-23 04:56:07+00:00\"\n    },\n    {\n      \"reason\": \"reason\",\n      \"quantity\": 0,\n      \"endDate\": \"2000-01-23 04:56:07+00:00\",\n      \"rate\": 6.027456183070403,\n      \"startDate\": \"2000-01-23 04:56:07+00:00\"\n    }\n  ],\n  \"addonDetail\": {\n    \"amount\": 0.8008281904610115,\n    \"name\": \"name\",\n    \"description\": \"description\",\n    \"chargeOn\": \"2000-01-23 04:56:07+00:00\"\n  },\n  \"adjustDiscountByDimensions\": [\n    {\n      \"reason\": \"reason\",\n      \"dimensionKey\": \"dimensionKey\",\n      \"discount\": {\n        \"discountType\": \"PERCENTAGE\",\n        \"value\": 1.4658129805029452\n      }\n    },\n    {\n      \"reason\": \"reason\",\n      \"dimensionKey\": \"dimensionKey\",\n      \"discount\": {\n        \"discountType\": \"PERCENTAGE\",\n        \"value\": 1.4658129805029452\n      }\n    }\n  ],\n  \"adjustMinimumSpendByDimensions\": [\n    {\n      \"minimumSpend\": 5.962133916683182,\n      \"reason\": \"reason\",\n      \"dimensionKey\": \"dimensionKey\"\n    },\n    {\n      \"minimumSpend\": 5.962133916683182,\n      \"reason\": \"reason\",\n      \"dimensionKey\": \"dimensionKey\"\n    }\n  ],\n  \"adjustOverallDiscount\": {\n    \"discount\": {\n      \"discountType\": \"PERCENTAGE\",\n      \"value\": 1.4658129805029452\n    },\n    \"reason\": \"string\"\n  },\n  \"adjustOverallMinimumSpend\": {\n    \"minimumSpend\": 6326.925600854921,\n    \"reason\": \"string\"\n  },\n  \"billableDimensionDetails\": [\n    {\n      \"amount\": 7593.851820183333,\n      \"billableMetricKey\": {\n        \"groupBysExpression\": \"groupBysExpression\"\n      },\n      \"category\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"details\": [\n        {\n          \"feeExpressions\": \"feeExpressions\",\n          \"descriptions\": \"descriptions\"\n        },\n        {\n          \"feeExpressions\": \"feeExpressions\",\n          \"descriptions\": \"descriptions\"\n        }\n      ],\n      \"discount\": {\n        \"discountType\": \"PERCENTAGE\",\n        \"value\": 1.4658129805029452\n      },\n      \"discountExpression\": \"string\",\n      \"isTrial\": true,\n      \"minimumCommit\": 894.8980246716632,\n      \"minimumCommitScope\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"name\": \"string\",\n      \"quantity\": 1007.1019926659741\n    },\n    {\n      \"amount\": 3567.9980249364753,\n      \"billableMetricKey\": {\n        \"groupBysExpression\": \"groupBysExpression\"\n      },\n      \"category\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"details\": [\n        {\n          \"feeExpressions\": \"feeExpressions\",\n          \"descriptions\": \"descriptions\"\n        },\n        {\n          \"feeExpressions\": \"feeExpressions\",\n          \"descriptions\": \"descriptions\"\n        }\n      ],\n      \"discount\": {\n        \"discountType\": \"PERCENTAGE\",\n        \"value\": 1.4658129805029452\n      },\n      \"discountExpression\": \"string\",\n      \"isTrial\": false,\n      \"minimumCommit\": 5718.011720151255,\n      \"minimumCommitScope\": {\n        \"value\": \"<Error: Could not resolve allOf schema\"\n      },\n      \"name\": \"string\",\n      \"quantity\": 3511.742162967345\n    }\n  ],\n  \"commitsRevenueDetails\": [\n    {\n      \"amount\": 9.301444243932576,\n      \"expression\": \"expression\",\n      \"quantity\": 3,\n      \"rate\": 2.027123023002322,\n      \"name\": \"name\",\n      \"description\": \"description\",\n      \"key\": \"key\"\n    },\n    {\n      \"amount\": 9.301444243932576,\n      \"expression\": \"expression\",\n      \"quantity\": 3,\n      \"rate\": 2.027123023002322,\n      \"name\": \"name\",\n      \"description\": \"description\",\n      \"key\": \"key\"\n    }\n  ],\n  \"creationDate\": \"1948-05-18T18:58:02.759Z\",\n  \"currency\": \"string\",\n  \"deductedCommitAmount\": 7747.963703348486,\n  \"deductedCommitInvoiceID\": \"string\",\n  \"description\": \"string\",\n  \"dueAmount\": 4417.4958102377705,\n  \"dueDate\": \"1957-09-28T04:31:11.451Z\",\n  \"gracePeriodInDays\": 6799,\n  \"isMeteringOverageCommit\": false,\n  \"issueDate\": \"1973-01-01T05:04:01.387Z\",\n  \"memo\": \"string\",\n  \"netTermsInDays\": 5849,\n  \"paymentInstallmentsDetail\": {\n    \"amount\": 1.4894159098541704,\n    \"description\": \"description\",\n    \"chargeOn\": \"2000-01-23 04:56:07+00:00\"\n  },\n  \"periodTotalDays\": 8939,\n  \"receiptUrl\": \"string\",\n  \"spaUrl\": \"string\",\n  \"subtotalAmount\": 6431.814337687153,\n  \"taxAmount\": 6645.575750959482,\n  \"trialPeriodInDays\": 5961,\n  \"usageDailyRevenues\": [\n    {\n      \"date\": \"date\",\n      \"uniquePropertyItems\": {\n        \"key\": \"\"\n      },\n      \"quantity\": 5.025004791520295,\n      \"billableMetricKey\": {\n        \"groupBysExpression\": \"groupBysExpression\"\n      }\n    },\n    {\n      \"date\": \"date\",\n      \"uniquePropertyItems\": {\n        \"key\": \"\"\n      },\n      \"quantity\": 5.025004791520295,\n      \"billableMetricKey\": {\n        \"groupBysExpression\": \"groupBysExpression\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a70dbc8-ff63-42c5-a60f-9bac691326d5",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dueDate\": \"dueDate\",\n  \"discountAmount\": 0.8008281904610115,\n  \"memo\": \"memo\",\n  \"discountType\": \"{}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "768cc3cb-2e3b-486c-8a8e-d7aeea5931c2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dueDate\": \"dueDate\",\n  \"discountAmount\": 0.8008281904610115,\n  \"memo\": \"memo\",\n  \"discountType\": \"{}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31c6e18a-a1ce-4768-a491-08611588d2b5",
+          "name": "Issue Invoice",
+          "request": {
+            "name": "Issue Invoice",
+            "description": {
+              "content": "Issue the invoice immediately. It can be used for manual issue or reissue invoice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "invoice",
+                ":invoiceId",
+                "issue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoiceId",
+                  "description": "(Required) Invoice ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "363d6333-f829-4e49-bb18-cad6b7cde4e4",
+              "name": "the issued Invoice",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId",
+                    "issue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"buyerID\": \"string\",\n  \"creationTime\": \"1968-09-09T15:53:05.911Z\",\n  \"endDate\": \"2009-09-02T07:59:41.538Z\",\n  \"entitlementID\": \"string\",\n  \"id\": \"string\",\n  \"info\": {\n    \"addFixedFees\": [\n      {\n        \"reason\": \"reason\",\n        \"quantity\": 0,\n        \"endDate\": \"2000-01-23 04:56:07+00:00\",\n        \"rate\": 6.027456183070403,\n        \"startDate\": \"2000-01-23 04:56:07+00:00\"\n      },\n      {\n        \"reason\": \"reason\",\n        \"quantity\": 0,\n        \"endDate\": \"2000-01-23 04:56:07+00:00\",\n        \"rate\": 6.027456183070403,\n        \"startDate\": \"2000-01-23 04:56:07+00:00\"\n      }\n    ],\n    \"addonDetail\": {\n      \"amount\": 0.8008281904610115,\n      \"name\": \"name\",\n      \"description\": \"description\",\n      \"chargeOn\": \"2000-01-23 04:56:07+00:00\"\n    },\n    \"adjustDiscountByDimensions\": [\n      {\n        \"reason\": \"reason\",\n        \"dimensionKey\": \"dimensionKey\",\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        }\n      },\n      {\n        \"reason\": \"reason\",\n        \"dimensionKey\": \"dimensionKey\",\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        }\n      }\n    ],\n    \"adjustMinimumSpendByDimensions\": [\n      {\n        \"minimumSpend\": 5.962133916683182,\n        \"reason\": \"reason\",\n        \"dimensionKey\": \"dimensionKey\"\n      },\n      {\n        \"minimumSpend\": 5.962133916683182,\n        \"reason\": \"reason\",\n        \"dimensionKey\": \"dimensionKey\"\n      }\n    ],\n    \"adjustOverallDiscount\": {\n      \"discount\": {\n        \"discountType\": \"PERCENTAGE\",\n        \"value\": 1.4658129805029452\n      },\n      \"reason\": \"string\"\n    },\n    \"adjustOverallMinimumSpend\": {\n      \"minimumSpend\": 2426.0812116745033,\n      \"reason\": \"string\"\n    },\n    \"billableDimensionDetails\": [\n      {\n        \"amount\": 9176.643611367594,\n        \"billableMetricKey\": {\n          \"groupBysExpression\": \"groupBysExpression\"\n        },\n        \"category\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"details\": [\n          {\n            \"feeExpressions\": \"feeExpressions\",\n            \"descriptions\": \"descriptions\"\n          },\n          {\n            \"feeExpressions\": \"feeExpressions\",\n            \"descriptions\": \"descriptions\"\n          }\n        ],\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        },\n        \"discountExpression\": \"string\",\n        \"isTrial\": false,\n        \"minimumCommit\": 8328.330776024237,\n        \"minimumCommitScope\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"name\": \"string\",\n        \"quantity\": 3472.686567814135\n      },\n      {\n        \"amount\": 7203.072186735068,\n        \"billableMetricKey\": {\n          \"groupBysExpression\": \"groupBysExpression\"\n        },\n        \"category\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"details\": [\n          {\n            \"feeExpressions\": \"feeExpressions\",\n            \"descriptions\": \"descriptions\"\n          },\n          {\n            \"feeExpressions\": \"feeExpressions\",\n            \"descriptions\": \"descriptions\"\n          }\n        ],\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        },\n        \"discountExpression\": \"string\",\n        \"isTrial\": false,\n        \"minimumCommit\": 6906.054409208513,\n        \"minimumCommitScope\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"name\": \"string\",\n        \"quantity\": 2578.455445799637\n      }\n    ],\n    \"commitsRevenueDetails\": [\n      {\n        \"amount\": 9.301444243932576,\n        \"expression\": \"expression\",\n        \"quantity\": 3,\n        \"rate\": 2.027123023002322,\n        \"name\": \"name\",\n        \"description\": \"description\",\n        \"key\": \"key\"\n      },\n      {\n        \"amount\": 9.301444243932576,\n        \"expression\": \"expression\",\n        \"quantity\": 3,\n        \"rate\": 2.027123023002322,\n        \"name\": \"name\",\n        \"description\": \"description\",\n        \"key\": \"key\"\n      }\n    ],\n    \"creationDate\": \"1973-08-06T02:20:15.905Z\",\n    \"currency\": \"string\",\n    \"deductedCommitAmount\": 1953.3424552073109,\n    \"deductedCommitInvoiceID\": \"string\",\n    \"description\": \"string\",\n    \"dueAmount\": 9969.172604444031,\n    \"dueDate\": \"2020-05-16T19:04:34.972Z\",\n    \"gracePeriodInDays\": 8694,\n    \"isMeteringOverageCommit\": false,\n    \"issueDate\": \"1982-09-20T21:02:18.676Z\",\n    \"memo\": \"string\",\n    \"netTermsInDays\": 431,\n    \"paymentInstallmentsDetail\": {\n      \"amount\": 1.4894159098541704,\n      \"description\": \"description\",\n      \"chargeOn\": \"2000-01-23 04:56:07+00:00\"\n    },\n    \"periodTotalDays\": 9917,\n    \"receiptUrl\": \"string\",\n    \"spaUrl\": \"string\",\n    \"subtotalAmount\": 7925.695853706046,\n    \"taxAmount\": 6143.76877034286,\n    \"trialPeriodInDays\": 5148,\n    \"usageDailyRevenues\": [\n      {\n        \"date\": \"date\",\n        \"uniquePropertyItems\": {\n          \"key\": \"\"\n        },\n        \"quantity\": 5.025004791520295,\n        \"billableMetricKey\": {\n          \"groupBysExpression\": \"groupBysExpression\"\n        }\n      },\n      {\n        \"date\": \"date\",\n        \"uniquePropertyItems\": {\n          \"key\": \"\"\n        },\n        \"quantity\": 5.025004791520295,\n        \"billableMetricKey\": {\n          \"groupBysExpression\": \"groupBysExpression\"\n        }\n      }\n    ]\n  },\n  \"invoiceURL\": \"string\",\n  \"lastUpdateTime\": \"1996-11-21T07:00:56.468Z\",\n  \"organizationID\": \"string\",\n  \"paymentStatus\": \"PENDING\",\n  \"startDate\": \"1988-10-07T14:38:07.542Z\",\n  \"status\": \"CANCELED\",\n  \"type\": \"USAGE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "318d2d9f-a947-439e-8269-e97ce5267770",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId",
+                    "issue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f7d6458-811a-41f4-9ad8-af73901e08ca",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId",
+                    "issue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c91a86ae-0b31-4211-8fd8-82b6d78b9ef1",
+          "name": "Pay Invoice",
+          "request": {
+            "name": "Pay Invoice",
+            "description": {
+              "content": "Initiate the payment for the invoice immediately. It can be used for manual payment or retry payment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "invoice",
+                ":invoiceId",
+                "pay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoiceId",
+                  "description": "(Required) Invoice ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d0d2e7ea-7870-404b-a137-d4b148752eda",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId",
+                    "pay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"buyerID\": \"string\",\n  \"creationTime\": \"1968-09-09T15:53:05.911Z\",\n  \"endDate\": \"2009-09-02T07:59:41.538Z\",\n  \"entitlementID\": \"string\",\n  \"id\": \"string\",\n  \"info\": {\n    \"addFixedFees\": [\n      {\n        \"reason\": \"reason\",\n        \"quantity\": 0,\n        \"endDate\": \"2000-01-23 04:56:07+00:00\",\n        \"rate\": 6.027456183070403,\n        \"startDate\": \"2000-01-23 04:56:07+00:00\"\n      },\n      {\n        \"reason\": \"reason\",\n        \"quantity\": 0,\n        \"endDate\": \"2000-01-23 04:56:07+00:00\",\n        \"rate\": 6.027456183070403,\n        \"startDate\": \"2000-01-23 04:56:07+00:00\"\n      }\n    ],\n    \"addonDetail\": {\n      \"amount\": 0.8008281904610115,\n      \"name\": \"name\",\n      \"description\": \"description\",\n      \"chargeOn\": \"2000-01-23 04:56:07+00:00\"\n    },\n    \"adjustDiscountByDimensions\": [\n      {\n        \"reason\": \"reason\",\n        \"dimensionKey\": \"dimensionKey\",\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        }\n      },\n      {\n        \"reason\": \"reason\",\n        \"dimensionKey\": \"dimensionKey\",\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        }\n      }\n    ],\n    \"adjustMinimumSpendByDimensions\": [\n      {\n        \"minimumSpend\": 5.962133916683182,\n        \"reason\": \"reason\",\n        \"dimensionKey\": \"dimensionKey\"\n      },\n      {\n        \"minimumSpend\": 5.962133916683182,\n        \"reason\": \"reason\",\n        \"dimensionKey\": \"dimensionKey\"\n      }\n    ],\n    \"adjustOverallDiscount\": {\n      \"discount\": {\n        \"discountType\": \"PERCENTAGE\",\n        \"value\": 1.4658129805029452\n      },\n      \"reason\": \"string\"\n    },\n    \"adjustOverallMinimumSpend\": {\n      \"minimumSpend\": 2426.0812116745033,\n      \"reason\": \"string\"\n    },\n    \"billableDimensionDetails\": [\n      {\n        \"amount\": 9176.643611367594,\n        \"billableMetricKey\": {\n          \"groupBysExpression\": \"groupBysExpression\"\n        },\n        \"category\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"details\": [\n          {\n            \"feeExpressions\": \"feeExpressions\",\n            \"descriptions\": \"descriptions\"\n          },\n          {\n            \"feeExpressions\": \"feeExpressions\",\n            \"descriptions\": \"descriptions\"\n          }\n        ],\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        },\n        \"discountExpression\": \"string\",\n        \"isTrial\": false,\n        \"minimumCommit\": 8328.330776024237,\n        \"minimumCommitScope\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"name\": \"string\",\n        \"quantity\": 3472.686567814135\n      },\n      {\n        \"amount\": 7203.072186735068,\n        \"billableMetricKey\": {\n          \"groupBysExpression\": \"groupBysExpression\"\n        },\n        \"category\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"details\": [\n          {\n            \"feeExpressions\": \"feeExpressions\",\n            \"descriptions\": \"descriptions\"\n          },\n          {\n            \"feeExpressions\": \"feeExpressions\",\n            \"descriptions\": \"descriptions\"\n          }\n        ],\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        },\n        \"discountExpression\": \"string\",\n        \"isTrial\": false,\n        \"minimumCommit\": 6906.054409208513,\n        \"minimumCommitScope\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"name\": \"string\",\n        \"quantity\": 2578.455445799637\n      }\n    ],\n    \"commitsRevenueDetails\": [\n      {\n        \"amount\": 9.301444243932576,\n        \"expression\": \"expression\",\n        \"quantity\": 3,\n        \"rate\": 2.027123023002322,\n        \"name\": \"name\",\n        \"description\": \"description\",\n        \"key\": \"key\"\n      },\n      {\n        \"amount\": 9.301444243932576,\n        \"expression\": \"expression\",\n        \"quantity\": 3,\n        \"rate\": 2.027123023002322,\n        \"name\": \"name\",\n        \"description\": \"description\",\n        \"key\": \"key\"\n      }\n    ],\n    \"creationDate\": \"1973-08-06T02:20:15.905Z\",\n    \"currency\": \"string\",\n    \"deductedCommitAmount\": 1953.3424552073109,\n    \"deductedCommitInvoiceID\": \"string\",\n    \"description\": \"string\",\n    \"dueAmount\": 9969.172604444031,\n    \"dueDate\": \"2020-05-16T19:04:34.972Z\",\n    \"gracePeriodInDays\": 8694,\n    \"isMeteringOverageCommit\": false,\n    \"issueDate\": \"1982-09-20T21:02:18.676Z\",\n    \"memo\": \"string\",\n    \"netTermsInDays\": 431,\n    \"paymentInstallmentsDetail\": {\n      \"amount\": 1.4894159098541704,\n      \"description\": \"description\",\n      \"chargeOn\": \"2000-01-23 04:56:07+00:00\"\n    },\n    \"periodTotalDays\": 9917,\n    \"receiptUrl\": \"string\",\n    \"spaUrl\": \"string\",\n    \"subtotalAmount\": 7925.695853706046,\n    \"taxAmount\": 6143.76877034286,\n    \"trialPeriodInDays\": 5148,\n    \"usageDailyRevenues\": [\n      {\n        \"date\": \"date\",\n        \"uniquePropertyItems\": {\n          \"key\": \"\"\n        },\n        \"quantity\": 5.025004791520295,\n        \"billableMetricKey\": {\n          \"groupBysExpression\": \"groupBysExpression\"\n        }\n      },\n      {\n        \"date\": \"date\",\n        \"uniquePropertyItems\": {\n          \"key\": \"\"\n        },\n        \"quantity\": 5.025004791520295,\n        \"billableMetricKey\": {\n          \"groupBysExpression\": \"groupBysExpression\"\n        }\n      }\n    ]\n  },\n  \"invoiceURL\": \"string\",\n  \"lastUpdateTime\": \"1996-11-21T07:00:56.468Z\",\n  \"organizationID\": \"string\",\n  \"paymentStatus\": \"PENDING\",\n  \"startDate\": \"1988-10-07T14:38:07.542Z\",\n  \"status\": \"CANCELED\",\n  \"type\": \"USAGE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b5c84ac-135b-4e76-bd68-afd66a3fc524",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId",
+                    "pay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1a7d2c8-9152-4e7f-bf57-7a3226186c51",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId",
+                    "pay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ece9f08-dedd-444a-ad0c-a7e6f243cb34",
+          "name": "Preview Invoice Email",
+          "request": {
+            "name": "Preview Invoice Email",
+            "description": {
+              "content": "Returns the preview HTML content of the invoice issued email.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "invoice",
+                ":invoiceId",
+                "preview"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoiceId",
+                  "description": "(Required) Invoice ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/html"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "798ce6a2-8a4d-47ef-8709-ded95650f1dd",
+              "name": "HTML content of the invoice issued email",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId",
+                    "preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b4812dd-b2fb-4738-a955-f0bfca99b552",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId",
+                    "preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4bc96242-fdda-43f2-8aef-6141ac66fc6c",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId",
+                    "preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/html"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc98a0c0-eda8-45ed-a8da-709ccf818c65",
+          "name": "Void Invoice",
+          "request": {
+            "name": "Void Invoice",
+            "description": {
+              "content": "Void the invoice. It can be used for manual void or cancel the invoice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "invoice",
+                ":invoiceId",
+                "void"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "invoiceId",
+                  "description": "(Required) Invoice ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d7c0bc14-3ab5-46fe-b960-5503cbdfa3fb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId",
+                    "void"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"buyerID\": \"string\",\n  \"creationTime\": \"1968-09-09T15:53:05.911Z\",\n  \"endDate\": \"2009-09-02T07:59:41.538Z\",\n  \"entitlementID\": \"string\",\n  \"id\": \"string\",\n  \"info\": {\n    \"addFixedFees\": [\n      {\n        \"reason\": \"reason\",\n        \"quantity\": 0,\n        \"endDate\": \"2000-01-23 04:56:07+00:00\",\n        \"rate\": 6.027456183070403,\n        \"startDate\": \"2000-01-23 04:56:07+00:00\"\n      },\n      {\n        \"reason\": \"reason\",\n        \"quantity\": 0,\n        \"endDate\": \"2000-01-23 04:56:07+00:00\",\n        \"rate\": 6.027456183070403,\n        \"startDate\": \"2000-01-23 04:56:07+00:00\"\n      }\n    ],\n    \"addonDetail\": {\n      \"amount\": 0.8008281904610115,\n      \"name\": \"name\",\n      \"description\": \"description\",\n      \"chargeOn\": \"2000-01-23 04:56:07+00:00\"\n    },\n    \"adjustDiscountByDimensions\": [\n      {\n        \"reason\": \"reason\",\n        \"dimensionKey\": \"dimensionKey\",\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        }\n      },\n      {\n        \"reason\": \"reason\",\n        \"dimensionKey\": \"dimensionKey\",\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        }\n      }\n    ],\n    \"adjustMinimumSpendByDimensions\": [\n      {\n        \"minimumSpend\": 5.962133916683182,\n        \"reason\": \"reason\",\n        \"dimensionKey\": \"dimensionKey\"\n      },\n      {\n        \"minimumSpend\": 5.962133916683182,\n        \"reason\": \"reason\",\n        \"dimensionKey\": \"dimensionKey\"\n      }\n    ],\n    \"adjustOverallDiscount\": {\n      \"discount\": {\n        \"discountType\": \"PERCENTAGE\",\n        \"value\": 1.4658129805029452\n      },\n      \"reason\": \"string\"\n    },\n    \"adjustOverallMinimumSpend\": {\n      \"minimumSpend\": 2426.0812116745033,\n      \"reason\": \"string\"\n    },\n    \"billableDimensionDetails\": [\n      {\n        \"amount\": 9176.643611367594,\n        \"billableMetricKey\": {\n          \"groupBysExpression\": \"groupBysExpression\"\n        },\n        \"category\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"details\": [\n          {\n            \"feeExpressions\": \"feeExpressions\",\n            \"descriptions\": \"descriptions\"\n          },\n          {\n            \"feeExpressions\": \"feeExpressions\",\n            \"descriptions\": \"descriptions\"\n          }\n        ],\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        },\n        \"discountExpression\": \"string\",\n        \"isTrial\": false,\n        \"minimumCommit\": 8328.330776024237,\n        \"minimumCommitScope\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"name\": \"string\",\n        \"quantity\": 3472.686567814135\n      },\n      {\n        \"amount\": 7203.072186735068,\n        \"billableMetricKey\": {\n          \"groupBysExpression\": \"groupBysExpression\"\n        },\n        \"category\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"details\": [\n          {\n            \"feeExpressions\": \"feeExpressions\",\n            \"descriptions\": \"descriptions\"\n          },\n          {\n            \"feeExpressions\": \"feeExpressions\",\n            \"descriptions\": \"descriptions\"\n          }\n        ],\n        \"discount\": {\n          \"discountType\": \"PERCENTAGE\",\n          \"value\": 1.4658129805029452\n        },\n        \"discountExpression\": \"string\",\n        \"isTrial\": false,\n        \"minimumCommit\": 6906.054409208513,\n        \"minimumCommitScope\": {\n          \"value\": \"<Error: Could not resolve allOf schema\"\n        },\n        \"name\": \"string\",\n        \"quantity\": 2578.455445799637\n      }\n    ],\n    \"commitsRevenueDetails\": [\n      {\n        \"amount\": 9.301444243932576,\n        \"expression\": \"expression\",\n        \"quantity\": 3,\n        \"rate\": 2.027123023002322,\n        \"name\": \"name\",\n        \"description\": \"description\",\n        \"key\": \"key\"\n      },\n      {\n        \"amount\": 9.301444243932576,\n        \"expression\": \"expression\",\n        \"quantity\": 3,\n        \"rate\": 2.027123023002322,\n        \"name\": \"name\",\n        \"description\": \"description\",\n        \"key\": \"key\"\n      }\n    ],\n    \"creationDate\": \"1973-08-06T02:20:15.905Z\",\n    \"currency\": \"string\",\n    \"deductedCommitAmount\": 1953.3424552073109,\n    \"deductedCommitInvoiceID\": \"string\",\n    \"description\": \"string\",\n    \"dueAmount\": 9969.172604444031,\n    \"dueDate\": \"2020-05-16T19:04:34.972Z\",\n    \"gracePeriodInDays\": 8694,\n    \"isMeteringOverageCommit\": false,\n    \"issueDate\": \"1982-09-20T21:02:18.676Z\",\n    \"memo\": \"string\",\n    \"netTermsInDays\": 431,\n    \"paymentInstallmentsDetail\": {\n      \"amount\": 1.4894159098541704,\n      \"description\": \"description\",\n      \"chargeOn\": \"2000-01-23 04:56:07+00:00\"\n    },\n    \"periodTotalDays\": 9917,\n    \"receiptUrl\": \"string\",\n    \"spaUrl\": \"string\",\n    \"subtotalAmount\": 7925.695853706046,\n    \"taxAmount\": 6143.76877034286,\n    \"trialPeriodInDays\": 5148,\n    \"usageDailyRevenues\": [\n      {\n        \"date\": \"date\",\n        \"uniquePropertyItems\": {\n          \"key\": \"\"\n        },\n        \"quantity\": 5.025004791520295,\n        \"billableMetricKey\": {\n          \"groupBysExpression\": \"groupBysExpression\"\n        }\n      },\n      {\n        \"date\": \"date\",\n        \"uniquePropertyItems\": {\n          \"key\": \"\"\n        },\n        \"quantity\": 5.025004791520295,\n        \"billableMetricKey\": {\n          \"groupBysExpression\": \"groupBysExpression\"\n        }\n      }\n    ]\n  },\n  \"invoiceURL\": \"string\",\n  \"lastUpdateTime\": \"1996-11-21T07:00:56.468Z\",\n  \"organizationID\": \"string\",\n  \"paymentStatus\": \"PENDING\",\n  \"startDate\": \"1988-10-07T14:38:07.542Z\",\n  \"status\": \"CANCELED\",\n  \"type\": \"USAGE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "065450c0-9da9-49f9-8dec-4ef53704b6f8",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId",
+                    "void"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f534997-f6fd-4477-add2-d30a1e1f1cc5",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "invoice",
+                    ":invoiceId",
+                    "void"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "invoiceId",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "847259b3-3df9-402d-a82f-c826d7aa206e",
+          "name": "List Payment Transactions",
+          "request": {
+            "name": "List Payment Transactions",
+            "description": {
+              "content": "List payment transactions with pagination and filters",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                ":orgId",
+                "paymentTransaction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "Optional, filter by the given buyer ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "entitlementId",
+                  "value": "<string>",
+                  "description": "Optional, filter by the given entitlement ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoiceId",
+                  "value": "<string>",
+                  "description": "Optional, filter by the given invoice ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Optional, filter by status"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Optional, filter by transaction type"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "List pagination size, default 1000, max value is 1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "List pagination offset, default 0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orgId",
+                  "description": "(Required) Organization ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e373c92e-95d2-4c5d-b530-d919987254dc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "paymentTransaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoiceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"amount\": 1982.9185812873384,\n    \"buyerID\": \"string\",\n    \"creationTime\": \"1953-05-10T23:32:42.312Z\",\n    \"currency\": \"string\",\n    \"entitlementID\": \"string\",\n    \"id\": \"string\",\n    \"info\": {\n      \"invoiceDate\": \"1976-05-20T07:10:44.684Z\",\n      \"refundExists\": false,\n      \"stripeBalanceTransaction\": {\n        \"amount\": 1507,\n        \"available_on\": 1504,\n        \"chargeId\": \"string\",\n        \"created\": 6190,\n        \"description\": \"string\",\n        \"exchange_rate\": 2918.4486554248233,\n        \"fee\": 9417,\n        \"fee_details\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"id\": \"string\",\n        \"net\": 588,\n        \"status\": \"string\",\n        \"type\": \"string\"\n      },\n      \"stripeDisputes\": [\n        {\n          \"paymentIntentId\": \"paymentIntentId\",\n          \"reason\": \"reason\",\n          \"amount\": 6,\n          \"is_charge_refundable\": true,\n          \"livemode\": true,\n          \"chargeId\": \"chargeId\",\n          \"created\": 1,\n          \"status\": \"status\"\n        },\n        {\n          \"paymentIntentId\": \"paymentIntentId\",\n          \"reason\": \"reason\",\n          \"amount\": 6,\n          \"is_charge_refundable\": true,\n          \"livemode\": true,\n          \"chargeId\": \"chargeId\",\n          \"created\": 1,\n          \"status\": \"status\"\n        }\n      ],\n      \"stripeError\": {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"param\": \"string\",\n        \"status\": 7375,\n        \"type\": \"string\"\n      },\n      \"stripePaymentIntent\": {\n        \"id\": \"string\",\n        \"last_payment_error\": {},\n        \"livemode\": false,\n        \"status\": {}\n      },\n      \"stripeRefund\": {\n        \"chargeId\": \"string\",\n        \"estinationDetails\": {},\n        \"failureBalanceTransactionId\": \"string\",\n        \"failureReason\": \"string\",\n        \"id\": \"string\",\n        \"paymentIntentId\": \"string\",\n        \"status\": {}\n      }\n    },\n    \"invoiceID\": \"string\",\n    \"lastUpdateTime\": \"1979-11-24T22:14:39.845Z\",\n    \"organizationID\": \"string\",\n    \"parentID\": \"string\",\n    \"partner\": \"INTUIT\",\n    \"status\": \"PENDING\",\n    \"type\": \"REFUND\",\n    \"walletID\": \"string\",\n    \"walletType\": \"sepa_debit\"\n  },\n  {\n    \"amount\": 4080.273139841536,\n    \"buyerID\": \"string\",\n    \"creationTime\": \"2022-04-20T02:43:41.204Z\",\n    \"currency\": \"string\",\n    \"entitlementID\": \"string\",\n    \"id\": \"string\",\n    \"info\": {\n      \"invoiceDate\": \"1985-05-18T08:41:00.320Z\",\n      \"refundExists\": true,\n      \"stripeBalanceTransaction\": {\n        \"amount\": 8722,\n        \"available_on\": 6733,\n        \"chargeId\": \"string\",\n        \"created\": 1687,\n        \"description\": \"string\",\n        \"exchange_rate\": 6316.773116367579,\n        \"fee\": 1477,\n        \"fee_details\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"id\": \"string\",\n        \"net\": 8195,\n        \"status\": \"string\",\n        \"type\": \"string\"\n      },\n      \"stripeDisputes\": [\n        {\n          \"paymentIntentId\": \"paymentIntentId\",\n          \"reason\": \"reason\",\n          \"amount\": 6,\n          \"is_charge_refundable\": true,\n          \"livemode\": true,\n          \"chargeId\": \"chargeId\",\n          \"created\": 1,\n          \"status\": \"status\"\n        },\n        {\n          \"paymentIntentId\": \"paymentIntentId\",\n          \"reason\": \"reason\",\n          \"amount\": 6,\n          \"is_charge_refundable\": true,\n          \"livemode\": true,\n          \"chargeId\": \"chargeId\",\n          \"created\": 1,\n          \"status\": \"status\"\n        }\n      ],\n      \"stripeError\": {\n        \"code\": \"string\",\n        \"message\": \"string\",\n        \"param\": \"string\",\n        \"status\": 9492,\n        \"type\": \"string\"\n      },\n      \"stripePaymentIntent\": {\n        \"id\": \"string\",\n        \"last_payment_error\": {},\n        \"livemode\": true,\n        \"status\": {}\n      },\n      \"stripeRefund\": {\n        \"chargeId\": \"string\",\n        \"estinationDetails\": {},\n        \"failureBalanceTransactionId\": \"string\",\n        \"failureReason\": \"string\",\n        \"id\": \"string\",\n        \"paymentIntentId\": \"string\",\n        \"status\": {}\n      }\n    },\n    \"invoiceID\": \"string\",\n    \"lastUpdateTime\": \"2002-05-03T21:08:39.140Z\",\n    \"organizationID\": \"string\",\n    \"parentID\": \"string\",\n    \"partner\": \"DATABRICKS\",\n    \"status\": \"SUCCESS\",\n    \"type\": \"CHARGE\",\n    \"walletID\": \"string\",\n    \"walletType\": \"ach_debit\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a03d878c-dafd-4b24-8d94-a63058e00d4c",
+              "name": "Bad request error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "paymentTransaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoiceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ca6a6b2-2006-4519-8ed3-fde1bee44b27",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    ":orgId",
+                    "paymentTransaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entitlementId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoiceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orgId",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.suger.cloud",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d9bd939c-1997-49c8-ad6f-0da73348b717",
+    "name": "Suger API Billing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.\n\nContact Support:\n Name: Suger Support\n Email: support@suger.io",
+      "type": "text/plain"
+    }
+  }
+}
