@@ -23,6 +23,14 @@ access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/suger.png
 tags:
   - Cloud Marketplace
+  - Go-To-Market
+  - Software-as-a-Service
+  - Billing
+  - Entitlement
+  - Revenue
+  - Co-Sell
+tags_raw:
+  - Cloud Marketplace
   - GTM
   - SaaS
   - Billing
@@ -39,7 +47,8 @@ apis:
   description: Access to API client resources
   humanURL: https://www.suger.io/
   baseURL: https://api.suger.cloud
-  tags:
+  tags: []
+  tags_raw:
   - API
   properties:
   - type: OpenAPI
