@@ -38,7 +38,7 @@ tags:
 - Go-To-Market
 - Software-as-a-Service
 - Billing
-- Entitlement
+- Entitlements
 - Revenue
 - Co-Sell
 tags_raw:
@@ -133,6 +133,8 @@ apis:
   humanURL: https://www.suger.io/
   baseURL: https://api.suger.cloud
   tags:
+  - Entitlements
+  tags_raw:
   - Entitlement
   properties:
   - type: OpenAPI
