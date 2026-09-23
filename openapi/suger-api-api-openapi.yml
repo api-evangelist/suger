@@ -1,17 +1,17 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     email: support@suger.io
     name: Suger Support
     url: https://www.suger.io/support
   description: CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.
-  title: Suger API API
+  title: Suger API
   version: '1.0'
 servers:
 - url: https://api.suger.cloud
 tags:
 - description: Access to API client resources
-  name: API
+  name: api
 paths:
   /org/{orgId}/apiClient:
     get:
@@ -51,7 +51,7 @@ paths:
       - APIKeyAuth: []
       summary: List Api Clients
       tags:
-      - API
+      - api
   /org/{orgId}/apiClient/{apiClientId}:
     get:
       description: Get the API client by ID.
@@ -96,7 +96,7 @@ paths:
       - APIKeyAuth: []
       summary: Get Api Client
       tags:
-      - API
+      - api
 components:
   schemas:
     github_com_sugerio_marketplace-service_pkg_legacy_rds-db_lib.IdentityApiClient:

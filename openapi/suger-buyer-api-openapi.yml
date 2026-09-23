@@ -1,11 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     email: support@suger.io
     name: Suger Support
     url: https://www.suger.io/support
   description: CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.
-  title: Suger API Buyer API
+  title: Suger Buyer API
   version: '1.0'
 servers:
 - url: https://api.suger.cloud
@@ -528,143 +528,134 @@ paths:
       - Buyer
 components:
   schemas:
-    StripeCustomerAddress:
-      properties:
-        city:
-          description: City, district, suburb, town, or village.
-          type: string
-        country:
-          description: Two-letter country code (ISO 3166-1 alpha-2)
-          type: string
-        line1:
-          description: Address line 1 (e.g., street, PO Box, or company name).
-          type: string
-        line2:
-          description: Address line 2 (e.g., apartment, suite, unit, or building).
-          type: string
-        postal_code:
-          description: ZIP or postal code.
-          type: string
-        state:
-          description: State, county, province, or region.
-          type: string
-      type: object
-    AzureADIdentifier:
+    BillingWallet:
       example:
-        firstName: firstName
-        lastName: lastName
-        licenseType: licenseType
-        puid: puid
-        customerId: customerId
-        tenantId: tenantId
-        billingAccountId: billingAccountId
-        emailId: emailId
-        objectId: objectId
-      properties:
-        billingAccountId:
-          description: Azure Billing Account ID
-          type: string
-        customerId:
-          type: string
-        emailId:
-          description: Email address
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        licenseType:
-          description: Azure License Type
-          type: string
-        objectId:
-          type: string
-        puid:
-          description: ID of the user, used as External ID of suger IdentityBuyer.
-          type: string
-        tenantId:
-          type: string
-      type: object
-    GcpMarketplaceUserAccountApproval:
-      properties:
-        name:
-          type: string
-        reason:
-          description: An explanation for the state of the approval.
-          type: string
-        state:
-          $ref: '#/components/schemas/GcpMarketplaceUserAccountApprovalState'
-        updateTime:
-          description: RFC3339 UTC timestamp
-          type: string
-      type: object
-    StripePaymentMethodBACSDebit:
-      example:
-        last4: last4
-        fingerprint: fingerprint
-        sort_code: sort_code
-      properties:
-        fingerprint:
-          description: Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
-          type: string
-        last4:
-          description: Last four digits of the bank account number.
-          type: string
-        sort_code:
-          description: Sort code of the bank account. (e.g., `10-20-30`)
-          type: string
-      type: object
-    CreateBuyerParams:
-      example:
-        paymentConfig: '{}'
-        orbCustomerId: orbCustomerId
-        partner: '{}'
-        companyInfo: '{}'
-        customerId: customerId
+        creationTime: 2000-01-23 04:56:07+00:00
+        usedAmount: 5.637376656633329
+        externalID: externalID
+        buyerID: buyerID
+        type: ach_debit
+        organizationID: organizationID
+        totalAmount: 5.962133916683182
+        expireTime: 2000-01-23 04:56:07+00:00
+        partner: ''
         name: name
-        description: description
-        adyenCustomerId: adyenCustomerId
-        lagoCustomerId: lagoCustomerId
-        metronomeCustomerId: metronomeCustomerId
-        stripeCustomerId: stripeCustomerId
+        currency: currency
+        startTime: 2000-01-23 04:56:07+00:00
+        id: id
+        info:
+          closeDate: 2000-01-23 04:56:07+00:00
+          stripePaymentMethod:
+            livemode: true
+            bacs_debit:
+              last4: last4
+              fingerprint: fingerprint
+              sort_code: sort_code
+            created: 1
+            us_bank_account:
+              last4: last4
+              account_type: checking
+              account_holder_type: individual
+              bank_name: bank_name
+              fingerprint: fingerprint
+              routing_number: routing_number
+            sepa_debit:
+              branch_code: branch_code
+              bank_code: bank_code
+              country: country
+              last4: last4
+              fingerprint: fingerprint
+            id: id
+            card:
+              country: country
+              last4: last4
+              funding: credit
+              display_brand: display_brand
+              fingerprint: fingerprint
+              exp_month: 0
+              exp_year: 6
+              brand: amex
+            object: object
+          stripeSetupIntentId: stripeSetupIntentId
+        lastUpdateTime: 2000-01-23 04:56:07+00:00
+        status: ACTIVE
       properties:
-        adyenCustomerId:
-          description: Adyen customerId of this buyer. If not provided but Partner is ADYEN, will create a new customer on Adyen.
+        buyerID:
           type: string
-        companyInfo:
-          allOf:
-          - $ref: '#/components/schemas/CompanyInfo'
-          description: Optional. CompanyInfo of the buyer.
-          type: object
-        customerId:
-          description: The customer ID to recognize the cloud marketplace buyer in your internal system.
+        creationTime:
+          format: date-time
           type: string
-        description:
-          description: The description of the buyer.
+        currency:
           type: string
-        lagoCustomerId:
-          description: Optional. The Lago Customer ID of the buyer.
+        expireTime:
+          description: nullable
+          format: date-time
           type: string
-        metronomeCustomerId:
-          description: Optional. The Metronome Customer ID of the buyer.
+        externalID:
+          description: The payment method id in payment provider, such as stripe payment method id.
+          type: string
+        id:
+          type: string
+        info:
+          $ref: '#/components/schemas/BillingWalletInfo'
+        lastUpdateTime:
+          format: date-time
           type: string
         name:
-          description: The name of the buyer.
           type: string
-        orbCustomerId:
-          description: Optional. The Orb Customer ID of the buyer.
+        organizationID:
           type: string
         partner:
-          allOf:
-          - $ref: '#/components/schemas/Partner'
-          description: The channel partner where this buyer is billed. Only STRIPE & ADYEN are supported at the moment.
+          $ref: '#/components/schemas/Partner'
+        startTime:
+          format: date-time
+          type: string
+        status:
+          $ref: '#/components/schemas/BillingWalletStatus'
+        totalAmount:
+          type: number
+        type:
+          $ref: '#/components/schemas/BillingWalletType'
+        usedAmount:
+          type: number
+      type: object
+    BillingWalletStatus:
+      enum:
+      - ACTIVE
+      - DELETED
+      - PENDING_VERIFY
+      - EXPIRED
+      - CLOSED
+      type: string
+      x-enum-comments:
+        BillingWalletStatus_DELETED: Soft delete.
+        BillingWalletStatus_EXPIRED: for credit.
+        BillingWalletStatus_PENDING_VERIFY: for payment method.
+      x-enum-varnames:
+      - BillingWalletStatus_ACTIVE
+      - BillingWalletStatus_DELETED
+      - BillingWalletStatus_PENDING_VERIFY
+      - BillingWalletStatus_EXPIRED
+      - BillingWalletStatus_CLOSED
+    StripeCustomer:
+      properties:
+        address:
+          $ref: '#/components/schemas/StripeCustomerAddress'
+        description:
+          type: string
+        email:
+          type: string
+        id:
+          description: The customer ID on the stripe platform.
+          type: string
+        metadata:
+          additionalProperties:
+            type: string
+          description: Set of key-value pairs that you can attach to store additional information about customer.
           type: object
-        paymentConfig:
-          allOf:
-          - $ref: '#/components/schemas/PaymentConfig'
-          description: Payment config for billing.
-          type: object
-        stripeCustomerId:
-          description: Stripe customerId of this buyer. If not provided but Partner is STRIPE, will create a new customer on stripe.
+        name:
+          type: string
+        phone:
           type: string
       type: object
     Partner:
@@ -721,6 +712,153 @@ components:
       - Partner_SNOWFLAKE
       - Partner_STRIPE
       - Partner_ZOHO
+    GcpMarketplaceUserAccountApprovalState:
+      enum:
+      - STATE_UNSPECIFIED
+      - PENDING
+      - APPROVED
+      - REJECTED
+      type: string
+      x-enum-varnames:
+      - GcpMarketplaceUserAccountApprovalState_STATE_UNSPECIFIED
+      - GcpMarketplaceUserAccountApprovalState_PENDING
+      - GcpMarketplaceUserAccountApprovalState_APPROVED
+      - GcpMarketplaceUserAccountApprovalState_REJECTED
+    BillingWalletInfo:
+      example:
+        closeDate: 2000-01-23 04:56:07+00:00
+        stripePaymentMethod:
+          livemode: true
+          bacs_debit:
+            last4: last4
+            fingerprint: fingerprint
+            sort_code: sort_code
+          created: 1
+          us_bank_account:
+            last4: last4
+            account_type: checking
+            account_holder_type: individual
+            bank_name: bank_name
+            fingerprint: fingerprint
+            routing_number: routing_number
+          sepa_debit:
+            branch_code: branch_code
+            bank_code: bank_code
+            country: country
+            last4: last4
+            fingerprint: fingerprint
+          id: id
+          card:
+            country: country
+            last4: last4
+            funding: credit
+            display_brand: display_brand
+            fingerprint: fingerprint
+            exp_month: 0
+            exp_year: 6
+            brand: amex
+          object: object
+        stripeSetupIntentId: stripeSetupIntentId
+      properties:
+        closeDate:
+          description: The close date of the wallet if applicable.
+          format: date-time
+          type: string
+        stripePaymentMethod:
+          $ref: '#/components/schemas/StripePaymentMethod'
+        stripeSetupIntentId:
+          type: string
+      type: object
+    GcpMarketplaceUserAccountApproval:
+      properties:
+        name:
+          type: string
+        reason:
+          description: An explanation for the state of the approval.
+          type: string
+        state:
+          $ref: '#/components/schemas/GcpMarketplaceUserAccountApprovalState'
+        updateTime:
+          description: RFC3339 UTC timestamp
+          type: string
+      type: object
+    SnowflakeMarketplaceBuyer:
+      properties:
+        snowflakeCustomerID:
+          description: The customer ID of the buyer in Snowflake Marketplace.
+          type: string
+      type: object
+    IdentityBuyer:
+      example:
+        organizationID: organizationID
+        creationTime: 2000-01-23 04:56:07+00:00
+        partner: ''
+        name: name
+        description: description
+        externalID: externalID
+        id: id
+        contactIds:
+        - contactIds
+        - contactIds
+        info:
+          stripeBuyer: '{}'
+          invoicedAmount: 5.962133916683182
+          snowflakeBuyer: '{}'
+          companyInfo:
+            country: country
+            emailDomain: emailDomain
+            city: city
+            postalCode: postalCode
+            name: name
+            addressLine1: addressLine1
+            addressLine2: addressLine2
+            state: state
+            validFrom: validFrom
+          gcpBuyer: '{}'
+          lastModifiedBy: lastModifiedBy
+          grossAmount: 1.4658129805029452
+          collectableAmount: 0.8008281904610115
+          paymentConfig: '{}'
+          emailAddress: emailAddress
+          orbCustomerId: orbCustomerId
+          adyenBuyer: '{}'
+          azureBuyer: '{}'
+          customerId: customerId
+          lagoCustomerId: lagoCustomerId
+          awsBuyer: '{}'
+          fields:
+            key: ''
+          metronomeCustomerId: metronomeCustomerId
+          stripeCustomerId: stripeCustomerId
+          disbursedAmount: 6.027456183070403
+          spaUrl: spaUrl
+        lastUpdateTime: 2000-01-23 04:56:07+00:00
+      properties:
+        contactIds:
+          items:
+            type: string
+          type: array
+        creationTime:
+          format: date-time
+          type: string
+        description:
+          type: string
+        externalID:
+          type: string
+        id:
+          type: string
+        info:
+          $ref: '#/components/schemas/BuyerInfo'
+        lastUpdateTime:
+          format: date-time
+          type: string
+        name:
+          type: string
+        organizationID:
+          type: string
+        partner:
+          $ref: '#/components/schemas/Partner'
+      type: object
     GcpMarketplaceUserAccount:
       properties:
         approvals:
@@ -765,50 +903,39 @@ components:
         userInfo:
           $ref: '#/components/schemas/GcpUserInfo'
       type: object
-    GcpUserInfo:
+    AzureADIdentifier:
+      example:
+        firstName: firstName
+        lastName: lastName
+        licenseType: licenseType
+        puid: puid
+        customerId: customerId
+        tenantId: tenantId
+        billingAccountId: billingAccountId
+        emailId: emailId
+        objectId: objectId
       properties:
-        orders:
-          description: 'a list of unique order IDs for each entitlement ID that indicates the
-
-            different offers on the same product. This field is available only if
-
-            multiple orders of the same product is enabled'
-          items:
-            type: string
-          type: array
-        roles:
-          description: 'An array of strings representing the user''s roles. Right now, it can be either: ** account_admin, which indicates that the user is a Billing Account Administrator of the billing account that purchased the product, or ** project_editor, which indicates that the user is a Project Editor, but not a Billing Administrator, of the project under that billing account.'
-          items:
-            type: string
-          type: array
-        user_identity:
-          description: The user's obfuscated GAIA ID, which can be used to initiate Open ID Connect.
+        billingAccountId:
+          description: Azure Billing Account ID
           type: string
-      type: object
-    PaymentConfig:
-      properties:
-        allowedWalletTypes:
-          description: Allowed wallet types for this buyer, include payment methods from payment provider such as card, us_bank_account and credit.
-          items:
-            $ref: '#/components/schemas/BillingWalletType'
-          type: array
-        currency:
-          description: Currency used for billing.
+        customerId:
           type: string
-        defaultWalletId:
-          description: Default wallet id which is a stripe payment method used to invoice.
+        emailId:
+          description: Email address
           type: string
-      type: object
-    AwsAccountIdentifier:
-      properties:
-        awsAccountID:
-          description: The AWS Account ID of the buyer in AWS Marketplace
+        firstName:
           type: string
-        awsCustomerID:
-          description: The AWS Customer ID of the buyer in AWS Marketplace
+        lastName:
           type: string
-        dataFeedAccountID:
-          description: The Account ID in AWS Marketplace Data Feed service
+        licenseType:
+          description: Azure License Type
+          type: string
+        objectId:
+          type: string
+        puid:
+          description: ID of the user, used as External ID of suger IdentityBuyer.
+          type: string
+        tenantId:
           type: string
       type: object
     BillingWalletType:
@@ -830,55 +957,297 @@ components:
       - BillingWalletType_CARD
       - BillingWalletType_CREDIT
       - BillingWalletType_SEPA_DEBIT
-    StripePaymentMethodCard:
-      example:
-        country: country
-        last4: last4
-        funding: credit
-        display_brand: display_brand
-        fingerprint: fingerprint
-        exp_month: 0
-        exp_year: 6
-        brand: amex
+    GcpMarketplaceUserAccountState:
+      enum:
+      - ACCOUNT_STATE_UNSPECIFIED
+      - ACCOUNT_ACTIVE
+      type: string
+      x-enum-varnames:
+      - GcpMarketplaceUserAccountState_UNSPECIFIED
+      - GcpMarketplaceUserAccountState_ACTIVE
+    StripeCustomerAddress:
       properties:
-        brand:
-          description: Card brand.
-          enum:
-          - amex
-          - diners
-          - discover
-          - eftpos_au
-          - jcb
-          - mastercard
-          - unionpay
-          - visa
-          - unknown
+        city:
+          description: City, district, suburb, town, or village.
           type: string
         country:
-          description: Two-letter ISO code representing the country of the card. You could use this attribute to get a sense of the international breakdown of cards you've collected.
+          description: Two-letter country code (ISO 3166-1 alpha-2)
           type: string
-        display_brand:
-          description: The brand to use when displaying the card, this accounts for customer's brand choice on dual-branded cards. Can be `american_express`, `cartes_bancaires`, `diners_club`, `discover`, `eftpos_australia`, `interac`, `jcb`, `mastercard`, `union_pay`, `visa`, or `other` and may contain more values in the future.
+        line1:
+          description: Address line 1 (e.g., street, PO Box, or company name).
           type: string
-        exp_month:
-          description: Two-digit number representing the card's expiration month.
+        line2:
+          description: Address line 2 (e.g., apartment, suite, unit, or building).
+          type: string
+        postal_code:
+          description: ZIP or postal code.
+          type: string
+        state:
+          description: State, county, province, or region.
+          type: string
+      type: object
+    AdyenBuyer:
+      properties:
+        settings:
+          additionalProperties: true
+          description: Settings store key-value pairs such as paymentMethodId,syncWithProvider,providerPaymentMethods.
+          type: object
+        shopperId:
+          description: The shopperId on the adyen platform corresponding to the buyer.
+          type: string
+      type: object
+    StripePaymentMethod:
+      example:
+        livemode: true
+        bacs_debit:
+          last4: last4
+          fingerprint: fingerprint
+          sort_code: sort_code
+        created: 1
+        us_bank_account:
+          last4: last4
+          account_type: checking
+          account_holder_type: individual
+          bank_name: bank_name
+          fingerprint: fingerprint
+          routing_number: routing_number
+        sepa_debit:
+          branch_code: branch_code
+          bank_code: bank_code
+          country: country
+          last4: last4
+          fingerprint: fingerprint
+        id: id
+        card:
+          country: country
+          last4: last4
+          funding: credit
+          display_brand: display_brand
+          fingerprint: fingerprint
+          exp_month: 0
+          exp_year: 6
+          brand: amex
+        object: object
+      properties:
+        bacs_debit:
+          $ref: '#/components/schemas/StripePaymentMethodBACSDebit'
+        card:
+          $ref: '#/components/schemas/StripePaymentMethodCard'
+        created:
+          description: Time at which the object was created. Measured in seconds since the Unix epoch.
           type: integer
-        exp_year:
-          description: Four-digit number representing the card's expiration year.
-          type: integer
-        fingerprint:
-          description: Uniquely identifies this particular card number. You can use this attribute to check whether two customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number.
+        id:
+          description: Unique identifier for the payment method on stripe.
           type: string
-        funding:
-          description: Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`.
+        livemode:
+          description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
+          type: boolean
+        object:
+          description: String representing the object’s type. Always has the value `payment_method`.
+          type: string
+        sepa_debit:
+          $ref: '#/components/schemas/StripePaymentMethodSEPADebit'
+        us_bank_account:
+          $ref: '#/components/schemas/StripePaymentMethodUSBankAccount'
+      type: object
+    CreateBuyerParams:
+      example:
+        paymentConfig: '{}'
+        orbCustomerId: orbCustomerId
+        partner: '{}'
+        companyInfo: '{}'
+        customerId: customerId
+        name: name
+        description: description
+        adyenCustomerId: adyenCustomerId
+        lagoCustomerId: lagoCustomerId
+        metronomeCustomerId: metronomeCustomerId
+        stripeCustomerId: stripeCustomerId
+      properties:
+        adyenCustomerId:
+          description: Adyen customerId of this buyer. If not provided but Partner is ADYEN, will create a new customer on Adyen.
+          type: string
+        companyInfo:
+          allOf:
+          - $ref: '#/components/schemas/CompanyInfo'
+          description: Optional. CompanyInfo of the buyer.
+          type: object
+        customerId:
+          description: The customer ID to recognize the cloud marketplace buyer in your internal system.
+          type: string
+        description:
+          description: The description of the buyer.
+          type: string
+        lagoCustomerId:
+          description: Optional. The Lago Customer ID of the buyer.
+          type: string
+        metronomeCustomerId:
+          description: Optional. The Metronome Customer ID of the buyer.
+          type: string
+        name:
+          description: The name of the buyer.
+          type: string
+        orbCustomerId:
+          description: Optional. The Orb Customer ID of the buyer.
+          type: string
+        partner:
+          allOf:
+          - $ref: '#/components/schemas/Partner'
+          description: The channel partner where this buyer is billed. Only STRIPE & ADYEN are supported at the moment.
+          type: object
+        paymentConfig:
+          allOf:
+          - $ref: '#/components/schemas/PaymentConfig'
+          description: Payment config for billing.
+          type: object
+        stripeCustomerId:
+          description: Stripe customerId of this buyer. If not provided but Partner is STRIPE, will create a new customer on stripe.
+          type: string
+      type: object
+    StripePaymentMethodUSBankAccount:
+      example:
+        last4: last4
+        account_type: checking
+        account_holder_type: individual
+        bank_name: bank_name
+        fingerprint: fingerprint
+        routing_number: routing_number
+      properties:
+        account_holder_type:
+          description: 'Account holder type: individual or company.'
           enum:
-          - credit
-          - debit
-          - prepaid
-          - unknown
+          - individual
+          - company
+          type: string
+        account_type:
+          description: 'Account type: checkings or savings. Defaults to checking if omitted.'
+          enum:
+          - checking
+          - savings
+          type: string
+        bank_name:
+          description: The name of the bank.
+          type: string
+        fingerprint:
+          description: Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
           type: string
         last4:
-          description: The last four digits of the card.
+          description: Last four digits of the bank account number.
+          type: string
+        routing_number:
+          description: Routing number of the bank account.
+          type: string
+      type: object
+    UpdateBuyerParams:
+      example:
+        paymentConfig: '{}'
+        orbCustomerId: orbCustomerId
+        companyInfo: '{}'
+        customerId: customerId
+        name: name
+        description: description
+        lagoCustomerId: lagoCustomerId
+        metronomeCustomerId: metronomeCustomerId
+        stripeCustomerId: stripeCustomerId
+      properties:
+        companyInfo:
+          allOf:
+          - $ref: '#/components/schemas/CompanyInfo'
+          description: Optional. CompanyInfo of the buyer.
+          type: object
+        customerId:
+          description: 'The customer ID to recognize the cloud marketplace buyer in your internal system.
+
+            This may be used for uploading CSV files for Batch Metering Usage'
+          type: string
+        description:
+          description: The description of the buyer. If not provided, the description will not be updated.
+          type: string
+        lagoCustomerId:
+          description: The Lago Customer ID of the buyer. If not provided, the Lago Customer ID will not be updated.
+          type: string
+        metronomeCustomerId:
+          description: The Metronome Customer ID of the buyer. If not provided, the Metronome Customer ID will not be updated.
+          type: string
+        name:
+          description: The name of the buyer. If not provided, the name will not be updated.
+          type: string
+        orbCustomerId:
+          description: The Orb Customer ID of the buyer. If not provided, the Orb Customer ID will not be updated.
+          type: string
+        paymentConfig:
+          allOf:
+          - $ref: '#/components/schemas/PaymentConfig'
+          description: Optional. PaymentConfig of the buyer. The currency can't be updated.
+          type: object
+        stripeCustomerId:
+          description: The Stripe Customer ID of the buyer. If not provided, the Stripe Customer ID will not be updated.
+          type: string
+      type: object
+    PaymentConfig:
+      properties:
+        allowedWalletTypes:
+          description: Allowed wallet types for this buyer, include payment methods from payment provider such as card, us_bank_account and credit.
+          items:
+            $ref: '#/components/schemas/BillingWalletType'
+          type: array
+        currency:
+          description: Currency used for billing.
+          type: string
+        defaultWalletId:
+          description: Default wallet id which is a stripe payment method used to invoice.
+          type: string
+      type: object
+    CompanyInfo:
+      example:
+        country: country
+        emailDomain: emailDomain
+        city: city
+        postalCode: postalCode
+        name: name
+        addressLine1: addressLine1
+        addressLine2: addressLine2
+        state: state
+        validFrom: validFrom
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        emailDomain:
+          type: string
+        name:
+          type: string
+        postalCode:
+          type: string
+        state:
+          type: string
+        validFrom:
+          description: When the company info becomes valid. in format "2006-01-02T15:04:05Z"
+          type: string
+      type: object
+    GcpUserInfo:
+      properties:
+        orders:
+          description: 'a list of unique order IDs for each entitlement ID that indicates the
+
+            different offers on the same product. This field is available only if
+
+            multiple orders of the same product is enabled'
+          items:
+            type: string
+          type: array
+        roles:
+          description: 'An array of strings representing the user''s roles. Right now, it can be either: ** account_admin, which indicates that the user is a Billing Account Administrator of the billing account that purchased the product, or ** project_editor, which indicates that the user is a Project Editor, but not a Billing Administrator, of the project under that billing account.'
+          items:
+            type: string
+          type: array
+        user_identity:
+          description: The user's obfuscated GAIA ID, which can be used to initiate Open ID Connect.
           type: string
       type: object
     BuyerInfo:
@@ -993,452 +1362,71 @@ components:
           description: The stripe customer ID for the buyer if it is connected to a stripe customer.
           type: string
       type: object
-    BillingWallet:
+    StripePaymentMethodCard:
       example:
-        creationTime: 2000-01-23 04:56:07+00:00
-        usedAmount: 5.637376656633329
-        externalID: externalID
-        buyerID: buyerID
-        type: ach_debit
-        organizationID: organizationID
-        totalAmount: 5.962133916683182
-        expireTime: 2000-01-23 04:56:07+00:00
-        partner: ''
-        name: name
-        currency: currency
-        startTime: 2000-01-23 04:56:07+00:00
-        id: id
-        info:
-          closeDate: 2000-01-23 04:56:07+00:00
-          stripePaymentMethod:
-            livemode: true
-            bacs_debit:
-              last4: last4
-              fingerprint: fingerprint
-              sort_code: sort_code
-            created: 1
-            us_bank_account:
-              last4: last4
-              account_type: checking
-              account_holder_type: individual
-              bank_name: bank_name
-              fingerprint: fingerprint
-              routing_number: routing_number
-            sepa_debit:
-              branch_code: branch_code
-              bank_code: bank_code
-              country: country
-              last4: last4
-              fingerprint: fingerprint
-            id: id
-            card:
-              country: country
-              last4: last4
-              funding: credit
-              display_brand: display_brand
-              fingerprint: fingerprint
-              exp_month: 0
-              exp_year: 6
-              brand: amex
-            object: object
-          stripeSetupIntentId: stripeSetupIntentId
-        lastUpdateTime: 2000-01-23 04:56:07+00:00
-        status: ACTIVE
+        country: country
+        last4: last4
+        funding: credit
+        display_brand: display_brand
+        fingerprint: fingerprint
+        exp_month: 0
+        exp_year: 6
+        brand: amex
       properties:
-        buyerID:
+        brand:
+          description: Card brand.
+          enum:
+          - amex
+          - diners
+          - discover
+          - eftpos_au
+          - jcb
+          - mastercard
+          - unionpay
+          - visa
+          - unknown
           type: string
-        creationTime:
-          format: date-time
+        country:
+          description: Two-letter ISO code representing the country of the card. You could use this attribute to get a sense of the international breakdown of cards you've collected.
           type: string
-        currency:
+        display_brand:
+          description: The brand to use when displaying the card, this accounts for customer's brand choice on dual-branded cards. Can be `american_express`, `cartes_bancaires`, `diners_club`, `discover`, `eftpos_australia`, `interac`, `jcb`, `mastercard`, `union_pay`, `visa`, or `other` and may contain more values in the future.
           type: string
-        expireTime:
-          description: nullable
-          format: date-time
+        exp_month:
+          description: Two-digit number representing the card's expiration month.
+          type: integer
+        exp_year:
+          description: Four-digit number representing the card's expiration year.
+          type: integer
+        fingerprint:
+          description: Uniquely identifies this particular card number. You can use this attribute to check whether two customers who’ve signed up with you are using the same card number, for example. For payment methods that tokenize card information (Apple Pay, Google Pay), the tokenized number might be provided instead of the underlying card number.
           type: string
-        externalID:
-          description: The payment method id in payment provider, such as stripe payment method id.
+        funding:
+          description: Card funding type. Can be `credit`, `debit`, `prepaid`, or `unknown`.
+          enum:
+          - credit
+          - debit
+          - prepaid
+          - unknown
           type: string
-        id:
-          type: string
-        info:
-          $ref: '#/components/schemas/BillingWalletInfo'
-        lastUpdateTime:
-          format: date-time
-          type: string
-        name:
-          type: string
-        organizationID:
-          type: string
-        partner:
-          $ref: '#/components/schemas/Partner'
-        startTime:
-          format: date-time
-          type: string
-        status:
-          $ref: '#/components/schemas/BillingWalletStatus'
-        totalAmount:
-          type: number
-        type:
-          $ref: '#/components/schemas/BillingWalletType'
-        usedAmount:
-          type: number
-      type: object
-    UpdateBuyerParams:
-      example:
-        paymentConfig: '{}'
-        orbCustomerId: orbCustomerId
-        companyInfo: '{}'
-        customerId: customerId
-        name: name
-        description: description
-        lagoCustomerId: lagoCustomerId
-        metronomeCustomerId: metronomeCustomerId
-        stripeCustomerId: stripeCustomerId
-      properties:
-        companyInfo:
-          allOf:
-          - $ref: '#/components/schemas/CompanyInfo'
-          description: Optional. CompanyInfo of the buyer.
-          type: object
-        customerId:
-          description: 'The customer ID to recognize the cloud marketplace buyer in your internal system.
-
-            This may be used for uploading CSV files for Batch Metering Usage'
-          type: string
-        description:
-          description: The description of the buyer. If not provided, the description will not be updated.
-          type: string
-        lagoCustomerId:
-          description: The Lago Customer ID of the buyer. If not provided, the Lago Customer ID will not be updated.
-          type: string
-        metronomeCustomerId:
-          description: The Metronome Customer ID of the buyer. If not provided, the Metronome Customer ID will not be updated.
-          type: string
-        name:
-          description: The name of the buyer. If not provided, the name will not be updated.
-          type: string
-        orbCustomerId:
-          description: The Orb Customer ID of the buyer. If not provided, the Orb Customer ID will not be updated.
-          type: string
-        paymentConfig:
-          allOf:
-          - $ref: '#/components/schemas/PaymentConfig'
-          description: Optional. PaymentConfig of the buyer. The currency can't be updated.
-          type: object
-        stripeCustomerId:
-          description: The Stripe Customer ID of the buyer. If not provided, the Stripe Customer ID will not be updated.
+        last4:
+          description: The last four digits of the card.
           type: string
       type: object
-    AdyenBuyer:
-      properties:
-        settings:
-          additionalProperties: true
-          description: Settings store key-value pairs such as paymentMethodId,syncWithProvider,providerPaymentMethods.
-          type: object
-        shopperId:
-          description: The shopperId on the adyen platform corresponding to the buyer.
-          type: string
-      type: object
-    GcpMarketplaceUserAccountState:
-      enum:
-      - ACCOUNT_STATE_UNSPECIFIED
-      - ACCOUNT_ACTIVE
-      type: string
-      x-enum-varnames:
-      - GcpMarketplaceUserAccountState_UNSPECIFIED
-      - GcpMarketplaceUserAccountState_ACTIVE
-    StripePaymentMethodUSBankAccount:
+    StripePaymentMethodBACSDebit:
       example:
         last4: last4
-        account_type: checking
-        account_holder_type: individual
-        bank_name: bank_name
         fingerprint: fingerprint
-        routing_number: routing_number
+        sort_code: sort_code
       properties:
-        account_holder_type:
-          description: 'Account holder type: individual or company.'
-          enum:
-          - individual
-          - company
-          type: string
-        account_type:
-          description: 'Account type: checkings or savings. Defaults to checking if omitted.'
-          enum:
-          - checking
-          - savings
-          type: string
-        bank_name:
-          description: The name of the bank.
-          type: string
         fingerprint:
           description: Uniquely identifies this particular bank account. You can use this attribute to check whether two bank accounts are the same.
           type: string
         last4:
           description: Last four digits of the bank account number.
           type: string
-        routing_number:
-          description: Routing number of the bank account.
-          type: string
-      type: object
-    BillingWalletStatus:
-      enum:
-      - ACTIVE
-      - DELETED
-      - PENDING_VERIFY
-      - EXPIRED
-      - CLOSED
-      type: string
-      x-enum-comments:
-        BillingWalletStatus_DELETED: Soft delete.
-        BillingWalletStatus_EXPIRED: for credit.
-        BillingWalletStatus_PENDING_VERIFY: for payment method.
-      x-enum-varnames:
-      - BillingWalletStatus_ACTIVE
-      - BillingWalletStatus_DELETED
-      - BillingWalletStatus_PENDING_VERIFY
-      - BillingWalletStatus_EXPIRED
-      - BillingWalletStatus_CLOSED
-    SnowflakeMarketplaceBuyer:
-      properties:
-        snowflakeCustomerID:
-          description: The customer ID of the buyer in Snowflake Marketplace.
-          type: string
-      type: object
-    IdentityBuyer:
-      example:
-        organizationID: organizationID
-        creationTime: 2000-01-23 04:56:07+00:00
-        partner: ''
-        name: name
-        description: description
-        externalID: externalID
-        id: id
-        contactIds:
-        - contactIds
-        - contactIds
-        info:
-          stripeBuyer: '{}'
-          invoicedAmount: 5.962133916683182
-          snowflakeBuyer: '{}'
-          companyInfo:
-            country: country
-            emailDomain: emailDomain
-            city: city
-            postalCode: postalCode
-            name: name
-            addressLine1: addressLine1
-            addressLine2: addressLine2
-            state: state
-            validFrom: validFrom
-          gcpBuyer: '{}'
-          lastModifiedBy: lastModifiedBy
-          grossAmount: 1.4658129805029452
-          collectableAmount: 0.8008281904610115
-          paymentConfig: '{}'
-          emailAddress: emailAddress
-          orbCustomerId: orbCustomerId
-          adyenBuyer: '{}'
-          azureBuyer: '{}'
-          customerId: customerId
-          lagoCustomerId: lagoCustomerId
-          awsBuyer: '{}'
-          fields:
-            key: ''
-          metronomeCustomerId: metronomeCustomerId
-          stripeCustomerId: stripeCustomerId
-          disbursedAmount: 6.027456183070403
-          spaUrl: spaUrl
-        lastUpdateTime: 2000-01-23 04:56:07+00:00
-      properties:
-        contactIds:
-          items:
-            type: string
-          type: array
-        creationTime:
-          format: date-time
-          type: string
-        description:
-          type: string
-        externalID:
-          type: string
-        id:
-          type: string
-        info:
-          $ref: '#/components/schemas/BuyerInfo'
-        lastUpdateTime:
-          format: date-time
-          type: string
-        name:
-          type: string
-        organizationID:
-          type: string
-        partner:
-          $ref: '#/components/schemas/Partner'
-      type: object
-    GcpMarketplaceUserAccountApprovalState:
-      enum:
-      - STATE_UNSPECIFIED
-      - PENDING
-      - APPROVED
-      - REJECTED
-      type: string
-      x-enum-varnames:
-      - GcpMarketplaceUserAccountApprovalState_STATE_UNSPECIFIED
-      - GcpMarketplaceUserAccountApprovalState_PENDING
-      - GcpMarketplaceUserAccountApprovalState_APPROVED
-      - GcpMarketplaceUserAccountApprovalState_REJECTED
-    CompanyInfo:
-      example:
-        country: country
-        emailDomain: emailDomain
-        city: city
-        postalCode: postalCode
-        name: name
-        addressLine1: addressLine1
-        addressLine2: addressLine2
-        state: state
-        validFrom: validFrom
-      properties:
-        addressLine1:
-          type: string
-        addressLine2:
-          type: string
-        city:
-          type: string
-        country:
-          type: string
-        emailDomain:
-          type: string
-        name:
-          type: string
-        postalCode:
-          type: string
-        state:
-          type: string
-        validFrom:
-          description: When the company info becomes valid. in format "2006-01-02T15:04:05Z"
-          type: string
-      type: object
-    StripePaymentMethod:
-      example:
-        livemode: true
-        bacs_debit:
-          last4: last4
-          fingerprint: fingerprint
-          sort_code: sort_code
-        created: 1
-        us_bank_account:
-          last4: last4
-          account_type: checking
-          account_holder_type: individual
-          bank_name: bank_name
-          fingerprint: fingerprint
-          routing_number: routing_number
-        sepa_debit:
-          branch_code: branch_code
-          bank_code: bank_code
-          country: country
-          last4: last4
-          fingerprint: fingerprint
-        id: id
-        card:
-          country: country
-          last4: last4
-          funding: credit
-          display_brand: display_brand
-          fingerprint: fingerprint
-          exp_month: 0
-          exp_year: 6
-          brand: amex
-        object: object
-      properties:
-        bacs_debit:
-          $ref: '#/components/schemas/StripePaymentMethodBACSDebit'
-        card:
-          $ref: '#/components/schemas/StripePaymentMethodCard'
-        created:
-          description: Time at which the object was created. Measured in seconds since the Unix epoch.
-          type: integer
-        id:
-          description: Unique identifier for the payment method on stripe.
-          type: string
-        livemode:
-          description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
-          type: boolean
-        object:
-          description: String representing the object’s type. Always has the value `payment_method`.
-          type: string
-        sepa_debit:
-          $ref: '#/components/schemas/StripePaymentMethodSEPADebit'
-        us_bank_account:
-          $ref: '#/components/schemas/StripePaymentMethodUSBankAccount'
-      type: object
-    BillingWalletInfo:
-      example:
-        closeDate: 2000-01-23 04:56:07+00:00
-        stripePaymentMethod:
-          livemode: true
-          bacs_debit:
-            last4: last4
-            fingerprint: fingerprint
-            sort_code: sort_code
-          created: 1
-          us_bank_account:
-            last4: last4
-            account_type: checking
-            account_holder_type: individual
-            bank_name: bank_name
-            fingerprint: fingerprint
-            routing_number: routing_number
-          sepa_debit:
-            branch_code: branch_code
-            bank_code: bank_code
-            country: country
-            last4: last4
-            fingerprint: fingerprint
-          id: id
-          card:
-            country: country
-            last4: last4
-            funding: credit
-            display_brand: display_brand
-            fingerprint: fingerprint
-            exp_month: 0
-            exp_year: 6
-            brand: amex
-          object: object
-        stripeSetupIntentId: stripeSetupIntentId
-      properties:
-        closeDate:
-          description: The close date of the wallet if applicable.
-          format: date-time
-          type: string
-        stripePaymentMethod:
-          $ref: '#/components/schemas/StripePaymentMethod'
-        stripeSetupIntentId:
-          type: string
-      type: object
-    StripeCustomer:
-      properties:
-        address:
-          $ref: '#/components/schemas/StripeCustomerAddress'
-        description:
-          type: string
-        email:
-          type: string
-        id:
-          description: The customer ID on the stripe platform.
-          type: string
-        metadata:
-          additionalProperties:
-            type: string
-          description: Set of key-value pairs that you can attach to store additional information about customer.
-          type: object
-        name:
-          type: string
-        phone:
+        sort_code:
+          description: Sort code of the bank account. (e.g., `10-20-30`)
           type: string
       type: object
     StripePaymentMethodSEPADebit:
@@ -1463,6 +1451,18 @@ components:
           type: string
         last4:
           description: Last four characters of the IBAN.
+          type: string
+      type: object
+    AwsAccountIdentifier:
+      properties:
+        awsAccountID:
+          description: The AWS Account ID of the buyer in AWS Marketplace
+          type: string
+        awsCustomerID:
+          description: The AWS Customer ID of the buyer in AWS Marketplace
+          type: string
+        dataFeedAccountID:
+          description: The Account ID in AWS Marketplace Data Feed service
           type: string
       type: object
   securitySchemes:

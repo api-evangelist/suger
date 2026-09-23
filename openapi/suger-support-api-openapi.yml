@@ -1,11 +1,11 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     email: support@suger.io
     name: Suger Support
     url: https://www.suger.io/support
   description: CRUD operations on a set of resources, including organizations, products, offers, entitlements, usage record groups for meterting, etc.
-  title: Suger API Support API
+  title: Suger Support API
   version: '1.0'
 servers:
 - url: https://api.suger.cloud
@@ -405,24 +405,303 @@ paths:
       - Support
 components:
   schemas:
-    SupportTicketStatus:
+    SupportTicketComment:
+      example:
+        date: date
+        comment_text: comment_text
+        creator: '{}'
+        comment:
+        - image:
+            thumbnail_small: thumbnail_small
+            extension: extension
+            thumbnail_medium: thumbnail_medium
+            thumbnail_large: thumbnail_large
+            name: name
+            id: id
+            title: title
+            type: type
+            url: url
+          attachment:
+            date: date
+            thumbnail_small: thumbnail_small
+            thumbnail_medium: thumbnail_medium
+            size: 0
+            thumbnail_large: thumbnail_large
+            mimetype: mimetype
+            id: id
+            title: title
+            url: url
+          text: text
+          type: type
+          frame:
+            id: id
+            url: url
+        - image:
+            thumbnail_small: thumbnail_small
+            extension: extension
+            thumbnail_medium: thumbnail_medium
+            thumbnail_large: thumbnail_large
+            name: name
+            id: id
+            title: title
+            type: type
+            url: url
+          attachment:
+            date: date
+            thumbnail_small: thumbnail_small
+            thumbnail_medium: thumbnail_medium
+            size: 0
+            thumbnail_large: thumbnail_large
+            mimetype: mimetype
+            id: id
+            title: title
+            url: url
+          text: text
+          type: type
+          frame:
+            id: id
+            url: url
+        id: id
+      properties:
+        comment:
+          items:
+            $ref: '#/components/schemas/SupportTicketCommentDetail'
+          type: array
+        comment_text:
+          description: When creating a new comment, only CommentText is required.
+          type: string
+        creator:
+          allOf:
+          - $ref: '#/components/schemas/SupportTicketUser'
+          description: who created the comment
+          type: object
+        date:
+          type: string
+        id:
+          type: string
+      type: object
+    SupportTicketPriority:
       enum:
-      - OPEN
-      - IN PROGRESS
-      - IN REVIEW
-      - BLOCKED
-      - CLOSED
-      - ARCHIVED
-      - DELETED
+      - LOW
+      - NORMAL
+      - HIGH
+      - URGENT
       type: string
       x-enum-varnames:
-      - SupportTicketStatus_OPEN
-      - SupportTicketStatus_IN_PROGRESS
-      - SupportTicketStatus_IN_REVIEW
-      - SupportTicketStatus_BLOCKED
-      - SupportTicketStatus_CLOSED
-      - SupportTicketStatus_ARCHIVED
-      - SupportTicketStatus_DELETED
+      - SupportTicketPriority_LOW
+      - SupportTicketPriority_NORMAL
+      - SupportTicketPriority_HIGH
+      - SupportTicketPriority_URGENT
+    SupportTicketAttachment:
+      example:
+        date: date
+        thumbnail_small: thumbnail_small
+        thumbnail_medium: thumbnail_medium
+        size: 0
+        thumbnail_large: thumbnail_large
+        mimetype: mimetype
+        id: id
+        title: title
+        url: url
+      properties:
+        date:
+          type: string
+        id:
+          type: string
+        mimetype:
+          type: string
+        size:
+          type: integer
+        thumbnail_large:
+          type: string
+        thumbnail_medium:
+          type: string
+        thumbnail_small:
+          type: string
+        title:
+          type: string
+        url:
+          type: string
+      type: object
+    SupportTicket:
+      example:
+        creator: creator
+        attachments:
+        - date: date
+          thumbnail_small: thumbnail_small
+          thumbnail_medium: thumbnail_medium
+          size: 0
+          thumbnail_large: thumbnail_large
+          mimetype: mimetype
+          id: id
+          title: title
+          url: url
+        - date: date
+          thumbnail_small: thumbnail_small
+          thumbnail_medium: thumbnail_medium
+          size: 0
+          thumbnail_large: thumbnail_large
+          mimetype: mimetype
+          id: id
+          title: title
+          url: url
+        comments:
+        - date: date
+          comment_text: comment_text
+          creator: '{}'
+          comment:
+          - image:
+              thumbnail_small: thumbnail_small
+              extension: extension
+              thumbnail_medium: thumbnail_medium
+              thumbnail_large: thumbnail_large
+              name: name
+              id: id
+              title: title
+              type: type
+              url: url
+            attachment:
+              date: date
+              thumbnail_small: thumbnail_small
+              thumbnail_medium: thumbnail_medium
+              size: 0
+              thumbnail_large: thumbnail_large
+              mimetype: mimetype
+              id: id
+              title: title
+              url: url
+            text: text
+            type: type
+            frame:
+              id: id
+              url: url
+          - image:
+              thumbnail_small: thumbnail_small
+              extension: extension
+              thumbnail_medium: thumbnail_medium
+              thumbnail_large: thumbnail_large
+              name: name
+              id: id
+              title: title
+              type: type
+              url: url
+            attachment:
+              date: date
+              thumbnail_small: thumbnail_small
+              thumbnail_medium: thumbnail_medium
+              size: 0
+              thumbnail_large: thumbnail_large
+              mimetype: mimetype
+              id: id
+              title: title
+              url: url
+            text: text
+            type: type
+            frame:
+              id: id
+              url: url
+          id: id
+        - date: date
+          comment_text: comment_text
+          creator: '{}'
+          comment:
+          - image:
+              thumbnail_small: thumbnail_small
+              extension: extension
+              thumbnail_medium: thumbnail_medium
+              thumbnail_large: thumbnail_large
+              name: name
+              id: id
+              title: title
+              type: type
+              url: url
+            attachment:
+              date: date
+              thumbnail_small: thumbnail_small
+              thumbnail_medium: thumbnail_medium
+              size: 0
+              thumbnail_large: thumbnail_large
+              mimetype: mimetype
+              id: id
+              title: title
+              url: url
+            text: text
+            type: type
+            frame:
+              id: id
+              url: url
+          - image:
+              thumbnail_small: thumbnail_small
+              extension: extension
+              thumbnail_medium: thumbnail_medium
+              thumbnail_large: thumbnail_large
+              name: name
+              id: id
+              title: title
+              type: type
+              url: url
+            attachment:
+              date: date
+              thumbnail_small: thumbnail_small
+              thumbnail_medium: thumbnail_medium
+              size: 0
+              thumbnail_large: thumbnail_large
+              mimetype: mimetype
+              id: id
+              title: title
+              url: url
+            text: text
+            type: type
+            frame:
+              id: id
+              url: url
+          id: id
+        creationTime: creationTime
+        description: description
+        watchers:
+        - watchers
+        - watchers
+        dueTime: dueTime
+        priority: LOW
+        organizationId: organizationId
+        closeTime: closeTime
+        name: name
+        id: id
+        status: OPEN
+      properties:
+        attachments:
+          items:
+            $ref: '#/components/schemas/SupportTicketAttachment'
+          type: array
+        closeTime:
+          type: string
+        comments:
+          items:
+            $ref: '#/components/schemas/SupportTicketComment'
+          type: array
+        creationTime:
+          type: string
+        creator:
+          type: string
+        description:
+          type: string
+        dueTime:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        organizationId:
+          type: string
+        priority:
+          $ref: '#/components/schemas/SupportTicketPriority'
+        status:
+          $ref: '#/components/schemas/SupportTicketStatus'
+        watchers:
+          items:
+            type: string
+          type: array
+      type: object
     ListSupportTicketsResponse:
       example:
         totalCount: 6
@@ -722,255 +1001,6 @@ components:
           description: Only available when the request is made with offset=0.
           type: integer
       type: object
-    SupportTicketCommentDetail:
-      example:
-        image:
-          thumbnail_small: thumbnail_small
-          extension: extension
-          thumbnail_medium: thumbnail_medium
-          thumbnail_large: thumbnail_large
-          name: name
-          id: id
-          title: title
-          type: type
-          url: url
-        attachment:
-          date: date
-          thumbnail_small: thumbnail_small
-          thumbnail_medium: thumbnail_medium
-          size: 0
-          thumbnail_large: thumbnail_large
-          mimetype: mimetype
-          id: id
-          title: title
-          url: url
-        text: text
-        type: type
-        frame:
-          id: id
-          url: url
-      properties:
-        attachment:
-          $ref: '#/components/schemas/SupportTicketAttachment'
-        frame:
-          $ref: '#/components/schemas/SupportTicketFrame'
-        image:
-          $ref: '#/components/schemas/SupportTicketImage'
-        text:
-          type: string
-        type:
-          type: string
-      type: object
-    SupportTicketAttachment:
-      example:
-        date: date
-        thumbnail_small: thumbnail_small
-        thumbnail_medium: thumbnail_medium
-        size: 0
-        thumbnail_large: thumbnail_large
-        mimetype: mimetype
-        id: id
-        title: title
-        url: url
-      properties:
-        date:
-          type: string
-        id:
-          type: string
-        mimetype:
-          type: string
-        size:
-          type: integer
-        thumbnail_large:
-          type: string
-        thumbnail_medium:
-          type: string
-        thumbnail_small:
-          type: string
-        title:
-          type: string
-        url:
-          type: string
-      type: object
-    SupportTicket:
-      example:
-        creator: creator
-        attachments:
-        - date: date
-          thumbnail_small: thumbnail_small
-          thumbnail_medium: thumbnail_medium
-          size: 0
-          thumbnail_large: thumbnail_large
-          mimetype: mimetype
-          id: id
-          title: title
-          url: url
-        - date: date
-          thumbnail_small: thumbnail_small
-          thumbnail_medium: thumbnail_medium
-          size: 0
-          thumbnail_large: thumbnail_large
-          mimetype: mimetype
-          id: id
-          title: title
-          url: url
-        comments:
-        - date: date
-          comment_text: comment_text
-          creator: '{}'
-          comment:
-          - image:
-              thumbnail_small: thumbnail_small
-              extension: extension
-              thumbnail_medium: thumbnail_medium
-              thumbnail_large: thumbnail_large
-              name: name
-              id: id
-              title: title
-              type: type
-              url: url
-            attachment:
-              date: date
-              thumbnail_small: thumbnail_small
-              thumbnail_medium: thumbnail_medium
-              size: 0
-              thumbnail_large: thumbnail_large
-              mimetype: mimetype
-              id: id
-              title: title
-              url: url
-            text: text
-            type: type
-            frame:
-              id: id
-              url: url
-          - image:
-              thumbnail_small: thumbnail_small
-              extension: extension
-              thumbnail_medium: thumbnail_medium
-              thumbnail_large: thumbnail_large
-              name: name
-              id: id
-              title: title
-              type: type
-              url: url
-            attachment:
-              date: date
-              thumbnail_small: thumbnail_small
-              thumbnail_medium: thumbnail_medium
-              size: 0
-              thumbnail_large: thumbnail_large
-              mimetype: mimetype
-              id: id
-              title: title
-              url: url
-            text: text
-            type: type
-            frame:
-              id: id
-              url: url
-          id: id
-        - date: date
-          comment_text: comment_text
-          creator: '{}'
-          comment:
-          - image:
-              thumbnail_small: thumbnail_small
-              extension: extension
-              thumbnail_medium: thumbnail_medium
-              thumbnail_large: thumbnail_large
-              name: name
-              id: id
-              title: title
-              type: type
-              url: url
-            attachment:
-              date: date
-              thumbnail_small: thumbnail_small
-              thumbnail_medium: thumbnail_medium
-              size: 0
-              thumbnail_large: thumbnail_large
-              mimetype: mimetype
-              id: id
-              title: title
-              url: url
-            text: text
-            type: type
-            frame:
-              id: id
-              url: url
-          - image:
-              thumbnail_small: thumbnail_small
-              extension: extension
-              thumbnail_medium: thumbnail_medium
-              thumbnail_large: thumbnail_large
-              name: name
-              id: id
-              title: title
-              type: type
-              url: url
-            attachment:
-              date: date
-              thumbnail_small: thumbnail_small
-              thumbnail_medium: thumbnail_medium
-              size: 0
-              thumbnail_large: thumbnail_large
-              mimetype: mimetype
-              id: id
-              title: title
-              url: url
-            text: text
-            type: type
-            frame:
-              id: id
-              url: url
-          id: id
-        creationTime: creationTime
-        description: description
-        watchers:
-        - watchers
-        - watchers
-        dueTime: dueTime
-        priority: LOW
-        organizationId: organizationId
-        closeTime: closeTime
-        name: name
-        id: id
-        status: OPEN
-      properties:
-        attachments:
-          items:
-            $ref: '#/components/schemas/SupportTicketAttachment'
-          type: array
-        closeTime:
-          type: string
-        comments:
-          items:
-            $ref: '#/components/schemas/SupportTicketComment'
-          type: array
-        creationTime:
-          type: string
-        creator:
-          type: string
-        description:
-          type: string
-        dueTime:
-          type: string
-        id:
-          type: string
-        name:
-          type: string
-        organizationId:
-          type: string
-        priority:
-          $ref: '#/components/schemas/SupportTicketPriority'
-        status:
-          $ref: '#/components/schemas/SupportTicketStatus'
-        watchers:
-          items:
-            type: string
-          type: array
-      type: object
     SupportTicketFrame:
       example:
         id: id
@@ -981,93 +1011,6 @@ components:
         url:
           type: string
       type: object
-    SupportTicketComment:
-      example:
-        date: date
-        comment_text: comment_text
-        creator: '{}'
-        comment:
-        - image:
-            thumbnail_small: thumbnail_small
-            extension: extension
-            thumbnail_medium: thumbnail_medium
-            thumbnail_large: thumbnail_large
-            name: name
-            id: id
-            title: title
-            type: type
-            url: url
-          attachment:
-            date: date
-            thumbnail_small: thumbnail_small
-            thumbnail_medium: thumbnail_medium
-            size: 0
-            thumbnail_large: thumbnail_large
-            mimetype: mimetype
-            id: id
-            title: title
-            url: url
-          text: text
-          type: type
-          frame:
-            id: id
-            url: url
-        - image:
-            thumbnail_small: thumbnail_small
-            extension: extension
-            thumbnail_medium: thumbnail_medium
-            thumbnail_large: thumbnail_large
-            name: name
-            id: id
-            title: title
-            type: type
-            url: url
-          attachment:
-            date: date
-            thumbnail_small: thumbnail_small
-            thumbnail_medium: thumbnail_medium
-            size: 0
-            thumbnail_large: thumbnail_large
-            mimetype: mimetype
-            id: id
-            title: title
-            url: url
-          text: text
-          type: type
-          frame:
-            id: id
-            url: url
-        id: id
-      properties:
-        comment:
-          items:
-            $ref: '#/components/schemas/SupportTicketCommentDetail'
-          type: array
-        comment_text:
-          description: When creating a new comment, only CommentText is required.
-          type: string
-        creator:
-          allOf:
-          - $ref: '#/components/schemas/SupportTicketUser'
-          description: who created the comment
-          type: object
-        date:
-          type: string
-        id:
-          type: string
-      type: object
-    SupportTicketPriority:
-      enum:
-      - LOW
-      - NORMAL
-      - HIGH
-      - URGENT
-      type: string
-      x-enum-varnames:
-      - SupportTicketPriority_LOW
-      - SupportTicketPriority_NORMAL
-      - SupportTicketPriority_HIGH
-      - SupportTicketPriority_URGENT
     SupportTicketImage:
       example:
         thumbnail_small: thumbnail_small
@@ -1116,6 +1059,15 @@ components:
       - priority
       - watchers
       type: object
+    CreateSupportTicketAttachment_request:
+      properties:
+        file:
+          description: File to upload
+          format: binary
+          type: string
+      required:
+      - file
+      type: object
     SupportTicketUser:
       properties:
         email:
@@ -1131,14 +1083,62 @@ components:
         username:
           type: string
       type: object
-    CreateSupportTicketAttachment_request:
+    SupportTicketStatus:
+      enum:
+      - OPEN
+      - IN PROGRESS
+      - IN REVIEW
+      - BLOCKED
+      - CLOSED
+      - ARCHIVED
+      - DELETED
+      type: string
+      x-enum-varnames:
+      - SupportTicketStatus_OPEN
+      - SupportTicketStatus_IN_PROGRESS
+      - SupportTicketStatus_IN_REVIEW
+      - SupportTicketStatus_BLOCKED
+      - SupportTicketStatus_CLOSED
+      - SupportTicketStatus_ARCHIVED
+      - SupportTicketStatus_DELETED
+    SupportTicketCommentDetail:
+      example:
+        image:
+          thumbnail_small: thumbnail_small
+          extension: extension
+          thumbnail_medium: thumbnail_medium
+          thumbnail_large: thumbnail_large
+          name: name
+          id: id
+          title: title
+          type: type
+          url: url
+        attachment:
+          date: date
+          thumbnail_small: thumbnail_small
+          thumbnail_medium: thumbnail_medium
+          size: 0
+          thumbnail_large: thumbnail_large
+          mimetype: mimetype
+          id: id
+          title: title
+          url: url
+        text: text
+        type: type
+        frame:
+          id: id
+          url: url
       properties:
-        file:
-          description: File to upload
-          format: binary
+        attachment:
+          $ref: '#/components/schemas/SupportTicketAttachment'
+        frame:
+          $ref: '#/components/schemas/SupportTicketFrame'
+        image:
+          $ref: '#/components/schemas/SupportTicketImage'
+        text:
           type: string
-      required:
-      - file
+        type:
+          type: string
       type: object
   securitySchemes:
     APIKeyAuth:

@@ -1,17 +1,7 @@
 {
   "provider": "suger",
   "sources": [
-    "suger-api-api-openapi.yml",
-    "suger-billing-api-openapi.yml",
-    "suger-buyer-api-openapi.yml",
-    "suger-contact-api-openapi.yml",
-    "suger-entitlement-api-openapi.yml",
-    "suger-metering-api-openapi.yml",
-    "suger-notification-api-openapi.yml",
-    "suger-offer-api-openapi.yml",
-    "suger-product-api-openapi.yml",
-    "suger-report-api-openapi.yml",
-    "suger-support-api-openapi.yml"
+    "_original/suger-openapi.yml"
   ],
   "outputs": [
     "suger-api-api-openapi.yml",
@@ -29,6 +19,22 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "suger-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "suger-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "suger-billing-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "suger-buyer-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "suger-contact-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "suger-entitlement-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "suger-metering-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "suger-notification-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "suger-offer-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "suger-product-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "suger-report-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "suger-support-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
