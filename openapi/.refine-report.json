@@ -4,7 +4,6 @@
     "_original/suger-openapi.yml"
   ],
   "outputs": [
-    "suger-api-api-openapi.yml",
     "suger-billing-api-openapi.yml",
     "suger-buyer-api-openapi.yml",
     "suger-contact-api-openapi.yml",
@@ -12,17 +11,24 @@
     "suger-metering-api-openapi.yml",
     "suger-notification-api-openapi.yml",
     "suger-offer-api-openapi.yml",
+    "suger-org-api-openapi.yml",
     "suger-product-api-openapi.yml",
     "suger-report-api-openapi.yml",
     "suger-support-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "suger-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "suger-openapi.yml: tagged paths GET /org/{orgId}/apiClient -> Org",
+    "suger-openapi.yml: tagged paths GET /org/{orgId}/apiClient/{apiClientId} -> Org",
+    "suger-openapi.yml: declared missing tag: Org",
+    "superseded outputs removed: suger-api-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 11 total)"
   ],
   "skipped": [
     "suger-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",

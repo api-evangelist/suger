@@ -846,317 +846,6 @@ paths:
       - Billing
 components:
   schemas:
-    StripePaymentIntentStatus:
-      enum:
-      - requires_payment_method
-      - requires_confirmation
-      - requires_action
-      - processing
-      - requires_capture
-      - canceled
-      - succeeded
-      type: string
-      x-enum-varnames:
-      - StripePaymentIntentStatus_RequiresPaymentMethod
-      - StripePaymentIntentStatus_RequiresConfirmation
-      - StripePaymentIntentStatus_RequiresAction
-      - StripePaymentIntentStatus_Processing
-      - StripePaymentIntentStatus_RequiresCapture
-      - StripePaymentIntentStatus_Canceled
-      - StripePaymentIntentStatus_Succeeded
-    InvoiceAdjustDiscountByDimension:
-      example:
-        reason: reason
-        dimensionKey: dimensionKey
-        discount:
-          discountType: PERCENTAGE
-          value: 1.4658129805029452
-      properties:
-        dimensionKey:
-          type: string
-        discount:
-          $ref: '#/components/schemas/BillingDiscount'
-        reason:
-          type: string
-      type: object
-    StripeRefund:
-      properties:
-        chargeId:
-          description: ID of the charge that's refunded.
-          type: string
-        estinationDetails:
-          allOf:
-          - $ref: '#/components/schemas/StripeRefundDestinationDetails'
-          description: Transaction-specific details for the refund.
-          type: object
-        failureBalanceTransactionId:
-          description: After the refund fails, this balance transaction describes the adjustment made on your account balance that reverses the initial balance transaction.
-          type: string
-        failureReason:
-          description: 'Provides the reason for the refund failure. Possible values are: `lost_or_stolen_card`, `expired_or_canceled_card`, `charge_for_pending_refund_disputed`, `insufficient_funds`, `declined`, `merchant_request`, or `unknown`.'
-          type: string
-        id:
-          type: string
-        paymentIntentId:
-          description: ID of the PaymentIntent that's refunded.
-          type: string
-        status:
-          allOf:
-          - $ref: '#/components/schemas/StripeRefundStatus'
-          description: Status of the refund. This can be `pending`, `requires_action`, `succeeded`, `failed`, or `canceled`. Learn more about [failed refunds](https://stripe.com/docs/refunds#failed-refunds).
-          type: object
-      type: object
-    InvoiceAddFixedFee:
-      example:
-        reason: reason
-        quantity: 0
-        endDate: 2000-01-23 04:56:07+00:00
-        rate: 6.027456183070403
-        startDate: 2000-01-23 04:56:07+00:00
-      properties:
-        endDate:
-          format: date-time
-          type: string
-        quantity:
-          type: integer
-        rate:
-          type: number
-        reason:
-          type: string
-        startDate:
-          format: date-time
-          type: string
-      type: object
-    BillingAddonInfo:
-      example:
-        amount: 0.8008281904610115
-      properties:
-        amount:
-          type: number
-      type: object
-    CommitRevenueDetail:
-      example:
-        amount: 9.301444243932576
-        expression: expression
-        quantity: 3
-        rate: 2.027123023002322
-        name: name
-        description: description
-        key: key
-      properties:
-        amount:
-          description: The total amount of the commit revenue.
-          type: number
-        description:
-          type: string
-        expression:
-          type: string
-        key:
-          type: string
-        name:
-          type: string
-        quantity:
-          description: The quantity of the commit dimension. Default is 1.
-          type: integer
-        rate:
-          description: The unit price of the commit dimension.
-          type: number
-      type: object
-    BillingPaymentStatus:
-      enum:
-      - PENDING
-      - PROCESSING
-      - SUCCESS
-      - FAILED
-      type: string
-      x-enum-varnames:
-      - BillingPaymentStatus_PENDING
-      - BillingPaymentStatus_PROCESSING
-      - BillingPaymentStatus_SUCCESS
-      - BillingPaymentStatus_FAILED
-    BillingInvoiceStatus:
-      enum:
-      - DRAFT
-      - FINALIZED
-      - CANCELED
-      - DELETED
-      - ''
-      type: string
-      x-enum-varnames:
-      - BillingInvoiceStatus_DRAFT
-      - BillingInvoiceStatus_FINALIZED
-      - BillingInvoiceStatus_CANCELED
-      - BillingInvoiceStatus_DELETED
-      - BillingInvoiceStatus_UNKNOWN
-    StripeError:
-      properties:
-        code:
-          type: string
-        message:
-          type: string
-        param:
-          type: string
-        status:
-          type: integer
-        type:
-          type: string
-      type: object
-    BillableDimensionFeeDetail:
-      example:
-        feeExpressions: feeExpressions
-        descriptions: descriptions
-      properties:
-        descriptions:
-          description: 'Description of the pricing model that is used to show what the amount is for. like ''Bulk pricing: 0-100 units'', ''Tiered pricing: 0-100 units'''
-          type: string
-        feeExpressions:
-          description: FeeExpression is the expression used to calculate the fee that is used to show how the amount is calculated. like '211 × $0.03'
-          type: string
-      type: object
-    BillingAddon:
-      example:
-        organizationID: organizationID
-        creationTime: 2000-01-23 04:56:07+00:00
-        name: name
-        description: description
-        id: id
-        info:
-          amount: 0.8008281904610115
-        lastUpdateTime: 2000-01-23 04:56:07+00:00
-        status: ACTIVE
-      properties:
-        creationTime:
-          format: date-time
-          type: string
-        description:
-          description: Description of the addon
-          maxLength: 300
-          type: string
-        id:
-          maxLength: 36
-          type: string
-        info:
-          $ref: '#/components/schemas/BillingAddonInfo'
-        lastUpdateTime:
-          format: date-time
-          type: string
-        name:
-          description: Name of the addon, e.g. "Support Plan"
-          maxLength: 50
-          minLength: 4
-          type: string
-        organizationID:
-          type: string
-        status:
-          $ref: '#/components/schemas/BillingAddonStatus'
-      type: object
-    InvoiceAdjustMinimumSpendByDimension:
-      example:
-        minimumSpend: 5.962133916683182
-        reason: reason
-        dimensionKey: dimensionKey
-      properties:
-        dimensionKey:
-          type: string
-        minimumSpend:
-          type: number
-        reason:
-          type: string
-      type: object
-    BillingAddonRecord:
-      example:
-        amount: 0.8008281904610115
-        name: name
-        description: description
-        chargeOn: 2000-01-23 04:56:07+00:00
-        id: id
-      properties:
-        amount:
-          type: number
-        chargeOn:
-          format: date-time
-          type: string
-        description:
-          type: string
-        id:
-          type: string
-        name:
-          type: string
-      type: object
-    Partner:
-      enum:
-      - ''
-      - ADYEN
-      - ALIBABA
-      - AWS
-      - AWS_CHINA
-      - AZURE
-      - CHARGEBEE
-      - DATABRICKS
-      - DOCUSIGN
-      - GCP
-      - GOOGLE
-      - HUBSPOT
-      - INTUIT
-      - LAGO
-      - MARKETO
-      - METRONOME
-      - MICROSOFT
-      - ORACLE
-      - ORB
-      - REDHAT
-      - SALESFORCE
-      - SLACK
-      - SNOWFLAKE
-      - STRIPE
-      - ZOHO
-      type: string
-      x-enum-varnames:
-      - Partner_UNKNOWN
-      - Partner_ADYEN
-      - Partner_ALIBABA
-      - Partner_AWS
-      - Partner_AWS_CHINA
-      - Partner_AZURE
-      - Partner_CHARGEBEE
-      - Partner_DATABRICKS
-      - Partner_DOCUSIGN
-      - Partner_GCP
-      - Partner_GOOGLE
-      - Partner_HUBSPOT
-      - Partner_INTUIT
-      - Partner_LAGO
-      - Partner_MARKETO
-      - Partner_METRONOME
-      - Partner_MICROSOFT
-      - Partner_ORACLE
-      - Partner_ORB
-      - Partner_REDHAT
-      - Partner_SALESFORCE
-      - Partner_SLACK
-      - Partner_SNOWFLAKE
-      - Partner_STRIPE
-      - Partner_ZOHO
-    BillableDimensionUsageDailyRevenue:
-      example:
-        date: date
-        uniquePropertyItems:
-          key: ''
-        quantity: 5.025004791520295
-        billableMetricKey:
-          groupBysExpression: groupBysExpression
-          id: id
-      properties:
-        billableMetricKey:
-          $ref: '#/components/schemas/MeteringUsageRecordGroupByKey'
-        date:
-          type: string
-        quantity:
-          type: number
-        uniquePropertyItems:
-          additionalProperties: true
-          type: object
-      type: object
     BillingMinimumCommitScope:
       enum:
       - ''
@@ -1167,37 +856,255 @@ components:
       - BillingMinimumCommitScope_UNKNOWN
       - BillingMinimumCommitScope_DIMENSION
       - BillingMinimumCommitScope_DIMENSION_GROUP_BY
-    StripeRefundDestinationDetailsUSBankTransfer:
+    BillingInvoice:
+      example:
+        creationTime: 2000-01-23 04:56:07+00:00
+        endDate: 2000-01-23 04:56:07+00:00
+        entitlementID: entitlementID
+        buyerID: buyerID
+        type: COMMIT
+        organizationID: organizationID
+        invoiceURL: invoiceURL
+        id: id
+        paymentStatus: PENDING
+        startDate: 2000-01-23 04:56:07+00:00
+        info:
+          deductedCommitAmount: 4.145608029883936
+          addonDetail:
+            amount: 0.8008281904610115
+            name: name
+            description: description
+            chargeOn: 2000-01-23 04:56:07+00:00
+            id: id
+          dueDate: 2000-01-23 04:56:07+00:00
+          adjustDiscountByDimensions:
+          - reason: reason
+            dimensionKey: dimensionKey
+            discount:
+              discountType: PERCENTAGE
+              value: 1.4658129805029452
+          - reason: reason
+            dimensionKey: dimensionKey
+            discount:
+              discountType: PERCENTAGE
+              value: 1.4658129805029452
+          description: description
+          memo: memo
+          adjustOverallMinimumSpend: '{}'
+          currency: currency
+          issueDate: 2000-01-23 04:56:07+00:00
+          netTermsInDays: 1
+          trialPeriodInDays: 4
+          commitsRevenueDetails:
+          - amount: 9.301444243932576
+            expression: expression
+            quantity: 3
+            rate: 2.027123023002322
+            name: name
+            description: description
+            key: key
+          - amount: 9.301444243932576
+            expression: expression
+            quantity: 3
+            rate: 2.027123023002322
+            name: name
+            description: description
+            key: key
+          gracePeriodInDays: 1
+          periodTotalDays: 6
+          creationDate: 2000-01-23 04:56:07+00:00
+          subtotalAmount: 7.457744773683766
+          addFixedFees:
+          - reason: reason
+            quantity: 0
+            endDate: 2000-01-23 04:56:07+00:00
+            rate: 6.027456183070403
+            startDate: 2000-01-23 04:56:07+00:00
+          - reason: reason
+            quantity: 0
+            endDate: 2000-01-23 04:56:07+00:00
+            rate: 6.027456183070403
+            startDate: 2000-01-23 04:56:07+00:00
+          adjustOverallDiscount: '{}'
+          billableDimensionDetails:
+          - discountExpression: discountExpression
+            amount: 5.637376656633329
+            quantity: 7.061401241503109
+            minimumCommit: 2.3021358869347655
+            name: name
+            discount: '{}'
+            details:
+            - feeExpressions: feeExpressions
+              descriptions: descriptions
+            - feeExpressions: feeExpressions
+              descriptions: descriptions
+            billableMetricKey: '{}'
+            category: '{}'
+            isTrial: true
+            minimumCommitScope: '{}'
+          - discountExpression: discountExpression
+            amount: 5.637376656633329
+            quantity: 7.061401241503109
+            minimumCommit: 2.3021358869347655
+            name: name
+            discount: '{}'
+            details:
+            - feeExpressions: feeExpressions
+              descriptions: descriptions
+            - feeExpressions: feeExpressions
+              descriptions: descriptions
+            billableMetricKey: '{}'
+            category: '{}'
+            isTrial: true
+            minimumCommitScope: '{}'
+          paymentInstallmentsDetail:
+            amount: 1.4894159098541704
+            description: description
+            chargeOn: 2000-01-23 04:56:07+00:00
+          usageDailyRevenues:
+          - date: date
+            uniquePropertyItems:
+              key: ''
+            quantity: 5.025004791520295
+            billableMetricKey:
+              groupBysExpression: groupBysExpression
+              id: id
+          - date: date
+            uniquePropertyItems:
+              key: ''
+            quantity: 5.025004791520295
+            billableMetricKey:
+              groupBysExpression: groupBysExpression
+              id: id
+          dueAmount: 7.386281948385884
+          isMeteringOverageCommit: true
+          deductedCommitInvoiceID: deductedCommitInvoiceID
+          adjustMinimumSpendByDimensions:
+          - minimumSpend: 5.962133916683182
+            reason: reason
+            dimensionKey: dimensionKey
+          - minimumSpend: 5.962133916683182
+            reason: reason
+            dimensionKey: dimensionKey
+          receiptUrl: receiptUrl
+          taxAmount: 1.1730742509559433
+          spaUrl: spaUrl
+        lastUpdateTime: 2000-01-23 04:56:07+00:00
+        status: DRAFT
       properties:
-        reference:
-          description: The reference assigned to the refund.
+        buyerID:
+          maxLength: 36
           type: string
-        reference_status:
-          description: Status of the reference on the refund. This can be `pending`, `available` or `unavailable`.
-          enum:
-          - pending
-          - available
-          - unavailable
+        creationTime:
+          format: date-time
           type: string
+        endDate:
+          format: date-time
+          type: string
+        entitlementID:
+          maxLength: 36
+          type: string
+        id:
+          maxLength: 36
+          type: string
+        info:
+          $ref: '#/components/schemas/BillingInvoiceInfo'
+        invoiceURL:
+          description: The invoice file URL, provided as AWS S3 presigned URL with expiration time. Output only.
+          type: string
+        lastUpdateTime:
+          format: date-time
+          type: string
+        organizationID:
+          type: string
+        paymentStatus:
+          $ref: '#/components/schemas/BillingPaymentStatus'
+        startDate:
+          format: date-time
+          type: string
+        status:
+          $ref: '#/components/schemas/BillingInvoiceStatus'
+        type:
+          $ref: '#/components/schemas/BillingInvoiceType'
       type: object
-    BillingInvoiceType:
-      enum:
-      - COMMIT
-      - USAGE
-      - ADDON
-      - INSTALLMENT
-      type: string
-      x-enum-varnames:
-      - BillingInvoiceType_COMMIT
-      - BillingInvoiceType_USAGE
-      - BillingInvoiceType_ADDON
-      - BillingInvoiceType_INSTALLMENT
-    InvoiceAdjustOverallDiscount:
+    BillingPaymentTransaction:
+      example:
+        walletID: walletID
+        amount: 0.8008281904610115
+        creationTime: 2000-01-23 04:56:07+00:00
+        walletType: ach_debit
+        entitlementID: entitlementID
+        buyerID: buyerID
+        type: CHARGE
+        parentID: parentID
+        organizationID: organizationID
+        partner: ''
+        currency: currency
+        invoiceID: invoiceID
+        id: id
+        info:
+          stripePaymentIntent: '{}'
+          stripeBalanceTransaction: '{}'
+          stripeError: '{}'
+          stripeDisputes:
+          - paymentIntentId: paymentIntentId
+            reason: reason
+            amount: 6
+            is_charge_refundable: true
+            livemode: true
+            chargeId: chargeId
+            created: 1
+            id: id
+            status: status
+          - paymentIntentId: paymentIntentId
+            reason: reason
+            amount: 6
+            is_charge_refundable: true
+            livemode: true
+            chargeId: chargeId
+            created: 1
+            id: id
+            status: status
+          invoiceDate: 2000-01-23 04:56:07+00:00
+          stripeRefund: '{}'
+          refundExists: true
+        lastUpdateTime: 2000-01-23 04:56:07+00:00
+        status: PENDING
       properties:
-        discount:
-          $ref: '#/components/schemas/BillingDiscount'
-        reason:
+        amount:
+          type: number
+        buyerID:
           type: string
+        creationTime:
+          format: date-time
+          type: string
+        currency:
+          type: string
+        entitlementID:
+          type: string
+        id:
+          type: string
+        info:
+          $ref: '#/components/schemas/BillingPaymentTransactionInfo'
+        invoiceID:
+          type: string
+        lastUpdateTime:
+          format: date-time
+          type: string
+        organizationID:
+          type: string
+        parentID:
+          type: string
+        partner:
+          $ref: '#/components/schemas/Partner'
+        status:
+          $ref: '#/components/schemas/BillingPaymentStatus'
+        type:
+          $ref: '#/components/schemas/BillingPaymentTransactionType'
+        walletID:
+          type: string
+        walletType:
+          $ref: '#/components/schemas/BillingWalletType'
       type: object
     BillingInvoiceInfo:
       example:
@@ -1435,6 +1342,367 @@ components:
             $ref: '#/components/schemas/BillableDimensionUsageDailyRevenue'
           type: array
       type: object
+    BillingWalletType:
+      enum:
+      - ach_debit
+      - bacs_debit
+      - card
+      - credit
+      - sepa_debit
+      type: string
+      x-enum-comments:
+        BillingWalletType_ACH_DEBIT: for USD.
+        BillingWalletType_BACS_DEBIT: for UK.
+        BillingWalletType_CREDIT: Credit managed by Suger.
+        BillingWalletType_SEPA_DEBIT: for EUR.
+      x-enum-varnames:
+      - BillingWalletType_ACH_DEBIT
+      - BillingWalletType_BACS_DEBIT
+      - BillingWalletType_CARD
+      - BillingWalletType_CREDIT
+      - BillingWalletType_SEPA_DEBIT
+    StripeBalanceTransaction:
+      properties:
+        amount:
+          description: Gross amount of this transaction (in cents (or local equivalent)). A positive value represents funds charged to another party, and a negative value represents funds sent to another party.
+          type: integer
+        available_on:
+          description: The date that the transaction's net funds become available in the Stripe balance.
+          type: integer
+        chargeId:
+          description: ID of the charge which the balance transaction comes from.
+          type: string
+        created:
+          description: Time at which the object was created. Measured in seconds since the Unix epoch.
+          type: integer
+        description:
+          description: An arbitrary string attached to the object. Often useful for displaying to users.
+          type: string
+        exchange_rate:
+          description: If applicable, this transaction uses an exchange rate. If money converts from currency A to currency B, then the `amount` in currency A, multipled by the `exchange_rate`, equals the `amount` in currency B. For example, if you charge a customer 10.00 EUR, the PaymentIntent's `amount` is `1000` and `currency` is `eur`. If this converts to 12.34 USD in your Stripe account, the BalanceTransaction's `amount` is `1234`, its `currency` is `usd`, and the `exchange_rate` is `1.234`.
+          type: number
+        fee:
+          description: Fees (in cents (or local equivalent)) paid for this transaction. Represented as a positive integer when assessed.
+          type: integer
+        fee_details:
+          description: Detailed breakdown of fees (in cents (or local equivalent)) paid for this transaction.
+          items:
+            $ref: '#/components/schemas/StripeBalanceTransactionFeeDetail'
+          type: array
+        id:
+          description: Unique identifier for the object.
+          type: string
+        net:
+          description: Net impact to a Stripe balance (in cents (or local equivalent)). A positive value represents incrementing a Stripe balance, and a negative value decrementing a Stripe balance. You can calculate the net impact of a transaction on a balance by `amount` - `fee`
+          type: integer
+        status:
+          description: The transaction's net funds status in the Stripe balance, which are either `available` or `pending`.
+          type: string
+        type:
+          description: 'Transaction type: `adjustment`, `advance`, `advance_funding`, `anticipation_repayment`, `application_fee`, `application_fee_refund`, `charge`, `climate_order_purchase`, `climate_order_refund`, `connect_collection_transfer`, `contribution`, `issuing_authorization_hold`, `issuing_authorization_release`, `issuing_dispute`, `issuing_transaction`, `obligation_outbound`, `obligation_reversal_inbound`, `payment`, `payment_failure_refund`, `payment_network_reserve_hold`, `payment_network_reserve_release`, `payment_refund`, `payment_reversal`, `payment_unreconciled`, `payout`, `payout_cancel`, `payout_failure`, `refund`, `refund_failure`, `reserve_transaction`, `reserved_funds`, `stripe_fee`, `stripe_fx_fee`, `tax_fee`, `topup`, `topup_reversal`, `transfer`, `transfer_cancel`, `transfer_failure`, or `transfer_refund`. Learn more about [balance transaction types and what they represent](https://stripe.com/docs/reports/balance-transaction-types). To classify transactions for accounting purposes, consider `reporting_category` instead.'
+          type: string
+      type: object
+    StripeBalanceTransactionFeeDetail:
+      properties:
+        amount:
+          description: Amount of the fee, in cents.
+          type: integer
+        application:
+          description: ID of the Connect application that earned the fee.
+          type: string
+        description:
+          description: An arbitrary string attached to the object. Often useful for displaying to users.
+          type: string
+        type:
+          description: 'Type of the fee, one of: `application_fee`, `payment_method_passthrough_fee`, `stripe_fee` or `tax`.'
+          type: string
+      type: object
+    StripeRefundDestinationDetailsCard:
+      properties:
+        reference:
+          description: Value of the reference number assigned to the refund.
+          type: string
+        reference_status:
+          description: Status of the reference number on the refund. This can be `pending`, `available` or `unavailable`.
+          enum:
+          - pending
+          - available
+          - unavailable
+          type: string
+        reference_type:
+          description: Type of the reference number assigned to the refund.
+          type: string
+        type:
+          description: The type of refund. This can be `refund`, `reversal`, or `pending`.
+          enum:
+          - refund
+          - reversal
+          - pending
+          type: string
+      type: object
+    MeteringUsageRecordGroupByKey:
+      example:
+        groupBysExpression: groupBysExpression
+        id: id
+      properties:
+        groupBysExpression:
+          description: GroupBysExpression is string expression of array of group bys.
+          type: string
+        id:
+          description: ID is billableMetric ID (Key)
+          type: string
+      type: object
+    StripeRefund:
+      properties:
+        chargeId:
+          description: ID of the charge that's refunded.
+          type: string
+        estinationDetails:
+          allOf:
+          - $ref: '#/components/schemas/StripeRefundDestinationDetails'
+          description: Transaction-specific details for the refund.
+          type: object
+        failureBalanceTransactionId:
+          description: After the refund fails, this balance transaction describes the adjustment made on your account balance that reverses the initial balance transaction.
+          type: string
+        failureReason:
+          description: 'Provides the reason for the refund failure. Possible values are: `lost_or_stolen_card`, `expired_or_canceled_card`, `charge_for_pending_refund_disputed`, `insufficient_funds`, `declined`, `merchant_request`, or `unknown`.'
+          type: string
+        id:
+          type: string
+        paymentIntentId:
+          description: ID of the PaymentIntent that's refunded.
+          type: string
+        status:
+          allOf:
+          - $ref: '#/components/schemas/StripeRefundStatus'
+          description: Status of the refund. This can be `pending`, `requires_action`, `succeeded`, `failed`, or `canceled`. Learn more about [failed refunds](https://stripe.com/docs/refunds#failed-refunds).
+          type: object
+      type: object
+    StripePaymentIntentStatus:
+      enum:
+      - requires_payment_method
+      - requires_confirmation
+      - requires_action
+      - processing
+      - requires_capture
+      - canceled
+      - succeeded
+      type: string
+      x-enum-varnames:
+      - StripePaymentIntentStatus_RequiresPaymentMethod
+      - StripePaymentIntentStatus_RequiresConfirmation
+      - StripePaymentIntentStatus_RequiresAction
+      - StripePaymentIntentStatus_Processing
+      - StripePaymentIntentStatus_RequiresCapture
+      - StripePaymentIntentStatus_Canceled
+      - StripePaymentIntentStatus_Succeeded
+    BillingPaymentInstallmentDetail:
+      example:
+        amount: 1.4894159098541704
+        description: description
+        chargeOn: 2000-01-23 04:56:07+00:00
+      properties:
+        amount:
+          type: number
+        chargeOn:
+          format: date-time
+          type: string
+        description:
+          type: string
+      type: object
+    BillableDimensionUsageDailyRevenue:
+      example:
+        date: date
+        uniquePropertyItems:
+          key: ''
+        quantity: 5.025004791520295
+        billableMetricKey:
+          groupBysExpression: groupBysExpression
+          id: id
+      properties:
+        billableMetricKey:
+          $ref: '#/components/schemas/MeteringUsageRecordGroupByKey'
+        date:
+          type: string
+        quantity:
+          type: number
+        uniquePropertyItems:
+          additionalProperties: true
+          type: object
+      type: object
+    BillingAddonRecord:
+      example:
+        amount: 0.8008281904610115
+        name: name
+        description: description
+        chargeOn: 2000-01-23 04:56:07+00:00
+        id: id
+      properties:
+        amount:
+          type: number
+        chargeOn:
+          format: date-time
+          type: string
+        description:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    StripeRefundStatus:
+      enum:
+      - pending
+      - requires_action
+      - succeeded
+      - failed
+      - canceled
+      type: string
+      x-enum-varnames:
+      - StripeRefundStatus_Pending
+      - StripeRefundStatus_RequiresAction
+      - StripeRefundStatus_Succeeded
+      - StripeRefundStatus_Failed
+      - StripeRefundStatus_Canceled
+    BillingPaymentTransactionInfo:
+      example:
+        stripePaymentIntent: '{}'
+        stripeBalanceTransaction: '{}'
+        stripeError: '{}'
+        stripeDisputes:
+        - paymentIntentId: paymentIntentId
+          reason: reason
+          amount: 6
+          is_charge_refundable: true
+          livemode: true
+          chargeId: chargeId
+          created: 1
+          id: id
+          status: status
+        - paymentIntentId: paymentIntentId
+          reason: reason
+          amount: 6
+          is_charge_refundable: true
+          livemode: true
+          chargeId: chargeId
+          created: 1
+          id: id
+          status: status
+        invoiceDate: 2000-01-23 04:56:07+00:00
+        stripeRefund: '{}'
+        refundExists: true
+      properties:
+        invoiceDate:
+          description: The invoice issue date.
+          format: date-time
+          type: string
+        refundExists:
+          description: Refund flag marks whether the transaction has any refund records.
+          type: boolean
+        stripeBalanceTransaction:
+          allOf:
+          - $ref: '#/components/schemas/StripeBalanceTransaction'
+          description: Balance transaction that describes the impact of this charge on your account balance.
+          type: object
+        stripeDisputes:
+          description: Stripe dispute result, got by Dispute API, there may be multiple disputes.
+          items:
+            $ref: '#/components/schemas/StripeDispute'
+          type: array
+        stripeError:
+          allOf:
+          - $ref: '#/components/schemas/StripeError'
+          description: Error of stripe API call
+          type: object
+        stripePaymentIntent:
+          allOf:
+          - $ref: '#/components/schemas/StripePaymentIntent'
+          description: Stripe payment intent result, got by PaymentIntent API
+          type: object
+        stripeRefund:
+          allOf:
+          - $ref: '#/components/schemas/StripeRefund'
+          description: Stripe refund result, got by Refund API
+          type: object
+      type: object
+    CommitRevenueDetail:
+      example:
+        amount: 9.301444243932576
+        expression: expression
+        quantity: 3
+        rate: 2.027123023002322
+        name: name
+        description: description
+        key: key
+      properties:
+        amount:
+          description: The total amount of the commit revenue.
+          type: number
+        description:
+          type: string
+        expression:
+          type: string
+        key:
+          type: string
+        name:
+          type: string
+        quantity:
+          description: The quantity of the commit dimension. Default is 1.
+          type: integer
+        rate:
+          description: The unit price of the commit dimension.
+          type: number
+      type: object
+    InvoiceAdjustOverallMinimumSpend:
+      properties:
+        minimumSpend:
+          type: number
+        reason:
+          type: string
+      type: object
+    BillingDiscount:
+      example:
+        discountType: PERCENTAGE
+        value: 1.4658129805029452
+      properties:
+        discountType:
+          $ref: '#/components/schemas/BillingDiscountType'
+        value:
+          type: number
+      type: object
+    InvoiceAdjustMinimumSpendByDimension:
+      example:
+        minimumSpend: 5.962133916683182
+        reason: reason
+        dimensionKey: dimensionKey
+      properties:
+        dimensionKey:
+          type: string
+        minimumSpend:
+          type: number
+        reason:
+          type: string
+      type: object
+    StripePaymentIntent:
+      properties:
+        id:
+          description: Unique identifier for the object.
+          type: string
+        last_payment_error:
+          allOf:
+          - $ref: '#/components/schemas/StripeError'
+          description: The payment error encountered in the previous PaymentIntent confirmation. It will be cleared if the PaymentIntent is later updated for any reason.
+          type: object
+        livemode:
+          description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
+          type: boolean
+        status:
+          allOf:
+          - $ref: '#/components/schemas/StripePaymentIntentStatus'
+          description: Status of this PaymentIntent. Read more about each PaymentIntent [status](https://stripe.com/docs/payments/intents#intent-statuses).
+          type: object
+      type: object
     StripeDispute:
       example:
         paymentIntentId: paymentIntentId
@@ -1475,6 +1743,19 @@ components:
           description: Current status of dispute. Possible values are `warning_needs_response`, `warning_under_review`, `warning_closed`, `needs_response`, `under_review`, `won`, or `lost`.
           type: string
       type: object
+    StripeRefundDestinationDetailsUSBankTransfer:
+      properties:
+        reference:
+          description: The reference assigned to the refund.
+          type: string
+        reference_status:
+          description: Status of the reference on the refund. This can be `pending`, `available` or `unavailable`.
+          enum:
+          - pending
+          - available
+          - unavailable
+          type: string
+      type: object
     CreateAndUpdateAddonParams:
       example:
         amount: 0.8008281904610115
@@ -1494,44 +1775,37 @@ components:
           minLength: 4
           type: string
       type: object
-    BillingWalletType:
+    BillingPaymentTransactionType:
       enum:
-      - ach_debit
-      - bacs_debit
-      - card
-      - credit
-      - sepa_debit
+      - CHARGE
+      - REFUND
       type: string
-      x-enum-comments:
-        BillingWalletType_ACH_DEBIT: for USD.
-        BillingWalletType_BACS_DEBIT: for UK.
-        BillingWalletType_CREDIT: Credit managed by Suger.
-        BillingWalletType_SEPA_DEBIT: for EUR.
       x-enum-varnames:
-      - BillingWalletType_ACH_DEBIT
-      - BillingWalletType_BACS_DEBIT
-      - BillingWalletType_CARD
-      - BillingWalletType_CREDIT
-      - BillingWalletType_SEPA_DEBIT
-    UpdateInvoiceInfoRequest:
-      example:
-        dueDate: dueDate
-        discountAmount: 0.8008281904610115
-        memo: memo
-        discountType: '{}'
+      - BillingPaymentTransactionType_CHARGE
+      - BillingPaymentTransactionType_REFUND
+    BillingAddonStatus:
+      enum:
+      - ACTIVE
+      - DELETED
+      type: string
+      x-enum-varnames:
+      - BillingAddonStatus_ACTIVE
+      - BillingAddonStatus_DELETED
+    InvoiceAdjustOverallDiscount:
       properties:
-        discountAmount:
-          type: number
-        discountType:
-          allOf:
-          - $ref: '#/components/schemas/BillingDiscountType'
-          description: The overall discount of the invoice.
-          type: object
-        dueDate:
-          type: string
-        memo:
+        discount:
+          $ref: '#/components/schemas/BillingDiscount'
+        reason:
           type: string
       type: object
+    BillingDiscountType:
+      enum:
+      - PERCENTAGE
+      - ABSOLUTE
+      type: string
+      x-enum-varnames:
+      - BillingDiscountType_PERCENTAGE
+      - BillingDiscountType_ABSOLUTE
     BillableDimensionPriceModelDetail:
       example:
         discountExpression: discountExpression
@@ -1598,136 +1872,90 @@ components:
             It may be the sum value of count/sum/unique_count or latest/max value according to different aggregation type.'
           type: number
       type: object
-    MeteringUsageRecordGroupByKey:
-      example:
-        groupBysExpression: groupBysExpression
-        id: id
+    StripeRefundDestinationDetails:
       properties:
-        groupBysExpression:
-          description: GroupBysExpression is string expression of array of group bys.
+        card:
+          $ref: '#/components/schemas/StripeRefundDestinationDetailsCard'
+        type:
+          description: The type of transaction-specific details of the payment method used in the refund (e.g., `card`). An additional hash is included on `destination_details` with a name matching this value. It contains information specific to the refund transaction.
           type: string
-        id:
-          description: ID is billableMetric ID (Key)
-          type: string
+        us_bank_transfer:
+          $ref: '#/components/schemas/StripeRefundDestinationDetailsUSBankTransfer'
       type: object
-    BillingAddonStatus:
+    BillingInvoiceType:
       enum:
-      - ACTIVE
-      - DELETED
+      - COMMIT
+      - USAGE
+      - ADDON
+      - INSTALLMENT
       type: string
       x-enum-varnames:
-      - BillingAddonStatus_ACTIVE
-      - BillingAddonStatus_DELETED
-    BillingPaymentTransactionInfo:
-      example:
-        stripePaymentIntent: '{}'
-        stripeBalanceTransaction: '{}'
-        stripeError: '{}'
-        stripeDisputes:
-        - paymentIntentId: paymentIntentId
-          reason: reason
-          amount: 6
-          is_charge_refundable: true
-          livemode: true
-          chargeId: chargeId
-          created: 1
-          id: id
-          status: status
-        - paymentIntentId: paymentIntentId
-          reason: reason
-          amount: 6
-          is_charge_refundable: true
-          livemode: true
-          chargeId: chargeId
-          created: 1
-          id: id
-          status: status
-        invoiceDate: 2000-01-23 04:56:07+00:00
-        stripeRefund: '{}'
-        refundExists: true
+      - BillingInvoiceType_COMMIT
+      - BillingInvoiceType_USAGE
+      - BillingInvoiceType_ADDON
+      - BillingInvoiceType_INSTALLMENT
+    StripeError:
       properties:
-        invoiceDate:
-          description: The invoice issue date.
-          format: date-time
+        code:
           type: string
-        refundExists:
-          description: Refund flag marks whether the transaction has any refund records.
-          type: boolean
-        stripeBalanceTransaction:
-          allOf:
-          - $ref: '#/components/schemas/StripeBalanceTransaction'
-          description: Balance transaction that describes the impact of this charge on your account balance.
-          type: object
-        stripeDisputes:
-          description: Stripe dispute result, got by Dispute API, there may be multiple disputes.
-          items:
-            $ref: '#/components/schemas/StripeDispute'
-          type: array
-        stripeError:
-          allOf:
-          - $ref: '#/components/schemas/StripeError'
-          description: Error of stripe API call
-          type: object
-        stripePaymentIntent:
-          allOf:
-          - $ref: '#/components/schemas/StripePaymentIntent'
-          description: Stripe payment intent result, got by PaymentIntent API
-          type: object
-        stripeRefund:
-          allOf:
-          - $ref: '#/components/schemas/StripeRefund'
-          description: Stripe refund result, got by Refund API
-          type: object
+        message:
+          type: string
+        param:
+          type: string
+        status:
+          type: integer
+        type:
+          type: string
       type: object
-    BillingDiscountType:
-      enum:
-      - PERCENTAGE
-      - ABSOLUTE
-      type: string
-      x-enum-varnames:
-      - BillingDiscountType_PERCENTAGE
-      - BillingDiscountType_ABSOLUTE
-    BillingPaymentInstallmentDetail:
+    BillingAddon:
       example:
-        amount: 1.4894159098541704
+        organizationID: organizationID
+        creationTime: 2000-01-23 04:56:07+00:00
+        name: name
         description: description
-        chargeOn: 2000-01-23 04:56:07+00:00
+        id: id
+        info:
+          amount: 0.8008281904610115
+        lastUpdateTime: 2000-01-23 04:56:07+00:00
+        status: ACTIVE
       properties:
-        amount:
-          type: number
-        chargeOn:
+        creationTime:
           format: date-time
           type: string
         description:
+          description: Description of the addon
+          maxLength: 300
           type: string
+        id:
+          maxLength: 36
+          type: string
+        info:
+          $ref: '#/components/schemas/BillingAddonInfo'
+        lastUpdateTime:
+          format: date-time
+          type: string
+        name:
+          description: Name of the addon, e.g. "Support Plan"
+          maxLength: 50
+          minLength: 4
+          type: string
+        organizationID:
+          type: string
+        status:
+          $ref: '#/components/schemas/BillingAddonStatus'
       type: object
-    StripeRefundDestinationDetailsCard:
+    InvoiceAdjustDiscountByDimension:
+      example:
+        reason: reason
+        dimensionKey: dimensionKey
+        discount:
+          discountType: PERCENTAGE
+          value: 1.4658129805029452
       properties:
-        reference:
-          description: Value of the reference number assigned to the refund.
+        dimensionKey:
           type: string
-        reference_status:
-          description: Status of the reference number on the refund. This can be `pending`, `available` or `unavailable`.
-          enum:
-          - pending
-          - available
-          - unavailable
-          type: string
-        reference_type:
-          description: Type of the reference number assigned to the refund.
-          type: string
-        type:
-          description: The type of refund. This can be `refund`, `reversal`, or `pending`.
-          enum:
-          - refund
-          - reversal
-          - pending
-          type: string
-      type: object
-    InvoiceAdjustOverallMinimumSpend:
-      properties:
-        minimumSpend:
-          type: number
+        discount:
+          $ref: '#/components/schemas/BillingDiscount'
         reason:
           type: string
       type: object
@@ -1749,373 +1977,145 @@ components:
       - PriceModelCategory_Percentage
       - PriceModelCategory_TieredPercentage
       - PriceModelCategory_Matrix
-    BillingInvoice:
+    InvoiceAddFixedFee:
       example:
-        creationTime: 2000-01-23 04:56:07+00:00
+        reason: reason
+        quantity: 0
         endDate: 2000-01-23 04:56:07+00:00
-        entitlementID: entitlementID
-        buyerID: buyerID
-        type: COMMIT
-        organizationID: organizationID
-        invoiceURL: invoiceURL
-        id: id
-        paymentStatus: PENDING
+        rate: 6.027456183070403
         startDate: 2000-01-23 04:56:07+00:00
-        info:
-          deductedCommitAmount: 4.145608029883936
-          addonDetail:
-            amount: 0.8008281904610115
-            name: name
-            description: description
-            chargeOn: 2000-01-23 04:56:07+00:00
-            id: id
-          dueDate: 2000-01-23 04:56:07+00:00
-          adjustDiscountByDimensions:
-          - reason: reason
-            dimensionKey: dimensionKey
-            discount:
-              discountType: PERCENTAGE
-              value: 1.4658129805029452
-          - reason: reason
-            dimensionKey: dimensionKey
-            discount:
-              discountType: PERCENTAGE
-              value: 1.4658129805029452
-          description: description
-          memo: memo
-          adjustOverallMinimumSpend: '{}'
-          currency: currency
-          issueDate: 2000-01-23 04:56:07+00:00
-          netTermsInDays: 1
-          trialPeriodInDays: 4
-          commitsRevenueDetails:
-          - amount: 9.301444243932576
-            expression: expression
-            quantity: 3
-            rate: 2.027123023002322
-            name: name
-            description: description
-            key: key
-          - amount: 9.301444243932576
-            expression: expression
-            quantity: 3
-            rate: 2.027123023002322
-            name: name
-            description: description
-            key: key
-          gracePeriodInDays: 1
-          periodTotalDays: 6
-          creationDate: 2000-01-23 04:56:07+00:00
-          subtotalAmount: 7.457744773683766
-          addFixedFees:
-          - reason: reason
-            quantity: 0
-            endDate: 2000-01-23 04:56:07+00:00
-            rate: 6.027456183070403
-            startDate: 2000-01-23 04:56:07+00:00
-          - reason: reason
-            quantity: 0
-            endDate: 2000-01-23 04:56:07+00:00
-            rate: 6.027456183070403
-            startDate: 2000-01-23 04:56:07+00:00
-          adjustOverallDiscount: '{}'
-          billableDimensionDetails:
-          - discountExpression: discountExpression
-            amount: 5.637376656633329
-            quantity: 7.061401241503109
-            minimumCommit: 2.3021358869347655
-            name: name
-            discount: '{}'
-            details:
-            - feeExpressions: feeExpressions
-              descriptions: descriptions
-            - feeExpressions: feeExpressions
-              descriptions: descriptions
-            billableMetricKey: '{}'
-            category: '{}'
-            isTrial: true
-            minimumCommitScope: '{}'
-          - discountExpression: discountExpression
-            amount: 5.637376656633329
-            quantity: 7.061401241503109
-            minimumCommit: 2.3021358869347655
-            name: name
-            discount: '{}'
-            details:
-            - feeExpressions: feeExpressions
-              descriptions: descriptions
-            - feeExpressions: feeExpressions
-              descriptions: descriptions
-            billableMetricKey: '{}'
-            category: '{}'
-            isTrial: true
-            minimumCommitScope: '{}'
-          paymentInstallmentsDetail:
-            amount: 1.4894159098541704
-            description: description
-            chargeOn: 2000-01-23 04:56:07+00:00
-          usageDailyRevenues:
-          - date: date
-            uniquePropertyItems:
-              key: ''
-            quantity: 5.025004791520295
-            billableMetricKey:
-              groupBysExpression: groupBysExpression
-              id: id
-          - date: date
-            uniquePropertyItems:
-              key: ''
-            quantity: 5.025004791520295
-            billableMetricKey:
-              groupBysExpression: groupBysExpression
-              id: id
-          dueAmount: 7.386281948385884
-          isMeteringOverageCommit: true
-          deductedCommitInvoiceID: deductedCommitInvoiceID
-          adjustMinimumSpendByDimensions:
-          - minimumSpend: 5.962133916683182
-            reason: reason
-            dimensionKey: dimensionKey
-          - minimumSpend: 5.962133916683182
-            reason: reason
-            dimensionKey: dimensionKey
-          receiptUrl: receiptUrl
-          taxAmount: 1.1730742509559433
-          spaUrl: spaUrl
-        lastUpdateTime: 2000-01-23 04:56:07+00:00
-        status: DRAFT
       properties:
-        buyerID:
-          maxLength: 36
-          type: string
-        creationTime:
-          format: date-time
-          type: string
         endDate:
           format: date-time
           type: string
-        entitlementID:
-          maxLength: 36
+        quantity:
+          type: integer
+        rate:
+          type: number
+        reason:
           type: string
-        id:
-          maxLength: 36
-          type: string
-        info:
-          $ref: '#/components/schemas/BillingInvoiceInfo'
-        invoiceURL:
-          description: The invoice file URL, provided as AWS S3 presigned URL with expiration time. Output only.
-          type: string
-        lastUpdateTime:
-          format: date-time
-          type: string
-        organizationID:
-          type: string
-        paymentStatus:
-          $ref: '#/components/schemas/BillingPaymentStatus'
         startDate:
           format: date-time
           type: string
-        status:
-          $ref: '#/components/schemas/BillingInvoiceStatus'
-        type:
-          $ref: '#/components/schemas/BillingInvoiceType'
       type: object
-    StripePaymentIntent:
-      properties:
-        id:
-          description: Unique identifier for the object.
-          type: string
-        last_payment_error:
-          allOf:
-          - $ref: '#/components/schemas/StripeError'
-          description: The payment error encountered in the previous PaymentIntent confirmation. It will be cleared if the PaymentIntent is later updated for any reason.
-          type: object
-        livemode:
-          description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
-          type: boolean
-        status:
-          allOf:
-          - $ref: '#/components/schemas/StripePaymentIntentStatus'
-          description: Status of this PaymentIntent. Read more about each PaymentIntent [status](https://stripe.com/docs/payments/intents#intent-statuses).
-          type: object
-      type: object
-    BillingPaymentTransaction:
+    Partner:
+      enum:
+      - ''
+      - ADYEN
+      - ALIBABA
+      - AWS
+      - AWS_CHINA
+      - AZURE
+      - CHARGEBEE
+      - DATABRICKS
+      - DOCUSIGN
+      - GCP
+      - GOOGLE
+      - HUBSPOT
+      - INTUIT
+      - LAGO
+      - MARKETO
+      - METRONOME
+      - MICROSOFT
+      - ORACLE
+      - ORB
+      - REDHAT
+      - SALESFORCE
+      - SLACK
+      - SNOWFLAKE
+      - STRIPE
+      - ZOHO
+      type: string
+      x-enum-varnames:
+      - Partner_UNKNOWN
+      - Partner_ADYEN
+      - Partner_ALIBABA
+      - Partner_AWS
+      - Partner_AWS_CHINA
+      - Partner_AZURE
+      - Partner_CHARGEBEE
+      - Partner_DATABRICKS
+      - Partner_DOCUSIGN
+      - Partner_GCP
+      - Partner_GOOGLE
+      - Partner_HUBSPOT
+      - Partner_INTUIT
+      - Partner_LAGO
+      - Partner_MARKETO
+      - Partner_METRONOME
+      - Partner_MICROSOFT
+      - Partner_ORACLE
+      - Partner_ORB
+      - Partner_REDHAT
+      - Partner_SALESFORCE
+      - Partner_SLACK
+      - Partner_SNOWFLAKE
+      - Partner_STRIPE
+      - Partner_ZOHO
+    BillingAddonInfo:
       example:
-        walletID: walletID
         amount: 0.8008281904610115
-        creationTime: 2000-01-23 04:56:07+00:00
-        walletType: ach_debit
-        entitlementID: entitlementID
-        buyerID: buyerID
-        type: CHARGE
-        parentID: parentID
-        organizationID: organizationID
-        partner: ''
-        currency: currency
-        invoiceID: invoiceID
-        id: id
-        info:
-          stripePaymentIntent: '{}'
-          stripeBalanceTransaction: '{}'
-          stripeError: '{}'
-          stripeDisputes:
-          - paymentIntentId: paymentIntentId
-            reason: reason
-            amount: 6
-            is_charge_refundable: true
-            livemode: true
-            chargeId: chargeId
-            created: 1
-            id: id
-            status: status
-          - paymentIntentId: paymentIntentId
-            reason: reason
-            amount: 6
-            is_charge_refundable: true
-            livemode: true
-            chargeId: chargeId
-            created: 1
-            id: id
-            status: status
-          invoiceDate: 2000-01-23 04:56:07+00:00
-          stripeRefund: '{}'
-          refundExists: true
-        lastUpdateTime: 2000-01-23 04:56:07+00:00
-        status: PENDING
       properties:
         amount:
           type: number
-        buyerID:
-          type: string
-        creationTime:
-          format: date-time
-          type: string
-        currency:
-          type: string
-        entitlementID:
-          type: string
-        id:
-          type: string
-        info:
-          $ref: '#/components/schemas/BillingPaymentTransactionInfo'
-        invoiceID:
-          type: string
-        lastUpdateTime:
-          format: date-time
-          type: string
-        organizationID:
-          type: string
-        parentID:
-          type: string
-        partner:
-          $ref: '#/components/schemas/Partner'
-        status:
-          $ref: '#/components/schemas/BillingPaymentStatus'
-        type:
-          $ref: '#/components/schemas/BillingPaymentTransactionType'
-        walletID:
-          type: string
-        walletType:
-          $ref: '#/components/schemas/BillingWalletType'
       type: object
-    StripeRefundDestinationDetails:
-      properties:
-        card:
-          $ref: '#/components/schemas/StripeRefundDestinationDetailsCard'
-        type:
-          description: The type of transaction-specific details of the payment method used in the refund (e.g., `card`). An additional hash is included on `destination_details` with a name matching this value. It contains information specific to the refund transaction.
-          type: string
-        us_bank_transfer:
-          $ref: '#/components/schemas/StripeRefundDestinationDetailsUSBankTransfer'
-      type: object
-    BillingPaymentTransactionType:
-      enum:
-      - CHARGE
-      - REFUND
-      type: string
-      x-enum-varnames:
-      - BillingPaymentTransactionType_CHARGE
-      - BillingPaymentTransactionType_REFUND
-    BillingDiscount:
+    UpdateInvoiceInfoRequest:
       example:
-        discountType: PERCENTAGE
-        value: 1.4658129805029452
+        dueDate: dueDate
+        discountAmount: 0.8008281904610115
+        memo: memo
+        discountType: '{}'
       properties:
+        discountAmount:
+          type: number
         discountType:
-          $ref: '#/components/schemas/BillingDiscountType'
-        value:
-          type: number
+          allOf:
+          - $ref: '#/components/schemas/BillingDiscountType'
+          description: The overall discount of the invoice.
+          type: object
+        dueDate:
+          type: string
+        memo:
+          type: string
       type: object
-    StripeBalanceTransaction:
+    BillableDimensionFeeDetail:
+      example:
+        feeExpressions: feeExpressions
+        descriptions: descriptions
       properties:
-        amount:
-          description: Gross amount of this transaction (in cents (or local equivalent)). A positive value represents funds charged to another party, and a negative value represents funds sent to another party.
-          type: integer
-        available_on:
-          description: The date that the transaction's net funds become available in the Stripe balance.
-          type: integer
-        chargeId:
-          description: ID of the charge which the balance transaction comes from.
+        descriptions:
+          description: 'Description of the pricing model that is used to show what the amount is for. like ''Bulk pricing: 0-100 units'', ''Tiered pricing: 0-100 units'''
           type: string
-        created:
-          description: Time at which the object was created. Measured in seconds since the Unix epoch.
-          type: integer
-        description:
-          description: An arbitrary string attached to the object. Often useful for displaying to users.
-          type: string
-        exchange_rate:
-          description: If applicable, this transaction uses an exchange rate. If money converts from currency A to currency B, then the `amount` in currency A, multipled by the `exchange_rate`, equals the `amount` in currency B. For example, if you charge a customer 10.00 EUR, the PaymentIntent's `amount` is `1000` and `currency` is `eur`. If this converts to 12.34 USD in your Stripe account, the BalanceTransaction's `amount` is `1234`, its `currency` is `usd`, and the `exchange_rate` is `1.234`.
-          type: number
-        fee:
-          description: Fees (in cents (or local equivalent)) paid for this transaction. Represented as a positive integer when assessed.
-          type: integer
-        fee_details:
-          description: Detailed breakdown of fees (in cents (or local equivalent)) paid for this transaction.
-          items:
-            $ref: '#/components/schemas/StripeBalanceTransactionFeeDetail'
-          type: array
-        id:
-          description: Unique identifier for the object.
-          type: string
-        net:
-          description: Net impact to a Stripe balance (in cents (or local equivalent)). A positive value represents incrementing a Stripe balance, and a negative value decrementing a Stripe balance. You can calculate the net impact of a transaction on a balance by `amount` - `fee`
-          type: integer
-        status:
-          description: The transaction's net funds status in the Stripe balance, which are either `available` or `pending`.
-          type: string
-        type:
-          description: 'Transaction type: `adjustment`, `advance`, `advance_funding`, `anticipation_repayment`, `application_fee`, `application_fee_refund`, `charge`, `climate_order_purchase`, `climate_order_refund`, `connect_collection_transfer`, `contribution`, `issuing_authorization_hold`, `issuing_authorization_release`, `issuing_dispute`, `issuing_transaction`, `obligation_outbound`, `obligation_reversal_inbound`, `payment`, `payment_failure_refund`, `payment_network_reserve_hold`, `payment_network_reserve_release`, `payment_refund`, `payment_reversal`, `payment_unreconciled`, `payout`, `payout_cancel`, `payout_failure`, `refund`, `refund_failure`, `reserve_transaction`, `reserved_funds`, `stripe_fee`, `stripe_fx_fee`, `tax_fee`, `topup`, `topup_reversal`, `transfer`, `transfer_cancel`, `transfer_failure`, or `transfer_refund`. Learn more about [balance transaction types and what they represent](https://stripe.com/docs/reports/balance-transaction-types). To classify transactions for accounting purposes, consider `reporting_category` instead.'
+        feeExpressions:
+          description: FeeExpression is the expression used to calculate the fee that is used to show how the amount is calculated. like '211 × $0.03'
           type: string
       type: object
-    StripeBalanceTransactionFeeDetail:
-      properties:
-        amount:
-          description: Amount of the fee, in cents.
-          type: integer
-        application:
-          description: ID of the Connect application that earned the fee.
-          type: string
-        description:
-          description: An arbitrary string attached to the object. Often useful for displaying to users.
-          type: string
-        type:
-          description: 'Type of the fee, one of: `application_fee`, `payment_method_passthrough_fee`, `stripe_fee` or `tax`.'
-          type: string
-      type: object
-    StripeRefundStatus:
+    BillingInvoiceStatus:
       enum:
-      - pending
-      - requires_action
-      - succeeded
-      - failed
-      - canceled
+      - DRAFT
+      - FINALIZED
+      - CANCELED
+      - DELETED
+      - ''
       type: string
       x-enum-varnames:
-      - StripeRefundStatus_Pending
-      - StripeRefundStatus_RequiresAction
-      - StripeRefundStatus_Succeeded
-      - StripeRefundStatus_Failed
-      - StripeRefundStatus_Canceled
+      - BillingInvoiceStatus_DRAFT
+      - BillingInvoiceStatus_FINALIZED
+      - BillingInvoiceStatus_CANCELED
+      - BillingInvoiceStatus_DELETED
+      - BillingInvoiceStatus_UNKNOWN
+    BillingPaymentStatus:
+      enum:
+      - PENDING
+      - PROCESSING
+      - SUCCESS
+      - FAILED
+      type: string
+      x-enum-varnames:
+      - BillingPaymentStatus_PENDING
+      - BillingPaymentStatus_PROCESSING
+      - BillingPaymentStatus_SUCCESS
+      - BillingPaymentStatus_FAILED
   securitySchemes:
     APIKeyAuth:
       description: API Key for authorization in format of <Key *****>.

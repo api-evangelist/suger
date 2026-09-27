@@ -54,25 +54,6 @@ created: '2025-02-21'
 modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
-- aid: suger:suger-api-api
-  name: Suger API
-  description: Access to API client resources
-  humanURL: https://www.suger.io/
-  baseURL: https://api.suger.cloud
-  tags: []
-  tags_raw:
-  - API
-  properties:
-  - type: OpenAPI
-    url: openapi/suger-api-api-openapi.yml
-  - type: Documentation
-    url: https://doc.suger.io/
-  - type: Website
-    url: https://www.suger.io/
-  - type: GettingStarted
-    url: https://www.suger.io/docs/get-started/api-client
-  - type: SDKs
-    url: https://github.com/sugerio
 - aid: suger:suger-billing-api
   name: Suger Billing API
   description: Access to Billing resources, such as addon, invoice, payment, etc.
@@ -247,6 +228,24 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/suger-support-api-openapi.yml
+  - type: Documentation
+    url: https://doc.suger.io/
+  - type: Website
+    url: https://www.suger.io/
+  - type: GettingStarted
+    url: https://www.suger.io/docs/get-started/api-client
+  - type: SDKs
+    url: https://github.com/sugerio
+- aid: suger:suger-org-api
+  name: Suger Org API
+  description: The Org API from Suger — 2 operation(s) for org.
+  humanURL: https://www.suger.io/
+  baseURL: https://api.suger.cloud
+  tags:
+  - Org
+  properties:
+  - type: OpenAPI
+    url: openapi/suger-org-api-openapi.yml
   - type: Documentation
     url: https://doc.suger.io/
   - type: Website
