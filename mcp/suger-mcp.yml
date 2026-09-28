@@ -16,8 +16,13 @@ deployment:
 tools_count: 2
 tools:
 - name: search
-  description: ''
+  description: 'Search the Suger website (suger.io) for pages about cloud marketplace go-to-market: AWS/Azure/Google
+    Cloud marketplace listing, co-sell, private offers, agreements, billing & metering, and customer stories.
+    Returns ranked pages with title,'
 - name: fetch_page
-  description: ''
+  description: Fetch the clean Markdown content of a single Suger website page, given a URL or path returned
+    by `search` (e.g. "/platform/cosell/" or the full https URL).
 tools_source: live tools/list via initialize handshake, 2026-09-11 (signals/audit_mcp_authorship.py --probe)
 authorship: provider
+descriptions_source: live tools/list (authorship probe or saved capture); filled by backfill-tools-from-authorship.py
+  --descriptions, 2026-09-28
