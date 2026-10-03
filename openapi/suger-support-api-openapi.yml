@@ -405,36 +405,86 @@ paths:
       - Support
 components:
   schemas:
-    SupportTicketImage:
-      example:
-        thumbnail_small: thumbnail_small
-        extension: extension
-        thumbnail_medium: thumbnail_medium
-        thumbnail_large: thumbnail_large
-        name: name
-        id: id
-        title: title
-        type: type
-        url: url
+    SupportTicketUser:
       properties:
-        extension:
+        email:
           type: string
         id:
+          description: The Suger user ID.
           type: string
-        name:
+        isSugerEmployee:
+          description: Whether the user is a Suger employee.
+          type: boolean
+        profilePicture:
           type: string
-        thumbnail_large:
+        username:
           type: string
-        thumbnail_medium:
-          type: string
-        thumbnail_small:
-          type: string
-        title:
+      type: object
+    SupportTicketCommentDetail:
+      example:
+        image:
+          thumbnail_small: thumbnail_small
+          extension: extension
+          thumbnail_medium: thumbnail_medium
+          thumbnail_large: thumbnail_large
+          name: name
+          id: id
+          title: title
+          type: type
+          url: url
+        attachment:
+          date: date
+          thumbnail_small: thumbnail_small
+          thumbnail_medium: thumbnail_medium
+          size: 0
+          thumbnail_large: thumbnail_large
+          mimetype: mimetype
+          id: id
+          title: title
+          url: url
+        text: text
+        type: type
+        frame:
+          id: id
+          url: url
+      properties:
+        attachment:
+          $ref: '#/components/schemas/SupportTicketAttachment'
+        frame:
+          $ref: '#/components/schemas/SupportTicketFrame'
+        image:
+          $ref: '#/components/schemas/SupportTicketImage'
+        text:
           type: string
         type:
           type: string
-        url:
+      type: object
+    SupportTicketStatus:
+      enum:
+      - OPEN
+      - IN PROGRESS
+      - IN REVIEW
+      - BLOCKED
+      - CLOSED
+      - ARCHIVED
+      - DELETED
+      type: string
+      x-enum-varnames:
+      - SupportTicketStatus_OPEN
+      - SupportTicketStatus_IN_PROGRESS
+      - SupportTicketStatus_IN_REVIEW
+      - SupportTicketStatus_BLOCKED
+      - SupportTicketStatus_CLOSED
+      - SupportTicketStatus_ARCHIVED
+      - SupportTicketStatus_DELETED
+    CreateSupportTicketAttachment_request:
+      properties:
+        file:
+          description: File to upload
+          format: binary
           type: string
+      required:
+      - file
       type: object
     SupportTicketAttachment:
       example:
@@ -467,14 +517,46 @@ components:
         url:
           type: string
       type: object
-    CreateSupportTicketAttachment_request:
+    SupportTicketFrame:
+      example:
+        id: id
+        url: url
       properties:
-        file:
-          description: File to upload
-          format: binary
+        id:
           type: string
-      required:
-      - file
+        url:
+          type: string
+      type: object
+    SupportTicketImage:
+      example:
+        thumbnail_small: thumbnail_small
+        extension: extension
+        thumbnail_medium: thumbnail_medium
+        thumbnail_large: thumbnail_large
+        name: name
+        id: id
+        title: title
+        type: type
+        url: url
+      properties:
+        extension:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        thumbnail_large:
+          type: string
+        thumbnail_medium:
+          type: string
+        thumbnail_small:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+        url:
+          type: string
       type: object
     ListSupportTicketsResponse:
       example:
@@ -775,87 +857,79 @@ components:
           description: Only available when the request is made with offset=0.
           type: integer
       type: object
-    SupportTicketUser:
+    SupportTicketComment:
+      example:
+        date: date
+        comment_text: comment_text
+        creator: '{}'
+        comment:
+        - image:
+            thumbnail_small: thumbnail_small
+            extension: extension
+            thumbnail_medium: thumbnail_medium
+            thumbnail_large: thumbnail_large
+            name: name
+            id: id
+            title: title
+            type: type
+            url: url
+          attachment:
+            date: date
+            thumbnail_small: thumbnail_small
+            thumbnail_medium: thumbnail_medium
+            size: 0
+            thumbnail_large: thumbnail_large
+            mimetype: mimetype
+            id: id
+            title: title
+            url: url
+          text: text
+          type: type
+          frame:
+            id: id
+            url: url
+        - image:
+            thumbnail_small: thumbnail_small
+            extension: extension
+            thumbnail_medium: thumbnail_medium
+            thumbnail_large: thumbnail_large
+            name: name
+            id: id
+            title: title
+            type: type
+            url: url
+          attachment:
+            date: date
+            thumbnail_small: thumbnail_small
+            thumbnail_medium: thumbnail_medium
+            size: 0
+            thumbnail_large: thumbnail_large
+            mimetype: mimetype
+            id: id
+            title: title
+            url: url
+          text: text
+          type: type
+          frame:
+            id: id
+            url: url
+        id: id
       properties:
-        email:
+        comment:
+          items:
+            $ref: '#/components/schemas/SupportTicketCommentDetail'
+          type: array
+        comment_text:
+          description: When creating a new comment, only CommentText is required.
+          type: string
+        creator:
+          allOf:
+          - $ref: '#/components/schemas/SupportTicketUser'
+          description: who created the comment
+          type: object
+        date:
           type: string
         id:
-          description: The Suger user ID.
-          type: string
-        isSugerEmployee:
-          description: Whether the user is a Suger employee.
-          type: boolean
-        profilePicture:
-          type: string
-        username:
-          type: string
-      type: object
-    SupportTicketPriority:
-      enum:
-      - LOW
-      - NORMAL
-      - HIGH
-      - URGENT
-      type: string
-      x-enum-varnames:
-      - SupportTicketPriority_LOW
-      - SupportTicketPriority_NORMAL
-      - SupportTicketPriority_HIGH
-      - SupportTicketPriority_URGENT
-    UpdateSupportTicketRequest:
-      example:
-        watchers:
-        - watchers
-        - watchers
-        priority: LOW
-      properties:
-        priority:
-          $ref: '#/components/schemas/SupportTicketPriority'
-        watchers:
-          items:
-            type: string
-          type: array
-      required:
-      - priority
-      - watchers
-      type: object
-    SupportTicketCommentDetail:
-      example:
-        image:
-          thumbnail_small: thumbnail_small
-          extension: extension
-          thumbnail_medium: thumbnail_medium
-          thumbnail_large: thumbnail_large
-          name: name
-          id: id
-          title: title
-          type: type
-          url: url
-        attachment:
-          date: date
-          thumbnail_small: thumbnail_small
-          thumbnail_medium: thumbnail_medium
-          size: 0
-          thumbnail_large: thumbnail_large
-          mimetype: mimetype
-          id: id
-          title: title
-          url: url
-        text: text
-        type: type
-        frame:
-          id: id
-          url: url
-      properties:
-        attachment:
-          $ref: '#/components/schemas/SupportTicketAttachment'
-        frame:
-          $ref: '#/components/schemas/SupportTicketFrame'
-        image:
-          $ref: '#/components/schemas/SupportTicketImage'
-        text:
-          type: string
-        type:
           type: string
       type: object
     SupportTicket:
@@ -1037,108 +1111,34 @@ components:
             type: string
           type: array
       type: object
-    SupportTicketStatus:
+    SupportTicketPriority:
       enum:
-      - OPEN
-      - IN PROGRESS
-      - IN REVIEW
-      - BLOCKED
-      - CLOSED
-      - ARCHIVED
-      - DELETED
+      - LOW
+      - NORMAL
+      - HIGH
+      - URGENT
       type: string
       x-enum-varnames:
-      - SupportTicketStatus_OPEN
-      - SupportTicketStatus_IN_PROGRESS
-      - SupportTicketStatus_IN_REVIEW
-      - SupportTicketStatus_BLOCKED
-      - SupportTicketStatus_CLOSED
-      - SupportTicketStatus_ARCHIVED
-      - SupportTicketStatus_DELETED
-    SupportTicketFrame:
+      - SupportTicketPriority_LOW
+      - SupportTicketPriority_NORMAL
+      - SupportTicketPriority_HIGH
+      - SupportTicketPriority_URGENT
+    UpdateSupportTicketRequest:
       example:
-        id: id
-        url: url
+        watchers:
+        - watchers
+        - watchers
+        priority: LOW
       properties:
-        id:
-          type: string
-        url:
-          type: string
-      type: object
-    SupportTicketComment:
-      example:
-        date: date
-        comment_text: comment_text
-        creator: '{}'
-        comment:
-        - image:
-            thumbnail_small: thumbnail_small
-            extension: extension
-            thumbnail_medium: thumbnail_medium
-            thumbnail_large: thumbnail_large
-            name: name
-            id: id
-            title: title
-            type: type
-            url: url
-          attachment:
-            date: date
-            thumbnail_small: thumbnail_small
-            thumbnail_medium: thumbnail_medium
-            size: 0
-            thumbnail_large: thumbnail_large
-            mimetype: mimetype
-            id: id
-            title: title
-            url: url
-          text: text
-          type: type
-          frame:
-            id: id
-            url: url
-        - image:
-            thumbnail_small: thumbnail_small
-            extension: extension
-            thumbnail_medium: thumbnail_medium
-            thumbnail_large: thumbnail_large
-            name: name
-            id: id
-            title: title
-            type: type
-            url: url
-          attachment:
-            date: date
-            thumbnail_small: thumbnail_small
-            thumbnail_medium: thumbnail_medium
-            size: 0
-            thumbnail_large: thumbnail_large
-            mimetype: mimetype
-            id: id
-            title: title
-            url: url
-          text: text
-          type: type
-          frame:
-            id: id
-            url: url
-        id: id
-      properties:
-        comment:
+        priority:
+          $ref: '#/components/schemas/SupportTicketPriority'
+        watchers:
           items:
-            $ref: '#/components/schemas/SupportTicketCommentDetail'
+            type: string
           type: array
-        comment_text:
-          description: When creating a new comment, only CommentText is required.
-          type: string
-        creator:
-          allOf:
-          - $ref: '#/components/schemas/SupportTicketUser'
-          description: who created the comment
-          type: object
-        date:
-          type: string
-        id:
-          type: string
+      required:
+      - priority
+      - watchers
       type: object
   securitySchemes:
     APIKeyAuth:
