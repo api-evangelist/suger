@@ -1,0 +1,80 @@
+slug: suger
+provider: Suger
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 6
+edges:
+- tag: Metering
+  spec_file: suger-metering-api-openapi.yml
+  capability_id: BC-4250.10
+  capability_id_l1: BC-4250
+  capability_name: Usage Metering
+  confidence: 0.9
+  evidence: POST /org/{orgId}/batchCreateUsageRecordGroups  BatchReportUsageRecordGroups; POST /org/{orgId}/billableMetric  CreateBillableMetric;
+    schema AggregatedMeteringUsageRecord
+  reason: Ingests, validates and aggregates usage records against billable metrics and pushes them to
+    cloud marketplace metering APIs — textbook usage metering feeding downstream rating and billing.
+- tag: Entitlement
+  spec_file: suger-entitlement-api-openapi.yml
+  capability_id: BC-4240
+  capability_id_l1: BC-4240
+  capability_name: Subscription Lifecycle Management
+  confidence: 0.85
+  evidence: POST /org/{orgId}/entitlement  CreateEntitlement; POST .../approve  ApproveEntitlement; POST
+    .../cancel  CancelEntitlement; GET .../entitlementTerm  ListEntitlementTerms
+  reason: 'The tag manages the full commercial lifecycle of marketplace entitlements (subscriptions):
+    creation, approval, term management, add-on application, credits and cancellation. Spans provisioning,
+    modification and cancellation sub-capabilities, so only the L1 is asserted.'
+- tag: Product
+  spec_file: suger-product-api-openapi.yml
+  capability_id: BC-4270.70
+  capability_id_l1: BC-4270
+  capability_name: Software Marketplace Listing Management
+  confidence: 0.8
+  evidence: PATCH /org/{orgId}/product/{productId}/publish  PublishProduct; GET /org/{orgId}/partner/{partner}/product  ListProductsByPartner;
+    schemas GcpMarketplaceProduct, AzureProductListingAsset, AwsProductSupportInformation
+  reason: Creates, updates and publishes the ISV's product listings on AWS/Azure/GCP/Alibaba marketplaces,
+    including listing assets and fulfilment URLs — stewardship of the SaaS offering's listings on third-party
+    cloud marketplaces.
+- tag: Support
+  spec_file: suger-support-api-openapi.yml
+  capability_id: BC-430.10
+  capability_id_l1: BC-430
+  capability_name: Customer Inquiry Management
+  confidence: 0.8
+  evidence: POST /org/{orgId}/support/ticket  CreateSupportTicket; PATCH .../close  CloseSupportTicket;
+    PATCH .../reopen  ReopenSupportTicket; schemas SupportTicket, SupportTicketComment, SupportTicketPriority
+  reason: Full support-ticket lifecycle — creation, comments, attachments, prioritisation, closure and
+    reopening — which realises customer service inquiry handling.
+- tag: Billing
+  spec_file: suger-billing-api-openapi.yml
+  capability_id: BC-4250.30
+  capability_id_l1: BC-4250
+  capability_name: Invoicing & Statement Management
+  confidence: 0.75
+  evidence: GET /org/{orgId}/invoice  ListInvoices; PATCH /org/{orgId}/invoice/{invoiceId}/issue  IssueInvoice;
+    PATCH .../pay  PayInvoice; POST .../refund  CreateRefund
+  reason: Operations generate, issue, adjust and pay invoices and process refunds for marketplace subscription
+    transactions, with schemas BillingInvoice, InvoiceAddFixedFee, StripePaymentIntent. That is subscription
+    billing, centred on invoicing and statement management (payment/refund handling also present, hence
+    not full confidence on the L2).
+- tag: Report
+  spec_file: suger-report-api-openapi.yml
+  capability_id: BC-4250.70
+  capability_id_l1: BC-4250
+  capability_name: Subscription Revenue Analytics
+  confidence: 0.75
+  evidence: GET /org/{orgId}/dailyRevenueRecord  ListDailyRevenueRecords; POST /org/{orgId}/revenueReport  GetRevenueReport;
+    schemas RevenueRecord, RevenueReportType, RevenueChannel
+  reason: Reporting and analysis of marketplace subscription/usage revenue records by partner channel
+    and interval — recurring-revenue analytics over the SaaS commercial model rather than statutory financial
+    reporting.

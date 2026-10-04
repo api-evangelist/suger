@@ -41,6 +41,7 @@ tags:
 - Entitlements
 - Revenue
 - Co-Sell
+- Usage-Based Billing
 tags_raw:
 - Cloud Marketplace
 - GTM
@@ -49,6 +50,7 @@ tags_raw:
 - Entitlement
 - Revenue
 - Co-Sell
+- Usage-Based Billing
 url: https://raw.githubusercontent.com/api-evangelist/suger/refs/heads/main/apis.yml
 created: '2025-02-21'
 modified: '2026-09-16'
@@ -255,6 +257,9 @@ apis:
   - type: SDKs
     url: https://github.com/sugerio
 common:
+- type: CapabilityMap
+  url: capabilities/suger-capability-edges.yml
+  name: Suger Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/suger/overview
 - type: AgenticAccess
