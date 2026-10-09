@@ -1,20 +1,43 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/suger-openapi.yml
+source: openapi/suger-api-api-openapi.yml, openapi/suger-billing-api-openapi.yml, openapi/suger-buyer-api-openapi.yml,
+  openapi/suger-contact-api-openapi.yml, openapi/suger-entitlement-api-openapi.yml, openapi/suger-metering-api-openapi.yml,
+  openapi/suger-notification-api-openapi.yml, openapi/suger-offer-api-openapi.yml, openapi/suger-product-api-openapi.yml,
+  openapi/suger-report-api-openapi.yml, openapi/suger-support-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 106
   by_action_class:
-    connected: 42
-    acting: 64
+    connected: 43
+    acting: 63
   by_consequence:
-    read: 42
-    write: 57
+    read: 43
+    write: 56
     physical: 7
   human_in_the_loop_required: 0
 operations:
+- path: /org/{orgId}/apiClient
+  method: get
+  operationId: ListApiClients
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /org/{orgId}/apiClient/{apiClientId}
+  method: get
+  operationId: GetApiClient
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /org/{orgId}/addon
   method: get
   operationId: ListAddons
@@ -83,9 +106,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /org/{orgId}/apiClient
+- path: /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund
   method: get
-  operationId: ListApiClients
+  operationId: ListRefundOfPaymentTransaction
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -93,51 +116,27 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /org/{orgId}/apiClient/{apiClientId}
-  method: get
-  operationId: GetApiClient
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /org/{orgId}/batchCreateUsageRecordGroups
+- path: /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund
   method: post
-  operationId: BatchReportUsageRecordGroups
+  operationId: CreateRefund
   x-agentic-access:
     action-class: acting
-    consequence: write
+    consequence: physical
     subject: required
     audience: null
     token:
-      max-ttl: 900
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
     escalation:
       human-in-the-loop: conditional
       triggers:
       - abnormal
       - high-value
     audit: required
-- path: /org/{orgId}/batchValidateUsageRecordGroups
-  method: post
-  operationId: BatchValidateUsageRecordGroups
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /org/{orgId}/billableMetric
+- path: /org/{orgId}/invoice
   method: get
-  operationId: ListBillableMetrics
+  operationId: ListInvoices
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -145,25 +144,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /org/{orgId}/billableMetric
-  method: post
-  operationId: CreateBillableMetric
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /org/{orgId}/billableMetric/{billableMetricId}
+- path: /org/{orgId}/invoice/{invoiceId}
   method: get
-  operationId: GetBillableMetric
+  operationId: GetInvoice
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -171,22 +154,98 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /org/{orgId}/billableMetric/{billableMetricId}
+- path: /org/{orgId}/invoice/{invoiceId}/info
   method: patch
-  operationId: UpdateBillableMetric
+  operationId: UpdateInvoiceInfo
   x-agentic-access:
     action-class: acting
-    consequence: write
+    consequence: physical
     subject: required
     audience: null
     token:
-      max-ttl: 900
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
     escalation:
       human-in-the-loop: conditional
       triggers:
       - abnormal
       - high-value
     audit: required
+- path: /org/{orgId}/invoice/{invoiceId}/issue
+  method: patch
+  operationId: IssueInvoice
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /org/{orgId}/invoice/{invoiceId}/pay
+  method: patch
+  operationId: PayInvoice
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /org/{orgId}/invoice/{invoiceId}/preview
+  method: get
+  operationId: PreviewInvoiceEmail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /org/{orgId}/invoice/{invoiceId}/void
+  method: patch
+  operationId: VoidInvoice
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /org/{orgId}/paymentTransaction
+  method: get
+  operationId: ListPaymentTransactions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /org/{orgId}/buyer
   method: get
   operationId: ListBuyers
@@ -233,34 +292,6 @@ operations:
     audience: null
     token:
       max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund
-  method: get
-  operationId: ListRefundOfPaymentTransaction
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /org/{orgId}/buyer/{buyerId}/paymentTransaction/{paymentTransactionId}/refund
-  method: post
-  operationId: CreateRefund
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
     escalation:
       human-in-the-loop: conditional
       triggers:
@@ -476,48 +507,6 @@ operations:
 - path: /org/{orgId}/contact/batch
   method: post
   operationId: BatchCreateContacts
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /org/{orgId}/dailyRevenueRecord
-  method: get
-  operationId: ListDailyRevenueRecords
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /org/{orgId}/draftOffer
-  method: post
-  operationId: CreateOrUpdateDraftOffer
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /org/{orgId}/draftProduct
-  method: post
-  operationId: CreateOrUpdateDraftProduct
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -779,6 +768,90 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /org/{orgId}/batchCreateUsageRecordGroups
+  method: post
+  operationId: BatchReportUsageRecordGroups
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /org/{orgId}/batchValidateUsageRecordGroups
+  method: post
+  operationId: BatchValidateUsageRecordGroups
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /org/{orgId}/billableMetric
+  method: get
+  operationId: ListBillableMetrics
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /org/{orgId}/billableMetric
+  method: post
+  operationId: CreateBillableMetric
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /org/{orgId}/billableMetric/{billableMetricId}
+  method: get
+  operationId: GetBillableMetric
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /org/{orgId}/billableMetric/{billableMetricId}
+  method: patch
+  operationId: UpdateBillableMetric
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /org/{orgId}/entitlement/{entitlementId}/usageRecordGroup
   method: post
   operationId: ReportUsageRecordGroup
@@ -795,9 +868,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /org/{orgId}/invoice
+- path: /org/{orgId}/usageMeteringConfigInfo
   method: get
-  operationId: ListInvoices
+  operationId: GetUsageMeteringConfigInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -805,9 +878,25 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /org/{orgId}/invoice/{invoiceId}
+- path: /org/{orgId}/usageMeteringConfigInfo
+  method: patch
+  operationId: UpdateUsageMeteringConfigInfo
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /org/{orgId}/usageRecordGroup
   method: get
-  operationId: GetInvoice
+  operationId: ListUsageRecordGroups
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -815,63 +904,41 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /org/{orgId}/invoice/{invoiceId}/info
-  method: patch
-  operationId: UpdateInvoiceInfo
+- path: /org/{orgId}/usageRecordGroup/{usageRecordGroupId}
+  method: delete
+  operationId: DeleteUsageRecordGroup
   x-agentic-access:
     action-class: acting
-    consequence: physical
+    consequence: write
     subject: required
     audience: null
     token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
+      max-ttl: 900
     escalation:
       human-in-the-loop: conditional
       triggers:
       - abnormal
       - high-value
     audit: required
-- path: /org/{orgId}/invoice/{invoiceId}/issue
-  method: patch
-  operationId: IssueInvoice
+- path: /org/{orgId}/usageRecordGroup/{usageRecordGroupId}/retry
+  method: post
+  operationId: RetryUsageRecordGroup
   x-agentic-access:
     action-class: acting
-    consequence: physical
+    consequence: write
     subject: required
     audience: null
     token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
+      max-ttl: 900
     escalation:
       human-in-the-loop: conditional
       triggers:
       - abnormal
       - high-value
     audit: required
-- path: /org/{orgId}/invoice/{invoiceId}/pay
-  method: patch
-  operationId: PayInvoice
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /org/{orgId}/invoice/{invoiceId}/preview
+- path: /org/{orgId}/usageRecordReport
   method: get
-  operationId: PreviewInvoiceEmail
+  operationId: ListUsageRecordReports
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -879,24 +946,6 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /org/{orgId}/invoice/{invoiceId}/void
-  method: patch
-  operationId: VoidInvoice
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /org/{orgId}/notificationEvent
   method: get
   operationId: ListNotificationEvents
@@ -937,6 +986,22 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /org/{orgId}/draftOffer
+  method: post
+  operationId: CreateOrUpdateDraftOffer
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /org/{orgId}/offer
   method: get
   operationId: ListOffers
@@ -1085,49 +1150,25 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /org/{orgId}/draftProduct
+  method: post
+  operationId: CreateOrUpdateDraftProduct
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /org/{orgId}/partner/{partner}/product
   method: get
   operationId: ListProductsByPartner
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /org/{orgId}/partner/{partner}/revenueRecord
-  method: get
-  operationId: ListRevenueRecords
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /org/{orgId}/partner/{partner}/revenueRecordDetail
-  method: get
-  operationId: ListRevenueRecordDetails
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /org/{orgId}/partner/{partner}/usageMeteringDailyRecord
-  method: get
-  operationId: ListUsageMeteringDailyRecords
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /org/{orgId}/paymentTransaction
-  method: get
-  operationId: ListPaymentTransactions
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1263,22 +1304,56 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /org/{orgId}/dailyRevenueRecord
+  method: get
+  operationId: ListDailyRevenueRecords
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /org/{orgId}/partner/{partner}/revenueRecord
+  method: get
+  operationId: ListRevenueRecords
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /org/{orgId}/partner/{partner}/revenueRecordDetail
+  method: get
+  operationId: ListRevenueRecordDetails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /org/{orgId}/partner/{partner}/usageMeteringDailyRecord
+  method: get
+  operationId: ListUsageMeteringDailyRecords
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /org/{orgId}/revenueReport
   method: post
   operationId: GetRevenueReport
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /org/{orgId}/support/ticket
   method: get
   operationId: ListSupportTickets
@@ -1395,81 +1470,3 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /org/{orgId}/usageMeteringConfigInfo
-  method: get
-  operationId: GetUsageMeteringConfigInfo
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /org/{orgId}/usageMeteringConfigInfo
-  method: patch
-  operationId: UpdateUsageMeteringConfigInfo
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /org/{orgId}/usageRecordGroup
-  method: get
-  operationId: ListUsageRecordGroups
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /org/{orgId}/usageRecordGroup/{usageRecordGroupId}
-  method: delete
-  operationId: DeleteUsageRecordGroup
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /org/{orgId}/usageRecordGroup/{usageRecordGroupId}/retry
-  method: post
-  operationId: RetryUsageRecordGroup
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /org/{orgId}/usageRecordReport
-  method: get
-  operationId: ListUsageRecordReports
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
