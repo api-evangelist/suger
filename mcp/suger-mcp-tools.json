@@ -1,0 +1,62 @@
+{
+  "endpoint": "https://www.suger.io/mcp",
+  "captured": "2026-10-20",
+  "final_url": "https://www.fours.com/mcp",
+  "method": "initialize + tools/list (anonymous, no tool called; roadmap#992)",
+  "protocol_version": "2025-06-18",
+  "server_info": {
+    "name": "fours-website",
+    "version": "1.0.0"
+  },
+  "result": {
+    "tools": [
+      {
+        "name": "search",
+        "title": "Search fours.com",
+        "description": "Search the Fours website (fours.com, formerly suger.io) for pages about cloud marketplace go-to-market: AWS/Azure/Google Cloud marketplace listing, co-sell, private offers, agreements, billing & metering, and customer stories. Returns ranked pages with title, URL, type, and description.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Search terms",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Max results (1-25)",
+              "minimum": 1,
+              "maximum": 25,
+              "default": 8
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "name": "fetch_page",
+        "title": "Fetch a fours.com page",
+        "description": "Fetch the clean Markdown content of a single Fours website page, given a URL or path returned by `search` (e.g. \"/platform/cosell/\" or the full https URL).",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "A fours.com URL or path, e.g. /platform/cosell/",
+              "minLength": 1,
+              "maxLength": 300
+            }
+          },
+          "required": [
+            "path"
+          ],
+          "additionalProperties": false
+        }
+      }
+    ]
+  }
+}
