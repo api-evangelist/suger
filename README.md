@@ -1,4 +1,4 @@
-# Suger (suger)
+# Suger
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,68 +66,197 @@
 
 Suger is the fastest and easiest way for ISVs to list, transact, and co-sell on cloud marketplaces including AWS Marketplace, Azure Marketplace, GCP Marketplace, and Snowflake Marketplace. Suger provides a full API for managing products, offers, entitlements, buyers, usage metering, and revenue reporting.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/suger/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/suger/refs/heads/main/apis.yml)
+**Areas:** Cloud Marketplace · Go-To-Market · Software-as-a-Service · Billing · Entitlements · Revenue · Co-Sell · Usage-Based Billing
 
-## Scope
+## Suger on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Suger is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/suger/](https://apis.io/providers/suger/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (11)
 
-- Cloud Marketplace
-- GTM
-- SaaS
-- Billing
-- Entitlement
-- Revenue
-- Co-Sell
+- [Suger Billing API](https://apis.io/apis/suger/suger-billing-api/) — Access to Billing resources, such as addon, invoice, payment, etc.
+- [Suger Buyer API](https://apis.io/apis/suger/suger-buyer-api/) — Access to Buyer resources
+- [Suger Contact API](https://apis.io/apis/suger/suger-contact-api/) — Access to Contact resources
+- [Suger Entitlement API](https://apis.io/apis/suger/suger-entitlement-api/) — Access to Entitlement resources
+- [Suger Metering API](https://apis.io/apis/suger/suger-metering-api/) — Access to Usage Metering resources
+- [Suger Notification API](https://apis.io/apis/suger/suger-notification-api/) — Access to Notification resources
+- [Suger Offer API](https://apis.io/apis/suger/suger-offer-api/) — Access to Offer resources
+- [Suger Product API](https://apis.io/apis/suger/suger-product-api/) — Access to Product resources
+- [Suger Report API](https://apis.io/apis/suger/suger-report-api/) — Access to revenue or usage metering Report resources
+- [Suger Support API](https://apis.io/apis/suger/suger-support-api/) — Access to Suger Support ticket resources
+- [Suger Org API](https://apis.io/apis/suger/suger-org-api/) — The Org API from Suger — 2 operation(s) for org.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-02-21
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-### Suger API
+Model Context Protocol servers that expose the API to agents.
 
-CRUD operations on cloud marketplace resources including organizations, products, offers, entitlements, buyers, usage record groups, billing metrics, invoices, and revenue reporting. Supports AWS, Azure, GCP, and Snowflake marketplaces.
+- [suger](https://apis.io/servers/suger/suger/)
 
-- **Human URL:** [https://www.suger.io/](https://www.suger.io/)
-- **Base URL:** `https://api.suger.cloud`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Cloud Marketplace
-- GTM
-- SaaS
-- Billing
-- Entitlement
-- Usage Metering
+- [Suger Agentic Access](https://apis.io/agentic-access/suger/suger-agentic-access/)
 
-#### Properties
+#### JSON Schema (2)
 
-- [Documentation](https://doc.suger.io/)
+The data models the API reads and writes.
+
+- [Suger Entitlement](https://apis.io/schemas/suger/suger-entitlement/)
+- [Suger Product](https://apis.io/schemas/suger/suger-product/)
+
+#### JSON Structure (1)
+
+Data models expressed in JSON Structure.
+
+- [Suger Product Structure](https://apis.io/json-structure/suger/suger-product-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Suger Context](https://apis.io/jsonld/suger/suger-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Suger Vocabulary](https://apis.io/vocabularies/suger/suger-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Suger Create Entitlement Example](https://apis.io/examples/suger/suger-create-entitlement-example/)
+- [Suger List Products Example](https://apis.io/examples/suger/suger-list-products-example/)
+
+#### Collections (23)
+
+Postman and Open Collection request collections.
+
+- [Suger API](https://apis.io/collections/suger/open-suger/)
+- [Suger API API](https://apis.io/collections/suger/open-suger-api-api/)
+- [Suger API Billing API](https://apis.io/collections/suger/open-suger-billing-api/)
+- [Suger API Buyer API](https://apis.io/collections/suger/open-suger-buyer-api/)
+- [Suger API Contact API](https://apis.io/collections/suger/open-suger-contact-api/)
+- [Suger API Entitlement API](https://apis.io/collections/suger/open-suger-entitlement-api/)
+- [Suger API Metering API](https://apis.io/collections/suger/open-suger-metering-api/)
+- [Suger API Notification API](https://apis.io/collections/suger/open-suger-notification-api/)
+- [Suger API Offer API](https://apis.io/collections/suger/open-suger-offer-api/)
+- [Suger API Product API](https://apis.io/collections/suger/open-suger-product-api/)
+- [Suger API Report API](https://apis.io/collections/suger/open-suger-report-api/)
+- [Suger API Support API](https://apis.io/collections/suger/open-suger-support-api/)
+- [Suger API API](https://apis.io/collections/suger/postman-suger-api-api/)
+- [Suger API Billing API](https://apis.io/collections/suger/postman-suger-billing-api/)
+- [Suger API Buyer API](https://apis.io/collections/suger/postman-suger-buyer-api/)
+- [Suger API Contact API](https://apis.io/collections/suger/postman-suger-contact-api/)
+- [Suger API Entitlement API](https://apis.io/collections/suger/postman-suger-entitlement-api/)
+- [Suger API Metering API](https://apis.io/collections/suger/postman-suger-metering-api/)
+- [Suger API Notification API](https://apis.io/collections/suger/postman-suger-notification-api/)
+- [Suger API Offer API](https://apis.io/collections/suger/postman-suger-offer-api/)
+- [Suger API Product API](https://apis.io/collections/suger/postman-suger-product-api/)
+- [Suger API Report API](https://apis.io/collections/suger/postman-suger-report-api/)
+- [Suger API Support API](https://apis.io/collections/suger/postman-suger-support-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Suger — jsonschema rules](https://apis.io/rules/suger/suger-jsonschema-spectral-rules/)
+- [Suger API Rules](https://apis.io/rules/suger/suger-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Suger Authentication](https://apis.io/security/suger/suger-authentication/)
+- [Suger Domain Security](https://apis.io/security/suger/suger-domain-security/)
+- [Suger Trust Center](https://apis.io/security/suger/suger-trust-center/)
+- [Suger Vulnerability Disclosure](https://apis.io/security/suger/suger-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Suger Plans Pricing](https://apis.io/plans/suger/suger-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Suger Rate Limits](https://apis.io/rate-limits/suger/suger-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Suger Finops](https://apis.io/finops/suger/suger-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.suger.io/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/suger/refs/heads/main/openapi/suger-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Getting Started](https://www.suger.io/docs/get-started/api-client)
-- [S D Ks](https://github.com/sugerio)
-- [Postman Collection](collections/suger.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/suger.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/suger-inc)
-- [Portal](https://www.suger.io/)
 - [Documentation](https://doc.suger.io/)
-- [Website](https://www.suger.io/)
-- [S D Ks](https://github.com/sugerio)
-- [Getting Started](https://www.suger.io/docs/get-started/api-client)
+- [Getting started](https://www.suger.io/docs/get-started/api-client)
 - [Pricing](https://www.suger.io/pricing)
+- [Blog](https://www.fours.com/resources/blog/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 44.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 57.3 |
+| Contract governance | 13.6 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 41.7 |
+| Access clarity | 26.3 |
+
+**Agent readiness 30.5** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | verified |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 27.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/suger/](https://apis.io/providers/suger/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Suger: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/suger/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
